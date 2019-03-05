@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">My ProjectTestRun</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="title_activity_maps">Map</string>
+
+    <string name="name"> OLAKUNLE IBRAHIM </string>
+
+    <string-array name="education">
+        <item>Kristianstad University: Bachelor Degree</item>
+        <item>Kwara State Polytechnic: National Diploma</item>
+        <item>Banni Secondary School:  Secondary Certificate</item>
+        <item>Oshodi High School    :  Junior School Certificate</item>
+    </string-array>
+
+    <string-array name="job">
+        
+
+    </string-array>
+
+
+
+    <string-array name="merit">
+        <item>Computer Skill: Microsoft Office, MATLAB, MySQL</item>
+        <item>Programming Skill: Java,Python,Android Studio,HTML,Javascript,Database</item>
+        <item>Language Skill: Englist, Swedish</item>
+        <item>KorKort</item>
+        <item>2010 Assisterande Fältkommunikatör, British Broadcasting Corporation</item>
+        <item>2010 Fältkommunikatör, UK Dragonfly Tv Projekt, Lagos</item>
+        <item>2009 Fältkommunikatör, British Broadcasting Corporation Projekt </item>
+    </string-array>
+
+
+</resources>

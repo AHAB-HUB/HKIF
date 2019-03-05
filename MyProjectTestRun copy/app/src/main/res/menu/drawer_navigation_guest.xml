@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn = "navigation_view">
+
+    <group android:checkableBehavior="single">
+
+        <item android:icon="@drawable/ic_sport"
+            android:id="@+id/nav_message"
+            android:title="Our sports"/>
+
+        <item android:icon="@drawable/ic_gallery"
+            android:id="@+id/nav_group"
+            android:title="Gallery"/>
+
+        <item android:icon="@drawable/ic_contact_phone_black_24dp"
+            android:id="@+id/nav_phone"
+            android:title="Contact"/>
+
+
+        <item android:icon="@drawable/ic_business_center_black_24dp"
+            android:id="@+id/nav_about"
+            android:title="About"/>
+
+    </group>
+
+    <item android:title="Membership">
+
+        <menu>
+            <item android:icon="@drawable/ic_lock_black_24dp"
+                android:title="LogIn"
+                android:id="@+id/logIn"/>
+        </menu>
+    </item>
+
+</menu>

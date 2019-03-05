@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/ic_launcher_foreground"
+    tools:layout="@layout/fragment_education"
+    android:orientation="vertical">
+
+    <ListView
+        android:id="@+id/text_edu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20sp"
+
+        android:background="@drawable/ic_launcher_foreground"
+        android:backgroundTint="#7CCD7C"
+        android:gravity="start|top"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        />
+
+</LinearLayout>
