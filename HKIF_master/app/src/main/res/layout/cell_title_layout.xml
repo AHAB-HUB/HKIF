@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/bgContent"
@@ -90,7 +89,7 @@
             android:layout_marginStart="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="2dp"
-            android:textSize="25dp" />
+            android:textSize="25sp" />
 
         <TextView
             android:id="@+id/from"
@@ -120,7 +119,8 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginRight="40dp" />
+            android:layout_marginRight="40dp"
+            android:layout_marginEnd="40dp" />
 
         <TextView
             style="@style/TitleBadgeTitle"
@@ -144,29 +144,18 @@
             android:layout_alignParentBottom="true"
             android:layout_marginStart="65dp"
             android:layout_marginLeft="65dp"
-            android:layout_marginBottom="2dp"
            />
 
         <TextView
             style="@style/TitleBadgeTitle"
-            android:layout_width="24dp"
-            android:layout_height="39dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginLeft="68dp"
+
             android:layout_alignBottom="@+id/to"
-
-
-            android:layout_alignParentTop="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="64dp"
-            android:layout_marginLeft="64dp"
-            android:layout_marginTop="66dp"
-            android:layout_marginEnd="145dp"
-            android:layout_marginRight="145dp"
-            android:layout_marginBottom="30dp"
-            android:layout_toStartOf="@+id/temperature"
-            android:layout_toLeftOf="@+id/temperature"
-            android:layout_toEndOf="@+id/from"
-            android:layout_toRightOf="@+id/from"
-            android:text="To" />
+            android:layout_marginBottom="28dp"
+            android:text="@string/to" />
 
     </RelativeLayout>
 </LinearLayout>

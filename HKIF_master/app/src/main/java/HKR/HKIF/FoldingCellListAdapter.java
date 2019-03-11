@@ -49,6 +49,7 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item> {
             viewHolder.to = cell.findViewById(R.id.to);
             viewHolder.temperature = cell.findViewById(R.id.temperature);
             viewHolder.sport_name = cell.findViewById(R.id.sport_name);
+            viewHolder.sport_name_1 = cell.findViewById(R.id.sport_name_1);
             viewHolder.time = cell.findViewById(R.id.time);
             viewHolder.day = cell.findViewById(R.id.date);
             viewHolder.head_image = cell.findViewById(R.id.head_image);
@@ -84,7 +85,7 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item> {
         // bind data from selected element to view through view holder
         viewHolder.going_numb.setText(item.getGoing());
         viewHolder.going_1.setText(item.getGoing());
-        viewHolder.time.setText(item.getTime());
+        viewHolder.time.setText(item.getLocation_date());
         viewHolder.day.setText(item.getDay());
         viewHolder.temperature.setText(item.getTemperature());
         viewHolder.temperature_1.setText(item.getTemperature());
@@ -93,6 +94,7 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item> {
         viewHolder.to.setText(String.valueOf(item.getTo()));
         viewHolder.to_1.setText(String.valueOf(item.getTo()));
         viewHolder.sport_name.setText(item.getSport_name());
+        viewHolder.sport_name_1.setText(item.getSport_name());
         viewHolder.location.setText(item.getLocation());
         viewHolder.location_date.setText(item.getLocation_date());
         viewHolder.leader_name.setText(item.getLeader_name());
@@ -143,6 +145,7 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item> {
         TextView to;
         TextView temperature;
         TextView sport_name;
+        TextView sport_name_1;
         TextView contentCalenderBtn;
         TextView location;
         TextView location_date;
