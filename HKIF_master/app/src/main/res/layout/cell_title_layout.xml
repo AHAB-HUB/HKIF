@@ -23,13 +23,13 @@
             android:id="@+id/going"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/date"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="-14dp"
-            android:layout_marginBottom="35dp"
+            android:layout_marginBottom="65dp"
             android:textColor="@android:color/white"
             android:textSize="16sp" />
 
