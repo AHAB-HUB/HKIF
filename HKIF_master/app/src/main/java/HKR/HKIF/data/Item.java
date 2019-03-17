@@ -1,4 +1,4 @@
-package HKR.HKIF;
+package HKR.HKIF.data;
 
 import android.view.View;
 

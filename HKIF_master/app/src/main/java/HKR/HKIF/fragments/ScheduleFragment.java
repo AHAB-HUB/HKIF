@@ -1,4 +1,4 @@
-package HKR.HKIF;
+package HKR.HKIF.fragments;
 
 
 import android.os.Bundle;
@@ -13,6 +13,9 @@ import com.ramotion.foldingcell.FoldingCell;
 
 import java.util.ArrayList;
 
+import HKR.HKIF.adapters.FoldingCellListAdapter;
+import HKR.HKIF.data.Item;
+import HKR.HKIF.R;
 import androidx.fragment.app.Fragment;
 
 /**

@@ -8,6 +8,10 @@ import android.view.MenuItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
+import HKR.HKIF.fragments.CardListFragment;
+import HKR.HKIF.fragments.HomeFragment;
+import HKR.HKIF.fragments.ScheduleFragment;
+import HKR.HKIF.fragments.SignUpFragment;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -65,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_contact:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new SignUpFragment()).commit();
+                        new CardListFragment()).commit();
                 break;
 
 

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:paddingLeft="15dp"
+	android:paddingRight="15dp"
+	android:descendantFocusability="beforeDescendants">
+
+	<LinearLayout
+
+		android:id="@+id/card"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:background="@drawable/card_background_selector"
+		android:descendantFocusability="afterDescendants"
+		android:orientation="vertical"
+		android:paddingLeft="15dp"
+		android:paddingTop="15dp"
+		android:paddingRight="15dp"
+		android:paddingBottom="15dp">
+
+		<TextView
+			android:id="@+id/name"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Ahmad Abdulal"
+			android:textStyle="bold"
+			android:textSize="25dp" />
+
+		<TextView
+			android:id="@+id/email"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Ahmadabdulal@outlook.com"
+			/>
+
+		<TextView
+		android:id="@+id/position"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Member" />
+
+
+		<com.google.android.material.floatingactionbutton.FloatingActionButton
+			android:id="@+id/delete"
+			android:clickable="true"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:src="@android:drawable/ic_menu_delete"
+			android:translationX="296dp"
+			android:translationY="-40dp"
+			tools:srcCompat="@android:drawable/ic_menu_delete"
+			android:focusable="true" />
+
+		<com.google.android.material.floatingactionbutton.FloatingActionButton
+			android:id="@+id/edit"
+			android:clickable="true"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:src="@drawable/ic_admin_settings"
+			android:translationX="296dp"
+			android:translationY="-34dp"
+			tools:srcCompat="@drawable/ic_admin_settings"
+			android:focusable="true" />
+
+	</LinearLayout>
+</FrameLayout>

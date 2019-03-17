@@ -1,4 +1,4 @@
-package HKR.HKIF;
+package HKR.HKIF.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,6 +13,8 @@ import com.ramotion.foldingcell.FoldingCell;
 import java.util.HashSet;
 import java.util.List;
 
+import HKR.HKIF.data.Item;
+import HKR.HKIF.R;
 import androidx.annotation.NonNull;
 
 /**

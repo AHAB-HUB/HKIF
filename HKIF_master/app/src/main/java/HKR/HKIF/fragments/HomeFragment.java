@@ -1,4 +1,4 @@
-package HKR.HKIF;
+package HKR.HKIF.fragments;
 
 import android.os.Bundle;
 
@@ -9,6 +9,7 @@ import android.widget.Button;
 
 import com.google.android.material.navigation.NavigationView;
 
+import HKR.HKIF.R;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
