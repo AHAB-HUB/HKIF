@@ -1,4 +1,5 @@
-package HKR.HKIF.fragments;
+package com.e.hkif_app;
+
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,19 +13,21 @@ import com.ramotion.foldingcell.FoldingCell;
 
 import java.util.ArrayList;
 
-import HKR.HKIF.R;
-import HKR.HKIF.adapters.FoldingCellListAdapter;
-import HKR.HKIF.data.Item;
 import androidx.fragment.app.Fragment;
 
-public class SessionManagement extends Fragment {
+/**
+ * Example of using Folding Cell with ListView and ListAdapter
+ */
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState){
 
-        return inflater.inflate(R.layout.session_management, container, false);
-    }
+public class ScheduleFragment extends Fragment {
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState){
+
+            return inflater.inflate(R.layout.schedule_fragment, container, false);
+        }
 
 
     @Override
@@ -34,7 +37,7 @@ public class SessionManagement extends Fragment {
 
 
         // get our list view
-        ListView theListView = getActivity().findViewById(R.id.lvSM);
+        ListView theListView = getActivity().findViewById(R.id.mainListView);
 
 
         //TODO get the list info from database and fill the list below
@@ -79,5 +82,4 @@ public class SessionManagement extends Fragment {
             }
         });
     }
-
 }

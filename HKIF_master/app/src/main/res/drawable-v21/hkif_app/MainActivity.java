@@ -1,18 +1,11 @@
-package HKR.HKIF;
-
+package com.e.hkif_app;
 
 import android.os.Bundle;
-
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
-import HKR.HKIF.fragments.CardListFragment;
-import HKR.HKIF.fragments.HomeFragment;
-import HKR.HKIF.fragments.ScheduleFragment;
-import HKR.HKIF.fragments.SessionManagement;
-import HKR.HKIF.fragments.SignUpFragment;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -49,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                new HomeFragment()).commit();
+                new com.e.hkif_app.HomeFragment()).commit();
 
 
     }
@@ -62,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_about:
                 //TODO add the new fragments here
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new ScheduleFragment()).commit();
+                        new com.e.hkif_app.ScheduleFragment()).commit();
                 break;
             case R.id.nav_sport | R.id.nav_sports | R.id.nav_sprot:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
@@ -70,17 +63,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_contact:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new CardListFragment()).commit();
+                        new SignUpFragment()).commit();
                 break;
             case R.id.nav_management:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new SessionManagement()).commit();
+                        new com.e.hkif_app.SessionManagement()).commit();
                 break;
-
         }
 
         drawer.closeDrawer(GravityCompat.START);
-        return true;
+        return false;
     }
 
     @Override
@@ -104,16 +96,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     //TODO add the corresponding fragments here
                     switch (menuItem.getItemId()) {
                         case R.id.nav_home:
-                            selectFragment = new HomeFragment();
+                            selectFragment = new com.e.hkif_app.HomeFragment();
                             break;
-                        case R.id.nav_contact:
+                        case R.id.nav_management:
+                            selectFragment = new com.e.hkif_app.SessionManagement();
+                            break;
 
                             default:
-                                selectFragment = new HomeFragment();
+                            selectFragment = new com.e.hkif_app.HomeFragment();
+
+
                     }
 
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                             selectFragment).commit();
+
+                    DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+                    drawer.closeDrawer(GravityCompat.START);
 
                     return true;
                 }

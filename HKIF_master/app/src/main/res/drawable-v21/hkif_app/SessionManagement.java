@@ -1,4 +1,4 @@
-package HKR.HKIF.fragments;
+package com.e.hkif_app;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,9 +12,6 @@ import com.ramotion.foldingcell.FoldingCell;
 
 import java.util.ArrayList;
 
-import HKR.HKIF.R;
-import HKR.HKIF.adapters.FoldingCellListAdapter;
-import HKR.HKIF.data.Item;
 import androidx.fragment.app.Fragment;
 
 public class SessionManagement extends Fragment {
