@@ -18,9 +18,6 @@ import HKR.HKIF.data.Item;
 import HKR.HKIF.R;
 import androidx.fragment.app.Fragment;
 
-/**
- * Example of using Folding Cell with ListView and ListAdapter
- */
 
 
 public class ScheduleFragment extends Fragment {
