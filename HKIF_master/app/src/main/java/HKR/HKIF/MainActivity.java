@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new ScheduleFragment()).commit();
                 break;
-            case R.id.nav_sport | R.id.nav_sports | R.id.nav_sprot:
+            case R.id.nav_guest_sports:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new SignUpFragment()).commit();
                 break;

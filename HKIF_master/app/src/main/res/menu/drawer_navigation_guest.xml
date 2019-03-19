@@ -6,23 +6,23 @@
     <group android:checkableBehavior="single">
 
         <item
-            android:id="@+id/nav_sports"
+            android:id="@+id/nav_guest_sports"
             android:icon="@drawable/ic_sport"
             android:title="Our sports" />
 
         <item
-            android:id="@+id/nav_gallary"
+            android:id="@+id/nav_guest_gallary"
             android:icon="@drawable/ic_gallery"
             android:title="Gallery" />
 
         <item
-            android:id="@+id/nav_contact"
+            android:id="@+id/nav_guest_contact"
             android:icon="@drawable/ic_group_black_24dp"
             android:title="Contact" />
 
 
         <item android:icon="@drawable/ic_business_center_black_24dp"
-            android:id="@+id/nav_about"
+            android:id="@+id/nav_guest_about"
             android:title="About"/>
 
     </group>
@@ -32,7 +32,7 @@
         <menu>
             <item android:icon="@drawable/ic_lock_black_24dp"
                 android:title="LogIn"
-                android:id="@+id/logIn"/>
+                android:id="@+id/guest_logIn"/>
         </menu>
     </item>
 
