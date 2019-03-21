@@ -1,6 +1,7 @@
 package HKR.HKIF.adapters;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,13 +15,19 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.List;
 
-import HKR.HKIF.data.Card;
+import HKR.HKIF.MainActivity;
+import HKR.HKIF.data.MemberCard;
 import HKR.HKIF.R;
+import HKR.HKIF.dialogs.DeleteDialog;
+import HKR.HKIF.dialogs.SetPositionDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
-public class CardArrayAdapter  extends ArrayAdapter<Card> {
+public class MemberListAdapter extends ArrayAdapter<MemberCard> {
 
-    private static final String TAG = "CardArrayAdapter";
-    private List<Card> cardList = new ArrayList<>();
+    private List<MemberCard> cardList = new ArrayList<>();
 
     static class CardViewHolder {
         TextView name;
@@ -31,12 +38,12 @@ public class CardArrayAdapter  extends ArrayAdapter<Card> {
 
     }
 
-    public CardArrayAdapter(Context context, int textViewResourceId) {
+    public MemberListAdapter(Context context, int textViewResourceId) {
         super(context, textViewResourceId);
     }
 
     @Override
-    public void add(Card object) {
+    public void add(MemberCard object) {
         cardList.add(object);
         super.add(object);
     }
@@ -47,7 +54,7 @@ public class CardArrayAdapter  extends ArrayAdapter<Card> {
     }
 
     @Override
-    public Card getItem(int index) {
+    public MemberCard getItem(int index) {
         return this.cardList.get(index);
     }
 
@@ -74,12 +81,7 @@ public class CardArrayAdapter  extends ArrayAdapter<Card> {
             viewHolder = (CardViewHolder)row.getTag();
         }
 
-
-
-
-
-
-        Card card = getItem(position);
+        final MemberCard card = getItem(position);
         viewHolder.name.setText(card.getName());
         viewHolder.position.setText(card.getPosition());
         viewHolder.email.setText(card.getEmail());
@@ -88,21 +90,27 @@ public class CardArrayAdapter  extends ArrayAdapter<Card> {
         viewHolder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "button " + position, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "button " + position, Toast.LENGTH_SHORT).show(); //meh
 
+                FragmentManager manager = ((AppCompatActivity)getContext()).getSupportFragmentManager();// to show the dialog
+                new DeleteDialog(card.getName()).show(manager,"delete");
             }
         });
+
+
+
 
         viewHolder.edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "button " + (position + 1), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "button " + position, Toast.LENGTH_SHORT).show();
+
+                FragmentManager manager = ((AppCompatActivity)getContext()).getSupportFragmentManager(); // to show the dialog
+                new SetPositionDialog(position).show(manager,"delete");
 
             }
         });
 
         return row;
     }
-
 }
-

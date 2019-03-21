@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 
 @SuppressWarnings({"unused", "WeakerAccess"})
-public class Item {
+public class ScheduleItem {
 
     private String going;
     private String from;
@@ -23,10 +23,10 @@ public class Item {
 
     private View.OnClickListener requestBtnClickListener;
 
-    public Item() {
+    public ScheduleItem() {
     }
 
-    public Item(String going, String from, String to, String temperature, String sport_name, String day, String time, String location, String location_date, String leader_name, String head_image) {
+    public ScheduleItem(String going, String from, String to, String temperature, String sport_name, String day, String time, String location, String location_date, String leader_name, String head_image) {
         this.going = going;
         this.from= from;
         this.to= to;
@@ -53,7 +53,7 @@ public class Item {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Item item = (Item) o;
+        ScheduleItem item = (ScheduleItem) o;
 
 
         if (location != null ? !location.equals(item.location) : item.location != null)
@@ -101,14 +101,14 @@ public class Item {
      * @return List of elements prepared for tests
      */
 
-    public static ArrayList<Item> getTestingList() {
-        ArrayList<Item> items = new ArrayList<>();
-        items.add(new Item("16","16:00","17:00","34 C","Badminton","Monday"  ,"16:00", "Kristianstad, Sweden, 291 39", "01/may/2019", "Ahmad"  , ""));
-        items.add(new Item("16","16:00","17:00","54 C","Football" ,"Monday"  ,"16:00", "Kristianstad, Sweden, 291 39", "01/may/2019", "Nawar"  , ""));
-        items.add(new Item("16","16:00","18:00","33 C","Swimming" ,"Friday"  ,"16:00", "Kristianstad, Sweden, 291 39", "01/may/2019", "Kobrum" , ""));
-        items.add(new Item("16","16:00","19:00","32 C","Badminton","Monday"  ,"16:00", "Kristianstad, Sweden, 291 39", "01/may/2019", "Ibra"   , ""));
-        items.add(new Item("16","16:00","10:00","31 C","5ra"      ,"Saturday","16:00", "Kristianstad, Sweden, 291 39", "01/may/2019", "Stephan", ""));
-        items.add(new Item("16","16:00","12:00","44 C","Hiking"   ,"Sunday"  ,"16:00", "Kristianstad, Sweden, 291 39", "01/may/2019", "5ra"    , ""));
+    public static ArrayList<ScheduleItem> getTestingList() {
+        ArrayList<ScheduleItem> items = new ArrayList<>();
+        items.add(new ScheduleItem("16","16:00","17:00","34 C","Badminton","Monday"  ,"16:00", "Kristianstad, Sweden, 291 39", "01/may/2019", "Ahmad"  , ""));
+        items.add(new ScheduleItem("16","16:00","17:00","54 C","Football" ,"Monday"  ,"16:00", "Kristianstad, Sweden, 291 39", "01/may/2019", "Nawar"  , ""));
+        items.add(new ScheduleItem("16","16:00","18:00","33 C","Swimming" ,"Friday"  ,"16:00", "Kristianstad, Sweden, 291 39", "01/may/2019", "Kobrum" , ""));
+        items.add(new ScheduleItem("16","16:00","19:00","32 C","Badminton","Monday"  ,"16:00", "Kristianstad, Sweden, 291 39", "01/may/2019", "Ibra"   , ""));
+        items.add(new ScheduleItem("16","16:00","10:00","31 C","5ra"      ,"Saturday","16:00", "Kristianstad, Sweden, 291 39", "01/may/2019", "Stephan", ""));
+        items.add(new ScheduleItem("16","16:00","12:00","44 C","Hiking"   ,"Sunday"  ,"16:00", "Kristianstad, Sweden, 291 39", "01/may/2019", "5ra"    , ""));
         return items;
 
     }

@@ -13,8 +13,8 @@ import com.ramotion.foldingcell.FoldingCell;
 
 import java.util.ArrayList;
 
-import HKR.HKIF.adapters.FoldingCellListAdapter;
-import HKR.HKIF.data.Item;
+import HKR.HKIF.adapters.ScheduleAdapter;
+import HKR.HKIF.data.ScheduleItem;
 import HKR.HKIF.R;
 import androidx.fragment.app.Fragment;
 
@@ -42,7 +42,7 @@ public class ScheduleFragment extends Fragment {
 
         //TODO get the list info from database and fill the list below
         // prepare elements to display
-        final ArrayList<Item> items = Item.getTestingList();
+        final ArrayList<ScheduleItem> items = ScheduleItem.getTestingList();
 
 
         //TODO add a loop to create as much buttons we need that implement the same method/function
@@ -56,7 +56,7 @@ public class ScheduleFragment extends Fragment {
 
 
         // create custom adapter that holds elements and their state (we need hold a id's of unfolded elements for reusable elements)
-        final FoldingCellListAdapter adapter = new FoldingCellListAdapter(getActivity(), items);
+        final ScheduleAdapter adapter = new ScheduleAdapter(getActivity(), items);
 
 
         // add default btn handler for each request btn on each item if custom handler not found

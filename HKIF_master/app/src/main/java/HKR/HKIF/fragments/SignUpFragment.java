@@ -41,23 +41,23 @@ public class SignUpFragment extends Fragment {
 
     private void signUp(){
         String firstNameText = firstName.getText().toString();
-        String lastNameText = lastName.getText().toString();
-        String emailText = email.getText().toString();
-        String passwordText = password.getText().toString();
+        String lastNameText  = lastName.getText().toString();
+        String emailText     = email.getText().toString();
+        String passwordText  = password.getText().toString();
         String phoneNumberText = phoneNumber.getText().toString();
 
         if (TextUtils.isEmpty(firstNameText) && TextUtils.isEmpty(lastNameText) &&
-            TextUtils.isEmpty(emailText) && TextUtils.isEmpty(passwordText) &&
+            TextUtils.isEmpty(emailText)     && TextUtils.isEmpty(passwordText) &&
             TextUtils.isEmpty(phoneNumberText)){
 
             Toast.makeText(getContext(), "Please fill all the fields!", Toast.LENGTH_LONG).show();
-        }
-        else {
+
+        } else {
+
             final DateFormat dateFormat = DateFormat.getDateInstance();
             String format = dateFormat.format(new Date());
 
             final String position = String.valueOf(Person.POSITION.MEMBER);
-
             final String ID = databasePerson.push().getKey();
 
 
@@ -67,7 +67,6 @@ public class SignUpFragment extends Fragment {
             databasePerson.child(ID).setValue(person);
 
             Toast.makeText(getContext(), "Done!", Toast.LENGTH_LONG).show();
-
         }
     }
 
@@ -76,12 +75,12 @@ public class SignUpFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view =inflater.inflate(R.layout.fragment_sign_up, container, false);
 
-        firstName = view.findViewById(R.id.signUp_firstName);
-        lastName = view.findViewById(R.id.signUp_lastName);
-        email = view.findViewById(R.id.signUp_email);
-        password = view.findViewById(R.id.signUp_password);
+        firstName   = view.findViewById(R.id.signUp_firstName);
+        lastName    = view.findViewById(R.id.signUp_lastName);
+        email       = view.findViewById(R.id.signUp_email);
+        password    = view.findViewById(R.id.signUp_password);
         phoneNumber = view.findViewById(R.id.signUp_phone_number);
-        signUpBtn = view.findViewById(R.id.btn_signUp);
+        signUpBtn   = view.findViewById(R.id.btn_signUp);
 
         databasePerson = FirebaseDatabase.getInstance().getReference("person");
 

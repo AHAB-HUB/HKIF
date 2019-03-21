@@ -7,19 +7,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import HKR.HKIF.data.Card;
-import HKR.HKIF.adapters.CardArrayAdapter;
+import java.util.Objects;
+
+import HKR.HKIF.data.MemberCard;
+import HKR.HKIF.adapters.MemberListAdapter;
 import HKR.HKIF.R;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public class CardListFragment extends Fragment {
+public class MembersListFragment extends Fragment {
 
 
     private static final String TAG = "CardListActivity";
 
-    private CardArrayAdapter cardArrayAdapter;
+    private MemberListAdapter cardArrayAdapter;
     private ListView listView;
 
 
@@ -36,16 +38,16 @@ public class CardListFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
 
-        listView = getActivity(). findViewById(R.id.card_listView);
+        listView = Objects.requireNonNull(getActivity()). findViewById(R.id.card_listView);
 
         listView.addHeaderView(new View(getContext()));
         listView.addFooterView(new View(getContext()));
 
-        cardArrayAdapter = new CardArrayAdapter(getContext(), R.layout.list_item_card);
+        cardArrayAdapter = new MemberListAdapter(getContext(), R.layout.list_item_card);
 
         //TODO add items here
         for (int i = 0; i < 10; i++) {
-            Card card = new Card("Ahmad Abdulal" ,"AhmadAbdulal@outlook.com", "Member");
+            MemberCard card = new MemberCard("Ahmad Abdulal" ,"AhmadAbdulal@outlook.com", "Member");
 
             cardArrayAdapter.add(card);
         }

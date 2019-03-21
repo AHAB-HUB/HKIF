@@ -8,7 +8,7 @@ import android.view.MenuItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
-import HKR.HKIF.fragments.CardListFragment;
+import HKR.HKIF.fragments.MembersListFragment;
 import HKR.HKIF.fragments.HomeFragment;
 import HKR.HKIF.fragments.ScheduleFragment;
 import HKR.HKIF.fragments.SessionManagement;
@@ -20,6 +20,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+
+
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -49,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                new HomeFragment()).commit();
+                new MembersListFragment()).commit();
 
 
     }
@@ -59,23 +61,38 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
         switch (menuItem.getItemId()) {
-            case R.id.nav_about:
-                //TODO add the new fragments here
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new ScheduleFragment()).commit();
-                break;
+
             case R.id.nav_guest_sports:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new SignUpFragment()).commit();
                 break;
-            case R.id.nav_contact:
+
+            case R.id.nav_guest_gallary:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new CardListFragment()).commit();
+                        new SignUpFragment()).commit();
                 break;
+
             case R.id.nav_management:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new SessionManagement()).commit();
                 break;
+
+            case R.id.nav_contact:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new MembersListFragment()).commit();
+                break;
+
+            case R.id.nav_about:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new ScheduleFragment()).commit();
+                break;
+
+            case R.id.nav_profile:
+
+                break;
+
+                //TODO ADD THE REST OF THE BUTTONS
+
 
         }
 
@@ -93,6 +110,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
+
+    //TODO UPDATE THIS METHOD
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
 

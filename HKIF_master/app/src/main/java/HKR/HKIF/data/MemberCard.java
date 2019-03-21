@@ -1,23 +1,18 @@
 package HKR.HKIF.data;
 
-import android.view.View;
 
-public class Card {
+public class MemberCard {
     private String name;
     private String position;
     private String email;
-    private View.OnClickListener requestBtnClickListener;
 
 
-    public Card(String name, String email, String position) {
+    public MemberCard(String name, String email, String position) {
         this.name = name;
         this.email = email;
         this.position = position;
     }
 
-    public void setRequestBtnClickListener(View.OnClickListener requestBtnClickListener) {
-        this.requestBtnClickListener = requestBtnClickListener;
-    }
 
     public String getName() {
         return name;

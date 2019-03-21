@@ -13,17 +13,17 @@ import com.ramotion.foldingcell.FoldingCell;
 import java.util.HashSet;
 import java.util.List;
 
-import HKR.HKIF.data.Item;
+import HKR.HKIF.data.ScheduleItem;
 import HKR.HKIF.R;
 import androidx.annotation.NonNull;
 
 
-public class FoldingCellListAdapter extends ArrayAdapter<Item> {
+public class ScheduleAdapter extends ArrayAdapter<ScheduleItem> {
 
     private HashSet<Integer> unfoldedIndexes = new HashSet<>();
     private View.OnClickListener defaultRequestBtnClickListener;
 
-    public FoldingCellListAdapter(Context context, List<Item> objects) {
+    public ScheduleAdapter(Context context, List<ScheduleItem> objects) {
         super(context, 0, objects);
     }
 
@@ -31,7 +31,7 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item> {
     @Override
     public View getView(int position, View convertView, @NonNull ViewGroup parent) {
         // get item for selected view
-        Item item = getItem(position);
+        ScheduleItem item = getItem(position);
         // if cell is exists - reuse it, if not - create the new one from resource
         FoldingCell cell = (FoldingCell) convertView;
         ViewHolder viewHolder;
