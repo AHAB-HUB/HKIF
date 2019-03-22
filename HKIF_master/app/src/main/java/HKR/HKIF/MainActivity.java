@@ -2,14 +2,13 @@ package HKR.HKIF;
 
 
 import android.os.Bundle;
-
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
-import HKR.HKIF.fragments.MembersListFragment;
 import HKR.HKIF.fragments.HomeFragment;
+import HKR.HKIF.fragments.MembersListFragment;
 import HKR.HKIF.fragments.ScheduleFragment;
 import HKR.HKIF.fragments.SessionManagement;
 import HKR.HKIF.fragments.SignUpFragment;
@@ -77,12 +76,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         new SessionManagement()).commit();
                 break;
 
-            case R.id.nav_contact:
+            case R.id.nav_guest_contact:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new MembersListFragment()).commit();
                 break;
 
-            case R.id.nav_about:
+            case R.id.nav_guest_about:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new ScheduleFragment()).commit();
                 break;

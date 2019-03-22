@@ -1,7 +1,6 @@
 package HKR.HKIF.adapters;
 
 
-import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,14 +14,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.List;
 
-import HKR.HKIF.MainActivity;
-import HKR.HKIF.data.MemberCard;
 import HKR.HKIF.R;
+import HKR.HKIF.data.MemberCard;
 import HKR.HKIF.dialogs.DeleteDialog;
 import HKR.HKIF.dialogs.SetPositionDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 public class MemberListAdapter extends ArrayAdapter<MemberCard> {

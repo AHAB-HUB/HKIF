@@ -26,11 +26,13 @@ public class DeleteDialog extends DialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+        //set up the connection with database
         dbConnection();
 
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
 
         builder.setMessage("Are you sure you want to delete \"" + memberName + "\".")
@@ -53,13 +55,6 @@ public class DeleteDialog extends DialogFragment {
 
         // Create the AlertDialog object and return it
         return builder.create();
-    }
-
-    public void show(String name){
-        assert getFragmentManager() != null;
-        new DeleteDialog(name).show(getFragmentManager(),"Delete");
-
-
     }
 
 

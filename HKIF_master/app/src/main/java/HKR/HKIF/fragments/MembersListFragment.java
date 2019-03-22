@@ -9,9 +9,9 @@ import android.widget.ListView;
 
 import java.util.Objects;
 
-import HKR.HKIF.data.MemberCard;
-import HKR.HKIF.adapters.MemberListAdapter;
 import HKR.HKIF.R;
+import HKR.HKIF.adapters.MemberListAdapter;
+import HKR.HKIF.data.MemberCard;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;

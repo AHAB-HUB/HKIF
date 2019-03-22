@@ -13,9 +13,9 @@ import com.ramotion.foldingcell.FoldingCell;
 
 import java.util.ArrayList;
 
+import HKR.HKIF.R;
 import HKR.HKIF.adapters.ScheduleAdapter;
 import HKR.HKIF.data.ScheduleItem;
-import HKR.HKIF.R;
 import androidx.fragment.app.Fragment;
 
 

@@ -1,8 +1,6 @@
 package HKR.HKIF.fragments;
 
 import android.os.Bundle;
-
-
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +13,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import HKR.HKIF.R;
