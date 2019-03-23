@@ -48,41 +48,41 @@ public class DaysFragment extends Fragment {
         monday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-            }
-        });
-
-        monday.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new ScheduleFragment("monday")).commit();
             }
         });
 
         tuesday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new ScheduleFragment("tuesday")).commit();
             }
         });
 
         wednesday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new ScheduleFragment("wednesday")).commit();
             }
         });
+
 
         thursday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new ScheduleFragment("thursday")).commit();
             }
         });
 
         friday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new ScheduleFragment("friday")).commit();
 
             }
         });
@@ -90,6 +90,8 @@ public class DaysFragment extends Fragment {
         saturday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new ScheduleFragment("saturday")).commit();
 
             }
         });
@@ -97,6 +99,8 @@ public class DaysFragment extends Fragment {
         sunday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new ScheduleFragment("sunday")).commit();
 
             }
         });
@@ -104,6 +108,8 @@ public class DaysFragment extends Fragment {
         events.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new ScheduleFragment("events")).commit();
 
             }
         });

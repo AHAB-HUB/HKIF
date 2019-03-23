@@ -7,8 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -26,6 +31,8 @@ public class SignUpFragment extends Fragment {
     private EditText firstName, lastName, email, password, phoneNumber;
     private Button signUpBtn;
     private DatabaseReference databasePerson;
+    private FirebaseAuth firebaseAuth;
+    private ProgressBar progressBar;
 
 
     @Override
@@ -37,11 +44,11 @@ public class SignUpFragment extends Fragment {
     }
 
     private void signUp(){
-        String firstNameText = firstName.getText().toString();
-        String lastNameText  = lastName.getText().toString();
-        String emailText     = email.getText().toString();
-        String passwordText  = password.getText().toString();
-        String phoneNumberText = phoneNumber.getText().toString();
+        final String firstNameText = firstName.getText().toString();
+        final String lastNameText  = lastName.getText().toString();
+        final String emailText     = email.getText().toString();
+        final String passwordText  = password.getText().toString();
+        final String phoneNumberText = phoneNumber.getText().toString();
 
         if (TextUtils.isEmpty(firstNameText) && TextUtils.isEmpty(lastNameText) &&
             TextUtils.isEmpty(emailText)     && TextUtils.isEmpty(passwordText) &&
@@ -52,18 +59,36 @@ public class SignUpFragment extends Fragment {
         } else {
 
             final DateFormat dateFormat = DateFormat.getDateInstance();
-            String format = dateFormat.format(new Date());
+            final String format = dateFormat.format(new Date());
 
             final String position = String.valueOf(Person.POSITION.MEMBER);
             final String ID = databasePerson.push().getKey();
 
+            progressBar.setVisibility(getView().VISIBLE);
 
-            Person person = new Person(ID, firstNameText, lastNameText, emailText, passwordText,
-                    phoneNumberText, position, false, format);
 
-            databasePerson.child(ID).setValue(person);
+            firebaseAuth.createUserWithEmailAndPassword(emailText,passwordText)
+                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
 
-            Toast.makeText(getContext(), "Done!", Toast.LENGTH_LONG).show();
+                            progressBar.setVisibility(getView().GONE);
+
+                            final Person person = new Person(firebaseAuth.getUid(), firstNameText,
+                                    lastNameText, emailText, passwordText,
+                                    phoneNumberText, position, false, format);
+
+
+                            databasePerson.child(FirebaseAuth.getInstance().getCurrentUser()
+                                    .getUid()).setValue(person).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    Toast.makeText(getContext(), "Done!", Toast.LENGTH_LONG).show();
+                                }
+                            });
+
+                        }
+                    });
         }
     }
 
@@ -78,7 +103,10 @@ public class SignUpFragment extends Fragment {
         password    = view.findViewById(R.id.signUp_password);
         phoneNumber = view.findViewById(R.id.signUp_phone_number);
         signUpBtn   = view.findViewById(R.id.btn_signUp);
+        progressBar = view.findViewById(R.id.sign_up_progressBar);
+        progressBar.setVisibility(view.GONE);
 
+        firebaseAuth = FirebaseAuth.getInstance();
         databasePerson = FirebaseDatabase.getInstance().getReference("person");
 
         signUpBtn.setOnClickListener(new View.OnClickListener() {
