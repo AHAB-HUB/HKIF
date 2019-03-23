@@ -79,6 +79,8 @@ public class HomeFragment extends Fragment {
                         break;
                     }
                     case 1: {
+                        navigationView1.getMenu().clear();
+                        navigationView1.inflateMenu(R.menu.drawer_navigation_team_leader);
                         break;
                     }
                     case 2: {
@@ -179,6 +181,10 @@ public class HomeFragment extends Fragment {
                 imageView.setImageResource(R.drawable.boxing);
             }else if(titleArray[position].equalsIgnoreCase("JU_JITSU")){
                 imageView.setImageResource(R.drawable.ju_jitsu);
+            }else if(titleArray[position].equalsIgnoreCase("FLOORBALL")){
+                imageView.setImageResource(R.drawable.floorball);
+            }else if(titleArray[position].equalsIgnoreCase("BASKETBALL")){
+                imageView.setImageResource(R.drawable.basketball);
             }
 
             return convertView;

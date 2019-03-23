@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">HKIF</string>
+    <string-array name="SessionManagement">
+        <item> Cancel session </item>
+<!--
+        <item> Write a report </item>
+-->
+    </string-array>
+
     <string-array name="Main">
         <item> Football </item>
         <item> Volleyball </item>
@@ -8,6 +15,8 @@
         <item> Swimming </item>
         <item> Boxing </item>
         <item> Ju_Jitsu </item>
+        <item> Floorball </item>
+        <item> Basketball </item>
     </string-array>
 
     <string-array name="Description">

@@ -1,83 +1,158 @@
 package HKR.HKIF.fragments;
 
+import android.app.DatePickerDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.Toast;
+import android.widget.TextView;
 
-import com.ramotion.foldingcell.FoldingCell;
-
-import java.util.ArrayList;
+import java.text.DateFormat;
+import java.util.Calendar;
 
 import HKR.HKIF.R;
-import HKR.HKIF.adapters.ScheduleAdapter;
-import HKR.HKIF.data.ScheduleItem;
-import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
-public class SessionManagement extends Fragment {
+
+public class SessionManagement extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+
+    private ListView smListView;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.session_management);
+        smListView = findViewById(R.id.lvSession_management);
 
-        return inflater.inflate(R.layout.session_management, container, false);
+        setupSportListView();
+
     }
 
-
     @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.YEAR, year);
+        c.set(Calendar.MONTH, month);
+        c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+        String currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
+        String question = "Do you want to cancel the session ?";
+        String current_sport = "Football";
+        Button okBtn,noBtn;
 
-        super.onActivityCreated(savedInstanceState);
+        TextView date =  findViewById(R.id.event_date);
+        TextView sport =  findViewById(R.id.sport_name);
+        TextView confirmation_question =  findViewById(R.id.confirmation_question);
+        okBtn = findViewById(R.id.okBtn);
+        noBtn = findViewById(R.id.noBtn);
+
+        
 
 
-        // get our list view
-        ListView theListView = getActivity().findViewById(R.id.lvSM);
+        date.setText(currentDateString);
+        sport.setText(current_sport);
+        confirmation_question.setText(question);
+
+        okBtn.setVisibility(view.VISIBLE);
+        okBtn.setText("YES");
+        noBtn.setVisibility(view.VISIBLE);
+        noBtn.setText("NO");
 
 
-        //TODO get the list info from database and fill the list below
-        // prepare elements to display
-        final ArrayList<ScheduleItem> items = ScheduleItem.getTestingList();
-
-
-        //TODO add a loop to create as much buttons we need that implement the same method/function
-        // add custom btn handler to first list item
-        items.get(0).setRequestBtnClickListener(new View.OnClickListener() {
+        okBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity().getApplicationContext(), "CUSTOM HANDLER FOR FIRST BUTTON", Toast.LENGTH_SHORT).show();
+
             }
         });
 
-
-        // create custom adapter that holds elements and their state (we need hold a id's of unfolded elements for reusable elements)
-        final ScheduleAdapter adapter = new ScheduleAdapter(getActivity(), items);
-
-
-        // add default btn handler for each request btn on each item if custom handler not found
-        adapter.setDefaultRequestBtnClickListener(new View.OnClickListener() {
+        noBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity().getApplicationContext(), "DEFAULT HANDLER FOR ALL BUTTONS", Toast.LENGTH_SHORT).show();
+
             }
         });
 
 
-        // set elements to adapter
-        theListView.setAdapter(adapter);
+    }
 
-        // set on click event listener to list view
-        theListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+    private void setupSportListView(){
+
+        String[] title = getResources().getStringArray(R.array.SessionManagement);
+
+        Items_Adapter simpleAdapter = new Items_Adapter(this, title);
+        smListView.setAdapter(simpleAdapter);
+
+        smListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
-                // toggle clicked cell state
-                ((FoldingCell) view).toggle(false);
-                // register in adapter that state for selected cell is toggled
-                adapter.registerToggle(pos);
-            }
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                switch(position){
+                    case 0: {
+                        DialogFragment datePicker = new DatePickerFragment();
+                        datePicker.show(getSupportFragmentManager(), "time picker");
+                        break;
+                    }
+                }
+                }
         });
+    }
+
+    public class Items_Adapter extends BaseAdapter {
+        private Context mContext;
+        private LayoutInflater layoutInflater;
+        private TextView title;
+        private String[] titleArray;
+        private ImageView imageView;
+
+        public Items_Adapter(Context context, String[] title) {
+            mContext = context;
+            titleArray = title;
+            layoutInflater = LayoutInflater.from(context);
+        }
+
+
+        @Override
+        public int getCount() {
+            return titleArray.length;
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return titleArray[position];
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            if (convertView == null) {
+                convertView = layoutInflater.inflate(R.layout.single_sm_item, null);
+            }
+
+            title = convertView.findViewById(R.id.item_title);
+            imageView = convertView.findViewById(R.id.item_pic);
+
+
+            title.setText(titleArray[position]);
+
+
+            if (titleArray[position].equalsIgnoreCase("Cancel session")) {
+                imageView.setImageResource(R.drawable.timetable);
+            }
+
+            return convertView;
+
+        }
     }
 
 }
