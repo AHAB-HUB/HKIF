@@ -63,7 +63,7 @@ public class SignInFragment extends Fragment {
                 if (firebaseAuth.getCurrentUser() != null){
 
 
-                    Toast.makeText(context, "You already loged in", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, "You already logged in", Toast.LENGTH_LONG).show();
 
                 }
                 else {
@@ -102,7 +102,7 @@ public class SignInFragment extends Fragment {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         progressBar.setVisibility(getView().GONE);
                         if (task.isSuccessful()){
-                            Toast.makeText(context, "Log In Successfull", Toast.LENGTH_LONG).show();
+                            Toast.makeText(context, "Log In Successful", Toast.LENGTH_LONG).show();
                         }
                         else {
                             Toast.makeText(context, "Log In Failed", Toast.LENGTH_LONG).show();
