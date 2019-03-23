@@ -1,6 +1,7 @@
 package HKR.HKIF.fragments;
 
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,7 +21,63 @@ import androidx.fragment.app.Fragment;
 
 
 
+@SuppressLint("ValidFragment")
 public class ScheduleFragment extends Fragment {
+
+
+
+
+    private ArrayList<ScheduleItem> items;
+
+
+    public ScheduleFragment (String eventHandler){
+
+        switch (eventHandler) {
+            case "monday":
+
+                items = ScheduleItem.getMonday();
+                break;
+
+            case "tuesday":
+                items = ScheduleItem.getTuesday();
+
+                break;
+
+            case "wednesday":
+                items = ScheduleItem.getWednesday();
+
+                break;
+
+            case "thursday":
+                items = ScheduleItem.getThursday();
+
+                break;
+
+            case "friday":
+                items = ScheduleItem.getFriday();
+
+                break;
+
+            case "saturday":
+                items = ScheduleItem.getSaturday();
+
+                break;
+
+            case "sunday":
+                items = ScheduleItem.getSunday();
+
+                break;
+
+            case "events":
+                items = ScheduleItem.getEvents();
+
+                break;
+
+        }
+
+    }
+
+
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -39,10 +96,6 @@ public class ScheduleFragment extends Fragment {
         // get our list view
         ListView theListView = getActivity().findViewById(R.id.mainListView);
 
-
-        //TODO get the list info from database and fill the list below
-        // prepare elements to display
-        final ArrayList<ScheduleItem> items = ScheduleItem.getTestingList();
 
 
         //TODO add a loop to create as much buttons we need that implement the same method/function

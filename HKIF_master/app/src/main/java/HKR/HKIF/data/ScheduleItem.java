@@ -101,7 +101,7 @@ public class ScheduleItem {
      * @return List of elements prepared for tests
      */
 
-    public static ArrayList<ScheduleItem> getTestingList() {
+    public static ArrayList<ScheduleItem> getMonday() {
         ArrayList<ScheduleItem> items = new ArrayList<>();
         items.add(new ScheduleItem("16","16:00","17:00","34 C","Badminton","Monday"  ,"16:00", "Kristianstad, Sweden, 291 39", "01/may/2019", "Ahmad"  , ""));
         items.add(new ScheduleItem("16","16:00","17:00","54 C","Football" ,"Monday"  ,"16:00", "Kristianstad, Sweden, 291 39", "01/may/2019", "Nawar"  , ""));
@@ -109,11 +109,62 @@ public class ScheduleItem {
         items.add(new ScheduleItem("16","16:00","19:00","32 C","Badminton","Monday"  ,"16:00", "Kristianstad, Sweden, 291 39", "01/may/2019", "Ibra"   , ""));
         items.add(new ScheduleItem("16","16:00","10:00","31 C","5ra"      ,"Saturday","16:00", "Kristianstad, Sweden, 291 39", "01/may/2019", "Stephan", ""));
         items.add(new ScheduleItem("16","16:00","12:00","44 C","Hiking"   ,"Sunday"  ,"16:00", "Kristianstad, Sweden, 291 39", "01/may/2019", "5ra"    , ""));
-        return items;
 
+        return items;
+    }
+    //TODO fill the correct data from db
+    public static ArrayList<ScheduleItem> getTuesday() {
+        ArrayList<ScheduleItem> items = new ArrayList<>();
+
+
+        return items;
     }
 
-    public String getDay() {
+    public static ArrayList<ScheduleItem> getWednesday() {
+        ArrayList<ScheduleItem> items = new ArrayList<>();
+
+
+        return items;
+    }
+    public static ArrayList<ScheduleItem> getThursday() {
+        ArrayList<ScheduleItem> items = new ArrayList<>();
+
+
+        return items;
+    }
+    public static ArrayList<ScheduleItem> getFriday() {
+        ArrayList<ScheduleItem> items = new ArrayList<>();
+
+
+        return items;
+    }
+    public static ArrayList<ScheduleItem> getSaturday() {
+        ArrayList<ScheduleItem> items = new ArrayList<>();
+
+
+        return items;
+    }
+    public static ArrayList<ScheduleItem> getSunday() {
+        ArrayList<ScheduleItem> items = new ArrayList<>();
+
+
+        return items;
+    }
+
+    public static ArrayList<ScheduleItem> getEvents() {
+        ArrayList<ScheduleItem> items = new ArrayList<>();
+
+
+        return items;
+    }
+
+
+
+
+
+
+
+        public String getDay() {
         return day;
     }
 
