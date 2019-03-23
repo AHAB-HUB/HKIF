@@ -73,20 +73,12 @@ public class SessionManagement extends AppCompatActivity implements DatePickerDi
             }
         });
 
-<<<<<<< HEAD
         noBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             }
         });
-=======
-
-        // create custom adapter that holds elements and their state (we need hold a id's of unfolded elements for reusable elements)
-        final ScheduleAdapter adapter = new ScheduleAdapter(getActivity(), items);
-
-
->>>>>>> master
 
 
     }

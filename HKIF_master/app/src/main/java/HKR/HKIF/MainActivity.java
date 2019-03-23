@@ -11,6 +11,7 @@ import com.google.android.material.navigation.NavigationView;
 import HKR.HKIF.fragments.DaysFragment;
 import HKR.HKIF.fragments.HomeFragment;
 import HKR.HKIF.fragments.MembersListFragment;
+import HKR.HKIF.fragments.SessionManagement;
 import HKR.HKIF.fragments.SignUpFragment;
 import HKR.HKIF.utilities.NotificationListener;
 import androidx.annotation.NonNull;
@@ -77,14 +78,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.nav_management:
-<<<<<<< HEAD
 //                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
 //                        new SessionManagement()).commit();
                 Intent intent = new Intent(this, SessionManagement.class);
                 startActivity(intent);
-=======
 
->>>>>>> master
                 break;
 
             case R.id.nav_guest_contact:
