@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:scrollbars="vertical"
+    android:isScrollContainer="true"
+    android:layout_height="match_parent"
+    tools:context=".fragments.AddScheduleFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/schedule_textView_liear"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="120dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="43dp"
+                    android:id="@+id/schedule_editText_datePicker"
+                    android:layout_marginTop="20dp"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="40dp"
+                    android:textStyle="bold"
+                    android:inputType="date"
+                    android:editable="false"
+                    android:clickable="true"
+                    android:focusable="false" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/schedule_spinner_linear_layout"
+                android:layout_width="350dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/schedule_textView_liear"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/location_schedule_spinner"
+                    android:layout_marginTop="15dp"
+                    android:scrollbars="vertical"
+
+                    android:entries="@array/location_schedule_spinner"
+                    android:layout_marginStart="15dp"/>
+
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="vertical"
+                    android:layout_marginTop="15dp"
+                    android:id="@+id/sport_schedule_spinner"
+                    android:layout_marginStart="45dp"
+                    android:entries="@array/sport_schedule_spinner"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:id="@+id/schedule_time_linear_layout"
+                android:orientation="horizontal"
+                android:layout_below="@id/schedule_spinner_linear_layout"
+                android:layout_marginTop="15dp">
+
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/schedule_startTime_spinner"
+                    android:scrollbars="vertical"
+                    android:layout_marginStart="45dp"
+                    android:layout_marginTop="15dp"
+                    android:entries="@array/schedule_time_spinner"/>
+
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/schedule_endTime_spinner"
+                    android:scrollbars="vertical"
+                    android:layout_marginStart="45dp"
+                    android:layout_marginTop="15dp"
+                    android:entries="@array/schedule_time_spinner"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="350dp"
+                android:layout_height="80dp"
+                android:layout_below="@id/schedule_time_linear_layout"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/schedule_add_data_btn"
+                    android:text="SAVE DATA"/>
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+
+
+
+
+</RelativeLayout>

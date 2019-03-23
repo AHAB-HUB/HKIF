@@ -21,6 +21,13 @@
             android:layout_marginBottom="24dp"
             android:layout_gravity="center_horizontal" />
 
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:layout_gravity="center"
+            android:id="@+id/sign_up_progressBar"/>
+
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

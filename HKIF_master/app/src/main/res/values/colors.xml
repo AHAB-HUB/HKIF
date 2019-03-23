@@ -5,6 +5,7 @@
     <color name="colorAccent">#D81B60</color>
     <color name="white" tools:ignore="MissingDefaultResource">#ffffff</color>
 
+    <color name="transparent">#80FFFFFF</color>
 
     <string-array name="colors" translatable="false">
         <item>#99cc00</item>
