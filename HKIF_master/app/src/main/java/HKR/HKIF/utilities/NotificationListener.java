@@ -2,6 +2,7 @@ package HKR.HKIF.utilities;
 
 
 import android.content.Context;
+import android.view.View;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -9,22 +10,25 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import HKR.HKIF.data.NotificationData;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 public class NotificationListener {
 
-    private DatabaseReference databaseReference;
-    private ChildEventListener childEventListener;
 
-    public NotificationListener(Context context){
+    public NotificationListener(final Context context, final View v){
 
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("notification");
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("notification");
 
-        childEventListener = new ChildEventListener() {
+        ChildEventListener childEventListener = new ChildEventListener() {
+
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
+
+                NotificationData data = dataSnapshot.getValue(NotificationData.class);
+                new Notifications(data.getTitle(), data.getMessage(), context).sendOnChannel1(v);
             }
 
             @Override
@@ -52,16 +56,4 @@ public class NotificationListener {
         databaseReference.addChildEventListener(childEventListener);
     }
 
-
-
-
-
-
-
-    //TODO ADD CONNECTION CONFIGURATION
-    private void dbConnection(){
-
-
-
-    }
 }

@@ -56,13 +56,6 @@ public class SessionManagement extends Fragment {
         final ScheduleAdapter adapter = new ScheduleAdapter(getActivity(), items);
 
 
-        // add default btn handler for each request btn on each item if custom handler not found
-        adapter.setDefaultRequestBtnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getActivity().getApplicationContext(), "DEFAULT HANDLER FOR ALL BUTTONS", Toast.LENGTH_SHORT).show();
-            }
-        });
 
 
         // set elements to adapter

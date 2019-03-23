@@ -31,7 +31,7 @@ public class Notifications {
 
 
 
-    private void sendOnChannel1(View v){
+    public void sendOnChannel1(View v){
 
         Notification notification = new NotificationCompat.Builder(context, CHANNEL_1_ID)
                 .setSmallIcon(R.drawable.ic_admin_settings)
@@ -45,7 +45,7 @@ public class Notifications {
 
     }
 
-    private void sendOnChannel2(View v){
+    public void sendOnChannel2(View v){
 
         Notification notification = new NotificationCompat.Builder(context, CHANNEL_2_ID)
                 .setSmallIcon(R.drawable.ic_admin_settings)
