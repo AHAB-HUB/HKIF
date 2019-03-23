@@ -1,5 +1,6 @@
 package HKR.HKIF.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,12 +9,15 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.ramotion.foldingcell.FoldingCell;
 
 import java.util.HashSet;
 import java.util.List;
 
 import HKR.HKIF.R;
+import HKR.HKIF.data.NotificationData;
 import HKR.HKIF.data.ScheduleItem;
 import androidx.annotation.NonNull;
 
@@ -29,12 +33,12 @@ public class ScheduleAdapter extends ArrayAdapter<ScheduleItem> {
 
     @NonNull
     @Override
-    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
+    public View getView(final int position, View convertView, @NonNull ViewGroup parent) {
         // get item for selected view
         ScheduleItem item = getItem(position);
         // if cell is exists - reuse it, if not - create the new one from resource
         FoldingCell cell = (FoldingCell) convertView;
-        ViewHolder viewHolder;
+        final ViewHolder viewHolder;
 
         if (cell == null) {
             viewHolder = new ViewHolder();
@@ -60,9 +64,41 @@ public class ScheduleAdapter extends ArrayAdapter<ScheduleItem> {
             viewHolder.location = cell.findViewById(R.id.location);
 
 
-            //TODO button done / initializing all buttons done //
             viewHolder.contentCalenderBtn = cell.findViewById(R.id.content_calender_btn);
             viewHolder.going_button = cell.findViewById(R.id.content_going_btn);
+
+
+            //TODO get them to work
+            viewHolder.contentCalenderBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+
+
+
+                }
+            });
+
+
+
+            viewHolder.going_button.setOnClickListener(new View.OnClickListener() {
+
+                @SuppressLint("SetTextI18n")
+                @Override
+                public void onClick(View v) {
+
+
+                    //TODO COPY THIS CODE TO PUSH NOTIFICATION AFTER THE FUNCTION YOU WANT
+                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("notification");
+                    databaseReference.push().setValue(new NotificationData("test" + position,"text " + position));
+
+                    viewHolder.going_button.setText("DONE!");
+
+
+
+                }
+            });
+
 
 
 
@@ -126,13 +162,7 @@ public class ScheduleAdapter extends ArrayAdapter<ScheduleItem> {
         unfoldedIndexes.add(position);
     }
 
-    public View.OnClickListener getDefaultRequestBtnClickListener() {
-        return defaultRequestBtnClickListener;
-    }
 
-    public void setDefaultRequestBtnClickListener(View.OnClickListener defaultRequestBtnClickListener) {
-        this.defaultRequestBtnClickListener = defaultRequestBtnClickListener;
-    }
 
     // View lookup cache
     private static class ViewHolder {

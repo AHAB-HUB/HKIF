@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <androidx.appcompat.widget.ContentFrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/days_monday"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="20dp"
+            android:background="#2196f3"
+            android:textColor="#ffff"
+            android:text="Monday"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:clickable="true" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/days_tuesday"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="130dp"
+            android:background="#2196f3"
+            android:textColor="#ffff"
+            android:text="Tuesday"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:clickable="true" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/days_wednesday"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="240dp"
+            android:background="#2196f3"
+            android:textColor="#ffff"
+            android:text="Wednesday"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:clickable="true" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/days_thursday"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="350dp"
+            android:background="#2196f3"
+            android:textColor="#ffff"
+            android:text="Thursday"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:clickable="true" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/days_friday"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="460dp"
+            android:background="#2196f3"
+            android:textColor="#ffff"
+            android:text="Friday"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:clickable="true" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/days_saturday"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="570dp"
+            android:background="#2196f3"
+            android:textColor="#ffff"
+            android:text="Saturday"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:clickable="true" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/days_sunday"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="680dp"
+            android:background="#2196f3"
+            android:textColor="#ffff"
+            android:text="Sunday"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/days_events"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="790dp"
+            android:background="#2196f3"
+            android:textColor="#ffff"
+            android:text="Events"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:clickable="true" />
+
+    </androidx.appcompat.widget.ContentFrameLayout>
+
+
+</LinearLayout>

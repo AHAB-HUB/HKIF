@@ -298,6 +298,7 @@
             android:layout_marginTop="16dp"
             android:background="@color/black_overlay"
             android:padding="10dp"
+            android:clickable="true"
             android:text="GOING"
             android:textAlignment="center"
             android:textColor="@color/mainTextColor"
@@ -310,6 +311,7 @@
             android:background="@color/btnRequest"
             android:padding="10dp"
             android:text="ADD TO CALENDER"
+            android:clickable="true"
             android:textAlignment="center"
             android:textColor="@color/mainTextColor"
             android:textSize="20sp" />
