@@ -10,6 +10,12 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.ramotion.foldingcell.FoldingCell;
 
 import java.util.ArrayList;
@@ -17,100 +23,75 @@ import java.util.ArrayList;
 import HKR.HKIF.R;
 import HKR.HKIF.adapters.ScheduleAdapter;
 import HKR.HKIF.data.ScheduleItem;
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-
 
 
 @SuppressLint("ValidFragment")
 public class ScheduleFragment extends Fragment {
 
-
-
-
-    private ArrayList<ScheduleItem> items;
+        private String path;
+        private   ArrayList<ScheduleItem> items = new ArrayList<>();
 
 
     public ScheduleFragment (String eventHandler){
-
-        switch (eventHandler) {
-            case "monday":
-
-                items = ScheduleItem.getMonday();
-                break;
-
-            case "tuesday":
-                items = ScheduleItem.getTuesday();
-
-                break;
-
-            case "wednesday":
-                items = ScheduleItem.getWednesday();
-
-                break;
-
-            case "thursday":
-                items = ScheduleItem.getThursday();
-
-                break;
-
-            case "friday":
-                items = ScheduleItem.getFriday();
-
-                break;
-
-            case "saturday":
-                items = ScheduleItem.getSaturday();
-
-                break;
-
-            case "sunday":
-                items = ScheduleItem.getSunday();
-
-                break;
-
-            case "events":
-                items = ScheduleItem.getEvents();
-
-                break;
-
-        }
+            this.path = eventHandler;
 
     }
 
-
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState){
 
-            return inflater.inflate(R.layout.schedule_fragment, container, false);
-        }
-
+        return inflater.inflate(R.layout.schedule_fragment, container, false);
+    }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
 
         super.onActivityCreated(savedInstanceState);
 
-
         // get our list view
-        ListView theListView = getActivity().findViewById(R.id.mainListView);
+        final ListView theListView = getActivity().findViewById(R.id.mainListView);
 
+        getList(path, theListView);
 
+    }
 
-        //TODO add a loop to create as much buttons we need that implement the same method/function
-        // add custom btn handler to first list item
-        items.get(0).setRequestBtnClickListener(new View.OnClickListener() {
+    //retrieve data from DB
+    private void getList(String eventHandler, final ListView listView) {
+
+        final Query query = FirebaseDatabase.getInstance().getReference("schedule").orderByChild("day").equalTo(eventHandler);
+
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+
             @Override
-            public void onClick(View v) {
-                Toast.makeText(getActivity().getApplicationContext(), "CUSTOM HANDLER FOR FIRST BUTTON", Toast.LENGTH_SHORT).show();
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                if (dataSnapshot.exists()){
+                    for (DataSnapshot i : dataSnapshot.getChildren()) {
+
+                        items.add(i.getValue(ScheduleItem.class));
+                    }
+
+                    setAdapter(listView);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+
             }
         });
 
+    }
+
+    //To fill the adapter with items
+    private void setAdapter(ListView theListView){
 
         // create custom adapter that holds elements and their state (we need hold a id's of unfolded elements for reusable elements)
-        final ScheduleAdapter adapter = new ScheduleAdapter(getActivity(), items);
-
+        final ScheduleAdapter adapter = new ScheduleAdapter(getContext(), items);
 
         // set elements to adapter
         theListView.setAdapter(adapter);

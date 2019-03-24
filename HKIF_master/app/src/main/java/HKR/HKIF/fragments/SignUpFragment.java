@@ -35,6 +35,33 @@ public class SignUpFragment extends Fragment {
     private ProgressBar progressBar;
 
 
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view =inflater.inflate(R.layout.fragment_sign_up, container, false);
+
+        firstName   = view.findViewById(R.id.signUp_firstName);
+        lastName    = view.findViewById(R.id.signUp_lastName);
+        email       = view.findViewById(R.id.signUp_email);
+        password    = view.findViewById(R.id.signUp_password);
+        phoneNumber = view.findViewById(R.id.signUp_phone_number);
+        signUpBtn   = view.findViewById(R.id.btn_signUp);
+        progressBar = view.findViewById(R.id.sign_up_progressBar);
+        progressBar.setVisibility(view.GONE);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        databasePerson = FirebaseDatabase.getInstance().getReference("person");
+
+        signUpBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                signUp();
+            }
+        });
+
+        return view;
+    }
+
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -92,30 +119,4 @@ public class SignUpFragment extends Fragment {
         }
     }
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view =inflater.inflate(R.layout.fragment_sign_up, container, false);
-
-        firstName   = view.findViewById(R.id.signUp_firstName);
-        lastName    = view.findViewById(R.id.signUp_lastName);
-        email       = view.findViewById(R.id.signUp_email);
-        password    = view.findViewById(R.id.signUp_password);
-        phoneNumber = view.findViewById(R.id.signUp_phone_number);
-        signUpBtn   = view.findViewById(R.id.btn_signUp);
-        progressBar = view.findViewById(R.id.sign_up_progressBar);
-        progressBar.setVisibility(view.GONE);
-
-        firebaseAuth = FirebaseAuth.getInstance();
-        databasePerson = FirebaseDatabase.getInstance().getReference("person");
-
-        signUpBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                signUp();
-            }
-        });
-
-        return view;
-    }
 }
