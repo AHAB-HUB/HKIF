@@ -7,11 +7,14 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import HKR.HKIF.fragments.DaysFragment;
 import HKR.HKIF.fragments.HomeFragment;
+import HKR.HKIF.fragments.LocationFragment;
 import HKR.HKIF.fragments.MembersListFragment;
 import HKR.HKIF.fragments.SessionManagement;
+import HKR.HKIF.fragments.SignInFragment;
 import HKR.HKIF.fragments.SignUpFragment;
 import HKR.HKIF.utilities.NotificationListener;
 import androidx.annotation.NonNull;
@@ -68,8 +71,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (menuItem.getItemId()) {
 
             case R.id.nav_guest_sports:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new SignUpFragment()).commit();
+                //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        //new SignUpFragment()).commit();
                 break;
 
             case R.id.nav_guest_gallary:
@@ -93,6 +96,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_guest_about:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new DaysFragment()).commit();
+                break;
+
+            case R.id.logIn:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new SignInFragment()).commit();
+                break;
+
+            case R.id.logOut:
+                FirebaseAuth.getInstance().signOut();
+                finish();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new HomeFragment()).commit();
+
                 break;
 
             case R.id.nav_profile:
@@ -133,6 +149,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         case R.id.nav_home:
                             selectFragment = new HomeFragment();
                             break;
+
+                        case R.id.nav_findUs:
+                            selectFragment = new LocationFragment();
+                            break;
+
                         case R.id.nav_contact:
 
                             default:

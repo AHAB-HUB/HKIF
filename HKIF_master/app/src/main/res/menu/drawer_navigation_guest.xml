@@ -25,6 +25,10 @@
             android:id="@+id/nav_guest_about"
             android:title="About"/>
 
+        <item android:icon="@drawable/ic_lock_black_24dp"
+            android:title="LogIn"
+            android:id="@+id/logIn"/>
+
     </group>
 
     <item android:title="Membership">

@@ -212,4 +212,21 @@
     <string name="title_activity_main2">Main2Activity</string>
     <string name="_16">16</string>
     <string name="to">To</string>
+
+    <string-array name="campus">
+        <item>Sport Hall : </item>
+        <item>Elmetorpsvägen 15,</item>
+        <item>Högskolan Kristianstad </item>
+    </string-array>
+
+    <string-array name="offcampus">
+        <item>Swimming Hall</item>
+        <item>Tivolibadsgatan 4,</item>
+        <item>291 32 Kristianstad</item>
+        <item>Squash</item>
+        <item>Magasinsgatan 4,</item>
+        <item>291 32 Kristianstad</item>
+    </string-array>
+
+    <string name="title_activity_maps">Map</string>
 </resources>
