@@ -15,20 +15,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 import HKR.HKIF.R;
+import HKR.HKIF.Users.Person;
 import HKR.HKIF.data.MemberCard;
 import HKR.HKIF.dialogs.DeleteDialog;
 import HKR.HKIF.dialogs.SetPositionDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
-public class MemberListAdapter extends ArrayAdapter<MemberCard> {
+public class MemberListAdapter extends ArrayAdapter<Person> {
 
-    private List<MemberCard> cardList = new ArrayList<>();
+    private List<Person> cardList = new ArrayList<>();
 
     static class CardViewHolder {
         TextView name;
         TextView position;
         TextView email;
+        TextView payment;
         FloatingActionButton delete;
         FloatingActionButton edit;
 
@@ -39,7 +41,7 @@ public class MemberListAdapter extends ArrayAdapter<MemberCard> {
     }
 
     @Override
-    public void add(MemberCard object) {
+    public void add(Person object) {
         cardList.add(object);
         super.add(object);
     }
@@ -50,7 +52,7 @@ public class MemberListAdapter extends ArrayAdapter<MemberCard> {
     }
 
     @Override
-    public MemberCard getItem(int index) {
+    public Person getItem(int index) {
         return this.cardList.get(index);
     }
 
@@ -68,6 +70,7 @@ public class MemberListAdapter extends ArrayAdapter<MemberCard> {
             viewHolder.name =  row.findViewById(R.id.name);
             viewHolder.email =  row.findViewById(R.id.email);
             viewHolder.position =  row.findViewById(R.id.position);
+            viewHolder.payment = row.findViewById(R.id.payment);
             viewHolder.delete =  row.findViewById(R.id.delete);
             viewHolder.edit =  row.findViewById(R.id.edit);
             row.setTag(viewHolder);
@@ -77,10 +80,17 @@ public class MemberListAdapter extends ArrayAdapter<MemberCard> {
             viewHolder = (CardViewHolder)row.getTag();
         }
 
-        final MemberCard card = getItem(position);
-        viewHolder.name.setText(card.getName());
-        viewHolder.position.setText(card.getPosition());
-        viewHolder.email.setText(card.getEmail());
+        final Person person = getItem(position);
+        viewHolder.name.setText(person.getFullName());
+        viewHolder.position.setText(person.getPosition());
+        viewHolder.email.setText(person.getEmail());
+        if (!person.isHasPaid()){
+            viewHolder.payment.setText("Has not paid");
+        }
+        else {
+            viewHolder.payment.setText("Has paid");
+        }
+
 
         //TODO add function to these two buttons
         viewHolder.delete.setOnClickListener(new View.OnClickListener() {
@@ -89,7 +99,7 @@ public class MemberListAdapter extends ArrayAdapter<MemberCard> {
                 Toast.makeText(getContext(), "button " + position, Toast.LENGTH_SHORT).show(); //meh
 
                 FragmentManager manager = ((AppCompatActivity)getContext()).getSupportFragmentManager();// to show the dialog
-                new DeleteDialog(card.getName()).show(manager,"delete");
+                new DeleteDialog(person.getFullName(), person.getPersonID()).show(manager,"delete");
             }
         });
 

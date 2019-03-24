@@ -7,9 +7,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 import java.util.Objects;
 
 import HKR.HKIF.R;
+import HKR.HKIF.Users.Person;
 import HKR.HKIF.adapters.MemberListAdapter;
 import HKR.HKIF.data.MemberCard;
 import androidx.annotation.NonNull;
@@ -23,6 +32,8 @@ public class MembersListFragment extends Fragment {
 
     private MemberListAdapter cardArrayAdapter;
     private ListView listView;
+
+    private DatabaseReference databaseReference;
 
 
     @Nullable
@@ -42,15 +53,36 @@ public class MembersListFragment extends Fragment {
 
         listView.addHeaderView(new View(getContext()));
         listView.addFooterView(new View(getContext()));
-
+        databaseReference = FirebaseDatabase.getInstance().getReference("person");
         cardArrayAdapter = new MemberListAdapter(getContext(), R.layout.list_item_card);
 
-        //TODO add items here
-        for (int i = 0; i < 10; i++) {
-            MemberCard card = new MemberCard("Ahmad Abdulal" ,"AhmadAbdulal@outlook.com", "Member");
+//        //TODO add items here
+//        for (int i = 0; i < 10; i++) {
+//            MemberCard card = new MemberCard("Ahmad Abdulal" ,"AhmadAbdulal@outlook.com", "Member");
+//
+//            cardArrayAdapter.add(card);
+//        }
 
-            cardArrayAdapter.add(card);
-        }
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot personSnapshot: dataSnapshot.getChildren()){
+                    Person p = personSnapshot.getValue(Person.class);
+                    cardArrayAdapter.add(p);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+
 
 
         listView.setAdapter(cardArrayAdapter);

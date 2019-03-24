@@ -120,7 +120,7 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
                                     navigationView1.getMenu().clear();
                                     navigationView1.inflateMenu(R.menu.drawer_navigation_member);
                                     break;
-                                case "TEAM LEADER":
+                                case "TEAM_LEADER":
                                     navigationView1.getMenu().clear();
                                     navigationView1.inflateMenu(R.menu.drawer_navigation_team_leader);
                                     break;
