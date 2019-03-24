@@ -81,8 +81,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.nav_management:
-//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-//                        new SessionManagement()).commit();
                 Intent intent = new Intent(this, SessionManagement.class);
                 startActivity(intent);
 

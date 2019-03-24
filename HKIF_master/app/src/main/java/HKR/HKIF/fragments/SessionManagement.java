@@ -13,10 +13,8 @@ import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import java.text.DateFormat;
 import java.util.Calendar;
-
 import HKR.HKIF.R;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
