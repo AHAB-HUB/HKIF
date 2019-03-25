@@ -10,10 +10,14 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
+
+import HKR.HKIF.fragments.AboutFragment;
 import HKR.HKIF.dB.GoingUpdater;
 import HKR.HKIF.fragments.CampusFragment;
+
 import HKR.HKIF.fragments.DaysFragment;
 import HKR.HKIF.fragments.HomeFragment;
+import HKR.HKIF.fragments.LocationFragment;
 import HKR.HKIF.fragments.MembersListFragment;
 import HKR.HKIF.fragments.SessionManagement;
 import HKR.HKIF.fragments.SignInFragment;
@@ -102,11 +106,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         new MembersListFragment()).commit();
                 break;
 
-            case id. nav_guest_about:
-            case id.leader_about:
+            case id. nav_about:
                 getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
-                        new CampusFragment()).commit();
+                        new AboutFragment()).addToBackStack(null).commit();
                 break;
+
+                //not necessary
+            /*case id.leader_about:
+                getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
+                        new AboutFragment()).addToBackStack(null).commit();
+                break;*/
 
             case id.nav_guest_logIn:
                 getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
@@ -161,13 +170,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                         case id.bottom_nav_findUs:
                             getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
-                                    new CampusFragment()).commit();
+                                    new LocationFragment()).addToBackStack(null).commit();
 
                             break;
 
                         case id.bottom_nav_schedule:
                             getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
-                                    new DaysFragment()).commit();
+                                    new DaysFragment()).addToBackStack(null).commit();
                             break;
 
                     }
