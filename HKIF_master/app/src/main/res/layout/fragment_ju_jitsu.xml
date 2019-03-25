@@ -5,6 +5,7 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     tools:context=".juJitsuFragment">
 
     <TextView
@@ -16,7 +17,8 @@
         android:layout_marginStart="121dp"
         android:layout_marginEnd="115dp"
         android:text="@string/jujitsu"
-        android:textSize="36sp" />
+        android:textSize="36sp"
+        android:textColor="@color/schedule_colorPrimary"/>
 
     <ImageView
         android:id="@+id/jujImageView"
@@ -42,9 +44,10 @@
         android:layout_marginStart="0dp"
         android:layout_marginEnd="0dp"
         android:layout_marginBottom="161dp"
-        android:text="desription" />
+        android:text="desription"
+        android:textColor="@color/schedule_colorPrimary"/>
 
-    <ImageButton
+    <Button
         android:id="@+id/jujLocationImageButton"
         android:layout_width="match_parent"
         android:layout_height="104dp"
@@ -54,6 +57,9 @@
         android:layout_marginStart="0dp"
         android:layout_marginEnd="0dp"
         android:layout_marginBottom="28dp"
-        android:src="@android:drawable/sym_def_app_icon" />
+        android:background="@color/schedule_colorPrimary"
+        android:text="VIEW OUR LOCATION"
+        android:textColor="#ffffff"
+        android:textSize="16sp"  />
 
 </RelativeLayout>
