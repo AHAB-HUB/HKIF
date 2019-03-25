@@ -1,16 +1,22 @@
 package HKR.HKIF;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
+import HKR.HKIF.dB.GoingUpdater;
+import HKR.HKIF.fragments.CampusFragment;
+import HKR.HKIF.fragments.DaysFragment;
 import HKR.HKIF.fragments.HomeFragment;
 import HKR.HKIF.fragments.MembersListFragment;
-import HKR.HKIF.fragments.ScheduleFragment;
 import HKR.HKIF.fragments.SessionManagement;
+import HKR.HKIF.fragments.SignInFragment;
 import HKR.HKIF.fragments.SignUpFragment;
 import HKR.HKIF.utilities.NotificationListener;
 import androidx.annotation.NonNull;
@@ -19,43 +25,45 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
 
-
+import static HKR.HKIF.R.*;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout drawer;
-    NavigationView navigationView1;
+    private NavigationView navigationView1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(layout.activity_main);
 
         //activate the Notification listener
         new NotificationListener(this,findViewById(android.R.id.content));
 
+        //Update Going
+        new GoingUpdater();
 
-        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
+        BottomNavigationView bottomNav = findViewById(id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(id.toolbar);
         setSupportActionBar(toolbar);
 
-        drawer = findViewById(R.id.drawer_layout);
-        navigationView1 = findViewById(R.id.nav_view);
+        drawer = findViewById(id.drawer_layout);
+        navigationView1 = findViewById(id.nav_view);
         navigationView1.setNavigationItemSelectedListener(this);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
-                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+                string.navigation_drawer_open, string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                new MembersListFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
+                new HomeFragment()).commit();
 
 
     }
@@ -66,36 +74,59 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         switch (menuItem.getItemId()) {
 
-            case R.id.nav_guest_sports:
+            case id.nav_guest_sports:
+            case id.admin_sport:
+            case  id.leader_sport:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new HomeFragment()).commit();
+                break;
+
+            case id.nav_guest_gallery:
+            case id.leader_gallery:
+            case id.admin_gallery:
+                getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
                         new SignUpFragment()).commit();
                 break;
 
-            case R.id.nav_guest_gallary:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new SignUpFragment()).commit();
+            case id.nav_management:
+                Intent intent = new Intent(this, SessionManagement.class);
+                startActivity(intent);
+
                 break;
 
-            case R.id.nav_management:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new SessionManagement()).commit();
-                break;
-
-            case R.id.nav_guest_contact:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+            case id.nav_guest_contact:
+                case id.member_contact:
+            case  id.leader_contact:
+            case id.admin_contact:
+                getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
                         new MembersListFragment()).commit();
                 break;
 
-            case R.id.nav_guest_about:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new ScheduleFragment()).commit();
+            case id. nav_guest_about:
+            case id.leader_about:
+                getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
+                        new CampusFragment()).commit();
                 break;
 
-            case R.id.nav_profile:
+            case id.nav_guest_logIn:
+                getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
+                        new SignInFragment()).commit();
+                break;
+
+            case id.logOut:
+                FirebaseAuth.getInstance().signOut();
+                finish();
+                getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
+                        new HomeFragment()).commit();
 
                 break;
 
-                //TODO ADD THE REST OF THE BUTTONS
+            case id.admin_profile:
+            case id.leader_profile:
+            case id.member_profile:
+
+                break;
+
 
 
         }
@@ -122,24 +153,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
-                    Fragment selectFragment;
-
-                    //TODO add the corresponding fragments here
                     switch (menuItem.getItemId()) {
-                        case R.id.nav_home:
-                            selectFragment = new HomeFragment();
+                        case id.bottom_nav_home:
+                            getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
+                                    new HomeFragment()).commit();
                             break;
-                        case R.id.nav_contact:
 
-                            default:
-                                selectFragment = new HomeFragment();
+                        case id.bottom_nav_findUs:
+                            getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
+                                    new CampusFragment()).commit();
+
+                            break;
+
+                        case id.bottom_nav_schedule:
+                            getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
+                                    new DaysFragment()).commit();
+                            break;
+
                     }
-
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                            selectFragment).commit();
-
                     return true;
                 }
             };
-
 }

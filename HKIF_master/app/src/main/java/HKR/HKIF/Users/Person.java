@@ -17,6 +17,12 @@ public class Person {
     private String position;
     private boolean hasPaid;
     private String profileCreated;
+    private String fullName;
+
+
+    public Person(){
+
+    }
 
     public Person(String personID, String firstName, String lastName, String email, String password,
                   String phoneNumber,String position , boolean hasPaid, String profileCreated) {
@@ -30,11 +36,22 @@ public class Person {
         this.hasPaid = hasPaid;
         this.profileCreated = profileCreated;
         this.position = position;
+
+
     }
 
 
     public String getPosition() {
         return position;
+    }
+
+
+    public String getFullName() {
+        return getFirstName() + " " + getLastName();
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public void setPosition(String position) {
@@ -50,7 +67,8 @@ public class Person {
     }
 
     public String getFirstName() {
-        return firstName;
+
+        return firstName ;
     }
 
     public void setFirstName(String firstName) {
@@ -103,5 +121,21 @@ public class Person {
 
     public void setProfileCreated(String profileCreated) {
         this.profileCreated = profileCreated;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "personID='" + personID + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", position='" + position + '\'' +
+                ", hasPaid=" + hasPaid +
+                ", profileCreated='" + profileCreated + '\'' +
+                '}';
     }
 }

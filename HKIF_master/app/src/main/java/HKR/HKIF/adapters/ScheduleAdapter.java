@@ -2,19 +2,31 @@ package HKR.HKIF.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.ramotion.foldingcell.FoldingCell;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 import HKR.HKIF.R;
 import HKR.HKIF.data.NotificationData;
@@ -25,7 +37,6 @@ import androidx.annotation.NonNull;
 public class ScheduleAdapter extends ArrayAdapter<ScheduleItem> {
 
     private HashSet<Integer> unfoldedIndexes = new HashSet<>();
-    private View.OnClickListener defaultRequestBtnClickListener;
 
     public ScheduleAdapter(Context context, List<ScheduleItem> objects) {
         super(context, 0, objects);
@@ -35,7 +46,7 @@ public class ScheduleAdapter extends ArrayAdapter<ScheduleItem> {
     @Override
     public View getView(final int position, View convertView, @NonNull ViewGroup parent) {
         // get item for selected view
-        ScheduleItem item = getItem(position);
+        final ScheduleItem item = getItem(position);
         // if cell is exists - reuse it, if not - create the new one from resource
         FoldingCell cell = (FoldingCell) convertView;
         final ViewHolder viewHolder;
@@ -63,9 +74,10 @@ public class ScheduleAdapter extends ArrayAdapter<ScheduleItem> {
             viewHolder.location_date = cell.findViewById(R.id.location_date);
             viewHolder.location = cell.findViewById(R.id.location);
 
-
             viewHolder.contentCalenderBtn = cell.findViewById(R.id.content_calender_btn);
             viewHolder.going_button = cell.findViewById(R.id.content_going_btn);
+
+            isGoing(item, viewHolder);
 
 
             //TODO get them to work
@@ -74,32 +86,33 @@ public class ScheduleAdapter extends ArrayAdapter<ScheduleItem> {
                 public void onClick(View v) {
 
 
-
-
+                    //TODO COPY THIS CODE TO PUSH NOTIFICATION AFTER THE FUNCTION YOU WANT
+                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("notification");
+                    databaseReference.push().setValue(new NotificationData("test" + position, "text " + position));
                 }
             });
 
-
+//            viewHolder.going_button.setEnabled(false);
+//            if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+//                viewHolder.going_button.setEnabled(true);
+//
+//
+//            }
 
             viewHolder.going_button.setOnClickListener(new View.OnClickListener() {
 
-                @SuppressLint("SetTextI18n")
                 @Override
                 public void onClick(View v) {
 
+                    if (viewHolder.going_button.getText().equals("Going")){
+                        setGoing(item,viewHolder,"false");
 
-                    //TODO COPY THIS CODE TO PUSH NOTIFICATION AFTER THE FUNCTION YOU WANT
-                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("notification");
-                    databaseReference.push().setValue(new NotificationData("test" + position,"text " + position));
+                    }else{
+                        setGoing(item,viewHolder,"true");
 
-                    viewHolder.going_button.setText("DONE!");
-
-
-
+                    }
                 }
             });
-
-
 
 
             cell.setTag(viewHolder);
@@ -135,14 +148,6 @@ public class ScheduleAdapter extends ArrayAdapter<ScheduleItem> {
         viewHolder.leader_name.setText(item.getLeader_name());
 
 
-        // set custom btn handler for list item from that item
-        if (item.getRequestBtnClickListener() != null) {
-            viewHolder.contentCalenderBtn.setOnClickListener(item.getRequestBtnClickListener());
-        } else {
-            // (optionally) add "default" handler if no handler found in item
-            viewHolder. contentCalenderBtn.setOnClickListener(defaultRequestBtnClickListener);
-        }
-
         return cell;
     }
 
@@ -161,7 +166,6 @@ public class ScheduleAdapter extends ArrayAdapter<ScheduleItem> {
     public void registerUnfold(int position) {
         unfoldedIndexes.add(position);
     }
-
 
 
     // View lookup cache
@@ -184,5 +188,60 @@ public class ScheduleAdapter extends ArrayAdapter<ScheduleItem> {
         TextView temperature_1;
         TextView going_button;
         ImageView head_image;
+    }
+
+
+    private void isGoing(ScheduleItem item, final ViewHolder v) {
+        DatabaseReference data = FirebaseDatabase.getInstance().getReference("attendance")
+                .child("-LaeXDubAz9QmH4WVuZ6")//user id
+                .child(item.getId());  //event id
+
+        data.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                System.out.println(dataSnapshot.getValue());
+
+                if (dataSnapshot.getValue().equals("true")){
+                    v.going_button.setText("Going");
+                    v.going_button.setBackgroundColor(Color.GREEN);
+                    v.going_button.setTextColor(Color.WHITE);
+
+                }else{
+                    v.going_button.setText("Not going");
+                    v.going_button.setBackgroundColor(Color.RED);
+                    v.going_button.setTextColor(Color.WHITE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void setGoing(ScheduleItem item, ViewHolder v, final String value){
+        DatabaseReference data = FirebaseDatabase.getInstance().getReference("attendance")
+                .child("-LaeXDubAz9QmH4WVuZ6")//user id
+                .child(item.getId());  //event id
+
+        data.setValue(value).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Toast.makeText(getContext(),"Data updated successfully",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        if (value.equals("true")){
+            v.going_button.setText("Going");
+            v.going_button.setBackgroundColor(Color.GREEN);
+            v.going_button.setTextColor(Color.WHITE);
+
+        }else{
+            v.going_button.setText("Not going");
+            v.going_button.setBackgroundColor(Color.RED);
+            v.going_button.setTextColor(Color.WHITE);
+        }
     }
 }

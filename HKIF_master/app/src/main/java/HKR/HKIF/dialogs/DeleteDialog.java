@@ -6,19 +6,29 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import HKR.HKIF.R;
+import HKR.HKIF.fragments.MembersListFragment;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentTransaction;
 
 @SuppressLint("ValidFragment")
 public class DeleteDialog extends DialogFragment {
 
     private String memberName;
+    private String personId;
 
 
-    public DeleteDialog (String name){
+    public DeleteDialog (String name, String personId){
         this.memberName = name;
-
-
+        this.personId = personId;
 
     }
 
@@ -35,10 +45,19 @@ public class DeleteDialog extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
 
-        builder.setMessage("Are you sure you want to delete \"" + memberName + "\".")
+        builder.setMessage("Are you sure you want to delete \"" + memberName + "\"" +".")
                 .setPositiveButton("Yes.", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
+                        DatabaseReference databaseReference = FirebaseDatabase.getInstance()
+                                .getReference("person");
 
+                        databaseReference.child(personId).removeValue()
+                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+
+                                    }
+                                });
 
 
                     }
@@ -46,8 +65,6 @@ public class DeleteDialog extends DialogFragment {
 
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-
-
 
 
                     }

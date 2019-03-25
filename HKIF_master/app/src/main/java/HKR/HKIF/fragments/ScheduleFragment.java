@@ -1,6 +1,7 @@
 package HKR.HKIF.fragments;
 
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,26 +10,43 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.ramotion.foldingcell.FoldingCell;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import HKR.HKIF.R;
 import HKR.HKIF.adapters.ScheduleAdapter;
 import HKR.HKIF.data.ScheduleItem;
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 
-
+@SuppressLint("ValidFragment")
 public class ScheduleFragment extends Fragment {
 
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+        private String path;
+        private   ArrayList<ScheduleItem> items = new ArrayList<>();
+
+
+    public ScheduleFragment (String eventHandler){
+            this.path = eventHandler;
+
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState){
 
-            return inflater.inflate(R.layout.schedule_fragment, container, false);
-        }
-
+        return inflater.inflate(R.layout.schedule_fragment, container, false);
+    }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -37,30 +55,65 @@ public class ScheduleFragment extends Fragment {
 
 
         // get our list view
-        ListView theListView = getActivity().findViewById(R.id.mainListView);
+        final ListView theListView = getActivity().findViewById(R.id.mainListView);
+        final SwipeRefreshLayout refreshLayout = getActivity().findViewById(R.id.swipeRefreshLayout);
+
+        getList(path, theListView);
 
 
-        //TODO get the list info from database and fill the list below
-        // prepare elements to display
-        final ArrayList<ScheduleItem> items = ScheduleItem.getTestingList();
-
-
-        //TODO add a loop to create as much buttons we need that implement the same method/function
-        // add custom btn handler to first list item
-        items.get(0).setRequestBtnClickListener(new View.OnClickListener() {
+        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
-            public void onClick(View v) {
-                Toast.makeText(getActivity().getApplicationContext(), "CUSTOM HANDLER FOR FIRST BUTTON", Toast.LENGTH_SHORT).show();
+            public void onRefresh() {
+
+                Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new ScheduleFragment(path)).commit();
+
             }
+
         });
 
 
-        // create custom adapter that holds elements and their state (we need hold a id's of unfolded elements for reusable elements)
-        final ScheduleAdapter adapter = new ScheduleAdapter(getActivity(), items);
+    }
 
+    //retrieve data from DB
+    private void getList(String eventHandler, final ListView listView) {
+
+        final Query query = FirebaseDatabase.getInstance().getReference("schedule").orderByChild("day").equalTo(eventHandler);
+
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                if (dataSnapshot.exists()){
+                    for (DataSnapshot i : dataSnapshot.getChildren()) {
+
+                        items.add(i.getValue(ScheduleItem.class));
+                    }
+
+                    setAdapter(listView);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+
+            }
+        });
+
+    }
+
+    //To fill the adapter with items
+    private void setAdapter(ListView theListView){
+
+        // create custom adapter that holds elements and their state (we need hold a id's of unfolded elements for reusable elements)
+        final ScheduleAdapter adapter = new ScheduleAdapter(getContext(), items);
 
         // set elements to adapter
         theListView.setAdapter(adapter);
+
+        adapter.notifyDataSetChanged();
 
         // set on click event listener to list view
         theListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

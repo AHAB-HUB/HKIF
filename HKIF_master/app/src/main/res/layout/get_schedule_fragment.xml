@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".fragments.GetScheduleFragment">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="35dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="session_updated"
+            android:textSize="35dp"
+            android:id="@+id/schedule_listView"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:layout_marginTop="40dp"
+            android:id="@+id/get_schedule"
+            android:text="Get DATA"
+            android:textSize="20dp"
+            android:textColor="@color/bgContent"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:layout_marginTop="40dp"
+            android:id="@+id/update_data_schedule"
+            android:text="UPDATE DATA"
+            android:textSize="20dp"
+            android:textColor="@color/bgContent"/>
+
+    </LinearLayout>
+
+
+
+
+
+</RelativeLayout>

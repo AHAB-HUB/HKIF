@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">HKIF</string>
+    <string-array name="SessionManagement">
+        <item> Cancel session </item>
+<!--
+        <item> Write a report </item>
+-->
+    </string-array>
+
     <string-array name="Main">
         <item> Football </item>
         <item> Volleyball </item>
@@ -8,6 +15,8 @@
         <item> Swimming </item>
         <item> Boxing </item>
         <item> Ju_Jitsu </item>
+        <item> Floorball </item>
+        <item> Basketball </item>
     </string-array>
 
     <string-array name="Description">
@@ -136,6 +145,40 @@
         <item>11:15AM - 1:05PM</item>
     </string-array>
 
+    <string-array name="location_schedule_spinner">
+        <item>Campus</item>
+        <item>City-Center</item>
+    </string-array>
+
+    <string-array name="sport_schedule_spinner">
+        <item>Floorball</item>
+        <item>Badminton</item>
+        <item>Basketball</item>
+        <item>Swimming</item>
+        <item>Volleyball</item>
+        <item>Climbing</item>
+        <item>Boxing</item>
+        <item>Jiu-jitsu</item>
+        <item>Soccer</item>
+    </string-array>
+
+
+    <string-array name="schedule_time_spinner">
+        <item>16:00</item>
+        <item>16:30</item>
+        <item>17:00</item>
+        <item>17:30</item>
+        <item>18:00</item>
+        <item>18:30</item>
+        <item>19:00</item>
+        <item>19:30</item>
+        <item>20:00</item>
+        <item>20:30</item>
+        <item>21:00</item>
+        <item>21:30</item>
+        <item>22:00</item>
+    </string-array>
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -177,6 +220,20 @@
     <string name="volleyball">Volleyball</string>
     <string name="boxing">Boxing</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="campus">
+        <item>Sport Hall : </item>
+        <item>Elmetorpsvägen 15,</item>
+        <item>Högskolan Kristianstad </item>
+    </string-array>
+
+    <string-array name="offcampus">
+        <item>Swimming Hall</item>
+        <item>Tivolibadsgatan 4,</item>
+        <item>291 32 Kristianstad</item>
+        <item>Squash</item>
+        <item>Magasinsgatan 4,</item>
+        <item>291 32 Kristianstad</item>
+    </string-array>
+
+    <string name="title_activity_maps">Map</string>
 </resources>

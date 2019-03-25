@@ -12,12 +12,13 @@ import androidx.fragment.app.DialogFragment;
 public class SetPositionDialog extends DialogFragment {
 
     private int selectedCell; // from db
+    int position;
 
     public SetPositionDialog(int position){
+        this.position = position;
 
 
     }
-
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -32,6 +33,9 @@ public class SetPositionDialog extends DialogFragment {
                 .setSingleChoiceItems(list, selectedCell, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+
+                                //TODO FIX SPORTPICKERDIALOG
+                                new SportPickerDialog(position);
 
                             }
                         })
