@@ -9,6 +9,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
+import HKR.HKIF.fragments.AboutFragment;
 import HKR.HKIF.fragments.DaysFragment;
 import HKR.HKIF.fragments.HomeFragment;
 import HKR.HKIF.fragments.LocationFragment;
@@ -77,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             case R.id.nav_guest_gallary:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new SignUpFragment()).commit();
+                        new DaysFragment()).commit();
                 break;
 
             case R.id.nav_management:
@@ -95,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             case R.id.nav_guest_about:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new DaysFragment()).commit();
+                        new AboutFragment()).addToBackStack(null).commit();
                 break;
 
             case R.id.logIn:

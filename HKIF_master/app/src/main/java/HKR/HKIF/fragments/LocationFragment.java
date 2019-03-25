@@ -100,8 +100,8 @@ public class LocationFragment extends Fragment implements OnMapReadyCallback {
 
         mGoogleMap = googleMap;
         googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-        googleMap.addMarker(new MarkerOptions().position(new LatLng(40.689247,-74.044502)).title("HKR HKIF").snippet("Sport for life"));
-        CameraPosition university = CameraPosition.builder().target(new LatLng(40.689247,-74.044502)).zoom(16).bearing(0).tilt(45).build();
+        googleMap.addMarker(new MarkerOptions().position(new LatLng(56.048688,14.146171)).title("HKR HKIF").snippet("Sport for life"));
+        CameraPosition university = CameraPosition.builder().target(new LatLng(56.048688,14.146171)).zoom(16).bearing(0).tilt(45).build();
         googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(university));
     }
 }
