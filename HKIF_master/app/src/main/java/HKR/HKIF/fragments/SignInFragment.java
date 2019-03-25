@@ -34,8 +34,6 @@ import static androidx.constraintlayout.widget.Constraints.TAG;
 public class SignInFragment extends Fragment implements View.OnClickListener {
 
     private EditText email, password;
-    private TextView signUpLink;
-    private Button logInBtn;
     private String role;
     private ProgressBar progressBar;
     private FirebaseAuth mAuth;
@@ -136,7 +134,6 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
 
                         }
                     });
-
                     FragmentTransaction fragmentHome = getFragmentManager().beginTransaction();
                     fragmentHome.replace(R.id.fragment_container,new HomeFragment());
                     fragmentHome.commit();

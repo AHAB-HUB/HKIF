@@ -10,11 +10,6 @@
             android:title="Profile"/>
 
         <item
-            android:id="@+id/member_sprot"
-            android:icon="@drawable/ic_sport"
-            android:title="Our sports" />
-
-        <item
             android:id="@+id/member_contact"
             android:icon="@drawable/ic_group_black_24dp"
             android:title="Contact" />

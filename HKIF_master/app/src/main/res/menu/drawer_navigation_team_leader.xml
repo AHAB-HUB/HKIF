@@ -9,10 +9,6 @@
             android:id="@+id/leader_profile"
             android:title="Profile"/>
 
-        <item
-            android:id="@+id/leader_sport"
-            android:icon="@drawable/ic_sport"
-            android:title="Our sports" />
 
         <item android:icon="@drawable/ic_manage_session"
             android:id="@+id/leader_management"

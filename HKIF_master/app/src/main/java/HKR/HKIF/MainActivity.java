@@ -78,13 +78,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         switch (menuItem.getItemId()) {
 
-            case id.nav_guest_sports:
-            case id.admin_sport:
-            case  id.leader_sport:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new HomeFragment()).commit();
-                break;
-
             case id.nav_guest_gallery:
             case id.leader_gallery:
             case id.admin_gallery:
@@ -92,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         new SignUpFragment()).commit();
                 break;
 
-            case id.nav_management:
+            case id.leader_management:
                 Intent intent = new Intent(this, SessionManagement.class);
                 startActivity(intent);
 
@@ -101,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case id.nav_guest_contact:
                 case id.member_contact:
             case  id.leader_contact:
-            case id.admin_contact:
+            case id.admin_members:
                 getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
                         new MembersListFragment()).commit();
                 break;
