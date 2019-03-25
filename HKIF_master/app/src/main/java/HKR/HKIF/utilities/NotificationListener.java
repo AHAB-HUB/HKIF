@@ -26,8 +26,8 @@ public class NotificationListener {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
-
                 NotificationData data = dataSnapshot.getValue(NotificationData.class);
+
                 new Notifications(data.getTitle(), data.getMessage(), context).sendOnChannel1(v);
             }
 

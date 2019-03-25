@@ -7,6 +7,9 @@ public class MemberCard {
     private String email;
 
 
+    public MemberCard() {
+    }
+
     public MemberCard(String name, String email, String position) {
         this.name = name;
         this.email = email;

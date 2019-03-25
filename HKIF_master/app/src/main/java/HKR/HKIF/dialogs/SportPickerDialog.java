@@ -9,33 +9,30 @@ import android.os.Bundle;
 import androidx.fragment.app.DialogFragment;
 
 @SuppressLint("ValidFragment")
-public class SetPositionDialog extends DialogFragment {
+public class SportPickerDialog extends DialogFragment {
 
     private int selectedCell; // from db
-    int position;
 
-    public SetPositionDialog(int position){
-        this.position = position;
+    public SportPickerDialog(int position){
 
 
     }
 
+
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        CharSequence[] list = {"Member", "Team leader"};
+        CharSequence[] list = {"Badminton", "Soccer", "Floorball", "Basketball"
+                , "Swimming", "Volleyball", "Climbing", "Jiu-Jitsu"};
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         // Set the dialog title
-        builder.setTitle("Pick position: ")
+        builder.setTitle("Pick a sport: ")
                 // Specify the list array, the items to be selected by default (null for none),
                 // and the listener through which to receive callbacks when items are selected
                 .setSingleChoiceItems(list, selectedCell, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-
-                                //TODO FIX SPORTPICKERDIALOG
-                                new SportPickerDialog(position);
 
                             }
                         })

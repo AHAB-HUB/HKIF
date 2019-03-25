@@ -6,16 +6,16 @@
     <group android:checkableBehavior="single">
 
         <item android:icon="@drawable/ic_profile"
-            android:id="@+id/nav_profile"
+            android:id="@+id/admin_profile"
             android:title="Profile"/>
 
         <item
-            android:id="@+id/nav_sport"
+            android:id="@+id/admin_sport"
             android:icon="@drawable/ic_sport"
             android:title="Our sports" />
 
         <item android:icon="@drawable/ic_admin_settings"
-            android:id="@+id/nav_admin"
+            android:id="@+id/admin_admin"
             android:title="Administration"/>
 
         <item android:icon="@drawable/ic_manage_session"
@@ -24,17 +24,17 @@
 
 
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/admin_gallery"
             android:icon="@drawable/ic_gallery"
             android:title="Gallery" />
 
         <item
-            android:id="@+id/nav_contact"
+            android:id="@+id/admin_contact"
             android:icon="@drawable/ic_group_black_24dp"
             android:title="Contact" />
 
         <item android:icon="@drawable/ic_business_center_black_24dp"
-            android:id="@id/nav_about"
+            android:id="@+id/nav_about"
             android:title="About"/>
 
     </group>
