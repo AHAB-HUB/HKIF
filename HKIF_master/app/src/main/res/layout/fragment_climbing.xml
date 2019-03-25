@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".climbingFragment">
+
+    <TextView
+        android:id="@+id/boxTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="121dp"
+        android:layout_marginEnd="115dp"
+        android:text="@string/climbing"
+        android:textSize="36sp" />
+
+    <ImageView
+        android:id="@+id/cliImageView"
+        android:layout_width="match_parent"
+        android:layout_height="266dp"
+        android:layout_below="@+id/boxTitleTextView"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="394dp"
+        android:src="@drawable/climbing_kub" />
+
+    <TextView
+        android:id="@+id/cliDesriptopnTextView"
+        android:layout_width="match_parent"
+        android:layout_height="223dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="161dp"
+        android:text="desription" />
+
+    <ImageButton
+        android:id="@+id/cliLocationImageButton"
+        android:layout_width="match_parent"
+        android:layout_height="104dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="28dp"
+        android:src="@android:drawable/sym_def_app_icon" />
+
+</RelativeLayout>
