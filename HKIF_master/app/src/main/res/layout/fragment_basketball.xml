@@ -6,24 +6,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    tools:context=".boxingFragment">
+    tools:context=".basketballFragment">
 
     <TextView
         android:gravity="center"
-        android:id="@+id/badTitleTextView"
+        android:id="@+id/basTitleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="121dp"
         android:layout_marginEnd="115dp"
-        android:text="@string/boxing"
+        android:text="@string/basketball"
         android:textColor="@color/schedule_colorPrimary"
         android:textSize="36sp" />
 
     <ImageView
-        android:gravity="center"
-        android:id="@+id/boxImageView"
+        android:id="@+id/badImageButton"
         android:layout_width="match_parent"
         android:layout_height="266dp"
         android:layout_below="@+id/badTitleTextView"
@@ -34,25 +33,27 @@
         android:layout_marginTop="22dp"
         android:layout_marginEnd="0dp"
         android:layout_marginBottom="394dp"
-        android:src="@drawable/boxing_kub" />
+        android:gravity="center"
+        android:src="@drawable/basketball_kub" />
 
     <TextView
         android:gravity="center"
-        android:id="@+id/boxDesriptopnTextView"
-        android:layout_width="match_parent"
-        android:layout_height="223dp"
+        android:id="@+id/basDesriptopnTextView"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="0dp"
         android:layout_marginEnd="0dp"
         android:layout_marginBottom="161dp"
-        android:text="@string/boxingDescription"
+        android:text="@string/basketballDescription"
+        android:textSize="16sp"
         android:textColor="@color/schedule_colorPrimary"/>
 
     <Button
         android:gravity="center"
-        android:id="@+id/boxLocationImageButton"
+        android:id="@+id/basLocationImageButton"
         android:layout_width="match_parent"
         android:layout_height="104dp"
         android:layout_alignParentStart="true"

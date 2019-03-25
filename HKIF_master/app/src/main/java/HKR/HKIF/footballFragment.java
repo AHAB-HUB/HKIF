@@ -8,12 +8,15 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class footballFragment extends Fragment {
+    private TextView footDesriptopnTextView;
+    private String description;
 
 
     public footballFragment() {

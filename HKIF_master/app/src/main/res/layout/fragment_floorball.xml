@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    tools:context=".boxingFragment">
+    tools:context=".floorballFragment">
 
     <TextView
         android:gravity="center"
@@ -17,13 +17,13 @@
         android:layout_alignParentEnd="true"
         android:layout_marginStart="121dp"
         android:layout_marginEnd="115dp"
-        android:text="@string/boxing"
+        android:text="@string/floorball"
         android:textColor="@color/schedule_colorPrimary"
         android:textSize="36sp" />
 
     <ImageView
         android:gravity="center"
-        android:id="@+id/boxImageView"
+        android:id="@+id/badImageButton"
         android:layout_width="match_parent"
         android:layout_height="266dp"
         android:layout_below="@+id/badTitleTextView"
@@ -34,11 +34,11 @@
         android:layout_marginTop="22dp"
         android:layout_marginEnd="0dp"
         android:layout_marginBottom="394dp"
-        android:src="@drawable/boxing_kub" />
+        android:src="@drawable/floorball_kub" />
 
     <TextView
         android:gravity="center"
-        android:id="@+id/boxDesriptopnTextView"
+        android:id="@+id/floorDesriptopnTextView"
         android:layout_width="match_parent"
         android:layout_height="223dp"
         android:layout_alignParentStart="true"
@@ -47,12 +47,13 @@
         android:layout_marginStart="0dp"
         android:layout_marginEnd="0dp"
         android:layout_marginBottom="161dp"
-        android:text="@string/boxingDescription"
+        android:text="@string/floorballDescription"
+        android:textSize="16sp"
         android:textColor="@color/schedule_colorPrimary"/>
 
     <Button
         android:gravity="center"
-        android:id="@+id/boxLocationImageButton"
+        android:id="@+id/badLocationImageButton"
         android:layout_width="match_parent"
         android:layout_height="104dp"
         android:layout_alignParentStart="true"

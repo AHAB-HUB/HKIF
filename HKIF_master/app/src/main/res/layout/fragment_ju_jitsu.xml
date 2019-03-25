@@ -9,7 +9,8 @@
     tools:context=".juJitsuFragment">
 
     <TextView
-        android:id="@+id/boxTitleTextView"
+        android:gravity="center"
+        android:id="@+id/badTitleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -21,10 +22,11 @@
         android:textColor="@color/schedule_colorPrimary"/>
 
     <ImageView
+        android:gravity="center"
         android:id="@+id/jujImageView"
         android:layout_width="match_parent"
         android:layout_height="266dp"
-        android:layout_below="@+id/boxTitleTextView"
+        android:layout_below="@+id/badTitleTextView"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
@@ -35,6 +37,7 @@
         android:src="@drawable/jujitsu_kub" />
 
     <TextView
+        android:gravity="center"
         android:id="@+id/jujDesriptopnTextView"
         android:layout_width="match_parent"
         android:layout_height="223dp"
@@ -44,10 +47,11 @@
         android:layout_marginStart="0dp"
         android:layout_marginEnd="0dp"
         android:layout_marginBottom="161dp"
-        android:text="desription"
+        android:text="@string/jujitsuDescription"
         android:textColor="@color/schedule_colorPrimary"/>
 
     <Button
+        android:gravity="center"
         android:id="@+id/jujLocationImageButton"
         android:layout_width="match_parent"
         android:layout_height="104dp"
