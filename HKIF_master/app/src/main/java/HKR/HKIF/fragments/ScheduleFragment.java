@@ -19,12 +19,14 @@ import com.google.firebase.database.ValueEventListener;
 import com.ramotion.foldingcell.FoldingCell;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import HKR.HKIF.R;
 import HKR.HKIF.adapters.ScheduleAdapter;
 import HKR.HKIF.data.ScheduleItem;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 
 @SuppressLint("ValidFragment")
@@ -51,10 +53,25 @@ public class ScheduleFragment extends Fragment {
 
         super.onActivityCreated(savedInstanceState);
 
+
         // get our list view
         final ListView theListView = getActivity().findViewById(R.id.mainListView);
+        final SwipeRefreshLayout refreshLayout = getActivity().findViewById(R.id.swipeRefreshLayout);
 
         getList(path, theListView);
+
+
+        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+                Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new ScheduleFragment(path)).commit();
+
+            }
+
+        });
+
 
     }
 
@@ -95,6 +112,8 @@ public class ScheduleFragment extends Fragment {
 
         // set elements to adapter
         theListView.setAdapter(adapter);
+
+        adapter.notifyDataSetChanged();
 
         // set on click event listener to list view
         theListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
