@@ -11,7 +11,7 @@
             android:title="Our sports" />
 
         <item
-            android:id="@+id/nav_guest_gallary"
+            android:id="@+id/nav_guest_gallery"
             android:icon="@drawable/ic_gallery"
             android:title="Gallery" />
 
@@ -36,7 +36,7 @@
         <menu>
             <item android:icon="@drawable/ic_lock_black_24dp"
                 android:title="LogIn"
-                android:id="@+id/logIn"/>
+                android:id="@+id/nav_guest_logIn"/>
         </menu>
     </item>
 

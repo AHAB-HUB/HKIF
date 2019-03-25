@@ -20,7 +20,6 @@ public class SetPositionDialog extends DialogFragment {
 
     }
 
-
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         CharSequence[] list = {"Member", "Team leader"};
