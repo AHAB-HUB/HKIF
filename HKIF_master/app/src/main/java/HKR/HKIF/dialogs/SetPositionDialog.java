@@ -5,8 +5,11 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentManager;
 
 @SuppressLint("ValidFragment")
 public class SetPositionDialog extends DialogFragment {
@@ -16,7 +19,6 @@ public class SetPositionDialog extends DialogFragment {
 
     public SetPositionDialog(int position) {
         this.position = position;
-
 
     }
 
@@ -34,18 +36,17 @@ public class SetPositionDialog extends DialogFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        //TODO FIX SPORTPICKERDIALOG
-                        new SportPickerDialog(position);
 
                     }
                 })
+
                 // Set the action buttons
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
 
-                        //TODO SAVE SELECTED ITEM to DB
-                        //TODO REFRESH THE VIEW
+                        FragmentManager manager = ((AppCompatActivity) getContext()).getSupportFragmentManager(); // to show the dialog
+                        new SportPickerDialog(position).show(manager, "delete");
                         // User clicked OK, so save the selectedItems results somewhere
                         // or return them to the component that opened the dialog
 
@@ -56,6 +57,7 @@ public class SetPositionDialog extends DialogFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
 
+                        Toast.makeText(getContext(),"Action canceled",Toast.LENGTH_SHORT).show();
 
                     }
                 });

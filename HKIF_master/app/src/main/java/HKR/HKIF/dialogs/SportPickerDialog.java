@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import com.google.firebase.database.DatabaseReference;
 
+import HKR.HKIF.dB.UpdatePositon;
 import androidx.fragment.app.DialogFragment;
 
 @SuppressLint("ValidFragment")
@@ -15,6 +16,7 @@ public class SportPickerDialog extends DialogFragment {
 
     private int selectedCell; // from db
     private DatabaseReference databaseReference;
+    private int pos;
 
     public SportPickerDialog(int position) {
 
@@ -35,6 +37,7 @@ public class SportPickerDialog extends DialogFragment {
                 .setSingleChoiceItems(list, selectedCell, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        pos = which;
 
                     }
                 })
@@ -43,10 +46,8 @@ public class SportPickerDialog extends DialogFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
 
-                        //TODO SAVE SELECTED ITEM to DB
-                        //TODO REFRESH THE VIEW
-                        // User clicked OK, so save the selectedItems results somewhere
-                        // or return them to the component that opened the dialog
+                        new UpdatePositon(list[pos].toString());
+
 
 
                     }
