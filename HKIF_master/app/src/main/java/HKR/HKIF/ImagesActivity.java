@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -96,7 +97,7 @@ public class ImagesActivity extends AppCompatActivity implements ImageAdapter.On
     public void onDeleteClick(int position) {
         Upload selectedItem = mUploads.get(position);
         final String selectedKey = selectedItem.getKey();
-        System.out.println("image key:  "+selectedKey);
+        System.out.println("image key:  " + selectedKey);
         System.out.println(selectedItem.getImageUrl());
         String url = selectedItem.getImageUrl();
 

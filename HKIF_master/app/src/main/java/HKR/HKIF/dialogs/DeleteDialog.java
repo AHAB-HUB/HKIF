@@ -12,7 +12,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import HKR.HKIF.R;
-import HKR.HKIF.fragments.HomeFragment;
 import HKR.HKIF.fragments.MembersListFragment;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;

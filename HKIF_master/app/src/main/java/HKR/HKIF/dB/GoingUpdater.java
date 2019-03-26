@@ -49,7 +49,6 @@ public class GoingUpdater {
 //        }
 
 
-
         final ArrayList<String> sportList = new ArrayList<>();
 
         DatabaseReference query = FirebaseDatabase.getInstance().getReference("schedule");
@@ -58,9 +57,9 @@ public class GoingUpdater {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
-                    if (dataSnapshot.exists()) {
-                        sportList.add(dataSnapshot.getValue(ScheduleItem.class).getId());
-                    }
+                if (dataSnapshot.exists()) {
+                    sportList.add(dataSnapshot.getValue(ScheduleItem.class).getId());
+                }
                 attendanceListener(sportList);
             }
 
@@ -71,7 +70,6 @@ public class GoingUpdater {
 
             @Override
             public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
 
 
             }
@@ -135,20 +133,24 @@ public class GoingUpdater {
     //fetch the number of going members from attendance table
     private void updateEvent(final String key) {
 
+        try {
+            Query query = FirebaseDatabase.getInstance().getReference("attendance").orderByChild(key).equalTo("true");
 
-        Query query = FirebaseDatabase.getInstance().getReference("attendance").orderByChild(key).equalTo("true");
+            query.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    setGoing(key, (int) dataSnapshot.getChildrenCount());
+                }
 
-        query.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                setGoing(key, (int) dataSnapshot.getChildrenCount());
-            }
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+                }
+            });
+        } catch (NullPointerException e) {
 
-            }
-        });
+        }
+
     }
 
 

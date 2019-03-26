@@ -12,7 +12,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import HKR.HKIF.R;
 import HKR.HKIF.Users.Person;
-import HKR.HKIF.fragments.HomeFragment;
 import HKR.HKIF.fragments.MembersListFragment;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
@@ -25,7 +24,7 @@ public class SetPositionDialog extends DialogFragment {
     private int selectedCell; // from db
     int position;
     private int numberTwo;
-    private String  personID;
+    private String personID;
     private String personPosition;
     private DatabaseReference databaseReference;
 
@@ -59,12 +58,11 @@ public class SetPositionDialog extends DialogFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
 
-                        if (numberTwo == 0){
+                        if (numberTwo == 0) {
 
-                            if (personPosition.equals("MEMBER")){
+                            if (personPosition.equals("MEMBER")) {
                                 Toast.makeText(getContext(), "This is already a member", Toast.LENGTH_LONG).show();
-                            }
-                            else if (personPosition.equals("TEAM_LEADER")){
+                            } else if (personPosition.equals("TEAM_LEADER")) {
                                 databaseReference = FirebaseDatabase.getInstance().getReference("person")
                                         .child(personID).child("position");
                                 databaseReference.setValue(Person.POSITION.MEMBER);
@@ -75,20 +73,15 @@ public class SetPositionDialog extends DialogFragment {
                                 FragmentTransaction fragmentHome = getFragmentManager().beginTransaction();
                                 fragmentHome.replace(R.id.fragment_container, new MembersListFragment());
                                 fragmentHome.commit();
-                            }
-
-                            else {
+                            } else {
                                 Toast.makeText(getContext(), "This is an Admin can't be a member", Toast.LENGTH_LONG).show();
                             }
 
-                        }
-                        else {
+                        } else {
 
-                            if (personPosition.equals("ADMIN")){
+                            if (personPosition.equals("ADMIN")) {
                                 Toast.makeText(getContext(), "This is an Admin can't be a team leader", Toast.LENGTH_LONG).show();
-                            }
-
-                            else {
+                            } else {
                                 FragmentManager manager = ((AppCompatActivity) getContext()).getSupportFragmentManager(); // to show the dialog
                                 new SportPickerDialog(position, personID, personPosition).show(manager, "delete");
                                 // User clicked OK, so save the selectedItems results somewhere
@@ -96,9 +89,7 @@ public class SetPositionDialog extends DialogFragment {
                             }
 
 
-
                         }
-
 
 
                     }
@@ -107,7 +98,7 @@ public class SetPositionDialog extends DialogFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
 
-                        Toast.makeText(getContext(),"Action canceled",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Action canceled", Toast.LENGTH_SHORT).show();
 
                     }
                 });

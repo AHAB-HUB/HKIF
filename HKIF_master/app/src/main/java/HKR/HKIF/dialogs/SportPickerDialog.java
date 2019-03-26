@@ -12,15 +12,12 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import HKR.HKIF.Database.SportLeaders;
 import HKR.HKIF.Database.SportTable;
 import HKR.HKIF.R;
 import HKR.HKIF.Users.Person;
-import HKR.HKIF.dB.UpdatePositon;
-import HKR.HKIF.fragments.HomeFragment;
 import HKR.HKIF.fragments.MembersListFragment;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
@@ -79,7 +76,7 @@ public class SportPickerDialog extends DialogFragment {
                                             .getReference("person").child(personID).child("position");
 
                                     databaseReference.setValue(Person.POSITION.TEAM_LEADER);
-                               }
+                                }
 
 
                                 FragmentTransaction fragmentHome = getFragmentManager().beginTransaction();
@@ -101,12 +98,12 @@ public class SportPickerDialog extends DialogFragment {
         return builder.create();
     }
 
-    private void getSports(){
+    private void getSports() {
 
         final ProgressDialog progressDialog = ProgressDialog.show(getContext(), "Loading....", "Please wait...");
         new Thread() {
             public void run() {
-                try{
+                try {
                     sportTable = new SportTable();
 
                     databaseReference = FirebaseDatabase.getInstance().getReference("sport");
@@ -119,18 +116,17 @@ public class SportPickerDialog extends DialogFragment {
                                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                                         sportTable = snapshot.getValue(SportTable.class);
 
-                                       String sportID = sportTable.getSport_id();
+                                        String sportID = sportTable.getSport_id();
                                         System.out.println("SportID is: " + sportID);
                                         System.out.println("------------------------------------------------------");
 
 
                                         databaseReference = FirebaseDatabase.getInstance().getReference("sport_leaders");
 
-                                sportLeaders = new SportLeaders(sportID, personID);
-                             databaseReference.child(personID).setValue(sportLeaders);
+                                        sportLeaders = new SportLeaders(sportID, personID);
+                                        databaseReference.child(personID).setValue(sportLeaders);
 
                                     }
-
 
 
                                 }
@@ -140,8 +136,7 @@ public class SportPickerDialog extends DialogFragment {
 
                                 }
                             });
-                }
-                catch (Exception e) {
+                } catch (Exception e) {
                     Log.e("tag", e.getMessage());
                 }
                 // dismiss the progress dialog

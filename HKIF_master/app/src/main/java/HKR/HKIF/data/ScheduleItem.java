@@ -179,9 +179,6 @@ public class ScheduleItem {
         return leader_name;
     }
 
-    public String getHead_image() {
-        return canceled;
-    }
 
     public String getGoing() {
         return going;
