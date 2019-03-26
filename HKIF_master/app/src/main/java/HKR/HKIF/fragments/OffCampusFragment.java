@@ -36,12 +36,12 @@ public class OffCampusFragment extends Fragment {
 
         //Resources res = getResources();
         offCampus = view.getResources().getStringArray(R.array.offcampus);
-        listView = (ListView) view.findViewById(R.id.text_offcampus);
+        //listView = (ListView) view.findViewById(R.id.text_offcampus);
 
         ArrayAdapter<String> listAdapter = new ArrayAdapter<String>(
                 getActivity(),android.R.layout.simple_list_item_1,offCampus);
 
-        listView.setAdapter(listAdapter);
+        //listView.setAdapter(listAdapter);
 
         return view;
     }

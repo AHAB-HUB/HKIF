@@ -39,7 +39,7 @@ public class CampusFragment extends Fragment {
         ArrayAdapter<String> listAdapter = new ArrayAdapter<String>(
                 getActivity(),android.R.layout.simple_list_item_1,campus);
 
-        listView.setAdapter(listAdapter);
+        //listView.setAdapter(listAdapter);
 
         return view;
     }

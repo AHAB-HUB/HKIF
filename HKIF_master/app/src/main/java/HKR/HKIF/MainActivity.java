@@ -2,8 +2,14 @@ package HKR.HKIF;
 
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -19,6 +25,7 @@ import HKR.HKIF.fragments.DaysFragment;
 import HKR.HKIF.fragments.HomeFragment;
 import HKR.HKIF.fragments.LocationFragment;
 import HKR.HKIF.fragments.MembersListFragment;
+import HKR.HKIF.fragments.MessageFragment;
 import HKR.HKIF.fragments.ProfileFragment;
 import HKR.HKIF.fragments.SessionManagement;
 import HKR.HKIF.fragments.SignInFragment;
@@ -26,18 +33,24 @@ import HKR.HKIF.fragments.SignUpFragment;
 import HKR.HKIF.utilities.NotificationListener;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import static HKR.HKIF.R.*;
+import static android.Manifest.permission.CALL_PHONE;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout drawer;
     private NavigationView navigationView1;
+    private ImageButton imageMessage, imagePhone;
+    private Button cancelButton;
+
 
 
     @Override
@@ -93,11 +106,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case id.nav_guest_contact:
-                case id.member_contact:
+
+                contactDialog();   // this open the option dialog for call/message
+
+                break;
+
+            case id.member_contact:
             case  id.leader_contact:
             case id.admin_members:
                 getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
-                        new MembersListFragment()).commit();
+                        new MembersListFragment()).addToBackStack(null).commit();
                 break;
 
             case id. nav_about:
@@ -116,7 +134,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             case id.nav_guest_logIn:
                 getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
-                        new SignInFragment()).commit();
+                        new SignInFragment()).addToBackStack(null).commit();
                 break;
 
             case id.logOut:
@@ -134,10 +152,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
                         new ProfileFragment()).commit();
 
-
                 break;
-
-
 
         }
 
@@ -154,7 +169,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             super.onBackPressed();
         }
     }
-
 
     //TODO UPDATE THIS METHOD
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
@@ -184,4 +198,64 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     return true;
                 }
             };
+
+    public void contactDialog(){
+
+        final AlertDialog.Builder contactAlert = new AlertDialog.Builder(MainActivity.this);
+        View alertView = getLayoutInflater().inflate(R.layout.contact_dialog, null);
+
+        imagePhone = (ImageButton) alertView.findViewById(R.id.contact_phone);
+        imageMessage = (ImageButton) alertView.findViewById(R.id.contact_message);
+        cancelButton = (Button) alertView.findViewById(R.id.cancel_contact);
+
+        contactAlert.setView(alertView);
+
+        final AlertDialog alertDialog = contactAlert.create();
+        alertDialog.setCanceledOnTouchOutside(true);
+
+        imagePhone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                callPhone();
+            }
+        });
+
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alertDialog.dismiss();
+            }
+        });
+
+        imageMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
+                        new MessageFragment()).addToBackStack(null).commit();
+
+            }
+        });
+
+        alertDialog.show();
+    }
+
+    public void callPhone(){
+
+        Intent intent = new Intent(Intent.ACTION_CALL);
+        intent.setData(Uri.parse("tel:0736565835"));
+
+        if (ContextCompat.checkSelfPermission(this.getApplicationContext(),
+                CALL_PHONE) == PackageManager.PERMISSION_GRANTED){
+            startActivity(intent);
+
+        }else {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                requestPermissions(new String[]{CALL_PHONE},1);
+            }
+        }
+
+
+    }
+
 }

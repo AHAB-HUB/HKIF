@@ -33,8 +33,6 @@ public class LocationFragment extends Fragment implements OnMapReadyCallback {
     MapView mapView;
     View view;
 
-
-
     public LocationFragment() {
 
     }
@@ -42,25 +40,6 @@ public class LocationFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-        /*mapView = (MapView) view.findViewById(R.id.map);
-        if(mapView != null) {
-            mapView.onCreate(null);
-            mapView.onResume();
-            mapView.getMapAsync(this);
-        }
-
-
-        tabLayout = (TabLayout) getActivity().findViewById(R.id.tablayout_id);
-        viewPager = getActivity().findViewById(R.id.viewpager_id);
-
-        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getFragmentManager());
-        viewPagerAdapter.AddFragment(new CampusFragment(),"Campus");
-        viewPagerAdapter.AddFragment(new OffCampusFragment(),"Off Campus");
-
-        viewPager.setAdapter(viewPagerAdapter);
-        tabLayout.setupWithViewPager(viewPager);*/
-
 
     }
 
@@ -71,8 +50,8 @@ public class LocationFragment extends Fragment implements OnMapReadyCallback {
         viewPager = getActivity().findViewById(R.id.viewpager_id);
 
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getFragmentManager());
-        viewPagerAdapter.AddFragment(new CampusFragment(),"Campus");
-        viewPagerAdapter.AddFragment(new OffCampusFragment(),"Off Campus");
+        viewPagerAdapter.AddFragment(new CampusFragment(),"Hkr Building 7");
+        viewPagerAdapter.AddFragment(new OffCampusFragment(),"City Centre");
 
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
