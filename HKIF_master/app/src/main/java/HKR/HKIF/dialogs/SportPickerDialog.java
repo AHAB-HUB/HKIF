@@ -6,22 +6,24 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 
+import com.google.firebase.database.DatabaseReference;
+
 import androidx.fragment.app.DialogFragment;
 
 @SuppressLint("ValidFragment")
 public class SportPickerDialog extends DialogFragment {
 
     private int selectedCell; // from db
+    private DatabaseReference databaseReference;
 
     public SportPickerDialog(int position){
-
 
     }
 
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        CharSequence[] list = {"Badminton", "Soccer", "Floorball", "Basketball"
+        final CharSequence[] list = {"Badminton", "Soccer", "Floorball", "Basketball"
                 , "Swimming", "Volleyball", "Climbing", "Jiu-Jitsu"};
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -45,6 +47,7 @@ public class SportPickerDialog extends DialogFragment {
                         //TODO REFRESH THE VIEW
                         // User clicked OK, so save the selectedItems results somewhere
                         // or return them to the component that opened the dialog
+
 
 
                     }

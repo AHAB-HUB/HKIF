@@ -19,6 +19,7 @@ import HKR.HKIF.fragments.DaysFragment;
 import HKR.HKIF.fragments.HomeFragment;
 import HKR.HKIF.fragments.LocationFragment;
 import HKR.HKIF.fragments.MembersListFragment;
+import HKR.HKIF.fragments.ProfileFragment;
 import HKR.HKIF.fragments.SessionManagement;
 import HKR.HKIF.fragments.SignInFragment;
 import HKR.HKIF.fragments.SignUpFragment;
@@ -110,6 +111,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         new AboutFragment()).addToBackStack(null).commit();
                 break;*/
 
+
+
+
             case id.nav_guest_logIn:
                 getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
                         new SignInFragment()).commit();
@@ -126,6 +130,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case id.admin_profile:
             case id.leader_profile:
             case id.member_profile:
+
+                getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
+                        new ProfileFragment()).commit();
+
 
                 break;
 
