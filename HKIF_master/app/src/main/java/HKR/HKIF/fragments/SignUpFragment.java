@@ -38,14 +38,14 @@ public class SignUpFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view =inflater.inflate(R.layout.fragment_sign_up, container, false);
+        View view = inflater.inflate(R.layout.fragment_sign_up, container, false);
 
-        firstName   = view.findViewById(R.id.signUp_firstName);
-        lastName    = view.findViewById(R.id.signUp_lastName);
-        email       = view.findViewById(R.id.signUp_email);
-        password    = view.findViewById(R.id.signUp_password);
+        firstName = view.findViewById(R.id.signUp_firstName);
+        lastName = view.findViewById(R.id.signUp_lastName);
+        email = view.findViewById(R.id.signUp_email);
+        password = view.findViewById(R.id.signUp_password);
         phoneNumber = view.findViewById(R.id.signUp_phone_number);
-        signUpBtn   = view.findViewById(R.id.btn_signUp);
+        signUpBtn = view.findViewById(R.id.btn_signUp);
         progressBar = view.findViewById(R.id.sign_up_progressBar);
         progressBar.setVisibility(view.GONE);
 
@@ -67,19 +67,18 @@ public class SignUpFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
 
-
     }
 
-    private void signUp(){
+    private void signUp() {
         final String firstNameText = firstName.getText().toString();
-        final String lastNameText  = lastName.getText().toString();
-        final String emailText     = email.getText().toString();
-        final String passwordText  = password.getText().toString();
+        final String lastNameText = lastName.getText().toString();
+        final String emailText = email.getText().toString();
+        final String passwordText = password.getText().toString();
         final String phoneNumberText = phoneNumber.getText().toString();
 
         if (TextUtils.isEmpty(firstNameText) && TextUtils.isEmpty(lastNameText) &&
-            TextUtils.isEmpty(emailText)     && TextUtils.isEmpty(passwordText) &&
-            TextUtils.isEmpty(phoneNumberText)){
+                TextUtils.isEmpty(emailText) && TextUtils.isEmpty(passwordText) &&
+                TextUtils.isEmpty(phoneNumberText)) {
 
             Toast.makeText(getContext(), "Please fill all the fields!", Toast.LENGTH_LONG).show();
 
@@ -94,7 +93,7 @@ public class SignUpFragment extends Fragment {
             progressBar.setVisibility(getView().VISIBLE);
 
 
-            firebaseAuth.createUserWithEmailAndPassword(emailText,passwordText)
+            firebaseAuth.createUserWithEmailAndPassword(emailText, passwordText)
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {

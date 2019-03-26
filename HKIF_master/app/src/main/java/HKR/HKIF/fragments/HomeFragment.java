@@ -11,7 +11,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
 import com.google.android.material.navigation.NavigationView;
+
 import HKR.HKIF.R;
 import androidx.fragment.app.Fragment;
 
@@ -33,7 +35,7 @@ public class HomeFragment extends Fragment {
         setupSportListView();
     }
 
-    private void setupSportListView(){
+    private void setupSportListView() {
 
         String[] title = getResources().getStringArray(R.array.Main);
         String[] description = getResources().getStringArray(R.array.Description);
@@ -45,7 +47,7 @@ public class HomeFragment extends Fragment {
         sportListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                switch(position){
+                switch (position) {
                     case 0: {
                         navigationView1.getMenu().clear();
                         navigationView1.inflateMenu(R.menu.drawer_navigation_team_leader);
@@ -76,7 +78,7 @@ public class HomeFragment extends Fragment {
         private String[] descriptionArray;
         private ImageView imageView;
 
-        public SportItems_Adapter(Context context, String[] title, String[] description){
+        public SportItems_Adapter(Context context, String[] title, String[] description) {
             mContext = context;
             titleArray = title;
             descriptionArray = description;
@@ -101,7 +103,7 @@ public class HomeFragment extends Fragment {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            if(convertView == null){
+            if (convertView == null) {
                 convertView = layoutInflater.inflate(R.layout.single_home_item1, null);
             }
 
@@ -112,23 +114,23 @@ public class HomeFragment extends Fragment {
             title.setText(titleArray[position]);
 
 
-            if(titleArray[position].equalsIgnoreCase("FOOTBALL")){
+            if (titleArray[position].equalsIgnoreCase("FOOTBALL")) {
                 imageView.setImageResource(R.drawable.soccer);
-            }else if(titleArray[position].equalsIgnoreCase("VOLLEYBALL")){
+            } else if (titleArray[position].equalsIgnoreCase("VOLLEYBALL")) {
                 imageView.setImageResource(R.drawable.volleyball);
-            }else if(titleArray[position].equalsIgnoreCase("BADMINTON")){
+            } else if (titleArray[position].equalsIgnoreCase("BADMINTON")) {
                 imageView.setImageResource(R.drawable.badminton);
-            }else if(titleArray[position].equalsIgnoreCase("CLIMBING")){
+            } else if (titleArray[position].equalsIgnoreCase("CLIMBING")) {
                 imageView.setImageResource(R.drawable.climbing);
-            } else if(titleArray[position].equalsIgnoreCase("SWIMMING")){
+            } else if (titleArray[position].equalsIgnoreCase("SWIMMING")) {
                 imageView.setImageResource(R.drawable.swimming);
-            } else if(titleArray[position].equalsIgnoreCase("BOXING")){
+            } else if (titleArray[position].equalsIgnoreCase("BOXING")) {
                 imageView.setImageResource(R.drawable.boxing);
-            }else if(titleArray[position].equalsIgnoreCase("JU_JITSU")){
+            } else if (titleArray[position].equalsIgnoreCase("JU_JITSU")) {
                 imageView.setImageResource(R.drawable.ju_jitsu);
-            }else if(titleArray[position].equalsIgnoreCase("FLOORBALL")){
+            } else if (titleArray[position].equalsIgnoreCase("FLOORBALL")) {
                 imageView.setImageResource(R.drawable.floorball);
-            }else if(titleArray[position].equalsIgnoreCase("BASKETBALL")){
+            } else if (titleArray[position].equalsIgnoreCase("BASKETBALL")) {
                 imageView.setImageResource(R.drawable.basketball);
             }
 
@@ -138,7 +140,7 @@ public class HomeFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
 }

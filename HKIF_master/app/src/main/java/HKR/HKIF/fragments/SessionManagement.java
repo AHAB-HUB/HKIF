@@ -13,8 +13,10 @@ import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
 import java.text.DateFormat;
 import java.util.Calendar;
+
 import HKR.HKIF.R;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
@@ -43,15 +45,13 @@ public class SessionManagement extends AppCompatActivity implements DatePickerDi
         String currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
         String question = "Do you want to cancel the session ?";
         String current_sport = "Football";
-        Button okBtn,noBtn;
+        Button okBtn, noBtn;
 
-        TextView date =  findViewById(R.id.event_date);
-        TextView sport =  findViewById(R.id.sport_name);
-        TextView confirmation_question =  findViewById(R.id.confirmation_question);
+        TextView date = findViewById(R.id.event_date);
+        TextView sport = findViewById(R.id.sport_name);
+        TextView confirmation_question = findViewById(R.id.confirmation_question);
         okBtn = findViewById(R.id.okBtn);
         noBtn = findViewById(R.id.noBtn);
-
-        
 
 
         date.setText(currentDateString);
@@ -81,7 +81,7 @@ public class SessionManagement extends AppCompatActivity implements DatePickerDi
 
     }
 
-    private void setupSportListView(){
+    private void setupSportListView() {
 
         String[] title = getResources().getStringArray(R.array.SessionManagement);
 
@@ -91,14 +91,14 @@ public class SessionManagement extends AppCompatActivity implements DatePickerDi
         smListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                switch(position){
+                switch (position) {
                     case 0: {
                         DialogFragment datePicker = new DatePickerFragment();
                         datePicker.show(getSupportFragmentManager(), "time picker");
                         break;
                     }
                 }
-                }
+            }
         });
     }
 

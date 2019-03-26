@@ -1,19 +1,5 @@
 package HKR.HKIF.data;
 
-import android.view.View;
-
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
-
-import java.util.ArrayList;
-
-import HKR.HKIF.fragments.ScheduleFragment;
-import androidx.annotation.NonNull;
-
-
 @SuppressWarnings({"unused", "WeakerAccess"})
 public class ScheduleItem {
 
@@ -26,53 +12,45 @@ public class ScheduleItem {
     private String location;
     private String location_date;
     private String leader_name;
-    private String head_image;
+    private String canceled;
     private String id;
-
-    private View.OnClickListener requestBtnClickListener;
 
 
     public ScheduleItem() {
     }
 
-    public ScheduleItem( String going, String from, String to, String id, String sport_name, String day, String location, String location_date, String leader_name) {
+    public ScheduleItem(String going, String from, String to, String id, String sport_name, String day, String location, String location_date, String leader_name, String canceled) {
 
         this.going = going;
-        this.from= from;
-        this.to= to;
-        this.sport_name= sport_name;
+        this.from = from;
+        this.to = to;
+        this.sport_name = sport_name;
         this.day = day;
         this.location = location;
         this.location_date = location_date;
         this.leader_name = leader_name;
         this.id = id;
+        this.canceled = canceled;
 
 
     }
 
-    public ScheduleItem(String going, String from, String to, String id,String temperature, String sport_name, String day, String location, String location_date, String leader_name, String head_image) {
+    public ScheduleItem(String going, String from, String to, String id, String temperature, String sport_name, String day, String location, String location_date, String leader_name, String canceled) {
 
         this.going = going;
-        this.from= from;
-        this.to= to;
-        this.temperature= temperature;
-        this.sport_name= sport_name;
+        this.from = from;
+        this.to = to;
+        this.temperature = temperature;
+        this.sport_name = sport_name;
         this.day = day;
         this.location = location;
         this.location_date = location_date;
         this.leader_name = leader_name;
-        this.head_image = head_image;
+        this.canceled = canceled;
         this.id = id;
 
     }
 
-    public View.OnClickListener getRequestBtnClickListener() {
-        return requestBtnClickListener;
-    }
-
-    public void setRequestBtnClickListener(View.OnClickListener requestBtnClickListener) {
-        this.requestBtnClickListener = requestBtnClickListener;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -88,7 +66,7 @@ public class ScheduleItem {
             return false;
         if (leader_name != null ? !leader_name.equals(item.leader_name) : item.leader_name != null)
             return false;
-        if (head_image != null ? !head_image.equals(item.head_image) : item.head_image != null)
+        if (canceled != null ? !canceled.equals(item.canceled) : item.canceled != null)
             return false;
 
         if (!going.equals(item.going)) return false;
@@ -115,11 +93,75 @@ public class ScheduleItem {
         result = 31 * result + (location != null ? location.hashCode() : 0);
         result = 31 * result + (location_date != null ? location_date.hashCode() : 0);
         result = 31 * result + (leader_name != null ? leader_name.hashCode() : 0);
-        result = 31 * result + (head_image != null ? head_image.hashCode() : 0);
+        result = 31 * result + (canceled != null ? canceled.hashCode() : 0);
 
         return result;
     }
 
+    @Override
+    public String toString() {
+        return "ScheduleItem{" +
+                "going='" + going + '\'' +
+                ", from='" + from + '\'' +
+                ", to='" + to + '\'' +
+                ", temperature='" + temperature + '\'' +
+                ", sport_name='" + sport_name + '\'' +
+                ", day='" + day + '\'' +
+                ", location='" + location + '\'' +
+                ", location_date='" + location_date + '\'' +
+                ", leader_name='" + leader_name + '\'' +
+                ", canceled='" + canceled + '\'' +
+                ", id='" + id + '\'' +
+                '}';
+    }
+
+    public void setGoing(String going) {
+        this.going = going;
+    }
+
+    public void setFrom(String from) {
+        this.from = from;
+    }
+
+    public void setTo(String to) {
+        this.to = to;
+    }
+
+    public void setTemperature(String temperature) {
+        this.temperature = temperature;
+    }
+
+    public void setSport_name(String sport_name) {
+        this.sport_name = sport_name;
+    }
+
+    public void setDay(String day) {
+        this.day = day;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public void setLocation_date(String location_date) {
+        this.location_date = location_date;
+    }
+
+    public void setLeader_name(String leader_name) {
+        this.leader_name = leader_name;
+    }
+
+    public String getCanceled() {
+        return canceled;
+    }
+
+    public void setCanceled(String canceled) {
+        this.canceled = canceled;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getDay() {
         return day;
@@ -138,7 +180,7 @@ public class ScheduleItem {
     }
 
     public String getHead_image() {
-        return head_image;
+        return canceled;
     }
 
     public String getGoing() {

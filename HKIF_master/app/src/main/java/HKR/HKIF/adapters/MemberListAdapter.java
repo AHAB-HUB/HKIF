@@ -16,7 +16,6 @@ import java.util.List;
 
 import HKR.HKIF.R;
 import HKR.HKIF.Users.Person;
-import HKR.HKIF.data.MemberCard;
 import HKR.HKIF.dialogs.DeleteDialog;
 import HKR.HKIF.dialogs.SetPositionDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -67,27 +66,26 @@ public class MemberListAdapter extends ArrayAdapter<Person> {
             LayoutInflater inflater = (LayoutInflater) this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             row = inflater.inflate(R.layout.list_item_card, parent, false);
             viewHolder = new CardViewHolder();
-            viewHolder.name =  row.findViewById(R.id.name);
-            viewHolder.email =  row.findViewById(R.id.email);
-            viewHolder.position =  row.findViewById(R.id.position);
+            viewHolder.name = row.findViewById(R.id.name);
+            viewHolder.email = row.findViewById(R.id.email);
+            viewHolder.position = row.findViewById(R.id.position);
             viewHolder.payment = row.findViewById(R.id.payment);
-            viewHolder.delete =  row.findViewById(R.id.delete);
-            viewHolder.edit =  row.findViewById(R.id.edit);
+            viewHolder.delete = row.findViewById(R.id.delete);
+            viewHolder.edit = row.findViewById(R.id.edit);
             row.setTag(viewHolder);
 
         } else {
 
-            viewHolder = (CardViewHolder)row.getTag();
+            viewHolder = (CardViewHolder) row.getTag();
         }
 
         final Person person = getItem(position);
         viewHolder.name.setText(person.getFullName());
         viewHolder.position.setText(person.getPosition());
         viewHolder.email.setText(person.getEmail());
-        if (!person.isHasPaid()){
+        if (!person.isHasPaid()) {
             viewHolder.payment.setText("Has not paid");
-        }
-        else {
+        } else {
             viewHolder.payment.setText("Has paid");
         }
 
@@ -98,12 +96,10 @@ public class MemberListAdapter extends ArrayAdapter<Person> {
             public void onClick(View v) {
                 Toast.makeText(getContext(), "button " + position, Toast.LENGTH_SHORT).show(); //meh
 
-                FragmentManager manager = ((AppCompatActivity)getContext()).getSupportFragmentManager();// to show the dialog
-                new DeleteDialog(person.getFullName(), person.getPersonID()).show(manager,"delete");
+                FragmentManager manager = ((AppCompatActivity) getContext()).getSupportFragmentManager();// to show the dialog
+                new DeleteDialog(person.getFullName(), person.getPersonID()).show(manager, "delete");
             }
         });
-
-
 
 
         viewHolder.edit.setOnClickListener(new View.OnClickListener() {
@@ -111,8 +107,8 @@ public class MemberListAdapter extends ArrayAdapter<Person> {
             public void onClick(View v) {
                 Toast.makeText(getContext(), "button " + position, Toast.LENGTH_SHORT).show();
 
-                FragmentManager manager = ((AppCompatActivity)getContext()).getSupportFragmentManager(); // to show the dialog
-                new SetPositionDialog(position).show(manager,"delete");
+                FragmentManager manager = ((AppCompatActivity) getContext()).getSupportFragmentManager(); // to show the dialog
+                new SetPositionDialog(position).show(manager, "delete");
 
             }
         });

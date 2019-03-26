@@ -14,7 +14,7 @@ public class SetPositionDialog extends DialogFragment {
     private int selectedCell; // from db
     int position;
 
-    public SetPositionDialog(int position){
+    public SetPositionDialog(int position) {
         this.position = position;
 
 
@@ -31,14 +31,14 @@ public class SetPositionDialog extends DialogFragment {
                 // Specify the list array, the items to be selected by default (null for none),
                 // and the listener through which to receive callbacks when items are selected
                 .setSingleChoiceItems(list, selectedCell, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
 
-                                //TODO FIX SPORTPICKERDIALOG
-                                new SportPickerDialog(position);
+                        //TODO FIX SPORTPICKERDIALOG
+                        new SportPickerDialog(position);
 
-                            }
-                        })
+                    }
+                })
                 // Set the action buttons
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
@@ -57,7 +57,6 @@ public class SetPositionDialog extends DialogFragment {
                     public void onClick(DialogInterface dialog, int id) {
 
 
-
                     }
                 });
 
@@ -66,7 +65,7 @@ public class SetPositionDialog extends DialogFragment {
 
 
     //TODO GET POSITION AND WRITE DB CONFIGURATION
-    private void connection(){
+    private void connection() {
 
 
     }

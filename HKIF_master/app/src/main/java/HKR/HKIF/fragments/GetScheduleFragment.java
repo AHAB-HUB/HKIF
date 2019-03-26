@@ -5,9 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -37,7 +35,7 @@ public class GetScheduleFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view =inflater.inflate(R.layout.get_schedule_fragment, container, false);
+        View view = inflater.inflate(R.layout.get_schedule_fragment, container, false);
 
         listView = view.findViewById(R.id.schedule_listView);
         button = view.findViewById(R.id.get_schedule);
@@ -67,23 +65,21 @@ public class GetScheduleFragment extends Fragment {
     }
 
 
+    private void updated() {
+        databaseReference = FirebaseDatabase.getInstance()
+                .getReference("schedule").child("2019-03-18")
+                .child("Campus").child("Badminton").child("session_updated");
 
-    private void updated(){
-       databaseReference = FirebaseDatabase.getInstance()
-               .getReference("schedule").child("2019-03-18")
-               .child("Campus").child("Badminton").child("session_updated");
 
-
-       boolean session = true;
+        boolean session = true;
 
         session = !isUpdated.equals("true");
 
-      databaseReference.setValue(session);
+        databaseReference.setValue(session);
     }
 
 
-
-    private void getData(){
+    private void getData() {
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override

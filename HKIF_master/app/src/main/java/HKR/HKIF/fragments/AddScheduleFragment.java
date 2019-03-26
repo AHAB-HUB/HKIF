@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCanceledListener;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -20,7 +19,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
 import HKR.HKIF.Database.AddSchedule;
 import HKR.HKIF.R;
@@ -38,7 +36,6 @@ public class AddScheduleFragment extends Fragment {
     private AddSchedule addSchedule;
 
 
-
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -48,9 +45,9 @@ public class AddScheduleFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View view =inflater.inflate(R.layout.add_schedule_fragment, container, false);
+        final View view = inflater.inflate(R.layout.add_schedule_fragment, container, false);
 
-       dateView = view.findViewById(R.id.schedule_editText_datePicker);
+        dateView = view.findViewById(R.id.schedule_editText_datePicker);
         saveDataBtn = view.findViewById(R.id.schedule_add_data_btn);
         locationSpinner = view.findViewById(R.id.location_schedule_spinner);
         sportSpinner = view.findViewById(R.id.sport_schedule_spinner);
@@ -61,12 +58,11 @@ public class AddScheduleFragment extends Fragment {
                 .getReference("schedule");
 
 
-
         final Calendar calendar = Calendar.getInstance();
 
         dateView.setText("2019-03-18");
 
-       final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+        final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
 
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear,
@@ -106,21 +102,18 @@ public class AddScheduleFragment extends Fragment {
         });
 
 
-
-
         return view;
 
     }
 
 
-
-    private void createSchedule(){
+    private void createSchedule() {
         String sport = sportSpinner.getSelectedItem().toString();
         String location = locationSpinner.getSelectedItem().toString();
         String date = dateView.getText().toString();
         String sTime = startTime.getSelectedItem().toString();
         String eTime = endTime.getSelectedItem().toString();
-        addSchedule = new AddSchedule(sTime,eTime, false);
+        addSchedule = new AddSchedule(sTime, eTime, false);
 
         String id = databaseReference.push().getKey();
 

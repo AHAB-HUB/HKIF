@@ -17,7 +17,7 @@ import androidx.annotation.Nullable;
 public class NotificationListener {
 
 
-    public NotificationListener(final Context context, final View v){
+    public NotificationListener(final Context context, final View v) {
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("notification");
 
@@ -26,9 +26,13 @@ public class NotificationListener {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
-                NotificationData data = dataSnapshot.getValue(NotificationData.class);
 
-                new Notifications(data.getTitle(), data.getMessage(), context).sendOnChannel1(v);
+                if (dataSnapshot.exists()) {
+                    NotificationData data = dataSnapshot.getValue(NotificationData.class);
+                    assert data != null;
+                    new Notifications(data.getTitle(), data.getMessage(), context).sendOnChannel1(v);
+                }
+
             }
 
             @Override
@@ -55,5 +59,4 @@ public class NotificationListener {
 
         databaseReference.addChildEventListener(childEventListener);
     }
-
 }
