@@ -16,13 +16,9 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
 import HKR.HKIF.dB.GoingUpdater;
-<<<<<<< Updated upstream
 import HKR.HKIF.fragments.AboutFragment;
-=======
 import HKR.HKIF.fragments.Administration;
 import HKR.HKIF.fragments.CampusFragment;
-
->>>>>>> Stashed changes
 import HKR.HKIF.fragments.DaysFragment;
 import HKR.HKIF.fragments.HomeFragment;
 import HKR.HKIF.fragments.LocationFragment;
