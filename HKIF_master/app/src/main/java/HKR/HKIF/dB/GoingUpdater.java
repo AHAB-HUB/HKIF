@@ -135,6 +135,7 @@ public class GoingUpdater {
     //fetch the number of going members from attendance table
     private void updateEvent(final String key) {
 
+
         Query query = FirebaseDatabase.getInstance().getReference("attendance").orderByChild(key).equalTo("true");
 
         query.addListenerForSingleValueEvent(new ValueEventListener() {
