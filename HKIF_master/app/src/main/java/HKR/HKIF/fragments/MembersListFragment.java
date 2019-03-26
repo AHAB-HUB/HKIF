@@ -7,20 +7,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
 import java.util.Objects;
 
 import HKR.HKIF.R;
 import HKR.HKIF.Users.Person;
 import HKR.HKIF.adapters.MemberListAdapter;
-import HKR.HKIF.data.MemberCard;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -49,7 +46,7 @@ public class MembersListFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
 
-        listView = Objects.requireNonNull(getActivity()). findViewById(R.id.card_listView);
+        listView = Objects.requireNonNull(getActivity()).findViewById(R.id.card_listView);
 
         listView.addHeaderView(new View(getContext()));
         listView.addFooterView(new View(getContext()));
@@ -68,7 +65,7 @@ public class MembersListFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                for (DataSnapshot personSnapshot: dataSnapshot.getChildren()){
+                for (DataSnapshot personSnapshot : dataSnapshot.getChildren()) {
                     Person p = personSnapshot.getValue(Person.class);
                     cardArrayAdapter.add(p);
                 }
@@ -80,9 +77,6 @@ public class MembersListFragment extends Fragment {
 
             }
         });
-
-
-
 
 
         listView.setAdapter(cardArrayAdapter);

@@ -79,7 +79,6 @@ public class DaysFragment extends Fragment {
         });
 
 
-
         sunday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,8 +96,6 @@ public class DaysFragment extends Fragment {
 
             }
         });
-
-
 
 
     }

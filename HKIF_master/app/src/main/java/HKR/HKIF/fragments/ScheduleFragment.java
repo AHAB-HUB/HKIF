@@ -8,11 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
@@ -32,18 +30,18 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 @SuppressLint("ValidFragment")
 public class ScheduleFragment extends Fragment {
 
-        private String path;
-        private   ArrayList<ScheduleItem> items = new ArrayList<>();
+    private String path;
+    private ArrayList<ScheduleItem> items = new ArrayList<>();
 
 
-    public ScheduleFragment (String eventHandler){
-            this.path = eventHandler;
+    public ScheduleFragment(String eventHandler) {
+        this.path = eventHandler;
 
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState){
+                             Bundle savedInstanceState) {
 
         return inflater.inflate(R.layout.schedule_fragment, container, false);
     }
@@ -85,14 +83,17 @@ public class ScheduleFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                if (dataSnapshot.exists()){
+                if (dataSnapshot.exists()) {
                     for (DataSnapshot i : dataSnapshot.getChildren()) {
 
                         items.add(i.getValue(ScheduleItem.class));
+
                     }
 
-                    setAdapter(listView);
                 }
+                setAdapter(listView);
+
+
             }
 
             @Override
@@ -105,7 +106,8 @@ public class ScheduleFragment extends Fragment {
     }
 
     //To fill the adapter with items
-    private void setAdapter(ListView theListView){
+    private void setAdapter(ListView theListView) {
+
 
         // create custom adapter that holds elements and their state (we need hold a id's of unfolded elements for reusable elements)
         final ScheduleAdapter adapter = new ScheduleAdapter(getContext(), items);
@@ -120,7 +122,6 @@ public class ScheduleFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
 
-                Toast.makeText(getContext(),"position  " + pos, Toast.LENGTH_LONG).show();
                 // toggle clicked cell state
                 ((FoldingCell) view).toggle(false);
                 // register in adapter that state for selected cell is toggled

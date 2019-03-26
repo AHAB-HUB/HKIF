@@ -5,8 +5,11 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentManager;
 
 @SuppressLint("ValidFragment")
 public class SetPositionDialog extends DialogFragment {
@@ -14,9 +17,8 @@ public class SetPositionDialog extends DialogFragment {
     private int selectedCell; // from db
     int position;
 
-    public SetPositionDialog(int position){
+    public SetPositionDialog(int position) {
         this.position = position;
-
 
     }
 
@@ -31,21 +33,20 @@ public class SetPositionDialog extends DialogFragment {
                 // Specify the list array, the items to be selected by default (null for none),
                 // and the listener through which to receive callbacks when items are selected
                 .setSingleChoiceItems(list, selectedCell, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
 
-                                //TODO FIX SPORTPICKERDIALOG
-                                new SportPickerDialog(position);
 
-                            }
-                        })
+                    }
+                })
+
                 // Set the action buttons
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
 
-                        //TODO SAVE SELECTED ITEM to DB
-                        //TODO REFRESH THE VIEW
+                        FragmentManager manager = ((AppCompatActivity) getContext()).getSupportFragmentManager(); // to show the dialog
+                        new SportPickerDialog(position).show(manager, "delete");
                         // User clicked OK, so save the selectedItems results somewhere
                         // or return them to the component that opened the dialog
 
@@ -56,7 +57,7 @@ public class SetPositionDialog extends DialogFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
 
-
+                        Toast.makeText(getContext(),"Action canceled",Toast.LENGTH_SHORT).show();
 
                     }
                 });
@@ -66,7 +67,7 @@ public class SetPositionDialog extends DialogFragment {
 
 
     //TODO GET POSITION AND WRITE DB CONFIGURATION
-    private void connection(){
+    private void connection() {
 
 
     }

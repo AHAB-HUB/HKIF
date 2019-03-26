@@ -30,16 +30,16 @@ public class CampusFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        view = inflater.inflate(R.layout.fragment_campus,container,false);
+        view = inflater.inflate(R.layout.fragment_campus, container, false);
 
 
         campus = view.getResources().getStringArray(R.array.campus);
         listView = (ListView) view.findViewById(R.id.text_campus);
 
         ArrayAdapter<String> listAdapter = new ArrayAdapter<String>(
-                getActivity(),android.R.layout.simple_list_item_1,campus);
+                getActivity(), android.R.layout.simple_list_item_1, campus);
 
-        listView.setAdapter(listAdapter);
+        //listView.setAdapter(listAdapter);
 
         return view;
     }

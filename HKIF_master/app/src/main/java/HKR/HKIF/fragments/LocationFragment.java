@@ -33,8 +33,6 @@ public class LocationFragment extends Fragment implements OnMapReadyCallback {
     MapView mapView;
     View view;
 
-
-
     public LocationFragment() {
 
     }
@@ -43,42 +41,23 @@ public class LocationFragment extends Fragment implements OnMapReadyCallback {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        /*mapView = (MapView) view.findViewById(R.id.map);
-        if(mapView != null) {
-            mapView.onCreate(null);
-            mapView.onResume();
-            mapView.getMapAsync(this);
-        }
-
-
-        tabLayout = (TabLayout) getActivity().findViewById(R.id.tablayout_id);
-        viewPager = getActivity().findViewById(R.id.viewpager_id);
-
-        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getFragmentManager());
-        viewPagerAdapter.AddFragment(new CampusFragment(),"Campus");
-        viewPagerAdapter.AddFragment(new OffCampusFragment(),"Off Campus");
-
-        viewPager.setAdapter(viewPagerAdapter);
-        tabLayout.setupWithViewPager(viewPager);*/
-
-
     }
 
     @Override
-    public void onViewCreated( View view,  Bundle savedInstanceState) {
+    public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         tabLayout = (TabLayout) getActivity().findViewById(R.id.tablayout_id);
         viewPager = getActivity().findViewById(R.id.viewpager_id);
 
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getFragmentManager());
-        viewPagerAdapter.AddFragment(new CampusFragment(),"Campus");
-        viewPagerAdapter.AddFragment(new OffCampusFragment(),"Off Campus");
+        viewPagerAdapter.AddFragment(new CampusFragment(), "Hkr Building 7");
+        viewPagerAdapter.AddFragment(new OffCampusFragment(), "City Centre");
 
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
 
         mapView = (MapView) view.findViewById(R.id.map);
-        if(mapView != null){
+        if (mapView != null) {
             mapView.onCreate(null);
             mapView.onResume();
             mapView.getMapAsync(this);
@@ -87,8 +66,8 @@ public class LocationFragment extends Fragment implements OnMapReadyCallback {
 
 
     @Override
-    public View onCreateView( LayoutInflater inflater,  ViewGroup container, Bundle savedInstanceState) {
-        view= inflater.inflate(R.layout.fragment_location,container,false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.fragment_location, container, false);
         return view;
     }
 
@@ -100,8 +79,8 @@ public class LocationFragment extends Fragment implements OnMapReadyCallback {
 
         mGoogleMap = googleMap;
         googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-        googleMap.addMarker(new MarkerOptions().position(new LatLng(56.048688,14.146171)).title("HKR HKIF").snippet("Sport for life"));
-        CameraPosition university = CameraPosition.builder().target(new LatLng(56.048688,14.146171)).zoom(16).bearing(0).tilt(45).build();
+        googleMap.addMarker(new MarkerOptions().position(new LatLng(56.048688, 14.146171)).title("HKR HKIF").snippet("Sport for life"));
+        CameraPosition university = CameraPosition.builder().target(new LatLng(56.048688, 14.146171)).zoom(16).bearing(0).tilt(45).build();
         googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(university));
     }
 }

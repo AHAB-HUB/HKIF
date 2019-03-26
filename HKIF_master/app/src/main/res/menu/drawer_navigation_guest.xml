@@ -6,11 +6,6 @@
     <group android:checkableBehavior="single">
 
         <item
-            android:id="@+id/nav_guest_sports"
-            android:icon="@drawable/ic_sport"
-            android:title="Our sports" />
-
-        <item
             android:id="@+id/nav_guest_gallery"
             android:icon="@drawable/ic_gallery"
             android:title="Gallery" />
@@ -24,10 +19,6 @@
         <item android:icon="@drawable/ic_business_center_black_24dp"
             android:id="@+id/nav_about"
             android:title="About"/>
-
-       <!-- <item android:icon="@drawable/ic_lock_black_24dp"
-            android:title="LogIn"
-            android:id="@+id/logIn"/>-->
 
     </group>
 

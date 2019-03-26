@@ -20,12 +20,12 @@ public class Person {
     private String fullName;
 
 
-    public Person(){
+    public Person() {
 
     }
 
     public Person(String personID, String firstName, String lastName, String email, String password,
-                  String phoneNumber,String position , boolean hasPaid, String profileCreated) {
+                  String phoneNumber, String position, boolean hasPaid, String profileCreated) {
 
         this.personID = personID;
         this.firstName = firstName;
@@ -68,7 +68,7 @@ public class Person {
 
     public String getFirstName() {
 
-        return firstName ;
+        return firstName;
     }
 
     public void setFirstName(String firstName) {

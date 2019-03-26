@@ -6,11 +6,10 @@ import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
@@ -34,8 +33,6 @@ import static androidx.constraintlayout.widget.Constraints.TAG;
 public class SignInFragment extends Fragment implements View.OnClickListener {
 
     private EditText email, password;
-    private TextView signUpLink;
-    private Button logInBtn;
     private String role;
     private ProgressBar progressBar;
     private FirebaseAuth mAuth;
@@ -67,27 +64,27 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
         return view;
     }
 
-    private void userLogin(){
+    private void userLogin() {
 
         String emailLog = email.getText().toString().trim();
         String passwordLog = password.getText().toString().trim();
 
-        if (emailLog.isEmpty()){
+        if (emailLog.isEmpty()) {
             email.setError("Email must be enter");
             email.requestFocus();
             return;
         }
-        if (!Patterns.EMAIL_ADDRESS.matcher(emailLog).matches()){
+        if (!Patterns.EMAIL_ADDRESS.matcher(emailLog).matches()) {
             email.setError("Invalid email format");
             email.requestFocus();
             return;
         }
-        if (passwordLog.isEmpty()){
+        if (passwordLog.isEmpty()) {
             password.setError("Password is required");
             password.requestFocus();
             return;
         }
-        if (passwordLog.length() < 6){
+        if (passwordLog.length() < 6) {
             password.setError("Password must be 6 letters");
             password.requestFocus();
             return;
@@ -95,13 +92,13 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
 
         progressBar.setVisibility(View.VISIBLE);
 
-        mAuth.signInWithEmailAndPassword(emailLog,passwordLog).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        mAuth.signInWithEmailAndPassword(emailLog, passwordLog).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
 
                 progressBar.setVisibility(View.GONE);
 
-                if (task.isSuccessful()){
+                if (task.isSuccessful()) {
 
                     mAuth = FirebaseAuth.getInstance();
                     mDatabase = FirebaseDatabase.getInstance();
@@ -113,9 +110,9 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             role = String.valueOf(dataSnapshot.child("position").getValue());
-                            Log.d(TAG,"Position : "+role);
+                            Log.d(TAG, "Position : " + role);
 
-                            switch (role){
+                            switch (role) {
                                 case "MEMBER":
                                     navigationView1.getMenu().clear();
                                     navigationView1.inflateMenu(R.menu.drawer_navigation_member);
@@ -136,17 +133,15 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
 
                         }
                     });
-
                     FragmentTransaction fragmentHome = getFragmentManager().beginTransaction();
-                    fragmentHome.replace(R.id.fragment_container,new HomeFragment());
+                    fragmentHome.replace(R.id.fragment_container, new HomeFragment());
                     fragmentHome.commit();
 
                     //if need to create and navigate to user profile
                     //Intent intent = new Intent(getActivity(), HomeFragment.class);
                     //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     //startActivity(intent);
-                }
-                else {
+                } else {
                     Toast.makeText(getContext(), "Error", Toast.LENGTH_LONG).show();
                 }
             }
@@ -156,7 +151,7 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
 
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.btn_login:
                 userLogin();
                 break;
@@ -164,7 +159,7 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
             case R.id.link_signup:
 
                 FragmentTransaction fragment2 = getFragmentManager().beginTransaction();
-                fragment2.replace(R.id.fragment_container,new SignUpFragment());
+                fragment2.replace(R.id.fragment_container, new SignUpFragment());
                 fragment2.commit();
 
                 break;

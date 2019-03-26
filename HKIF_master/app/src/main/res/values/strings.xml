@@ -219,6 +219,7 @@
     <string name="football">Football</string>
     <string name="volleyball">Volleyball</string>
     <string name="boxing">Boxing</string>
+    <string name="image">Add new image</string>
 
     <string-array name="campus">
         <item>Sport Hall : </item>
