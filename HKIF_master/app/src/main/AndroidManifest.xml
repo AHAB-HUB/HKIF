@@ -28,6 +28,9 @@
             android:value="AIzaSyBjDnLztBs2E5j9LHa4fXanL3Sd9sIcV-Y" />
 
         <activity android:name=".fragments.SessionManagement"></activity>
+        <activity android:name=".AddImage"></activity>
+        <activity android:name=".ImagesActivity"></activity>
+        <activity android:name=".MyAlbum"></activity>
         <activity
             android:name="HKR.HKIF.MainActivity"
             android:label="@string/app_name"

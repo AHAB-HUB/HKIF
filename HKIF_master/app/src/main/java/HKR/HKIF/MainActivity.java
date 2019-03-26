@@ -16,7 +16,13 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
 import HKR.HKIF.dB.GoingUpdater;
+<<<<<<< Updated upstream
 import HKR.HKIF.fragments.AboutFragment;
+=======
+import HKR.HKIF.fragments.Administration;
+import HKR.HKIF.fragments.CampusFragment;
+
+>>>>>>> Stashed changes
 import HKR.HKIF.fragments.DaysFragment;
 import HKR.HKIF.fragments.HomeFragment;
 import HKR.HKIF.fragments.LocationFragment;
@@ -96,13 +102,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case id.nav_guest_gallery:
             case id.leader_gallery:
             case id.admin_gallery:
-                getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
-                        new SignUpFragment()).commit();
+//                getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
+//                        new SignUpFragment()).commit();
+                Intent gallery = new Intent(this, MyAlbum.class);
+                startActivity(gallery);
                 break;
 
             case id.leader_management:
-                Intent intent = new Intent(this, SessionManagement.class);
-                startActivity(intent);
+                Intent sessionManagement = new Intent(this, SessionManagement.class);
+                startActivity(sessionManagement);
+
+                break;
+
+            case id.admin_admin:
+                getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
+                        new Administration()).commit();
 
                 break;
 

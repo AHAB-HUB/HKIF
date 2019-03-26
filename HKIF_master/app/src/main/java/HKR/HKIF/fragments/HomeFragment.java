@@ -50,7 +50,7 @@ public class HomeFragment extends Fragment {
                 switch (position) {
                     case 0: {
                         navigationView1.getMenu().clear();
-                        navigationView1.inflateMenu(R.menu.drawer_navigation_team_leader);
+                        navigationView1.inflateMenu(R.menu.drawer_navigation_admin);
 
                         break;
                     }
