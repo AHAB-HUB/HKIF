@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">HKIF</string>
     <string-array name="SessionManagement">
         <item> Cancel session </item>
@@ -237,34 +237,34 @@
     </string-array>
 
     <string name="title_activity_maps">Map</string>
-    <string name="badmintonDescription">
-        The aim of badminton is to hit the shuttle with your racket so that it passes over the net and lands inside your opponent's half of the court.
+    <string name="badmintonDescription" tools:ignore="ExtraTranslation,StringEscaping">
+        The aim of badminton is to hit the shuttle with your racket so that it passes over the net and lands inside your opponent\'s half of the court.
         Whenever you do this, you have won a rally; win enough rallies, and you win the match.
         Your opponent has the same goal.
     </string>
     <string name="basketballDescription">The aim of basketball is to score more points than the other team, by shooting the ball in the basket.
         Baskets can be worth 1, 2, or 3 points.
-        You get points by shooting the ball into the opponents' basket.
+        You get points by shooting the ball into the opponents basket.
         The team with the most points at the end of the game wins.</string>
 <string name="boxingDescription">
     Boxing not only requires a high level of athleticism, vitality and strength, but also a high level of concentration and endurance.
 The objective of boxing,is to knock out the opponent, making him unable to stand until the referee counts to ten.
     Another way of winning in boxing, is by scoring points.</string>
-    <string name="climbingDescription">The goal is to reach the summit of a formation or the endpoint of a pre-defined route without falling.
-        Rock climbing is a physically and mentally demanding sport, one that often tests a climber's strength, endurance, agility and balance along with mental control.
+    <string name="climbingDescription" tools:ignore="StringEscaping">The goal is to reach the summit of a formation or the endpoint of a pre-defined route without falling.
+        Rock climbing is a physically and mentally demanding sport, one that often tests a climber\'s strength, endurance, agility and balance along with mental control.
     Indoor rock climbing is much safer than outdoor rock climbing (including the ability to get emergency help right away), but do not discount the value of proper safety checks for rope climbing and a good spotter for bouldering.</string>
     <string name="floorballDescription">Floorball is a type of floor hockey with five players and a goalkeeper in each team.
         Men and women play indoors with 96–115.5 cm-long sticks and a 22–23 cm-circumference plastic ball with holes.
         Matches are played in three twenty-minute periods.</string>
     <string name="footballDescription">A football match is played by two teams, with each allowed no more than 11 players on the field at any one time, one of whom is a goalkeeper. A match is played in two 45 minute halves. ...
-        The aim of the game is to score a goal, which is achieved by kicking or heading the ball into the opposition team's goal.</string>
+        The aim of the game is to score a goal, which is achieved by kicking or heading the ball into the opposition team\'s goal.</string>
     <string name="jujitsuDescription">JJ is played on a mat. Every time a person enters the field of play, i.e. the mat, bowing to the mat, as a mark of respect at the start of the game is mandatory.
         The basic objective of Brazilian Jiu Jitsu is to use hands and legs to lock and immobilize the opponent.
         Different BJJ techniques like pull guard, close guard, scissor guard, full mount, joint locks, etc., are used to cramp the opponent, hence seizing his mobility.</string>
     <string name="swimmingDescription">Swimming is a great recreational activity for people of all ages.
-        Recreational swimming can provide you with a low-impact workout and it’s also a good way to relax and feel good. Common swimming styles in recreational swimming are breaststroke, backstroke, side stroke and freestyle.</string>
-<string name="volleyballDescription">The ball is played by hitting it with any part of the body.
-    The objective of the game is for each team to send the ball over the net to ground it on the opponent's court, and to prevent the ball from being grounded on its own court.
+        Recreational swimming can provide you with a low-impact workout and it\’s also a good way to relax and feel good. Common swimming styles in recreational swimming are breaststroke, backstroke, side stroke and freestyle.</string>
+<string name="volleyballDescription" tools:ignore="StringEscaping">The ball is played by hitting it with any part of the body.
+    The objective of the game is for each team to send the ball over the net to ground it on the opponent\'s court, and to prevent the ball from being grounded on its own court.
     The ball is put into play by the serving player.</string>
     <string name="basketball">Basketball</string>
     <string name="floorball">Floor ball</string>
