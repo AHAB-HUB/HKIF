@@ -16,11 +16,15 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import HKR.HKIF.R;
 import HKR.HKIF.dB.AddNewEventDB;
+import HKR.HKIF.data.NotificationData;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -140,12 +144,13 @@ public class AddNewEvent extends Fragment {
 
                 locationText = location.getText().toString();
 
-                System.out.println(sportName + "   " + year + "   " + month + "   " + day + "   " + hourF + "   " + minuteF + "   " + hourT + "   " + minuteT + "   " + locationText);
-
                 if (sportName != null && year != null && month != null && day != null && hourF != null && minuteT != null && locationText != null) {
                     System.out.println("5ra");
                     new AddNewEventDB(sportName, year, month, day, hourF, minuteF, hourT, minuteT, locationText);
+                                        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("notification");
+                    databaseReference.push().setValue(new NotificationData("New event has been added. Check it out!", sportName + " at: " + locationText));
                 } else {
+
                     System.out.println("mo 5ra");
 
                 }

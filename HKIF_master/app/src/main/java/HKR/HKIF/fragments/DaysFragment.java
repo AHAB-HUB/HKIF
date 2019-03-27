@@ -92,7 +92,7 @@ public class DaysFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new ScheduleFragment("Events")).commit();
+                        new ScheduleFragment("Event")).commit();
 
             }
         });

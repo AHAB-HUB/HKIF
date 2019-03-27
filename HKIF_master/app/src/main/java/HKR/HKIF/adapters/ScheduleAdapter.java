@@ -115,9 +115,6 @@ public class ScheduleAdapter extends ArrayAdapter<ScheduleItem> {
                         ActivityCompat.requestPermissions((Activity) context, new String[]{Manifest.permission.WRITE_CALENDAR}, 1);
                     }
 
-                    //TODO COPY THIS CODE TO PUSH NOTIFICATION AFTER THE FUNCTION YOU WANT
-//                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("notification");
-//                    databaseReference.push().setValue(new NotificationData("test" + position, "text " + position));
                 }
             });
 

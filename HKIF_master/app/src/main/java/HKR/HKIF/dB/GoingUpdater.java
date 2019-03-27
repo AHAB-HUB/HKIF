@@ -147,16 +147,10 @@ public class GoingUpdater {
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
-
                     }
                 });
-
-
                 }catch (NullPointerException e){
-
             }
-
-
     }
 
 
