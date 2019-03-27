@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -22,11 +23,13 @@ public class DeleteDialog extends DialogFragment {
 
     private String memberName;
     private String personId;
+    private String personPosition;
 
 
-    public DeleteDialog(String name, String personId) {
+    public DeleteDialog(String name, String personId, String personPosition) {
         this.memberName = name;
         this.personId = personId;
+        this.personPosition = personPosition;
 
     }
 
@@ -44,20 +47,27 @@ public class DeleteDialog extends DialogFragment {
         builder.setMessage("Are you sure you want to delete \"" + memberName + "\"" + ".")
                 .setPositiveButton("Yes.", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        DatabaseReference databaseReference = FirebaseDatabase.getInstance()
-                                .getReference("person");
 
-                        databaseReference.child(personId).removeValue()
-                                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
+                        if (personPosition.equals("ADMIN")){
+                            Toast.makeText(getContext(), "This is an Admin it can't be deleted", Toast.LENGTH_LONG).show();
+                        }
+                        else {
+                            DatabaseReference databaseReference = FirebaseDatabase.getInstance()
+                                    .getReference("person");
 
-                                    }
-                                });
+                            databaseReference.child(personId).removeValue()
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
 
-                        FragmentTransaction fragmentHome = getFragmentManager().beginTransaction();
-                        fragmentHome.replace(R.id.fragment_container, new MembersListFragment());
-                        fragmentHome.commit();
+                                        }
+                                    });
+
+                            FragmentTransaction fragmentHome = getFragmentManager().beginTransaction();
+                            fragmentHome.replace(R.id.fragment_container, new MembersListFragment());
+                            fragmentHome.commit();
+                        }
+
 
                     }
                 })

@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.database.DatabaseReference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,7 +59,7 @@ public class MemberListAdapter extends ArrayAdapter<Person> {
     public View getView(final int position, View convertView, ViewGroup parent) {
 
         View row = convertView;
-        CardViewHolder viewHolder;
+        final CardViewHolder viewHolder;
 
         if (row == null) {
 
@@ -88,26 +89,27 @@ public class MemberListAdapter extends ArrayAdapter<Person> {
             viewHolder.payment.setText("Has paid");
         }
 
-
-        //TODO add function to these two buttons
         viewHolder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                if (viewHolder.position.getText().toString().equals("ADMIN") && person.getPosition().equals("ADMIN")){
+                    FragmentManager manager = ((AppCompatActivity) getContext()).getSupportFragmentManager();// to show the dialog
+                    new DeleteDialog(person.getFullName(), person.getPersonID(), person.getPosition()).show(manager, "delete");
+                }
 
-                FragmentManager manager = ((AppCompatActivity) getContext()).getSupportFragmentManager();// to show the dialog
-                new DeleteDialog(person.getFullName(), person.getPersonID()).show(manager, "delete");
+
             }
         });
-
 
         viewHolder.edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                FragmentManager manager = ((AppCompatActivity) getContext()).getSupportFragmentManager(); // to show the dialog
-                new SetPositionDialog(position, person.getPersonID(), person.getPosition()).show(manager, "delete");
-
+                if (viewHolder.position.getText().toString().equals("ADMIN") && person.getPosition().equals("ADMIN")){
+                    FragmentManager manager = ((AppCompatActivity) getContext()).getSupportFragmentManager(); // to show the dialog
+                    new SetPositionDialog(position, person.getPersonID(), person.getPosition()).show(manager, "delete");
+                }
             }
         });
 
