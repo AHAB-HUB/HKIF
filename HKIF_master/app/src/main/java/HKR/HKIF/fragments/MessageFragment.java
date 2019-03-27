@@ -19,11 +19,11 @@ public class MessageFragment extends Fragment {
     private EditText editTextSub;
     private EditText editTextMsg;
 
-    public MessageFragment(){
+    public MessageFragment() {
 
     }
 
-    public void onActivityCreated(Bundle saveInstanceState){
+    public void onActivityCreated(Bundle saveInstanceState) {
         super.onActivityCreated(saveInstanceState);
 
         //editTextTo = getActivity().findViewById(R.id.email_to);
@@ -36,29 +36,30 @@ public class MessageFragment extends Fragment {
         sendEmail();
     }
 
-private void sendEmail(){
+    private void sendEmail() {
 
-    String recipientList = "hkif@hotmail.se";
-    String[] recipients = recipientList.split(",");
+        String recipientList = "hkif@hotmail.se";
+        String[] recipients = recipientList.split(",");
 
 
-    String subject = editTextSub.getText().toString();
-    String message = editTextMsg.getText().toString();
+        String subject = editTextSub.getText().toString();
+        String message = editTextMsg.getText().toString();
 
-    Intent intent = new Intent(Intent.ACTION_SEND);
+        Intent intent = new Intent(Intent.ACTION_SEND);
 
-    intent.putExtra(Intent.EXTRA_EMAIL,recipients);
-    intent.putExtra(Intent.EXTRA_SUBJECT,subject);
-    intent.putExtra(Intent.EXTRA_TEXT,message);
+        intent.putExtra(Intent.EXTRA_EMAIL, recipients);
+        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        intent.putExtra(Intent.EXTRA_TEXT, message);
 
-    intent.setType("message/rfc822");
+        intent.setType("message/rfc822");
 
-    startActivity(Intent.createChooser(intent,"Choose an email client"));
+        startActivity(Intent.createChooser(intent, "Choose an email client"));
 
-}
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_message,container,false);
+        return inflater.inflate(R.layout.fragment_message, container, false);
     }
 }

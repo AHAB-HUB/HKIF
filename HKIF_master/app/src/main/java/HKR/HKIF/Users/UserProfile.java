@@ -5,17 +5,17 @@ public class UserProfile {
     private String firstName;
     private String lastName;
     private String phoneNumber;
-    private boolean userHasPaid;
+    private boolean hasPaid;
 
     public UserProfile() {
 
     }
 
-    public UserProfile(String firstName, String lastName, String phoneNumber, boolean userHasPaid) {
+    public UserProfile(String firstName, String lastName, String phoneNumber, boolean hasPaid) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
-        this.userHasPaid = userHasPaid;
+        this.hasPaid = hasPaid;
     }
 
 
@@ -43,11 +43,11 @@ public class UserProfile {
         this.phoneNumber = phoneNumber;
     }
 
-    public boolean isUserHasPaid() {
-        return userHasPaid;
+    public boolean isHasPaid() {
+        return hasPaid;
     }
 
-    public void setUserHasPaid(boolean userHasPaid) {
-        this.userHasPaid = userHasPaid;
+    public void setHasPaid(boolean hasPaid) {
+        this.hasPaid = hasPaid;
     }
 }

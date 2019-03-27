@@ -34,7 +34,7 @@ public class OffCampusFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        view = inflater.inflate(R.layout.fragment_offcampus,container,false);
+        view = inflater.inflate(R.layout.fragment_offcampus, container, false);
 
         //Resources res = getResources();
         offCampus = view.getResources().getStringArray(R.array.offcampus);
@@ -42,7 +42,7 @@ public class OffCampusFragment extends Fragment {
         //listView = (ListView) view.findViewById(R.id.text_offcampus);
 
         ArrayAdapter<String> listAdapter = new ArrayAdapter<String>(
-                getActivity(),android.R.layout.simple_list_item_1,offCampus);
+                getActivity(), android.R.layout.simple_list_item_1, offCampus);
 
         //listView.setAdapter(listAdapter);
 

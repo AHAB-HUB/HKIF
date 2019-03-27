@@ -14,7 +14,7 @@ public class AddSchedule {
 
     }
 
-    public AddSchedule( String start, String end, boolean session_updated) {
+    public AddSchedule(String start, String end, boolean session_updated) {
 
         this.start = start;
         this.end = end;

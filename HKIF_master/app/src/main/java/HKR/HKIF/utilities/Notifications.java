@@ -2,9 +2,8 @@ package HKR.HKIF.utilities;
 
 
 import android.app.Notification;
-import android.view.View;
 import android.content.Context;
-
+import android.view.View;
 
 import HKR.HKIF.R;
 import androidx.core.app.NotificationCompat;
@@ -21,17 +20,16 @@ public class Notifications {
     private String longMessage;
     private Context context;
 
-    public Notifications(String title, String message, Context context){
-            this.title = title;
-            this.message = message;
-            this.context = context;
+    public Notifications(String title, String message, Context context) {
+        this.title = title;
+        this.message = message;
+        this.context = context;
 
-            notificationManager = NotificationManagerCompat.from(context);
+        notificationManager = NotificationManagerCompat.from(context);
     }
 
 
-
-    public void sendOnChannel1(View v){
+    public void sendOnChannel1(View v) {
 
         Notification notification = new NotificationCompat.Builder(context, CHANNEL_1_ID)
                 .setSmallIcon(R.drawable.ic_admin_settings)
@@ -45,7 +43,7 @@ public class Notifications {
 
     }
 
-    public void sendOnChannel2(View v){
+    public void sendOnChannel2(View v) {
 
         Notification notification = new NotificationCompat.Builder(context, CHANNEL_2_ID)
                 .setSmallIcon(R.drawable.ic_admin_settings)

@@ -11,16 +11,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
-
-import HKR.HKIF.fragments.AboutFragment;
 import HKR.HKIF.dB.GoingUpdater;
-import HKR.HKIF.fragments.CampusFragment;
-
+import HKR.HKIF.fragments.AboutFragment;
+import HKR.HKIF.fragments.Administration;
 import HKR.HKIF.fragments.DaysFragment;
 import HKR.HKIF.fragments.HomeFragment;
 import HKR.HKIF.fragments.LocationFragment;
@@ -29,7 +26,6 @@ import HKR.HKIF.fragments.MessageFragment;
 import HKR.HKIF.fragments.ProfileFragment;
 import HKR.HKIF.fragments.SessionManagement;
 import HKR.HKIF.fragments.SignInFragment;
-import HKR.HKIF.fragments.SignUpFragment;
 import HKR.HKIF.utilities.NotificationListener;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -40,7 +36,9 @@ import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import static HKR.HKIF.R.*;
+import static HKR.HKIF.R.id;
+import static HKR.HKIF.R.layout;
+import static HKR.HKIF.R.string;
 import static android.Manifest.permission.CALL_PHONE;
 
 
@@ -52,17 +50,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private Button cancelButton;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(layout.activity_main);
 
         //activate the Notification listener
-        new NotificationListener(this,findViewById(android.R.id.content));
+        new NotificationListener(this, findViewById(android.R.id.content));
 
         //Update Going
         new GoingUpdater();
+
 
         BottomNavigationView bottomNav = findViewById(id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
@@ -95,41 +93,48 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case id.nav_guest_gallery:
             case id.leader_gallery:
             case id.admin_gallery:
-                getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
-                        new SignUpFragment()).commit();
+//                getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
+//                        new SignUpFragment()).commit();
+                Intent gallery = new Intent(this, MyAlbum.class);
+                startActivity(gallery);
                 break;
 
             case id.leader_management:
-                Intent intent = new Intent(this, SessionManagement.class);
-                startActivity(intent);
+                Intent sessionManagement = new Intent(this, SessionManagement.class);
+                startActivity(sessionManagement);
 
                 break;
+
+            case id.admin_admin:
+                getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
+                        new Administration()).commit();
+
+                break;
+
+//            case id.nav_guest_contact:
+//
+//                contactDialog();   // this open the option dialog for call/message
+//
+//                break;
 
             case id.nav_guest_contact:
-
-                contactDialog();   // this open the option dialog for call/message
-
-                break;
-
             case id.member_contact:
-            case  id.leader_contact:
+            case id.leader_contact:
             case id.admin_members:
                 getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
                         new MembersListFragment()).addToBackStack(null).commit();
                 break;
 
-            case id. nav_about:
+            case id.nav_about:
                 getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
                         new AboutFragment()).addToBackStack(null).commit();
                 break;
 
-                //not necessary
+            //not necessary
             /*case id.leader_about:
                 getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
                         new AboutFragment()).addToBackStack(null).commit();
                 break;*/
-
-
 
 
             case id.nav_guest_logIn:
@@ -139,11 +144,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             case id.member_logOut:
                 FirebaseAuth.getInstance().signOut();
-                //finish();
                 getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
                         new HomeFragment()).commit();
                 navigationView1.getMenu().clear();
-                navigationView1.inflateMenu(menu.drawer_navigation_guest);
+                navigationView1.inflateMenu(R.menu.drawer_navigation_guest);
 
                 break;
 
@@ -201,7 +205,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
             };
 
-    public void contactDialog(){
+    public void contactDialog() {
 
         final AlertDialog.Builder contactAlert = new AlertDialog.Builder(MainActivity.this);
         View alertView = getLayoutInflater().inflate(R.layout.contact_dialog, null);
@@ -242,18 +246,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         alertDialog.show();
     }
 
-    public void callPhone(){
+    public void callPhone() {
 
         Intent intent = new Intent(Intent.ACTION_CALL);
         intent.setData(Uri.parse("tel:0736565835"));
 
         if (ContextCompat.checkSelfPermission(this.getApplicationContext(),
-                CALL_PHONE) == PackageManager.PERMISSION_GRANTED){
+                CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
             startActivity(intent);
 
-        }else {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-                requestPermissions(new String[]{CALL_PHONE},1);
+        } else {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                requestPermissions(new String[]{CALL_PHONE}, 1);
             }
         }
 

@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -22,6 +22,7 @@ import HKR.HKIF.Users.UserProfile;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 public class ProfileFragment extends Fragment {
 
@@ -51,9 +52,22 @@ public class ProfileFragment extends Fragment {
 
         databaseReference = FirebaseDatabase.getInstance().getReference("person").child(userID);
 
-
         getInformation();
 
+
+        saveData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateUserData();
+            }
+        });
+
+        payBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                userPayment();
+            }
+        });
 
         return view;
     }
@@ -76,7 +90,7 @@ public class ProfileFragment extends Fragment {
                 firstName.setText(userProfileArrayList.get(0).getFirstName());
                 lastName.setText(userProfileArrayList.get(0).getLastName());
                 phoneNumber.setText(userProfileArrayList.get(0).getPhoneNumber());
-                payment.setText(String.valueOf(userProfileArrayList.get(0).isUserHasPaid()));
+                payment.setText(String.valueOf(userProfileArrayList.get(0).isHasPaid()));
             }
 
             @Override
@@ -84,6 +98,43 @@ public class ProfileFragment extends Fragment {
 
             }
         });
+
+    }
+
+
+    private void updateUserData() {
+        String first = firstName.getText().toString();
+        String last = lastName.getText().toString();
+        String phone = phoneNumber.getText().toString();
+
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("person")
+                .child(userID);
+
+        databaseReference.child("firstName").setValue(first);
+        databaseReference.child("lastName").setValue(last);
+        databaseReference.child("phoneNumber").setValue(phone);
+
+        FragmentTransaction fragmentHome = getFragmentManager().beginTransaction();
+        fragmentHome.replace(R.id.fragment_container, new ProfileFragment());
+        fragmentHome.commit();
+
+
+    }
+
+    private void userPayment() {
+        if (payment.getText().toString().equals("true")) {
+            Toast.makeText(getContext(), "You already have paid!", Toast.LENGTH_LONG).show();
+        } else {
+            boolean pay = true;
+            databaseReference = FirebaseDatabase.getInstance().getReference("person")
+                    .child(userID).child("hasPaid");
+            databaseReference.setValue(pay);
+        }
+
+        FragmentTransaction fragmentHome = getFragmentManager().beginTransaction();
+        fragmentHome.replace(R.id.fragment_container, new ProfileFragment());
+        fragmentHome.commit();
 
     }
 }
