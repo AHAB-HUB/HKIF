@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    tools:context=".fragments.volleyballFragment">
+    tools:context=".fragments.VolleyballFragment">
 
     <TextView
         android:id="@+id/boxTitleTextView"

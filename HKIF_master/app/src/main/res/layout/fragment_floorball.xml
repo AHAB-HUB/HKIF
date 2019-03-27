@@ -16,7 +16,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginStart="121dp"
         android:layout_marginEnd="115dp"
-        android:text="@string/boxing"
+        android:text="Floorball "
         android:textColor="@color/schedule_colorPrimary"
         android:textSize="36sp" />
 
@@ -32,7 +32,7 @@
         android:layout_marginTop="22dp"
         android:layout_marginEnd="0dp"
         android:layout_marginBottom="394dp"
-        android:src="@drawable/boxing_kub" />
+        android:src="@drawable/floorball" />
 
     <TextView
         android:id="@+id/boxDesriptopnTextView"

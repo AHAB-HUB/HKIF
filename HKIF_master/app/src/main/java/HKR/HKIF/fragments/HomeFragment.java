@@ -1,7 +1,6 @@
 package HKR.HKIF.fragments;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,44 +49,44 @@ public class HomeFragment extends Fragment {
                 switch (position) {
                     case 0:
                         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                                new footballFragment()).commit();
+                                new FootballFragment()).commit();
                         break;
 
                     case 1:
                         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                                new volleyballFragment()).commit();
+                                new VolleyballFragment()).commit();
                         break;
 
                     case 2:
                         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                                new badmintonFragment()).commit();
+                                new BadmintonFragment()).commit();
                         break;
                     case 3:
                         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                                new climbingFragment()).commit();
+                                new ClimbingFragment()).commit();
                         break;
                     case 5:
                         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                                new swimmingFragment()).commit();
+                                new SwimmingFragment()).commit();
                         break;
                     case 6:
                         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                                new boxingFragment()).commit();
+                                new BoxingFragment()).commit();
 
                         break;
                     case 7:
                         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                                new juJitsuFragment()).commit();
+                                new JuJitsuFragment()).commit();
 
                         break;
                     case 8:
                         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                                new footballFragment()).commit();
+                                new FloorballFragment()).commit();
 
                         break;
                     case 9:
                         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                                new badmintonFragment()).commit();
+                                new BasketballFragment()).commit();
                         break;
 
 

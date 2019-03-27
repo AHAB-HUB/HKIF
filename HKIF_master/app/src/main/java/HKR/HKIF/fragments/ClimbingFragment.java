@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment;
 
 
 
-public class climbingFragment extends Fragment {
+public class ClimbingFragment extends Fragment {
 
 
     @Override

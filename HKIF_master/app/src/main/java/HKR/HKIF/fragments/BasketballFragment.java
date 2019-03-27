@@ -6,16 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-
 import HKR.HKIF.R;
 import androidx.fragment.app.Fragment;
 
 
-public class volleyballFragment extends Fragment {
+public class BasketballFragment extends Fragment {
 
 
 
@@ -30,12 +25,7 @@ public class volleyballFragment extends Fragment {
                              Bundle savedInstanceState) {
 
 
-
-
-
-
-
-        return inflater.inflate(R.layout.fragment_boxing, container, false);
+        return inflater.inflate(R.layout.fragment_basketball, container, false);
     }
 }
 

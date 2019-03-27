@@ -1,6 +1,7 @@
 package HKR.HKIF.fragments;
 
-
+import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,12 +11,7 @@ import HKR.HKIF.R;
 import androidx.fragment.app.Fragment;
 
 
-/**
- * A simple {@link Fragment} subclass.
- */
-public class footballFragment extends Fragment {
-
-
+public class JuJitsuFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -27,7 +23,7 @@ public class footballFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.fragment_football, container, false);
+        return inflater.inflate(R.layout.fragment_ju_jitsu, container, false);
     }
 
 }

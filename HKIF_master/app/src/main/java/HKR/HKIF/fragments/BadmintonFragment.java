@@ -1,5 +1,6 @@
 package HKR.HKIF.fragments;
 
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +10,7 @@ import HKR.HKIF.R;
 import androidx.fragment.app.Fragment;
 
 
-public class boxingFragment extends Fragment {
+public class BadmintonFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -21,7 +22,7 @@ public class boxingFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.fragment_boxing, container, false);
+        return inflater.inflate(R.layout.fragment_badminton, container, false);
     }
 
 }

@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment;
 
 
 
-public class swimmingFragment extends Fragment {
+public class SwimmingFragment extends Fragment {
 
 
     @Override
