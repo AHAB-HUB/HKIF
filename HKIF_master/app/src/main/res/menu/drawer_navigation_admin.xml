@@ -9,14 +9,14 @@
             android:id="@+id/admin_profile"
             android:title="Profile"/>
 
-        <item
-            android:id="@+id/admin_sport"
-            android:icon="@drawable/ic_sport"
-            android:title="Our sports" />
 
         <item android:icon="@drawable/ic_admin_settings"
             android:id="@+id/admin_admin"
             android:title="Administration"/>
+
+        <item android:icon="@drawable/ic_admin_settings"
+            android:id="@+id/admin_new_event"
+            android:title="Add new event"/>
 
 
         <item
@@ -27,7 +27,7 @@
         <item
             android:id="@+id/admin_members"
             android:icon="@drawable/ic_group_black_24dp"
-            android:title="Contact" />
+            android:title="Members" />
 
         <item android:icon="@drawable/ic_business_center_black_24dp"
             android:id="@+id/nav_about"
@@ -40,7 +40,7 @@
         <menu>
             <item android:icon="@drawable/ic_lock_black_24dp"
                 android:title="Log Out"
-                android:id="@+id/logOut"/>
+                android:id="@+id/member_logOut"/>
         </menu>
     </item>
 

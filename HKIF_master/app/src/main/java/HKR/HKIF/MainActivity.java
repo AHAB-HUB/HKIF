@@ -17,6 +17,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import HKR.HKIF.dB.GoingUpdater;
 import HKR.HKIF.fragments.AboutFragment;
+import HKR.HKIF.fragments.AddNewEvent;
 import HKR.HKIF.fragments.Administration;
 import HKR.HKIF.fragments.DaysFragment;
 import HKR.HKIF.fragments.HomeFragment;
@@ -93,8 +94,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case id.nav_guest_gallery:
             case id.leader_gallery:
             case id.admin_gallery:
-//                getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
-//                        new SignUpFragment()).commit();
                 Intent gallery = new Intent(this, MyAlbum.class);
                 startActivity(gallery);
                 break;
@@ -102,22 +101,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case id.leader_management:
                 Intent sessionManagement = new Intent(this, SessionManagement.class);
                 startActivity(sessionManagement);
+                break;
 
+            case id.admin_new_event:
+                getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
+                        new AddNewEvent()).commit();
                 break;
 
             case id.admin_admin:
                 getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
                         new Administration()).commit();
-
                 break;
 
-//            case id.nav_guest_contact:
-//
-//                contactDialog();   // this open the option dialog for call/message
-//
-//                break;
-
             case id.nav_guest_contact:
+                contactDialog();   // this open the option dialog for call/message
+               break;
+
             case id.member_contact:
             case id.leader_contact:
             case id.admin_members:
@@ -130,22 +129,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         new AboutFragment()).addToBackStack(null).commit();
                 break;
 
-            //not necessary
-            /*case id.leader_about:
-                getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
-                        new AboutFragment()).addToBackStack(null).commit();
-                break;*/
-
 
             case id.nav_guest_logIn:
                 getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
                         new SignInFragment()).addToBackStack(null).commit();
                 break;
 
-            case id.leader_logOut:
             case id.member_logOut:
+                //sign out
                 FirebaseAuth.getInstance().signOut();
-
+                //set side menu
+                navigationView1.getMenu().clear();
+                navigationView1.inflateMenu(R.menu.drawer_navigation_guest);
+                //go back home
                 getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
                         new HomeFragment()).commit();
 
