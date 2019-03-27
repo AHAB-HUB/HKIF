@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
+
 import HKR.HKIF.R;
 import androidx.viewpager.widget.PagerAdapter;
 
@@ -20,7 +21,7 @@ public class SlideImageAdapter extends PagerAdapter {
 
     public SlideImageAdapter(Context context, ArrayList<Integer> IMAGES) {
         this.context = context;
-        this.IMAGES=IMAGES;
+        this.IMAGES = IMAGES;
         inflater = LayoutInflater.from(context);
     }
 

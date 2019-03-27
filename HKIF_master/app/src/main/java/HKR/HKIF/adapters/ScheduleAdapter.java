@@ -46,7 +46,7 @@ public class ScheduleAdapter extends ArrayAdapter<ScheduleItem> {
         logInStatus = FirebaseAuth.getInstance().getUid() != null;
 
 
-        }
+    }
 
     @NonNull
     @Override
@@ -62,9 +62,9 @@ public class ScheduleAdapter extends ArrayAdapter<ScheduleItem> {
 
             LayoutInflater vi = LayoutInflater.from(getContext());
 
-            if (item.getCanceled().equals("false")){
+            if (item.getCanceled().equals("false")) {
                 cell = (FoldingCell) vi.inflate(R.layout.cell, parent, false);
-            }else{
+            } else {
                 cell = (FoldingCell) vi.inflate(R.layout.cell_unfoldable, parent, false);
             }
 
@@ -95,49 +95,44 @@ public class ScheduleAdapter extends ArrayAdapter<ScheduleItem> {
             viewHolder.contentCalenderBtn.setEnabled(false);
 
 
-
-
             if (logInStatus && item.getCanceled().equals("false")) {
                 isGoing(item, viewHolder);
                 viewHolder.going_button.setEnabled(true);
                 viewHolder.contentCalenderBtn.setEnabled(true);
             }
 
-                viewHolder.contentCalenderBtn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
+            viewHolder.contentCalenderBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
 
-                        if (ContextCompat.checkSelfPermission(context.getApplicationContext(),
-                                Manifest.permission.WRITE_CALENDAR) == PackageManager.PERMISSION_GRANTED) {
+                    if (ContextCompat.checkSelfPermission(context.getApplicationContext(),
+                            Manifest.permission.WRITE_CALENDAR) == PackageManager.PERMISSION_GRANTED) {
 
-                            new CalendarNewEvent(context, item.getSport_name(), item.getLocation(), item.getFrom(), item.getTo(), item.getLocation_date());
+                        new CalendarNewEvent(context, item.getSport_name(), item.getLocation(), item.getFrom(), item.getTo(), item.getLocation_date());
 
-                        } else {
-                            ActivityCompat.requestPermissions((Activity) context, new String[]{Manifest.permission.WRITE_CALENDAR}, 1);
-                        }
-
-                        //TODO COPY THIS CODE TO PUSH NOTIFICATION AFTER THE FUNCTION YOU WANT
-//                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("notification");
-//                    databaseReference.push().setValue(new NotificationData("test" + position, "text " + position));
+                    } else {
+                        ActivityCompat.requestPermissions((Activity) context, new String[]{Manifest.permission.WRITE_CALENDAR}, 1);
                     }
-                });
+
+                }
+            });
 
 
-                viewHolder.going_button.setOnClickListener(new View.OnClickListener() {
+            viewHolder.going_button.setOnClickListener(new View.OnClickListener() {
 
-                    @Override
-                    public void onClick(View v) {
+                @Override
+                public void onClick(View v) {
 
-                        if (viewHolder.going_button.getText().equals("Going")) {
-                            setGoing(item, viewHolder, "false");
+                    if (viewHolder.going_button.getText().equals("Going")) {
+                        setGoing(item, viewHolder, "false");
 
-                        } else {
-                            setGoing(item, viewHolder, "true");
+                    } else {
+                        setGoing(item, viewHolder, "true");
 
-                        }
                     }
-                });
+                }
+            });
 
             cell.setTag(viewHolder);
 

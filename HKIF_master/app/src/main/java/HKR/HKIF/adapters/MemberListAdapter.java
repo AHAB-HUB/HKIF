@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -94,7 +93,7 @@ public class MemberListAdapter extends ArrayAdapter<Person> {
         viewHolder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "button " + position, Toast.LENGTH_SHORT).show(); //meh
+
 
                 FragmentManager manager = ((AppCompatActivity) getContext()).getSupportFragmentManager();// to show the dialog
                 new DeleteDialog(person.getFullName(), person.getPersonID()).show(manager, "delete");
@@ -105,10 +104,9 @@ public class MemberListAdapter extends ArrayAdapter<Person> {
         viewHolder.edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "button " + position, Toast.LENGTH_SHORT).show();
 
                 FragmentManager manager = ((AppCompatActivity) getContext()).getSupportFragmentManager(); // to show the dialog
-                new SetPositionDialog(position).show(manager, "delete");
+                new SetPositionDialog(position, person.getPersonID(), person.getPosition()).show(manager, "delete");
 
             }
         });

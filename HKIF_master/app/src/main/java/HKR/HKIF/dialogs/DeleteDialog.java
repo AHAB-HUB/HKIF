@@ -11,8 +11,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import HKR.HKIF.R;
+import HKR.HKIF.fragments.MembersListFragment;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentTransaction;
 
 @SuppressLint("ValidFragment")
 public class DeleteDialog extends DialogFragment {
@@ -52,6 +55,9 @@ public class DeleteDialog extends DialogFragment {
                                     }
                                 });
 
+                        FragmentTransaction fragmentHome = getFragmentManager().beginTransaction();
+                        fragmentHome.replace(R.id.fragment_container, new MembersListFragment());
+                        fragmentHome.commit();
 
                     }
                 })

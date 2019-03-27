@@ -48,4 +48,15 @@ public class SportTable {
     public void setSport_updated(boolean sport_updated) {
         this.sport_updated = sport_updated;
     }
+
+
+    @Override
+    public String toString() {
+        return "SportTable{" +
+                "sport_id='" + sport_id + '\'' +
+                ", sport_name='" + sport_name + '\'' +
+                ", sport_description='" + sport_description + '\'' +
+                ", sport_updated=" + sport_updated +
+                '}';
+    }
 }
