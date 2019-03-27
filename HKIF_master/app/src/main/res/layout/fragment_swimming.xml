@@ -23,6 +23,7 @@
 
     <ImageView
         android:gravity="center"
+        android:paddingTop="2dp"
         android:id="@+id/swiImageView"
         android:layout_width="match_parent"
         android:layout_height="266dp"

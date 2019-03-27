@@ -38,6 +38,7 @@
 
     <TextView
         android:gravity="center"
+        android:paddingTop="2dp"
         android:id="@+id/footDesriptopnTextView"
         android:layout_width="match_parent"
         android:layout_height="223dp"

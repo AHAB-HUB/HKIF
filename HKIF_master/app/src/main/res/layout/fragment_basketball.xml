@@ -38,6 +38,7 @@
 
     <TextView
         android:gravity="center"
+        android:paddingTop="2dp"
         android:id="@+id/basDesriptopnTextView"
         android:layout_width="300dp"
         android:layout_height="200dp"

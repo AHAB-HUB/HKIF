@@ -10,6 +10,7 @@
 
     <TextView
         android:gravity="center"
+        android:paddingTop="2dp"
         android:id="@+id/badTitleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
