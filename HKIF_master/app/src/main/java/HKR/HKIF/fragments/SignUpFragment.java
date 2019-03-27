@@ -23,6 +23,7 @@ import java.util.Date;
 
 import HKR.HKIF.R;
 import HKR.HKIF.Users.Person;
+import HKR.HKIF.dB.AttendancesUpdater;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -95,7 +96,6 @@ public class SignUpFragment extends Fragment {
 
             progressBar.setVisibility(getView().VISIBLE);
 
-
             firebaseAuth.createUserWithEmailAndPassword(emailText, passwordText)
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
@@ -111,7 +111,6 @@ public class SignUpFragment extends Fragment {
                                     fragmentHome.replace(R.id.fragment_container, new SignUpFragment());
                                     fragmentHome.commit();
 
-
                                 } catch (Exception e) {
                                     Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
                                 }
@@ -123,6 +122,7 @@ public class SignUpFragment extends Fragment {
                                         lastNameText, emailText, passwordText,
                                         phoneNumberText, position, false, format);
 
+                                new AttendancesUpdater(person.getPersonID());
 
                                 databasePerson.child(FirebaseAuth.getInstance().getCurrentUser()
                                         .getUid()).setValue(person).addOnCompleteListener(new OnCompleteListener<Void>() {

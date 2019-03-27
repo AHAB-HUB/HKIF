@@ -7,10 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.database.DatabaseReference;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -93,24 +90,20 @@ public class MemberListAdapter extends ArrayAdapter<Person> {
             @Override
             public void onClick(View v) {
 
-                if (viewHolder.position.getText().toString().equals("ADMIN") && person.getPosition().equals("ADMIN")){
                     FragmentManager manager = ((AppCompatActivity) getContext()).getSupportFragmentManager();// to show the dialog
                     new DeleteDialog(person.getFullName(), person.getPersonID(), person.getPosition()).show(manager, "delete");
                 }
 
-
-            }
         });
 
         viewHolder.edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if (viewHolder.position.getText().toString().equals("ADMIN") && person.getPosition().equals("ADMIN")){
                     FragmentManager manager = ((AppCompatActivity) getContext()).getSupportFragmentManager(); // to show the dialog
                     new SetPositionDialog(position, person.getPersonID(), person.getPosition()).show(manager, "delete");
                 }
-            }
+
         });
 
         return row;
