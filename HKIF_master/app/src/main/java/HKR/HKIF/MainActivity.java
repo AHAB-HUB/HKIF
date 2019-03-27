@@ -111,13 +111,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                 break;
 
-//            case id.nav_guest_contact:
-//
-//                contactDialog();   // this open the option dialog for call/message
-//
-//                break;
-
             case id.nav_guest_contact:
+
+                contactDialog();   // this open the option dialog for call/message
+
+               break;
+
             case id.member_contact:
             case id.leader_contact:
             case id.admin_members:
