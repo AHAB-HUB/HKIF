@@ -137,11 +137,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         new SignInFragment()).addToBackStack(null).commit();
                 break;
 
-            case id.logOut:
+            case id.member_logOut:
                 FirebaseAuth.getInstance().signOut();
-                finish();
+                //finish();
                 getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
                         new HomeFragment()).commit();
+                navigationView1.getMenu().clear();
+                navigationView1.inflateMenu(menu.drawer_navigation_guest);
 
                 break;
 

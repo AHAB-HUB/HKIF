@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -22,6 +23,7 @@ public class OffCampusFragment extends Fragment {
     View view;
     TextView textView;
     ListView listView;
+
     String[] offCampus;
 
     public OffCampusFragment() {
@@ -36,6 +38,7 @@ public class OffCampusFragment extends Fragment {
 
         //Resources res = getResources();
         offCampus = view.getResources().getStringArray(R.array.offcampus);
+
         //listView = (ListView) view.findViewById(R.id.text_offcampus);
 
         ArrayAdapter<String> listAdapter = new ArrayAdapter<String>(
