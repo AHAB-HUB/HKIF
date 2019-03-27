@@ -14,6 +14,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -25,6 +26,7 @@ import HKR.HKIF.Users.Person;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 public class SignUpFragment extends Fragment {
 
@@ -82,7 +84,8 @@ public class SignUpFragment extends Fragment {
 
             Toast.makeText(getContext(), "Please fill all the fields!", Toast.LENGTH_LONG).show();
 
-        } else {
+        }
+        else {
 
             final DateFormat dateFormat = DateFormat.getDateInstance();
             final String format = dateFormat.format(new Date());
@@ -98,22 +101,40 @@ public class SignUpFragment extends Fragment {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
 
-                            progressBar.setVisibility(getView().GONE);
+                            if (!task.isSuccessful()) {
+                                try {
+                                    throw task.getException();
+                                } catch (FirebaseAuthUserCollisionException existEmail) {
+                                    Toast.makeText(getContext(), "This email is already exist", Toast.LENGTH_LONG).show();
 
-                            final Person person = new Person(firebaseAuth.getUid(), firstNameText,
-                                    lastNameText, emailText, passwordText,
-                                    phoneNumberText, position, false, format);
+                                    FragmentTransaction fragmentHome = getFragmentManager().beginTransaction();
+                                    fragmentHome.replace(R.id.fragment_container, new SignUpFragment());
+                                    fragmentHome.commit();
 
 
-                            databasePerson.child(FirebaseAuth.getInstance().getCurrentUser()
-                                    .getUid()).setValue(person).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    Toast.makeText(getContext(), "Done!", Toast.LENGTH_LONG).show();
+                                } catch (Exception e) {
+                                    Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
                                 }
-                            });
+                            } else {
 
+                                progressBar.setVisibility(getView().GONE);
+
+                                final Person person = new Person(firebaseAuth.getUid(), firstNameText,
+                                        lastNameText, emailText, passwordText,
+                                        phoneNumberText, position, false, format);
+
+
+                                databasePerson.child(FirebaseAuth.getInstance().getCurrentUser()
+                                        .getUid()).setValue(person).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        Toast.makeText(getContext(), "Done!", Toast.LENGTH_LONG).show();
+                                    }
+                                });
+
+                            }
                         }
+
                     });
         }
     }
