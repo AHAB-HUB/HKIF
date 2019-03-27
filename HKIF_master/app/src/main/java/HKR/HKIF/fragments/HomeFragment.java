@@ -41,48 +41,73 @@ public class HomeFragment extends Fragment {
         String[] description = getResources().getStringArray(R.array.Description);
 
 
-        SportItems_Adapter simpleAdapter = new SportItems_Adapter(activity, title, description);
+        SportItems_Adapter simpleAdapter = new SportItems_Adapter(title, description);
         sportListView.setAdapter(simpleAdapter);
 
         sportListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
-                    case 0: {
-                        navigationView1.getMenu().clear();
-                        navigationView1.inflateMenu(R.menu.drawer_navigation_admin);
+                    case 0:
+                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                                new footballFragment()).commit();
+                        break;
+
+                    case 1:
+                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                                new volleyballFragment()).commit();
+                        break;
+
+                    case 2:
+                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                                new badmintonFragment()).commit();
+                        break;
+                    case 3:
+                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                                new climbingFragment()).commit();
+                        break;
+                    case 5:
+                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                                new swimmingFragment()).commit();
+                        break;
+                    case 6:
+                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                                new boxingFragment()).commit();
 
                         break;
-                    }
-                    case 1: {
-                        navigationView1.getMenu().clear();
-                        navigationView1.inflateMenu(R.menu.drawer_navigation_team_leader);
+                    case 7:
+                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                                new juJitsuFragment()).commit();
+
                         break;
-                    }
-                    case 2: {
+                    case 8:
+                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                                new footballFragment()).commit();
+
                         break;
-                    }
-                    case 3: {
+                    case 9:
+                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                                new badmintonFragment()).commit();
                         break;
-                    }
+
+
+
                 }
             }
         });
     }
 
     public class SportItems_Adapter extends BaseAdapter {
-        private Context mContext;
         private LayoutInflater layoutInflater;
         private TextView title, description;
         private String[] titleArray;
         private String[] descriptionArray;
         private ImageView imageView;
 
-        public SportItems_Adapter(Context context, String[] title, String[] description) {
-            mContext = context;
+        public SportItems_Adapter(String[] title, String[] description) {
             titleArray = title;
             descriptionArray = description;
-            layoutInflater = LayoutInflater.from(context);
+            layoutInflater = LayoutInflater.from(getContext());
         }
 
 
