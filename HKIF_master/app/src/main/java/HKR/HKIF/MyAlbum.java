@@ -2,6 +2,7 @@ package HKR.HKIF;
 
 import android.os.Bundle;
 import android.os.Handler;
+
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -17,11 +18,11 @@ public class MyAlbum extends AppCompatActivity {
     private static ViewPager mPager;
     private static int currentPage = 0;
     private static int NUM_PAGES = 0;
-    private static final Integer[] IMAGES= {R.drawable.one,R.drawable.two,R.drawable.three,R.drawable.four,
-            R.drawable.five,R.drawable.six,R.drawable.seven,R.drawable.eight,
-            R.drawable.nine,R.drawable.ten,R.drawable.eleven,R.drawable.twelve,
-            R.drawable.thirteen,R.drawable.fourteen,R.drawable.fithteen,R.drawable.sixthteen,
-            R.drawable.eighteen,R.drawable.nineteen,R.drawable.twenty};
+    private static final Integer[] IMAGES = {R.drawable.one, R.drawable.two, R.drawable.three, R.drawable.four,
+            R.drawable.five, R.drawable.six, R.drawable.seven, R.drawable.eight,
+            R.drawable.nine, R.drawable.ten, R.drawable.eleven, R.drawable.twelve,
+            R.drawable.thirteen, R.drawable.fourteen, R.drawable.fithteen, R.drawable.sixthteen,
+            R.drawable.eighteen, R.drawable.nineteen, R.drawable.twenty};
     private ArrayList<Integer> ImagesArray = new ArrayList<>();
 
     @Override
@@ -32,13 +33,13 @@ public class MyAlbum extends AppCompatActivity {
     }
 
     private void init() {
-        for(int i=0;i<IMAGES.length;i++)
+        for (int i = 0; i < IMAGES.length; i++)
             ImagesArray.add(IMAGES[i]);
 
         mPager = findViewById(R.id.pager);
 
 
-        mPager.setAdapter(new SlideImageAdapter(MyAlbum.this,ImagesArray));
+        mPager.setAdapter(new SlideImageAdapter(MyAlbum.this, ImagesArray));
 
 
         CircleIndicator indicator = findViewById(R.id.indicator);
@@ -50,7 +51,7 @@ public class MyAlbum extends AppCompatActivity {
 //Set circle indicator radius
         //indicator.setRadius(5 * density);
 
-        NUM_PAGES =IMAGES.length;
+        NUM_PAGES = IMAGES.length;
 
         // Auto start of viewpager
         final Handler handler = new Handler();

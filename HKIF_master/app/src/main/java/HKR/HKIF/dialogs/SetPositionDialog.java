@@ -7,19 +7,31 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import HKR.HKIF.R;
+import HKR.HKIF.Users.Person;
+import HKR.HKIF.fragments.MembersListFragment;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 @SuppressLint("ValidFragment")
 public class SetPositionDialog extends DialogFragment {
 
     private int selectedCell; // from db
     int position;
+    private int numberTwo;
+    private String personID;
+    private String personPosition;
+    private DatabaseReference databaseReference;
 
-    public SetPositionDialog(int position) {
+    public SetPositionDialog(int position, String personID, String personPosition) {
         this.position = position;
-
+        this.personID = personID;
+        this.personPosition = personPosition;
     }
 
     @Override
@@ -36,6 +48,7 @@ public class SetPositionDialog extends DialogFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
+                        numberTwo = which;
 
                     }
                 })
@@ -45,10 +58,38 @@ public class SetPositionDialog extends DialogFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
 
-                        FragmentManager manager = ((AppCompatActivity) getContext()).getSupportFragmentManager(); // to show the dialog
-                        new SportPickerDialog(position).show(manager, "delete");
-                        // User clicked OK, so save the selectedItems results somewhere
-                        // or return them to the component that opened the dialog
+                        if (numberTwo == 0) {
+
+                            if (personPosition.equals("MEMBER")) {
+                                Toast.makeText(getContext(), "This is already a member", Toast.LENGTH_LONG).show();
+                            } else if (personPosition.equals("TEAM_LEADER")) {
+                                databaseReference = FirebaseDatabase.getInstance().getReference("person")
+                                        .child(personID).child("position");
+                                databaseReference.setValue(Person.POSITION.MEMBER);
+
+                                databaseReference = FirebaseDatabase.getInstance().getReference("sport_leaders");
+                                databaseReference.child(personID).removeValue();
+
+                                FragmentTransaction fragmentHome = getFragmentManager().beginTransaction();
+                                fragmentHome.replace(R.id.fragment_container, new MembersListFragment());
+                                fragmentHome.commit();
+                            } else {
+                                Toast.makeText(getContext(), "This is an Admin can't be a member", Toast.LENGTH_LONG).show();
+                            }
+
+                        } else {
+
+                            if (personPosition.equals("ADMIN")) {
+                                Toast.makeText(getContext(), "This is an Admin can't be a team leader", Toast.LENGTH_LONG).show();
+                            } else {
+                                FragmentManager manager = ((AppCompatActivity) getContext()).getSupportFragmentManager(); // to show the dialog
+                                new SportPickerDialog(position, personID, personPosition).show(manager, "delete");
+                                // User clicked OK, so save the selectedItems results somewhere
+                                // or return them to the component that opened the dialog
+                            }
+
+
+                        }
 
 
                     }
@@ -57,7 +98,7 @@ public class SetPositionDialog extends DialogFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
 
-                        Toast.makeText(getContext(),"Action canceled",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Action canceled", Toast.LENGTH_SHORT).show();
 
                     }
                 });

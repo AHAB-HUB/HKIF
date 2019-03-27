@@ -18,7 +18,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import HKR.HKIF.dB.GoingUpdater;
 import HKR.HKIF.fragments.AboutFragment;
 import HKR.HKIF.fragments.Administration;
-import HKR.HKIF.fragments.CampusFragment;
 import HKR.HKIF.fragments.DaysFragment;
 import HKR.HKIF.fragments.HomeFragment;
 import HKR.HKIF.fragments.LocationFragment;
@@ -27,7 +26,6 @@ import HKR.HKIF.fragments.MessageFragment;
 import HKR.HKIF.fragments.ProfileFragment;
 import HKR.HKIF.fragments.SessionManagement;
 import HKR.HKIF.fragments.SignInFragment;
-import HKR.HKIF.fragments.SignUpFragment;
 import HKR.HKIF.utilities.NotificationListener;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -82,9 +80,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
                 new HomeFragment()).commit();
-
-
-
 
 
     }

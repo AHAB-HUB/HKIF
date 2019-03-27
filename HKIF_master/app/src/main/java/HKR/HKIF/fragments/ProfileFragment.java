@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -103,7 +102,7 @@ public class ProfileFragment extends Fragment {
     }
 
 
-    private void updateUserData(){
+    private void updateUserData() {
         String first = firstName.getText().toString();
         String last = lastName.getText().toString();
         String phone = phoneNumber.getText().toString();
@@ -117,18 +116,16 @@ public class ProfileFragment extends Fragment {
         databaseReference.child("phoneNumber").setValue(phone);
 
         FragmentTransaction fragmentHome = getFragmentManager().beginTransaction();
-        fragmentHome.replace(R.id.fragment_container,new ProfileFragment());
+        fragmentHome.replace(R.id.fragment_container, new ProfileFragment());
         fragmentHome.commit();
-
 
 
     }
 
-    private void userPayment(){
-        if (payment.getText().toString().equals("true")){
+    private void userPayment() {
+        if (payment.getText().toString().equals("true")) {
             Toast.makeText(getContext(), "You already have paid!", Toast.LENGTH_LONG).show();
-        }
-        else {
+        } else {
             boolean pay = true;
             databaseReference = FirebaseDatabase.getInstance().getReference("person")
                     .child(userID).child("hasPaid");
@@ -136,7 +133,7 @@ public class ProfileFragment extends Fragment {
         }
 
         FragmentTransaction fragmentHome = getFragmentManager().beginTransaction();
-        fragmentHome.replace(R.id.fragment_container,new ProfileFragment());
+        fragmentHome.replace(R.id.fragment_container, new ProfileFragment());
         fragmentHome.commit();
 
     }

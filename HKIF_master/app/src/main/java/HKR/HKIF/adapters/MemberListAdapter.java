@@ -108,7 +108,7 @@ public class MemberListAdapter extends ArrayAdapter<Person> {
                 Toast.makeText(getContext(), "button " + position, Toast.LENGTH_SHORT).show();
 
                 FragmentManager manager = ((AppCompatActivity) getContext()).getSupportFragmentManager(); // to show the dialog
-                new SetPositionDialog(position).show(manager, "delete");
+                new SetPositionDialog(position, person.getPersonID(), person.getPosition()).show(manager, "delete");
 
             }
         });
