@@ -30,6 +30,7 @@ import java.util.Calendar;
 
 import HKR.HKIF.ImagesActivity;
 import HKR.HKIF.R;
+import HKR.HKIF.data.NotificationData;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 import static androidx.constraintlayout.widget.Constraints.TAG;
@@ -126,6 +127,8 @@ public class SessionManagement extends AppCompatActivity implements DatePickerDi
                                                     DatabaseReference query = FirebaseDatabase.getInstance()
                                                             .getReference("schedule").child("-Laf_MnlaPxHSSY9ZpUg").child("canceled");
                                                     query.setValue("true");
+                                                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("notification");
+                                                    databaseReference.push().setValue(new NotificationData("Cancellation", current_sport + " has been canceled on"+day));
                                                     Toast.makeText(SessionManagement.this, "session canceled!", Toast.LENGTH_SHORT).show();
 
                                                     date.setText("");
@@ -149,6 +152,8 @@ public class SessionManagement extends AppCompatActivity implements DatePickerDi
                                                             DatabaseReference query = FirebaseDatabase.getInstance()
                                                                     .getReference("schedule").child("-Laf_MnyhR0_29belPsf").child("canceled");
                                                             query.setValue("true");
+                                                            DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("notification");
+                                                            databaseReference.push().setValue(new NotificationData("Cancellation", current_sport + " has been canceled on"+day));
                                                             Toast.makeText(SessionManagement.this, "session canceled!", Toast.LENGTH_SHORT).show();
 
                                                             date.setText("");
@@ -196,7 +201,10 @@ public class SessionManagement extends AppCompatActivity implements DatePickerDi
                                                     DatabaseReference query = FirebaseDatabase.getInstance()
                                                             .getReference("schedule").child("-Laf_MnrNmpeakWo-_Vk").child("canceled");
                                                     query.setValue("true");
+                                                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("notification");
+                                                    databaseReference.push().setValue(new NotificationData("Cancellation", current_sport + " has been canceled on"+day));
                                                     Toast.makeText(SessionManagement.this, "session canceled!", Toast.LENGTH_SHORT).show();
+
 
                                                     date.setText("");
                                                     sport.setText("");
@@ -244,6 +252,8 @@ public class SessionManagement extends AppCompatActivity implements DatePickerDi
                                                     DatabaseReference query = FirebaseDatabase.getInstance()
                                                             .getReference("schedule").child("-Laf_Mnszyx-H8JZoaBF").child("canceled");
                                                     query.setValue("true");
+                                                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("notification");
+                                                    databaseReference.push().setValue(new NotificationData("Cancellation", current_sport + " has been canceled on"+day));
                                                     Toast.makeText(SessionManagement.this, "session canceled!", Toast.LENGTH_SHORT).show();
 
                                                     date.setText("");
@@ -267,6 +277,8 @@ public class SessionManagement extends AppCompatActivity implements DatePickerDi
                                                             DatabaseReference query = FirebaseDatabase.getInstance()
                                                                     .getReference("schedule").child("-Laf_MnwmUgG7vhgfszL").child("canceled");
                                                             query.setValue("true");
+                                                            DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("notification");
+                                                            databaseReference.push().setValue(new NotificationData("Cancellation", current_sport + " has been canceled on"+day));
                                                             Toast.makeText(SessionManagement.this, "session canceled!", Toast.LENGTH_SHORT).show();
 
                                                             date.setText("");
@@ -316,6 +328,8 @@ public class SessionManagement extends AppCompatActivity implements DatePickerDi
                                                     DatabaseReference query = FirebaseDatabase.getInstance()
                                                             .getReference("schedule").child("-Laf_Mnn-sgiGSt1fM_Q").child("canceled");
                                                     query.setValue("true");
+                                                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("notification");
+                                                    databaseReference.push().setValue(new NotificationData("Cancellation", current_sport + " has been canceled on"+day));
                                                     Toast.makeText(SessionManagement.this, "session canceled!", Toast.LENGTH_SHORT).show();
 
                                                     date.setText("");
@@ -365,6 +379,8 @@ public class SessionManagement extends AppCompatActivity implements DatePickerDi
                                                     DatabaseReference query = FirebaseDatabase.getInstance()
                                                             .getReference("schedule").child("-Laf_MngaaNXoKtfJYH3").child("canceled");
                                                     query.setValue("true");
+                                                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("notification");
+                                                    databaseReference.push().setValue(new NotificationData("Cancellation", current_sport + " has been canceled on"+day));
                                                     Toast.makeText(SessionManagement.this, "session canceled!", Toast.LENGTH_SHORT).show();
                                                 }
                                             });
@@ -380,6 +396,8 @@ public class SessionManagement extends AppCompatActivity implements DatePickerDi
                                                             DatabaseReference query = FirebaseDatabase.getInstance()
                                                                     .getReference("schedule").child("-Laf_MnvV6eyjIql9PCS").child("canceled");
                                                             query.setValue("true");
+                                                            DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("notification");
+                                                            databaseReference.push().setValue(new NotificationData("Cancellation", current_sport + " has been canceled on"+day));
                                                             Toast.makeText(SessionManagement.this, "session canceled!", Toast.LENGTH_SHORT).show();
 
                                                             date.setText("");
@@ -404,6 +422,8 @@ public class SessionManagement extends AppCompatActivity implements DatePickerDi
                                                             DatabaseReference query = FirebaseDatabase.getInstance()
                                                                     .getReference("schedule").child("-Laf_MnxJwzgPYafs71T").child("canceled");
                                                             query.setValue("true");
+                                                            DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("notification");
+                                                            databaseReference.push().setValue(new NotificationData("Cancellation", current_sport + " has been canceled on"+day));
                                                             Toast.makeText(SessionManagement.this, "session canceled!", Toast.LENGTH_SHORT).show();
 
                                                             date.setText("");
@@ -426,9 +446,6 @@ public class SessionManagement extends AppCompatActivity implements DatePickerDi
                                     confirmation_question.setText(dayMismatch);
                                 }
                                 break;
-
-
-
 
 
 
@@ -456,6 +473,8 @@ public class SessionManagement extends AppCompatActivity implements DatePickerDi
                                                     DatabaseReference query = FirebaseDatabase.getInstance()
                                                             .getReference("schedule").child("-Laf_MncjPoY8AcQLLMs").child("canceled");
                                                     query.setValue("true");
+                                                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("notification");
+                                                    databaseReference.push().setValue(new NotificationData("Cancellation", current_sport + " has been canceled on"+day));
                                                     Toast.makeText(SessionManagement.this, "session canceled!", Toast.LENGTH_SHORT).show();
 
                                                     date.setText("");
@@ -479,6 +498,8 @@ public class SessionManagement extends AppCompatActivity implements DatePickerDi
                                                             DatabaseReference query = FirebaseDatabase.getInstance()
                                                                     .getReference("schedule").child("-Laf_Mntq996Sn6VLQzS").child("canceled");
                                                             query.setValue("true");
+                                                            DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("notification");
+                                                            databaseReference.push().setValue(new NotificationData("Cancellation", current_sport + " has been canceled on"+day));
                                                             Toast.makeText(SessionManagement.this, "session canceled!", Toast.LENGTH_SHORT).show();
 
                                                             date.setText("");
@@ -531,6 +552,8 @@ public class SessionManagement extends AppCompatActivity implements DatePickerDi
                                                     DatabaseReference query = FirebaseDatabase.getInstance()
                                                             .getReference("schedule").child("-Laf_MnaysCdJ-wv89br").child("canceled");
                                                     query.setValue("true");
+                                                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("notification");
+                                                    databaseReference.push().setValue(new NotificationData("Cancellation", current_sport + " has been canceled on"+day));
                                                     Toast.makeText(SessionManagement.this, "session canceled!", Toast.LENGTH_SHORT).show();
 
                                                     date.setText("");
@@ -554,6 +577,8 @@ public class SessionManagement extends AppCompatActivity implements DatePickerDi
                                                             DatabaseReference query = FirebaseDatabase.getInstance()
                                                                     .getReference("schedule").child("-Laf_MnqcYUvWXD35dhe").child("canceled");
                                                             query.setValue("true");
+                                                            DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("notification");
+                                                            databaseReference.push().setValue(new NotificationData("Cancellation", current_sport + " has been canceled on"+day));
                                                             Toast.makeText(SessionManagement.this, "session canceled!", Toast.LENGTH_SHORT).show();
 
                                                             date.setText("");
@@ -605,6 +630,8 @@ public class SessionManagement extends AppCompatActivity implements DatePickerDi
                                                     DatabaseReference query = FirebaseDatabase.getInstance()
                                                             .getReference("schedule").child("-Laf_Mn_kNFAyVk36ALJ").child("canceled");
                                                     query.setValue("true");
+                                                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("notification");
+                                                    databaseReference.push().setValue(new NotificationData("Cancellation", current_sport + " has been canceled on"+day));
                                                     Toast.makeText(SessionManagement.this, "session canceled!", Toast.LENGTH_SHORT).show();
 
                                                     date.setText("");
@@ -628,6 +655,8 @@ public class SessionManagement extends AppCompatActivity implements DatePickerDi
                                                             DatabaseReference query = FirebaseDatabase.getInstance()
                                                                     .getReference("schedule").child("-Laf_MnfhWu-sGigQPqv").child("canceled");
                                                             query.setValue("true");
+                                                            DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("notification");
+                                                            databaseReference.push().setValue(new NotificationData("Cancellation", current_sport + " has been canceled on"+day));
                                                             Toast.makeText(SessionManagement.this, "session canceled!", Toast.LENGTH_SHORT).show();
 
                                                             date.setText("");
@@ -653,6 +682,8 @@ public class SessionManagement extends AppCompatActivity implements DatePickerDi
                                                             DatabaseReference query = FirebaseDatabase.getInstance()
                                                                     .getReference("schedule").child("-Laf_Mnus8wcUWSvtFyL").child("canceled");
                                                             query.setValue("true");
+                                                            DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("notification");
+                                                            databaseReference.push().setValue(new NotificationData("Cancellation", current_sport + " has been canceled on"+day));
                                                             Toast.makeText(SessionManagement.this, "session canceled!", Toast.LENGTH_SHORT).show();
 
                                                             date.setText("");
@@ -675,8 +706,6 @@ public class SessionManagement extends AppCompatActivity implements DatePickerDi
                                     confirmation_question.setText(dayMismatch);
                                 }
                                 break;
-
-
 
 
 
@@ -705,6 +734,10 @@ public class SessionManagement extends AppCompatActivity implements DatePickerDi
                                                     DatabaseReference query = FirebaseDatabase.getInstance()
                                                             .getReference("schedule").child("-Laf_Mn5cvX7S10hDy9l").child("canceled");
                                                     query.setValue("true");
+
+                                                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("notification");
+                                                    databaseReference.push().setValue(new NotificationData("Cancellation.", current_sport + " has been canceled on"+day));
+
                                                     Toast.makeText(SessionManagement.this, "session canceled!", Toast.LENGTH_SHORT).show();
 
                                                     date.setText("");
@@ -728,6 +761,8 @@ public class SessionManagement extends AppCompatActivity implements DatePickerDi
                                                             DatabaseReference query = FirebaseDatabase.getInstance()
                                                                     .getReference("schedule").child("-Laf_MnpOoJweDMbV84A").child("canceled");
                                                             query.setValue("true");
+                                                            DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("notification");
+                                                            databaseReference.push().setValue(new NotificationData("Cancellation", current_sport + " has been canceled on"+day));
                                                             Toast.makeText(SessionManagement.this, "session canceled!", Toast.LENGTH_SHORT).show();
 
                                                             date.setText("");
@@ -753,6 +788,8 @@ public class SessionManagement extends AppCompatActivity implements DatePickerDi
                                                             DatabaseReference query = FirebaseDatabase.getInstance()
                                                                     .getReference("schedule").child("-LawKwKzf1bPQesie6Yl").child("canceled");
                                                             query.setValue("true");
+                                                            DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("notification");
+                                                            databaseReference.push().setValue(new NotificationData("Cancellation", current_sport + " has been canceled on"+day));
                                                             Toast.makeText(SessionManagement.this, "session canceled!", Toast.LENGTH_SHORT).show();
 
                                                             date.setText("");
