@@ -94,6 +94,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case id.nav_guest_gallery:
             case id.leader_gallery:
             case id.admin_gallery:
+            case id.member_gallery:
                 Intent gallery = new Intent(this, MyAlbum.class);
                 startActivity(gallery);
                 break;
