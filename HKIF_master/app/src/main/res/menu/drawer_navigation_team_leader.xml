@@ -36,11 +36,11 @@
         <menu>
             <item android:icon="@drawable/ic_lock_black_24dp"
                 android:title="Inbox"
-                android:id="@+id/inbox"/>
+                android:id="@+id/mem_inbox"/>
 
             <item android:icon="@drawable/ic_lock_black_24dp"
                 android:title="History"
-                android:id="@+id/history"/>
+                android:id="@+id/mem_history"/>
 
             <item android:icon="@drawable/ic_lock_black_24dp"
                 android:title="Log Out"

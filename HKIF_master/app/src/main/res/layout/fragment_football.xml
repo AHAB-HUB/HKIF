@@ -52,7 +52,6 @@
         android:textColor="@color/schedule_colorPrimary"/>
 
     <Button
-        android:gravity="center"
         android:id="@+id/footLocationImageButton"
         android:layout_width="match_parent"
         android:layout_height="104dp"
@@ -63,8 +62,9 @@
         android:layout_marginEnd="0dp"
         android:layout_marginBottom="28dp"
         android:background="@color/schedule_colorPrimary"
+        android:gravity="center"
         android:text="VIEW OUR LOCATION"
         android:textColor="#ffffff"
-        android:textSize="16sp"  />
+        android:textSize="16sp" />
 
 </RelativeLayout>

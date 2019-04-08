@@ -15,6 +15,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
 import HKR.HKIF.dB.GoingUpdater;
+import HKR.HKIF.extraReq.AttendanceHistoryFragment;
 import HKR.HKIF.extraReq.MessagesFragment;
 import HKR.HKIF.fragments.AboutFragment;
 import HKR.HKIF.fragments.AddNewEvent;
@@ -135,10 +136,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         new SignInFragment()).addToBackStack(null).commit();
                 break;
 
-            case id.history:
-
+            case id.mem_history:
+                getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
+                        new AttendanceHistoryFragment()).addToBackStack(null).commit();
                 break;
-            case id.inbox:
+            case id.mem_inbox:
                 getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
                         new MessagesFragment()).addToBackStack(null).commit();
                 break;

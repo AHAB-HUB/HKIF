@@ -27,6 +27,8 @@ import java.util.List;
 
 import HKR.HKIF.R;
 import HKR.HKIF.data.ScheduleItem;
+import HKR.HKIF.localDatabase.AttendanceHistory;
+import HKR.HKIF.localDatabase.HkifLocalDatabase;
 import HKR.HKIF.utilities.CalendarNewEvent;
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
@@ -263,11 +265,32 @@ public class ScheduleAdapter extends ArrayAdapter<ScheduleItem> {
             v.going_button.setText("Going");
             v.going_button.setBackgroundColor(Color.GREEN);
             v.going_button.setTextColor(Color.WHITE);
+            fillAttendance(item);
 
         } else {
             v.going_button.setText("Not going");
             v.going_button.setBackgroundColor(Color.RED);
             v.going_button.setTextColor(Color.WHITE);
+            deleteAttendance(item);
         }
+    }
+
+    private void fillAttendance(ScheduleItem item){
+
+        AttendanceHistory attendanceHistory = new AttendanceHistory();
+        attendanceHistory.setUser_id(FirebaseAuth.getInstance().getUid());
+        attendanceHistory.setSport_name(item.getSport_name());
+        attendanceHistory.setSession_date(item.getLocation_date());
+        attendanceHistory.setLocation(item.getLocation());
+
+        HkifLocalDatabase hkifLocalDatabase = new HkifLocalDatabase(getContext());
+
+        hkifLocalDatabase.addAttendance(attendanceHistory);
+    }
+
+    private void deleteAttendance(ScheduleItem item){
+        HkifLocalDatabase hkifLocalDatabase = new HkifLocalDatabase(getContext());
+
+        hkifLocalDatabase.deleteUserAttendanceHistory(item.getSport_name());
     }
 }
