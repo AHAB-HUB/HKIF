@@ -12,8 +12,12 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
+import HKR.HKIF.Database.GetSchedule;
 import HKR.HKIF.Database.SportLeaders;
 import HKR.HKIF.Database.SportTable;
 import HKR.HKIF.R;
@@ -36,11 +40,14 @@ public class SportPickerDialog extends DialogFragment {
     private String sportID;
     private SportLeaders sportLeaders;
     private String personPosition;
-    private String sportIDAfter;
+    private GetSchedule getSchedule;
+    private ArrayList<GetSchedule> arrayList;
+    private String fullName;
 
-    public SportPickerDialog(int position, String personID, String personPosition) {
+    public SportPickerDialog(int position, String personID, String personPosition, String fullName) {
         this.personID = personID;
         this.personPosition = personPosition;
+        this.fullName = fullName;
     }
 
 
@@ -70,6 +77,7 @@ public class SportPickerDialog extends DialogFragment {
 
                                 getSports();
 
+                                assignTeamLeader();
 
                                 if (!personPosition.equals("TEAM_LEADER")) {
                                     databaseReference = FirebaseDatabase.getInstance()
@@ -77,6 +85,10 @@ public class SportPickerDialog extends DialogFragment {
 
                                     databaseReference.setValue(Person.POSITION.TEAM_LEADER);
                                 }
+
+
+
+
 
 
                                 FragmentTransaction fragmentHome = getFragmentManager().beginTransaction();
@@ -145,6 +157,48 @@ public class SportPickerDialog extends DialogFragment {
         }.start();
 
 
+    }
+
+    private void assignTeamLeader(){
+        getSchedule = new GetSchedule();
+        arrayList = new ArrayList<>();
+
+        final Query query= FirebaseDatabase.getInstance().getReference("schedule");
+
+        query.orderByChild("sport_name").equalTo(sportName)
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                        if (dataSnapshot.exists()) {
+                            for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+
+                                getSchedule = snapshot.getValue(GetSchedule.class);
+                                arrayList.add(getSchedule);
+
+
+
+                            }
+
+
+                            System.out.println("Sport Name: " + arrayList.get(0).getId());
+                            System.out.println("-------------------------------------------------------------------------");
+
+
+                            databaseReference = FirebaseDatabase.getInstance().getReference("schedule");
+
+                            for (int i = 0; i <arrayList.size() ; i++) {
+                                databaseReference.child(arrayList.get(i).getId()).child("leader_name").setValue(fullName);
+                            }
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
     }
 
 

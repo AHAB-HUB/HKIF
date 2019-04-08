@@ -7,12 +7,20 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
+import HKR.HKIF.Database.GetSchedule;
 import HKR.HKIF.R;
 import HKR.HKIF.Users.Person;
 import HKR.HKIF.fragments.MembersListFragment;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
@@ -26,12 +34,16 @@ public class SetPositionDialog extends DialogFragment {
     private int numberTwo;
     private String personID;
     private String personPosition;
+    private String fullName;
     private DatabaseReference databaseReference;
+    private GetSchedule getSchedule;
+    private ArrayList<GetSchedule> arrayList;
 
-    public SetPositionDialog(int position, String personID, String personPosition) {
+    public SetPositionDialog(int position, String personID, String personPosition, String fullName) {
         this.position = position;
         this.personID = personID;
         this.personPosition = personPosition;
+        this.fullName = fullName;
     }
 
     @Override
@@ -70,6 +82,44 @@ public class SetPositionDialog extends DialogFragment {
                                 databaseReference = FirebaseDatabase.getInstance().getReference("sport_leaders");
                                 databaseReference.child(personID).removeValue();
 
+                                getSchedule = new GetSchedule();
+                                arrayList = new ArrayList<>();
+
+                                final Query query= FirebaseDatabase.getInstance().getReference("schedule");
+
+                                query.orderByChild("leader_name").equalTo(fullName)
+                                        .addListenerForSingleValueEvent(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                                                if (dataSnapshot.exists()) {
+                                                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+
+                                                        getSchedule = snapshot.getValue(GetSchedule.class);
+                                                        arrayList.add(getSchedule);
+
+
+
+                                                    }
+
+
+
+                                                    databaseReference = FirebaseDatabase.getInstance().getReference("schedule");
+
+                                                    for (int i = 0; i <arrayList.size() ; i++) {
+                                                        databaseReference.child(arrayList.get(i).getId()).child("leader_name").setValue(" ");
+                                                    }
+
+                                                }
+                                            }
+
+                                            @Override
+                                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                            }
+                                        });
+
+
                                 FragmentTransaction fragmentHome = getFragmentManager().beginTransaction();
                                 fragmentHome.replace(R.id.fragment_container, new MembersListFragment());
                                 fragmentHome.commit();
@@ -83,7 +133,7 @@ public class SetPositionDialog extends DialogFragment {
                                 Toast.makeText(getContext(), "This is an Admin can't be a team leader", Toast.LENGTH_LONG).show();
                             } else {
                                 FragmentManager manager = ((AppCompatActivity) getContext()).getSupportFragmentManager(); // to show the dialog
-                                new SportPickerDialog(position, personID, personPosition).show(manager, "delete");
+                                new SportPickerDialog(position, personID, personPosition, fullName).show(manager, "delete");
                                 // User clicked OK, so save the selectedItems results somewhere
                                 // or return them to the component that opened the dialog
                             }

@@ -101,7 +101,7 @@ public class MemberListAdapter extends ArrayAdapter<Person> {
             public void onClick(View v) {
 
                     FragmentManager manager = ((AppCompatActivity) getContext()).getSupportFragmentManager(); // to show the dialog
-                    new SetPositionDialog(position, person.getPersonID(), person.getPosition()).show(manager, "delete");
+                    new SetPositionDialog(position, person.getPersonID(), person.getPosition(), person.getFullName()).show(manager, "delete");
                 }
 
         });

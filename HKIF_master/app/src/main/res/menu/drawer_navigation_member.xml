@@ -28,9 +28,20 @@
     <item android:title="Membership">
 
         <menu>
+
             <item android:icon="@drawable/ic_lock_black_24dp"
-                android:title="Log Out"
-                android:id="@+id/member_logOut"/>
+                android:title="Inbox"
+                android:id="@+id/inbox"/>
+
+            <item android:icon="@drawable/ic_lock_black_24dp"
+                android:title="History"
+                android:id="@+id/history"/>
+
+            <item android:icon="@drawable/ic_lock_black_24dp"
+            android:title="Log Out"
+            android:id="@+id/member_logOut"/>
+
+
         </menu>
     </item>
 

@@ -41,9 +41,13 @@ public class GoingUpdater {
 //        sportList.add("-Laf_MnxJwzgPYafs71T");
 //        sportList.add("-Laf_MnyhR0_29belPsf");
 //        sportList.add("-Lb-pL3pL8zgFVOlXbRK");
+//        sportList.add("-Lb0bf3-rO3fu9FiMhMY");
+//        sportList.add("-Lb161Fn6cWzE66YOUO5");
 //
 //
 //        for (int i = 0; i < sportList.size(); i++) {
+//            data.child("51As5hOk3kWmtGJkyoawFfQOuTS2").child(sportList.get(i)).setValue("false");
+//            data.child("74L9rAoEjJamYdrB95iJdgvNkqx1").child(sportList.get(i)).setValue("false");
 //            data.child("8T5xLX24cUaeNoY3qUhykSuYoTp1").child(sportList.get(i)).setValue("false");
 //            data.child("BC6SrS42PjPRgKlKU6uLPABgyPl2").child(sportList.get(i)).setValue("false");
 //            data.child("QFs1o9LEV9aKYfBTMJmIY3WNivQ2").child(sportList.get(i)).setValue("false");
@@ -52,7 +56,9 @@ public class GoingUpdater {
 //
 //            data.child("iCF311t6YkO8jnnzjq0q3ZBMB8I3").child(sportList.get(i)).setValue("false");
 //            data.child("jDeb6uSFaeQbvoM24kFldtWxh2J3").child(sportList.get(i)).setValue("false");
+//            data.child("jFKASMjoAIR6TLbqQmjaHm5MOOt1").child(sportList.get(i)).setValue("false");
 //            data.child("kOJ6LU0HvkOoXXRxYDsSLIIUatf1").child(sportList.get(i)).setValue("false");
+//            data.child("rQ8JLc3zIzPXYWkNvpWaavLesho1").child(sportList.get(i)).setValue("false");
 //            data.child("tCfRCP7c28WO7c48lSkphdSRLUd2").child(sportList.get(i)).setValue("false");
 //            data.child("uccodBbN8tZ5FIoy36wACvIGtwS2").child(sportList.get(i)).setValue("false");
 //            data.child("vbzv7TkDO1YcJ4iU8ThAY5hzfyJ3").child(sportList.get(i)).setValue("false");

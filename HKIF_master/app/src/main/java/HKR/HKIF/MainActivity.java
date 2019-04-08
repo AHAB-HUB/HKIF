@@ -15,6 +15,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
 import HKR.HKIF.dB.GoingUpdater;
+import HKR.HKIF.extraReq.MessagesFragment;
 import HKR.HKIF.fragments.AboutFragment;
 import HKR.HKIF.fragments.AddNewEvent;
 import HKR.HKIF.fragments.Administration;
@@ -132,6 +133,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case id.nav_guest_logIn:
                 getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
                         new SignInFragment()).addToBackStack(null).commit();
+                break;
+
+            case id.history:
+
+                break;
+            case id.inbox:
+                getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
+                        new MessagesFragment()).addToBackStack(null).commit();
                 break;
 
             case id.member_logOut:
