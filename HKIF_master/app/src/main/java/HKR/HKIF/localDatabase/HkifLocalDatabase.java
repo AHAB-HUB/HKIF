@@ -125,4 +125,10 @@ public class HkifLocalDatabase extends SQLiteOpenHelper {
 
     }
 
+    public void deleteAllRecordsFromAttendance(){
+        SQLiteDatabase database = this.getWritableDatabase();
+
+        database.delete(TABLE_ATTENDANCE_HISTORY, null, null);
+    }
+
 }

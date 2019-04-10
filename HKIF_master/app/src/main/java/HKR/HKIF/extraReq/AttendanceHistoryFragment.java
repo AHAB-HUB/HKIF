@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +27,7 @@ public class AttendanceHistoryFragment extends Fragment {
     private RecyclerView recyclerView;
     private List<AttendanceHistory> attendanceHistories;
     private AttendanceHistoryAdapter attendanceHistoryAdapter;
+    private Button clearBtn;
 
 
     @Nullable
@@ -42,6 +44,19 @@ public class AttendanceHistoryFragment extends Fragment {
 
         initViews();
         initObjects();
+
+        clearBtn = getActivity().findViewById(R.id.attendance_history_clear_btn);
+
+        clearBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new HkifLocalDatabase(getContext()).deleteAllRecordsFromAttendance();
+
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new AttendanceHistoryFragment()).addToBackStack(null).commit();
+
+            }
+        });
     }
 
     private void initViews() {

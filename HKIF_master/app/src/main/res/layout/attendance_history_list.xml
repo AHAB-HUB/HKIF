@@ -29,6 +29,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:id="@+id/attendance_history_clear_btn"
+                android:text="CLEAR"
+                android:layout_marginStart="320dp"/>
+
+        </LinearLayout>
+
     </LinearLayout>
 
     <TextView
