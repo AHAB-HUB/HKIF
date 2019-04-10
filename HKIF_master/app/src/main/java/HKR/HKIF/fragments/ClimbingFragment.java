@@ -9,7 +9,6 @@ import HKR.HKIF.R;
 import androidx.fragment.app.Fragment;
 
 
-
 public class ClimbingFragment extends Fragment {
 
 

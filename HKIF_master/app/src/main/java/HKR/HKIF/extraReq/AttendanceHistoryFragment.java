@@ -7,8 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.firebase.auth.FirebaseAuth;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,7 +45,7 @@ public class AttendanceHistoryFragment extends Fragment {
     }
 
     private void initViews() {
-        recyclerView =  getActivity().findViewById(R.id.attendance_recycler_view);
+        recyclerView = getActivity().findViewById(R.id.attendance_recycler_view);
     }
 
     private void initObjects() {
@@ -65,8 +63,7 @@ public class AttendanceHistoryFragment extends Fragment {
     }
 
     @SuppressLint("StaticFieldLeak")
-    private void getDataFromSQLite(){
-
+    private void getDataFromSQLite() {
 
 
         // AsyncTask is used that SQLite operation not blocks the UI Thread.

@@ -14,10 +14,9 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-public class UsersRecyclerAdapter extends RecyclerView.Adapter<UsersRecyclerAdapter.UserViewHolder> {
+public class InboxAdapter extends RecyclerView.Adapter<InboxAdapter.UserViewHolder> {
 
     private List<NotificationData> listUsers;
-
 
 
     @Override
@@ -25,7 +24,7 @@ public class UsersRecyclerAdapter extends RecyclerView.Adapter<UsersRecyclerAdap
 
         // inflating recycler item view
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_user_recycler, parent, false);
+                .inflate(R.layout.inbox_cell, parent, false);
 
         return new UserViewHolder(itemView);
     }
@@ -38,18 +37,16 @@ public class UsersRecyclerAdapter extends RecyclerView.Adapter<UsersRecyclerAdap
 
     @Override
     public int getItemCount() {
-        Log.v(UsersRecyclerAdapter.class.getSimpleName(),""+listUsers.size());
+        Log.v(InboxAdapter.class.getSimpleName(), "" + listUsers.size());
         return listUsers.size();
     }
 
 
-    public UsersRecyclerAdapter(List<NotificationData> listUsers) {
+    public InboxAdapter(List<NotificationData> listUsers) {
         this.listUsers = listUsers;
     }
 
-    /**
-     * ViewHolder class
-     */
+
     public class UserViewHolder extends RecyclerView.ViewHolder {
 
         private AppCompatTextView title;
@@ -57,8 +54,8 @@ public class UsersRecyclerAdapter extends RecyclerView.Adapter<UsersRecyclerAdap
 
         public UserViewHolder(View view) {
             super(view);
-            title    =  view.findViewById(R.id.notification_title);
-            message  =  view.findViewById(R.id.notification_message);
+            title = view.findViewById(R.id.notification_title);
+            message = view.findViewById(R.id.notification_message);
         }
     }
 

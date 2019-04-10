@@ -105,7 +105,7 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
                     mDb = mDatabase.getReference();
                     FirebaseUser user = mAuth.getCurrentUser();
                     String userKey = user.getUid();
-                    System.out.println(userKey );
+                    System.out.println(userKey);
 
                     mDb.child("person").child(userKey).addValueEventListener(new ValueEventListener() {
                         @Override

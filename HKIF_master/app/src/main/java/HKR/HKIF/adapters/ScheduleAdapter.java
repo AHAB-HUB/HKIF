@@ -275,7 +275,7 @@ public class ScheduleAdapter extends ArrayAdapter<ScheduleItem> {
         }
     }
 
-    private void fillAttendance(ScheduleItem item){
+    private void fillAttendance(ScheduleItem item) {
 
         AttendanceHistory attendanceHistory = new AttendanceHistory();
         attendanceHistory.setUser_id(FirebaseAuth.getInstance().getUid());
@@ -288,7 +288,7 @@ public class ScheduleAdapter extends ArrayAdapter<ScheduleItem> {
         hkifLocalDatabase.addAttendance(attendanceHistory);
     }
 
-    private void deleteAttendance(ScheduleItem item){
+    private void deleteAttendance(ScheduleItem item) {
         HkifLocalDatabase hkifLocalDatabase = new HkifLocalDatabase(getContext());
 
         hkifLocalDatabase.deleteUserAttendanceHistory(item.getSport_name());

@@ -7,8 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import HKR.HKIF.AddImage;
 import HKR.HKIF.R;
+import HKR.HKIF.utilities.AddImage;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;

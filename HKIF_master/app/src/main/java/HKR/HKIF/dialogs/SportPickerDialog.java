@@ -87,10 +87,6 @@ public class SportPickerDialog extends DialogFragment {
                                 }
 
 
-
-
-
-
                                 FragmentTransaction fragmentHome = getFragmentManager().beginTransaction();
                                 fragmentHome.replace(R.id.fragment_container, new MembersListFragment());
                                 fragmentHome.commit();
@@ -159,11 +155,11 @@ public class SportPickerDialog extends DialogFragment {
 
     }
 
-    private void assignTeamLeader(){
+    private void assignTeamLeader() {
         getSchedule = new GetSchedule();
         arrayList = new ArrayList<>();
 
-        final Query query= FirebaseDatabase.getInstance().getReference("schedule");
+        final Query query = FirebaseDatabase.getInstance().getReference("schedule");
 
         query.orderByChild("sport_name").equalTo(sportName)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
@@ -177,7 +173,6 @@ public class SportPickerDialog extends DialogFragment {
                                 arrayList.add(getSchedule);
 
 
-
                             }
 
 
@@ -187,7 +182,7 @@ public class SportPickerDialog extends DialogFragment {
 
                             databaseReference = FirebaseDatabase.getInstance().getReference("schedule");
 
-                            for (int i = 0; i <arrayList.size() ; i++) {
+                            for (int i = 0; i < arrayList.size(); i++) {
                                 databaseReference.child(arrayList.get(i).getId()).child("leader_name").setValue(fullName);
                             }
 

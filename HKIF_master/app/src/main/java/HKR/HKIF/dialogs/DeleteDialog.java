@@ -48,10 +48,9 @@ public class DeleteDialog extends DialogFragment {
                 .setPositiveButton("Yes.", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
 
-                        if (personPosition.equals("ADMIN")){
+                        if (personPosition.equals("ADMIN")) {
                             Toast.makeText(getContext(), "This is an Admin it can't be deleted", Toast.LENGTH_LONG).show();
-                        }
-                        else {
+                        } else {
                             DatabaseReference databaseReference = FirebaseDatabase.getInstance()
                                     .getReference("person");
 

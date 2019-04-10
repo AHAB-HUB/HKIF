@@ -7,7 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -90,9 +92,9 @@ public class MemberListAdapter extends ArrayAdapter<Person> {
             @Override
             public void onClick(View v) {
 
-                    FragmentManager manager = ((AppCompatActivity) getContext()).getSupportFragmentManager();// to show the dialog
-                    new DeleteDialog(person.getFullName(), person.getPersonID(), person.getPosition()).show(manager, "delete");
-                }
+                FragmentManager manager = ((AppCompatActivity) getContext()).getSupportFragmentManager();// to show the dialog
+                new DeleteDialog(person.getFullName(), person.getPersonID(), person.getPosition()).show(manager, "delete");
+            }
 
         });
 
@@ -100,9 +102,9 @@ public class MemberListAdapter extends ArrayAdapter<Person> {
             @Override
             public void onClick(View v) {
 
-                    FragmentManager manager = ((AppCompatActivity) getContext()).getSupportFragmentManager(); // to show the dialog
-                    new SetPositionDialog(position, person.getPersonID(), person.getPosition(), person.getFullName()).show(manager, "delete");
-                }
+                FragmentManager manager = ((AppCompatActivity) getContext()).getSupportFragmentManager(); // to show the dialog
+                new SetPositionDialog(position, person.getPersonID(), person.getPosition(), person.getFullName()).show(manager, "delete");
+            }
 
         });
 

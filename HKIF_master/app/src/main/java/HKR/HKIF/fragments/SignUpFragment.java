@@ -85,8 +85,7 @@ public class SignUpFragment extends Fragment {
 
             Toast.makeText(getContext(), "Please fill all the fields!", Toast.LENGTH_LONG).show();
 
-        }
-        else {
+        } else {
 
             final DateFormat dateFormat = DateFormat.getDateInstance();
             final String format = dateFormat.format(new Date());

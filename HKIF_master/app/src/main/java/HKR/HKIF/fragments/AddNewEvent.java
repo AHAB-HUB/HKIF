@@ -147,7 +147,7 @@ public class AddNewEvent extends Fragment {
                 if (sportName != null && year != null && month != null && day != null && hourF != null && minuteT != null && locationText != null) {
                     System.out.println("5ra");
                     new AddNewEventDB(sportName, year, month, day, hourF, minuteF, hourT, minuteT, locationText);
-                                        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("notification");
+                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("notification");
                     databaseReference.push().setValue(new NotificationData("New event has been added. Check it out!", sportName + " at: " + locationText));
                 } else {
 

@@ -13,7 +13,6 @@ import androidx.fragment.app.Fragment;
 public class FloorballFragment extends Fragment {
 
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

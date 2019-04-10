@@ -1,4 +1,4 @@
-package HKR.HKIF;
+package HKR.HKIF.utilities;
 
 import android.content.ContentResolver;
 import android.content.Intent;
@@ -25,7 +25,8 @@ import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
-import HKR.HKIF.utilities.Upload;
+import HKR.HKIF.ImagesActivity;
+import HKR.HKIF.R;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 

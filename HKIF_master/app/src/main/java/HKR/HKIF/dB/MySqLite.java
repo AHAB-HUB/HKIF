@@ -55,7 +55,7 @@ public class MySqLite extends SQLiteOpenHelper {
                 null,       //filter by row groups
                 null); //The sort order
 
-         // Traversing through all rows and adding to list
+        // Traversing through all rows and adding to list
         if (cursor.moveToFirst()) {
             do {
                 NotificationData message = new NotificationData(cursor.getString(cursor.getColumnIndex("title")),
@@ -73,7 +73,7 @@ public class MySqLite extends SQLiteOpenHelper {
     public List<ScheduleItem> getSchedule() {
         List<ScheduleItem> messagesList = new ArrayList<>();
 
-      //   array of columns to fetch
+        //   array of columns to fetch
         String[] columns = {
                 "cancel",
                 "day",
@@ -98,11 +98,10 @@ public class MySqLite extends SQLiteOpenHelper {
                 null); //The sort order
 
 
-
         return messagesList;
     }
 
-    public void setMessages(ArrayList<NotificationData> list){
+    public void setMessages(ArrayList<NotificationData> list) {
 
         clearMessages();
 
@@ -122,7 +121,7 @@ public class MySqLite extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void setSchedule(ArrayList<ScheduleItem> list){
+    public void setSchedule(ArrayList<ScheduleItem> list) {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -147,7 +146,7 @@ public class MySqLite extends SQLiteOpenHelper {
         }
     }
 
-    public void clearMessages(){
+    public void clearMessages() {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -156,7 +155,7 @@ public class MySqLite extends SQLiteOpenHelper {
 
     }
 
-    public void clearSchedule(){
+    public void clearSchedule() {
 
         SQLiteDatabase db = this.getWritableDatabase();
 

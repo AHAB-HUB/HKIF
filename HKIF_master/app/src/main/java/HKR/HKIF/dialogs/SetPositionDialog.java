@@ -85,7 +85,7 @@ public class SetPositionDialog extends DialogFragment {
                                 getSchedule = new GetSchedule();
                                 arrayList = new ArrayList<>();
 
-                                final Query query= FirebaseDatabase.getInstance().getReference("schedule");
+                                final Query query = FirebaseDatabase.getInstance().getReference("schedule");
 
                                 query.orderByChild("leader_name").equalTo(fullName)
                                         .addListenerForSingleValueEvent(new ValueEventListener() {
@@ -99,14 +99,12 @@ public class SetPositionDialog extends DialogFragment {
                                                         arrayList.add(getSchedule);
 
 
-
                                                     }
-
 
 
                                                     databaseReference = FirebaseDatabase.getInstance().getReference("schedule");
 
-                                                    for (int i = 0; i <arrayList.size() ; i++) {
+                                                    for (int i = 0; i < arrayList.size(); i++) {
                                                         databaseReference.child(arrayList.get(i).getId()).child("leader_name").setValue(" ");
                                                     }
 

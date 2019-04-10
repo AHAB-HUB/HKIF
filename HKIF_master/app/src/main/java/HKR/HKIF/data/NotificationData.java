@@ -10,6 +10,14 @@ public class NotificationData {
 
     }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
     public NotificationData(String title, String message) {
 
         this.title = title;

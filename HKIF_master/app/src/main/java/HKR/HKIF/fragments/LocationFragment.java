@@ -50,8 +50,8 @@ public class LocationFragment extends Fragment implements OnMapReadyCallback {
         viewPager = getActivity().findViewById(R.id.viewpager_id);
 
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getChildFragmentManager());
-        viewPagerAdapter.AddFragment(new CampusFragment(),"Hkr Building 7");
-        viewPagerAdapter.AddFragment(new OffCampusFragment(),"City Centre");
+        viewPagerAdapter.AddFragment(new CampusFragment(), "Hkr Building 7");
+        viewPagerAdapter.AddFragment(new OffCampusFragment(), "City Centre");
 
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);

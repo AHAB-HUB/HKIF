@@ -9,12 +9,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
 import java.util.List;
 
-import HKR.HKIF.Users.Person;
-import androidx.annotation.Nullable;
-
 public class HkifLocalDatabase extends SQLiteOpenHelper {
 
-    private  static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 1;
 
     private static final String DATABASE_NAME = "HistoryDatabase.db";
 
@@ -31,10 +28,9 @@ public class HkifLocalDatabase extends SQLiteOpenHelper {
 
     private String CREATE_ATTENDANCE_HISTORY_TABLE = "CREATE TABLE " + TABLE_ATTENDANCE_HISTORY + "("
             + COLUMN_ATTENDANCE_HISTORY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_ATTENDANCE_HISTORY_USER_ID + " TEXT,"
-            + COLUMN_ATTENDANCE_HISTORY_LOCATION+ " TEXT," +
+            + COLUMN_ATTENDANCE_HISTORY_LOCATION + " TEXT," +
             COLUMN_ATTENDANCE_HISTORY_DATE + " TEXT, " + COLUMN_ATTENDANCE_HISTORY_SPORT_NAME + " TEXT"
             + ")";
-
 
 
     public HkifLocalDatabase(Context context) {
@@ -59,7 +55,7 @@ public class HkifLocalDatabase extends SQLiteOpenHelper {
     }
 
 
-    public void addAttendance(AttendanceHistory attendanceHistory){
+    public void addAttendance(AttendanceHistory attendanceHistory) {
         SQLiteDatabase database = this.getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
@@ -74,7 +70,7 @@ public class HkifLocalDatabase extends SQLiteOpenHelper {
     }
 
 
-    public List<AttendanceHistory> getUserAtendance(){
+    public List<AttendanceHistory> getUserAtendance() {
         String[] columns =
                 {
                         COLUMN_ATTENDANCE_HISTORY_ID,
@@ -90,7 +86,7 @@ public class HkifLocalDatabase extends SQLiteOpenHelper {
 
 
         //String selectionWhere  = "\"" + COLUMN_ATTENDANCE_HISTORY_USER_ID + " =?" + "\"";
-       // String [] args = {userID};
+        // String [] args = {userID};
 
         Cursor cursor = database.query(TABLE_ATTENDANCE_HISTORY,
                 columns,
@@ -101,7 +97,7 @@ public class HkifLocalDatabase extends SQLiteOpenHelper {
                 null
         );
 
-        if (cursor.moveToFirst()){
+        if (cursor.moveToFirst()) {
             do {
                 AttendanceHistory attendanceHistory = new AttendanceHistory();
                 attendanceHistory.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex(COLUMN_ATTENDANCE_HISTORY_ID))));
@@ -110,7 +106,7 @@ public class HkifLocalDatabase extends SQLiteOpenHelper {
                 attendanceHistory.setSession_date(cursor.getString(cursor.getColumnIndex(COLUMN_ATTENDANCE_HISTORY_DATE)));
                 attendanceHistory.setSport_name(cursor.getString(cursor.getColumnIndex(COLUMN_ATTENDANCE_HISTORY_SPORT_NAME)));
                 attendanceHistoryList.add(attendanceHistory);
-            }while (cursor.moveToNext());
+            } while (cursor.moveToNext());
         }
 
         cursor.close();
@@ -119,12 +115,12 @@ public class HkifLocalDatabase extends SQLiteOpenHelper {
         return attendanceHistoryList;
     }
 
-    public void deleteUserAttendanceHistory(String sportName){
-        String where =  COLUMN_ATTENDANCE_HISTORY_SPORT_NAME + " =?" ;
+    public void deleteUserAttendanceHistory(String sportName) {
+        String where = COLUMN_ATTENDANCE_HISTORY_SPORT_NAME + " =?";
 
         SQLiteDatabase database = this.getReadableDatabase();
 
-        database.delete(TABLE_ATTENDANCE_HISTORY, where, new String[]{ sportName});
+        database.delete(TABLE_ATTENDANCE_HISTORY, where, new String[]{sportName});
 
 
     }

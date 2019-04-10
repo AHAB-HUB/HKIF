@@ -16,7 +16,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import HKR.HKIF.dB.GoingUpdater;
 import HKR.HKIF.extraReq.AttendanceHistoryFragment;
-import HKR.HKIF.extraReq.MessagesFragment;
+import HKR.HKIF.extraReq.InboxFragment;
 import HKR.HKIF.fragments.AboutFragment;
 import HKR.HKIF.fragments.AddNewEvent;
 import HKR.HKIF.fragments.Administration;
@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             case id.nav_guest_contact:
                 contactDialog();   // this open the option dialog for call/message
-               break;
+                break;
 
             case id.member_contact:
             case id.leader_contact:
@@ -142,7 +142,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case id.mem_inbox:
                 getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
-                        new MessagesFragment()).addToBackStack(null).commit();
+                        new InboxFragment()).addToBackStack(null).commit();
                 break;
 
             case id.member_logOut:

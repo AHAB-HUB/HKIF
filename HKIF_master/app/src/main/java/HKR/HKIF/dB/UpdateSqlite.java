@@ -16,7 +16,7 @@ import androidx.annotation.Nullable;
 
 public class UpdateSqlite {
 
-    public UpdateSqlite(String id){
+    public UpdateSqlite(String id) {
 
         final Query data = FirebaseDatabase.getInstance().getReference("attendance").child(id);
         final ArrayList<String> keyList = new ArrayList<>();
@@ -26,8 +26,8 @@ public class UpdateSqlite {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
-                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
-                    if (dataSnapshot.getValue().equals("true")){
+                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                    if (dataSnapshot.getValue().equals("true")) {
                         keyList.add(dataSnapshot1.getKey());
                     }
                 }
@@ -39,7 +39,6 @@ public class UpdateSqlite {
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
 
 
             }

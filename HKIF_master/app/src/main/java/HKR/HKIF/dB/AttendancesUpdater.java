@@ -24,7 +24,7 @@ public class AttendancesUpdater {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                for (DataSnapshot d: dataSnapshot.getChildren()) {
+                for (DataSnapshot d : dataSnapshot.getChildren()) {
                     sportList.add(d.getValue(ScheduleItem.class).getId());
 
                 }
@@ -33,11 +33,12 @@ public class AttendancesUpdater {
 
                 for (int i = 0; i < sportList.size(); i++) {
                     System.out.println(id);
-                    System.out.println(sportList.get(i) + sportList.size() );
+                    System.out.println(sportList.get(i) + sportList.size());
 
                     data.child(id).child(sportList.get(i)).setValue("false");
 
-                }            }
+                }
+            }
 
 
             @Override

@@ -14,15 +14,18 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="History"
+            android:text="Inbox"
             android:textSize="40dp" />
 
-        <TextView
+        <Button
+            android:id="@+id/clear_inbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:textSize="10dp"
-            android:text="This data might be outdated" />
+            android:clickable="true"
+            android:text="Clear inbox"
+            android:layout_marginLeft="-150dp"
+            android:layout_marginBottom="-50dp"
+            android:background="#ff11"/>
 
         <TextView
             android:id="@+id/textViewName"

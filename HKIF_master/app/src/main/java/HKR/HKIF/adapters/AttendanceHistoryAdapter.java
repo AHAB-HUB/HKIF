@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import HKR.HKIF.R;
-import HKR.HKIF.data.NotificationData;
 import HKR.HKIF.localDatabase.AttendanceHistory;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,7 +17,6 @@ import androidx.recyclerview.widget.RecyclerView;
 public class AttendanceHistoryAdapter extends RecyclerView.Adapter<AttendanceHistoryAdapter.UserViewHolder> {
 
     private List<AttendanceHistory> attendanceHistoryList;
-
 
 
     @Override
@@ -40,7 +38,7 @@ public class AttendanceHistoryAdapter extends RecyclerView.Adapter<AttendanceHis
 
     @Override
     public int getItemCount() {
-        Log.v(AttendanceHistoryAdapter.class.getSimpleName(),""+attendanceHistoryList.size());
+        Log.v(AttendanceHistoryAdapter.class.getSimpleName(), "" + attendanceHistoryList.size());
         return attendanceHistoryList.size();
     }
 
