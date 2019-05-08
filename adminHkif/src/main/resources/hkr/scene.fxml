@@ -5,27 +5,21 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hkr.FXMLController">
    <children>
-      <Button fx:id="showBtn" alignment="CENTER" layoutX="35.0" layoutY="336.0" mnemonicParsing="false" text="Show">
+      <Button fx:id="personList_btn" alignment="CENTER" layoutX="35.0" layoutY="336.0" mnemonicParsing="false" text="Person List">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="nextBtn" alignment="CENTER" layoutX="515.0" layoutY="336.0" mnemonicParsing="false" text="Next">
+      <Button fx:id="sportList_btn" alignment="CENTER" layoutX="473.0" layoutY="336.0" mnemonicParsing="false" text="Sport List">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <TextField alignment="CENTER" editable="false" layoutX="225.0" layoutY="14.0" prefHeight="37.0" prefWidth="151.0" text="Hello There">
+      <TextField alignment="CENTER" editable="false" layoutX="225.0" layoutY="14.0" prefHeight="37.0" prefWidth="151.0" text="HKIF">
          <font>
             <Font name="Times New Roman Bold" size="20.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="showText" alignment="CENTER" editable="false" layoutX="201.0" layoutY="127.0" promptText="Show something">
-         <font>
-            <Font name="Times New Roman Bold" size="15.0" />
          </font>
       </TextField>
    </children>

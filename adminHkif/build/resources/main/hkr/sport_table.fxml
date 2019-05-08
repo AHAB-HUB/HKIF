@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hkr.tables_controller.SportTable">
+   <children>
+      <TableView fx:id="sportTable" layoutX="200.0" layoutY="41.0" prefHeight="338.0" prefWidth="600.0" AnchorPane.bottomAnchor="62.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columns>
+          <TableColumn fx:id="col_sport_name" prefWidth="94.0" text="sport_name" />
+          <TableColumn fx:id="col_sport_description" prefWidth="257.0" text="sport_description" />
+            <TableColumn fx:id="col_sport_available" prefWidth="120.0" text="sport_available" />
+            <TableColumn fx:id="col_location_name" prefWidth="126.0" text="location_name" />
+        </columns>
+      </TableView>
+      <Button fx:id="loadBtn" layoutX="14.0" layoutY="348.0" mnemonicParsing="false" text="Load" />
+      <Button fx:id="backBtn" layoutX="524.0" layoutY="348.0" mnemonicParsing="false" text="Back" />
+   </children>
+</AnchorPane>
