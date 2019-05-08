@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="634.0" prefWidth="1000.0" stylesheets="@../styles/stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hkr.controllers.HomeCtrl">
+<BorderPane fx:id="borderPane" prefHeight="634.0" prefWidth="1000.0" stylesheets="@../styles/stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hkr.controllers.HomeCtrl">
    <left>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="601.0" prefWidth="197.0" styleClass="sidepane" BorderPane.alignment="CENTER">
          <children>
@@ -18,7 +18,7 @@
                   <Image url="@../asset/hkif_menu.png" />
                </image>
             </ImageView>
-            <JFXButton fx:id="home" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="124.0" prefHeight="40.0" prefWidth="190.0" ripplerFill="WHITE" styleClass="buttons" text="Home" textFill="WHITE">
+            <JFXButton fx:id="home" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="124.0" onAction="#home" prefHeight="40.0" prefWidth="190.0" ripplerFill="WHITE" styleClass="buttons" text="Home" textFill="WHITE">
                <font>
                   <Font name="Roboto Condensed" size="14.0" />
                </font>
@@ -30,7 +30,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="174.0" prefHeight="40.0" prefWidth="190.0" ripplerFill="WHITE" styleClass="buttons" text="Schedule" textFill="WHITE">
+            <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="174.0" onAction="#schedule" prefHeight="40.0" prefWidth="190.0" ripplerFill="WHITE" styleClass="buttons" text="Schedule" textFill="WHITE">
                <font>
                   <Font name="Roboto Condensed" size="14.0" />
                </font>
@@ -42,7 +42,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="217.0" prefHeight="40.0" prefWidth="190.0" ripplerFill="WHITE" styleClass="buttons" text="Add event" textFill="WHITE">
+            <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="217.0" onAction="#addEvent" prefHeight="40.0" prefWidth="190.0" ripplerFill="WHITE" styleClass="buttons" text="Add event" textFill="WHITE">
                <font>
                   <Font name="Roboto Condensed" size="14.0" />
                </font>
@@ -54,7 +54,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="267.0" prefHeight="40.0" prefWidth="190.0" ripplerFill="WHITE" styleClass="buttons" text="Members " textFill="WHITE">
+            <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="267.0" onAction="#members" prefHeight="40.0" prefWidth="190.0" ripplerFill="WHITE" styleClass="buttons" text="Members " textFill="WHITE">
                <font>
                   <Font name="Roboto Condensed" size="14.0" />
                </font>

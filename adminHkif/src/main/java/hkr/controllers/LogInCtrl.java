@@ -27,9 +27,7 @@ public class LogInCtrl implements Initializable {
 
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-    }
+    public void initialize(URL location, ResourceBundle resources) { }
 
     @FXML
     private void logIn(){
@@ -47,7 +45,7 @@ public class LogInCtrl implements Initializable {
                 Stage stage;
                 Parent root;
                 stage = (Stage) upperBar.getScene().getWindow();
-                root = FXMLLoader.load(getClass().getResource("homePage.fxml"));
+                root = FXMLLoader.load(getClass().getResource("../homePage.fxml"));
                 Scene scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();

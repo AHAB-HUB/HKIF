@@ -16,16 +16,17 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class FXMLController implements Initializable {
 
 
     @FXML
-    private Button personList_btn;
+    private Button personList_btn, sportList_btn;
 
     @FXML
-    private Button sportList_btn;
+    private BorderPane borderPane;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -73,5 +74,10 @@ public class FXMLController implements Initializable {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void setBorderPane(BorderPane borderPane) {
+        this.borderPane = borderPane;
+
     }
 }

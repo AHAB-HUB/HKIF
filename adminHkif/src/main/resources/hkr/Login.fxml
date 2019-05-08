@@ -30,7 +30,7 @@
                 <Button fx:id="btnSignIn" layoutX="2.0" layoutY="336.0" mnemonicParsing="false" onAction="#logIn" prefHeight="77.0" prefWidth="275.0" style="-fx-background-color: #0C39F0;" text="Sign in" textFill="WHITE" />
             </children>
         </Pane>
-      <AnchorPane fx:id="upperBar" onMouseDragged="#onUpperBarDragged" onMousePressed="#onUpperBarPressed" prefHeight="34.0" prefWidth="1000.0">
+      <AnchorPane fx:id="upperBar" onMouseDragged="#onUpperBarDragged" onMousePressed="#onUpperBarPressed" prefHeight="34.0" prefWidth="1000.0" stylesheets="@../styles/stylesheet.css">
          <children>
             <Label alignment="CENTER" layoutX="920.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="35.0" prefWidth="40.0" styleClass="closeBtn">
                <graphic>
