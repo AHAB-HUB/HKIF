@@ -16,6 +16,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -23,7 +24,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class SportTable implements Initializable {
+public class SportTableCtrl implements Initializable {
 
 
     @FXML
@@ -46,6 +47,13 @@ public class SportTable implements Initializable {
 
     private ObservableList<Sport> sportData;
     private DatabaseConnector databaseConnector;
+
+    @FXML
+    private BorderPane borderPane;
+    public void setBorderPane(BorderPane borderPane) {
+        this.borderPane = borderPane;
+
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

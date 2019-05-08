@@ -4,27 +4,21 @@ import hkr.database.DatabaseConnector;
 import hkr.data.Person;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.stage.Stage;
+import javafx.scene.layout.BorderPane;
 
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class PersonTable implements Initializable {
+public class MemberTableCtrl implements Initializable {
 
     @FXML
     private TableView<Person> personTable;
@@ -49,6 +43,12 @@ public class PersonTable implements Initializable {
 
     @FXML
     private TableColumn<Person, Button> col_edit;
+    @FXML
+    private BorderPane borderPane;
+    public void setBorderPane(BorderPane borderPane) {
+        this.borderPane = borderPane;
+
+    }
 
     private ObservableList<Person> personData;
     private DatabaseConnector databaseConnector;
@@ -113,7 +113,6 @@ public class PersonTable implements Initializable {
         personTable.setEditable(true);
     }
 
-
     private void getPersonInformation(){
         personData = FXCollections.observableArrayList();
         String query = "SELECT first_name, last_name, email, phone_number, position, has_paid FROM person " +
@@ -131,11 +130,7 @@ public class PersonTable implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         personTable.setItems(null);
         personTable.setItems(personData);
     }
-
-
-
 }

@@ -22,9 +22,7 @@ public class LogInCtrl implements Initializable {
     private TextField txtUserName, txtPassword;
     @FXML
     private AnchorPane upperBar;
-
     private double x,y;
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) { }
@@ -49,17 +47,12 @@ public class LogInCtrl implements Initializable {
                 Scene scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
-
             } catch (IOException e) {
                 e.printStackTrace();
-
             }
-
-
         }else{
             System.out.println("Failed to  log in");
         }
-
     }
 
     @FXML

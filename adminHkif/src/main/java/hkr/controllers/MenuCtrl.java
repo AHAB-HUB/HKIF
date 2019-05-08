@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class HomeCtrl implements Initializable {
+public class MenuCtrl implements Initializable {
 
     @FXML
     Label notificationLbl, onlinelbl, profile;
@@ -26,17 +26,17 @@ public class HomeCtrl implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+      setCenter("home_page");
     }
 
     @FXML
     private void home(){
-        setCenter("scene");
+        setCenter("home_page");
     }
 
     @FXML
     private void schedule(){
-        setCenter("");
+      //  setCenter("");
     }
 
     @FXML
@@ -83,8 +83,12 @@ public class HomeCtrl implements Initializable {
             borderPane.setCenter(root);
             borderPane.setRight(null);
 
-            if (UI.equals("scene"))
-                ((FXMLController)loader.getController()).setBorderPane(borderPane);
+            if (UI.equals("home_page"))
+                ((HomePageCtrl)loader.getController()).setBorderPane(borderPane);
+            if (UI.equals("sport_table"))
+                ((SportTableCtrl)loader.getController()).setBorderPane(borderPane);
+            if (UI.equals("person_table"))
+                ((MemberTableCtrl)loader.getController()).setBorderPane(borderPane);
 
         } catch (IOException e) {
             e.printStackTrace();
