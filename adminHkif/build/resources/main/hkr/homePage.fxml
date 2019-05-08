@@ -9,13 +9,13 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="634.0" prefWidth="1000.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hkr.HomeCtrl">
+<BorderPane prefHeight="634.0" prefWidth="1000.0" stylesheets="@../styles/stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hkr.controllers.HomeCtrl">
    <left>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="601.0" prefWidth="197.0" styleClass="sidepane" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="88.0" fitWidth="180.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../java/hkr/asset/hkif_menu.png" />
+                  <Image url="@../asset/hkif_menu.png" />
                </image>
             </ImageView>
             <JFXButton fx:id="home" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="124.0" prefHeight="40.0" prefWidth="190.0" ripplerFill="WHITE" styleClass="buttons" text="Home" textFill="WHITE">
@@ -37,7 +37,7 @@
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../java/hkr/asset/ic_subject_grey600_24dp.png" />
+                        <Image url="@../asset/ic_subject_grey600_24dp.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -91,7 +91,7 @@
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </center>
    <top>
-      <Pane prefHeight="33.0" prefWidth="1000.0" styleClass="redPane" BorderPane.alignment="CENTER">
+      <Pane fx:id="upperBar" onMouseDragged="#onUpperBarDragged" onMousePressed="#onUpperBarPressed" prefHeight="33.0" prefWidth="1000.0" styleClass="redPane" BorderPane.alignment="CENTER">
          <children>
             <Pane prefHeight="33.0" prefWidth="197.0" style="-fx-background-color: black;">
                <children>
@@ -107,15 +107,6 @@
                   </Label>
                </children>
             </Pane>
-            <Label fx:id="profilelbl" layoutX="200.0" layoutY="1.0" prefHeight="30.0" prefWidth="88.0" style="-fx-border-color: black; -fx-border-radius: 5;" text="Profile" textFill="WHITE">
-               <graphic>
-                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/customer_help.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Label>
             <Label alignment="CENTER" layoutX="920.0" layoutY="-1.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="35.0" prefWidth="40.0" styleClass="closeBtn">
                <graphic>
                   <ImageView fx:id="btnMinimize" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#minimize" pickOnBounds="true" preserveRatio="true">
@@ -130,6 +121,15 @@
                   <ImageView fx:id="btnExit" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../icons/Close.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Label>
+            <Label fx:id="profile" layoutX="200.0" layoutY="1.0" prefHeight="30.0" prefWidth="88.0" style="-fx-border-color: black; -fx-border-radius: 5;" text="Profile" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/customer_help.png" />
                      </image>
                   </ImageView>
                </graphic>

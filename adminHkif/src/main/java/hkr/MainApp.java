@@ -22,6 +22,7 @@ public class MainApp extends Application {
         stage.setScene(scene);
         stage.getScene().setRoot(root);
         stage.initStyle(StageStyle.UNDECORATED); //To have the application without the regular title bar that we have from windows
+
         stage.show();
     }
 
