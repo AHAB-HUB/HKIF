@@ -104,8 +104,8 @@ public class SportTable implements Initializable {
     private void goBack() throws Exception{
         Stage stage;
         Parent root;
-        stage = (Stage) backBtn.getScene().getWindow();
         root = FXMLLoader.load(getClass().getResource("scene.fxml"));
+        stage = (Stage) backBtn.getScene().getWindow();
 
         Scene scene = new Scene(root);
         stage.setScene(scene);

@@ -5,20 +5,23 @@ import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 
 public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("scene.fxml"));
-
+        Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+        stage.setTitle("HKIF");
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
-
-        stage.setTitle("JavaFX and Gradle");
+        scene.setFill(Color.TRANSPARENT);
         stage.setScene(scene);
+        stage.getScene().setRoot(root);
+        stage.initStyle(StageStyle.UNDECORATED); //To have the application without the regular title bar that we have from windows
         stage.show();
     }
 

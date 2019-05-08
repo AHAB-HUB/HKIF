@@ -66,14 +66,11 @@ public class PersonTable implements Initializable {
             }
         });
 
-        backBtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    goBack();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+        backBtn.setOnAction(event -> {
+            try {
+                goBack();
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         });
     }
@@ -111,7 +108,7 @@ public class PersonTable implements Initializable {
         Stage stage;
         Parent root;
         stage = (Stage) backBtn.getScene().getWindow();
-        root = FXMLLoader.load(getClass().getResource("scene.fxml"));
+        root = FXMLLoader.load(getClass().getClassLoader().getResource("scene.fxml"));
 
         Scene scene = new Scene(root);
         stage.setScene(scene);
