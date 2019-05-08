@@ -2,18 +2,28 @@ package hkr.data;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.scene.control.Button;
 
 
 public class Sport {
     private StringProperty sportName, sportDescription, sportAvailable, locationName;
+    private Button updateBtn;
 
-    public Sport(String sportName, String sportDescription, String sportAvailable, String locationName){
+    public Sport(String sportName, String sportDescription, String sportAvailable, String locationName, Button updateBtn){
         this.sportName = new SimpleStringProperty(sportName);
         this.sportDescription = new SimpleStringProperty(sportDescription);
         this.sportAvailable = new SimpleStringProperty(sportAvailable);
         this.locationName = new SimpleStringProperty(locationName);
+        this.updateBtn = updateBtn;
     }
 
+    public Button getUpdateBtn() {
+        return updateBtn;
+    }
+
+    public void setUpdateBtn(Button updateBtn) {
+        this.updateBtn = updateBtn;
+    }
 
     public String getSportName() {
         return sportName.get();

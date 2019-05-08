@@ -2,20 +2,33 @@ package hkr.data;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.scene.control.Button;
 
 public class Person {
     private StringProperty firstName, lastName, email, phoneNumber, position, hasPaid;
 
-    public Person(String firstName, String lastName, String email, String phoneNumber, String position, String hasPaid) {
+    private Button updateBtn;
+
+    public Person(String firstName, String lastName, String email, String phoneNumber,
+                  String position, String hasPaid, Button updateBtn) {
         this.firstName = new SimpleStringProperty(firstName);
         this.lastName = new SimpleStringProperty(lastName);
         this.email = new SimpleStringProperty(email);
         this.phoneNumber = new SimpleStringProperty(phoneNumber);
         this.position = new SimpleStringProperty(position);
         this.hasPaid = new SimpleStringProperty(hasPaid);
+        this.updateBtn = updateBtn;
     }
 
     public Person() {
+    }
+
+    public Button getUpdateBtn() {
+        return updateBtn;
+    }
+
+    public void setUpdateBtn(Button updateBtn) {
+        this.updateBtn = updateBtn;
     }
 
     public String getFirstName() {

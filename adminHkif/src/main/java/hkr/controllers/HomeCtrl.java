@@ -6,7 +6,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -42,12 +41,12 @@ public class HomeCtrl implements Initializable {
 
     @FXML
     private void addEvent(){
-        setCenter("");
+        setCenter("sport_table");
     }
 
     @FXML
     private void members(){
-        setCenter("");
+        setCenter("person_table");
     }
 
     @FXML

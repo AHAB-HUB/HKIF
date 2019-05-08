@@ -15,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -41,10 +42,7 @@ public class SportTable implements Initializable {
     private TableColumn<Sport, String> col_location_name;
 
     @FXML
-    private Button loadBtn;
-
-    @FXML
-    private Button backBtn;
+    private TableColumn<Sport, Button> col_edit;
 
     private ObservableList<Sport> sportData;
     private DatabaseConnector databaseConnector;
@@ -53,23 +51,53 @@ public class SportTable implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         databaseConnector = new DatabaseConnector();
 
-        loadBtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                getSportInformation();
-            }
+        initTable();
+
+        getSportInformation();
+    }
+
+
+    private void initTable(){
+        initCols();
+    }
+
+    private void initCols(){
+        col_sport_name.setCellValueFactory(new PropertyValueFactory<>("sportName"));
+        col_sport_description.setCellValueFactory(new PropertyValueFactory<>("sportDescription"));
+        col_sport_available.setCellValueFactory(new PropertyValueFactory<>("sportAvailable"));
+        col_location_name.setCellValueFactory(new PropertyValueFactory<>("locationName"));
+        col_edit.setCellValueFactory(new PropertyValueFactory<>("updateBtn"));
+
+        editableCols();
+    }
+
+    private void editableCols(){
+        col_sport_name.setCellFactory(TextFieldTableCell.forTableColumn());
+        col_sport_name.setOnEditCommit(event -> {
+            event.getTableView().getItems().get(event.getTablePosition().getRow()).setSportName(event.getNewValue());
         });
 
-        backBtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    goBack();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
+        col_sport_description.setCellFactory(TextFieldTableCell.forTableColumn());
+        col_sport_description.setOnEditCommit(event -> {
+            event.getTableView().getItems().get(event.getTablePosition().getRow()).setSportDescription(event.getNewValue());
         });
+
+        col_sport_available.setCellFactory(TextFieldTableCell.forTableColumn());
+        col_sport_available.setOnEditCommit(event -> {
+            event.getTableView().getItems().get(event.getTablePosition().getRow()).setSportAvailable(event.getNewValue());
+        });
+
+        col_sport_available.setCellFactory(TextFieldTableCell.forTableColumn());
+        col_sport_available.setOnEditCommit(event -> {
+            event.getTableView().getItems().get(event.getTablePosition().getRow()).setSportAvailable(event.getNewValue());
+        });
+
+        col_location_name.setCellFactory(TextFieldTableCell.forTableColumn());
+        col_location_name.setOnEditCommit(event -> {
+            event.getTableView().getItems().get(event.getTablePosition().getRow()).setLocationName(event.getNewValue());
+        });
+
+        sportTable.setEditable(true);
     }
 
     private void getSportInformation(){
@@ -85,31 +113,18 @@ public class SportTable implements Initializable {
                 sportData.add(new Sport(resultSet.getString("sport_name"),
                         resultSet.getString("sport_description"),
                         resultSet.getString("sport_available"),
-                        resultSet.getString("location_name")));
+                        resultSet.getString("location_name"), new Button("Update")));
             }
 
         }catch (SQLException e){
             e.printStackTrace();
         }
 
-        col_sport_name.setCellValueFactory(new PropertyValueFactory<>("sportName"));
-        col_sport_description.setCellValueFactory(new PropertyValueFactory<>("sportDescription"));
-        col_sport_available.setCellValueFactory(new PropertyValueFactory<>("sportAvailable"));
-        col_location_name.setCellValueFactory(new PropertyValueFactory<>("locationName"));
 
         sportTable.setItems(null);
         sportTable.setItems(sportData);
     }
 
-    private void goBack() throws Exception{
-        Stage stage;
-        Parent root;
-        root = FXMLLoader.load(getClass().getResource("scene.fxml"));
-        stage = (Stage) backBtn.getScene().getWindow();
 
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
 
 }
