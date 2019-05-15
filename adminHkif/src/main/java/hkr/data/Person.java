@@ -1,7 +1,10 @@
 package hkr.data;
 
+import hkr.database.DatabaseConnector;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 
 public class Person {
@@ -18,6 +21,14 @@ public class Person {
         this.position = new SimpleStringProperty(position);
         this.hasPaid = new SimpleStringProperty(hasPaid);
         this.updateBtn = updateBtn;
+
+        this.updateBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                new DatabaseConnector().updateMembers(getFirstName(),getLastName(),
+                        getPhoneNumber(),getPosition(),getHasPaid(),getEmail());
+            }
+        });
     }
 
     public Person() {

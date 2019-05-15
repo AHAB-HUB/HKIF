@@ -14,11 +14,15 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -26,6 +30,11 @@ import java.util.ResourceBundle;
 
 public class SportTableCtrl implements Initializable {
 
+    @FXML
+    private Button addSportBtn;
+
+    @FXML
+    private Button deleteSportBtn;
 
     @FXML
     private TableView<Sport> sportTable;
@@ -50,6 +59,8 @@ public class SportTableCtrl implements Initializable {
 
     @FXML
     private BorderPane borderPane;
+
+
     public void setBorderPane(BorderPane borderPane) {
         this.borderPane = borderPane;
 
@@ -62,12 +73,16 @@ public class SportTableCtrl implements Initializable {
         initTable();
 
         getSportInformation();
+
+        addSportBtn.setOnAction(e -> openAddSport());
     }
 
 
     private void initTable(){
         initCols();
     }
+
+
 
     private void initCols(){
         col_sport_name.setCellValueFactory(new PropertyValueFactory<>("sportName"));
@@ -90,17 +105,14 @@ public class SportTableCtrl implements Initializable {
             event.getTableView().getItems().get(event.getTablePosition().getRow()).setSportDescription(event.getNewValue());
         });
 
-        col_sport_available.setCellFactory(TextFieldTableCell.forTableColumn());
+        col_sport_available.setCellFactory(ComboBoxTableCell.forTableColumn(availableItems()));
         col_sport_available.setOnEditCommit(event -> {
             event.getTableView().getItems().get(event.getTablePosition().getRow()).setSportAvailable(event.getNewValue());
         });
 
-        col_sport_available.setCellFactory(TextFieldTableCell.forTableColumn());
-        col_sport_available.setOnEditCommit(event -> {
-            event.getTableView().getItems().get(event.getTablePosition().getRow()).setSportAvailable(event.getNewValue());
-        });
 
-        col_location_name.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        col_location_name.setCellFactory(ComboBoxTableCell.forTableColumn(locationItems()));
         col_location_name.setOnEditCommit(event -> {
             event.getTableView().getItems().get(event.getTablePosition().getRow()).setLocationName(event.getNewValue());
         });
@@ -133,6 +145,37 @@ public class SportTableCtrl implements Initializable {
         sportTable.setItems(sportData);
     }
 
+    private ObservableList<String> availableItems(){
+        ObservableList<String> list = FXCollections.observableArrayList();
+        list.add("AVAILABLE");
+        list.add("NOT AVAILABLE");
+
+        return list;
+    }
+
+    private ObservableList<String> locationItems(){
+        ObservableList<String> list = FXCollections.observableArrayList();
+        list.add("Campus");
+        list.add("City-Center");
+
+        return list;
+    }
+
+    private void openAddSport(){
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("add_sport.fxml"));
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            scene.setFill(Color.TRANSPARENT);
+            stage.setScene(scene);
+            stage.getScene().setRoot(root);
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
 }

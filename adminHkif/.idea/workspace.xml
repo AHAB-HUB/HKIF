@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c62e3fd0-69ef-47b6-ad2a-0ba96d051279" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/hkr/controllers/HomePageCtrl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/asset/hp.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/hkr/home_page.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/fileContent/fileContent.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/javaCompile/javaCompile.lock" afterDir="false" />
@@ -14,20 +10,16 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/hkr/MainApp.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/hkr/controllers/HomeCtrl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/hkr/controllers/LogInCtrl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/hkr/controllers/LogInCtrl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/hkr/controllers/PersonTable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/hkr/controllers/SportTable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/hkr/homePage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/hkr/homePage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/hkr/person_table.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/hkr/person_table.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/hkr/sport_table.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/hkr/sport_table.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hkr/controllers/HomeCtrl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hkr/controllers/MenuCtrl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hkr/controllers/LogInCtrl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hkr/controllers/LogInCtrl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hkr/controllers/PersonTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hkr/controllers/MemberTableCtrl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hkr/controllers/SportTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hkr/controllers/SportTableCtrl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/hkr/homePage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hkr/homePage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/hkr/person_table.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hkr/person_table.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/hkr/controllers/MemberTableCtrl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/hkr/controllers/MemberTableCtrl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/hkr/controllers/SportTableCtrl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/hkr/controllers/SportTableCtrl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/hkr/data/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/hkr/data/Person.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/hkr/data/Sport.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/hkr/data/Sport.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/hkr/database/DatabaseConnector.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/hkr/database/DatabaseConnector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hkr/controllers/MemberTableCtrl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hkr/controllers/MemberTableCtrl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hkr/controllers/SportTableCtrl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hkr/controllers/SportTableCtrl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hkr/data/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hkr/data/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hkr/data/Sport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hkr/data/Sport.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hkr/database/DatabaseConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hkr/database/DatabaseConnector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/hkr/sport_table.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hkr/sport_table.fxml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
@@ -81,27 +73,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/hkr/controllers/MenuCtrl.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/hkr/MainApp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="214">
-              <caret line="97" column="68" lean-forward="true" selection-start-line="97" selection-start-column="68" selection-end-line="97" selection-end-column="68" />
-              <folding>
-                <element signature="e#738#739#0" expanded="true" />
-                <element signature="e#772#773#0" expanded="true" />
-                <element signature="e#881#882#0" expanded="true" />
-                <element signature="e#921#922#0" expanded="true" />
-                <element signature="e#960#961#0" expanded="true" />
-                <element signature="e#1001#1002#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/hkr/controllers/MemberTableCtrl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="50" column="5" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
+            <state relative-caret-position="255">
+              <caret line="23" column="48" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="48" />
             </state>
           </provider>
         </entry>
@@ -109,45 +84,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/hkr/controllers/SportTableCtrl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
+            <state relative-caret-position="512">
+              <caret line="173" selection-start-line="173" selection-end-line="173" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/hkr/controllers/LogInCtrl.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/hkr/database/DatabaseConnector.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="23" column="32" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/hkr/controllers/FXMLController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="29" selection-start-line="29" selection-end-line="29" />
+            <state relative-caret-position="430">
+              <caret line="135" column="45" selection-start-line="135" selection-start-column="45" selection-end-line="135" selection-end-column="45" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/hkr/home_page.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder" />
+        <entry file="file://$PROJECT_DIR$/src/main/java/hkr/controllers/AddSport.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/hkr/controllers/HomePageCtrl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="146">
-              <caret line="10" selection-start-line="10" selection-end-line="10" />
+            <state relative-caret-position="495">
+              <caret line="43" column="139" selection-start-line="43" selection-start-column="139" selection-end-line="43" selection-end-column="139" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -184,27 +140,30 @@
         <option value="$PROJECT_DIR$/src/main/resources/fxml/Login.fxml" />
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/main/resources/hkr/Login.fxml" />
-        <option value="$PROJECT_DIR$/src/main/java/hkr/MainApp.java" />
-        <option value="$PROJECT_DIR$/src/main/java/hkr/data/Person.java" />
         <option value="$PROJECT_DIR$/src/main/java/hkr/controllers/PersonTable.java" />
-        <option value="$PROJECT_DIR$/src/main/java/hkr/data/Sport.java" />
         <option value="$PROJECT_DIR$/src/main/java/hkr/controllers/SportTable.java" />
         <option value="$PROJECT_DIR$/src/main/java/hkr/controllers/HomeCtrl.java" />
         <option value="$PROJECT_DIR$/src/main/resources/hkr/home_page.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/hkr/controllers/LogInCtrl.java" />
         <option value="$PROJECT_DIR$/src/main/java/hkr/controllers/FXMLController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/hkr/controllers/MemberTableCtrl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/hkr/controllers/SportTableCtrl.java" />
         <option value="$PROJECT_DIR$/src/main/java/hkr/controllers/MenuCtrl.java" />
         <option value="$PROJECT_DIR$/src/main/java/hkr/controllers/HomePageCtrl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/hkr/MainApp.java" />
+        <option value="$PROJECT_DIR$/src/main/java/hkr/data/Person.java" />
+        <option value="$PROJECT_DIR$/src/main/java/hkr/data/Sport.java" />
+        <option value="$PROJECT_DIR$/src/main/java/hkr/controllers/MemberTableCtrl.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/hkr/add_sport.fxml" />
+        <option value="$PROJECT_DIR$/src/main/java/hkr/controllers/SportTableCtrl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/hkr/database/DatabaseConnector.java" />
+        <option value="$PROJECT_DIR$/src/main/java/hkr/controllers/AddSport.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="78" />
-    <option name="y" value="40" />
-    <option name="width" value="1739" />
-    <option name="height" value="921" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="472" />
+    <option name="y" value="51" />
+    <option name="width" value="1321" />
+    <option name="height" value="788" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -212,6 +171,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -262,6 +222,15 @@
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="hkr" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="adminHkif" type="b2602c69:ProjectViewProjectNode" />
+              <item name="adminHkif" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="hkr" type="462c0819:PsiDirectoryNode" />
               <item name="database" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -283,7 +252,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -300,18 +268,18 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\SoftwareEngineering\Project\Applications\HKIF\adminHkif\src\main\java\hkr" />
-      <recent name="D:\SoftwareEngineering\Project\Applications\HKIF\adminHkif\src\main\resources" />
-      <recent name="D:\SoftwareEngineering\Project\Applications\HKIF\adminHkif\src\main\resources\hkr" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="hkr" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\GitHub\HKIF\adminHkif\src\main\resources\asset" />
       <recent name="D:\GitHub\HKIF\adminHkif\src\main\resources\styles" />
       <recent name="D:\GitHub\HKIF\adminHkif\src\main\resources\fxml" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="hkr" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\SoftwareEngineering\Project\Applications\HKIF\adminHkif\src\main\java\hkr" />
+      <recent name="D:\SoftwareEngineering\Project\Applications\HKIF\adminHkif\src\main\resources" />
+      <recent name="D:\SoftwareEngineering\Project\Applications\HKIF\adminHkif\src\main\resources\hkr" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -410,17 +378,20 @@
       <option name="presentableId" value="Default" />
       <updated>1557315268519</updated>
       <workItem from="1557315279937" duration="16903000" />
+      <workItem from="1557861456450" duration="32000" />
+      <workItem from="1557861714520" duration="9032000" />
+      <workItem from="1557910931379" duration="2573000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26461000" />
+    <option name="totallyTimeSpent" value="39534000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="78" y="40" width="1739" height="921" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15128052" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18835099" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -429,7 +400,7 @@
       <window_info id="Image Layers" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3290461" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.38705584" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.38625205" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -456,15 +427,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/hkr/sport_table.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/hkr/tables/Person.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/hkr/tables/Sport.java" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/hkr/scene.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder" />
@@ -500,14 +462,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="21" column="29" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/hkr/Login.fxml">
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="33" column="19" selection-start-line="33" selection-start-column="19" selection-end-line="33" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -569,38 +523,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/resources/asset/icon.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/hkr/MainApp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="32" column="1" lean-forward="true" selection-start-line="32" selection-start-column="1" selection-end-line="32" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/hkr/data/Person.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="19" column="35" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
-          <folding>
-            <element signature="e#844#845#0" expanded="true" />
-            <element signature="e#876#877#0" expanded="true" />
-            <element signature="e#926#927#0" expanded="true" />
-            <element signature="e#968#969#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/hkr/data/Sport.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="19" column="34" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
-          <folding>
-            <element signature="e#800#801#0" expanded="true" />
-            <element signature="e#850#851#0" expanded="true" />
-            <element signature="e#892#893#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/hkr/controllers/FXMLController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -608,23 +530,66 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/hkr/controllers/MemberTableCtrl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/hkr/home_page.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="50" column="5" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
+        <state relative-caret-position="272">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/hkr/controllers/LogInCtrl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="23" column="32" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="32" />
+        <state relative-caret-position="529">
+          <caret line="51" column="13" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/hkr/Login.fxml">
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="393">
+          <caret line="33" column="19" selection-start-line="33" selection-start-column="19" selection-end-line="33" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/hkr/data/Person.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="28" column="24" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/hkr/data/Sport.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="24" column="126" selection-start-line="24" selection-start-column="126" selection-end-line="24" selection-end-column="126" />
+          <folding>
+            <element signature="e#768#769#0" expanded="true" />
+            <element signature="e#800#801#0" expanded="true" />
+            <element signature="e#850#851#0" expanded="true" />
+            <element signature="e#892#893#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Project-Course2-FoodieLine/master-foodieline/src/databaseConnection/UserQueries.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2040">
+          <caret line="123" column="94" selection-start-line="123" selection-start-column="79" selection-end-line="123" selection-end-column="94" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/hkr/controllers/MemberTableCtrl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2125">
+          <caret line="142" selection-start-line="135" selection-start-column="3" selection-end-line="142" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/hkr/controllers/HomePageCtrl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
+        <state relative-caret-position="170">
           <caret line="10" selection-start-line="10" selection-end-line="10" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -634,31 +599,52 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/hkr/controllers/MenuCtrl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="97" column="68" lean-forward="true" selection-start-line="97" selection-start-column="68" selection-end-line="97" selection-end-column="68" />
-          <folding>
-            <element signature="e#738#739#0" expanded="true" />
-            <element signature="e#772#773#0" expanded="true" />
-            <element signature="e#881#882#0" expanded="true" />
-            <element signature="e#921#922#0" expanded="true" />
-            <element signature="e#960#961#0" expanded="true" />
-            <element signature="e#1001#1002#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-51">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/hkr/add_sport.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="31" column="19" lean-forward="true" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/hkr/MainApp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="23" column="48" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="48" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/hkr/controllers/SportTableCtrl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
+        <state relative-caret-position="512">
+          <caret line="173" selection-start-line="173" selection-end-line="173" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/hkr/home_page.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
+    <entry file="file://D:/Project-Course2-FoodieLine/master-foodieline/src/databaseConnection/DrinksQueries.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        <state relative-caret-position="-833" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/hkr/database/DatabaseConnector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="430">
+          <caret line="135" column="45" selection-start-line="135" selection-start-column="45" selection-end-line="135" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/hkr/controllers/AddSport.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="43" column="139" selection-start-line="43" selection-start-column="139" selection-end-line="43" selection-end-column="139" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

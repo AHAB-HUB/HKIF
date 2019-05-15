@@ -1,7 +1,10 @@
 package hkr.data;
 
+import hkr.database.DatabaseConnector;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 
 
@@ -15,6 +18,13 @@ public class Sport {
         this.sportAvailable = new SimpleStringProperty(sportAvailable);
         this.locationName = new SimpleStringProperty(locationName);
         this.updateBtn = updateBtn;
+
+        this.updateBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                new DatabaseConnector().updateSport(getSportDescription(),getSportAvailable(),getLocationName(),getSportName());
+            }
+        });
     }
 
     public Button getUpdateBtn() {
