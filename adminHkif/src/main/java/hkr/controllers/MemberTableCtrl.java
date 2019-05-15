@@ -9,8 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.control.cell.*;
 import javafx.scene.layout.BorderPane;
 
 import java.net.URL;
@@ -100,12 +99,12 @@ public class MemberTableCtrl implements Initializable {
             event.getTableView().getItems().get(event.getTablePosition().getRow()).setPhoneNumber(event.getNewValue());
         });
 
-        col_position.setCellFactory(TextFieldTableCell.forTableColumn());
+        col_position.setCellFactory(ComboBoxTableCell.forTableColumn(positionItems()));
         col_position.setOnEditCommit(event -> {
             event.getTableView().getItems().get(event.getTablePosition().getRow()).setPosition(event.getNewValue());
         });
 
-        col_has_paid.setCellFactory(TextFieldTableCell.forTableColumn());
+        col_has_paid.setCellFactory(ComboBoxTableCell.forTableColumn(hasPaidItems()));
         col_has_paid.setOnEditCommit(event -> {
             event.getTableView().getItems().get(event.getTablePosition().getRow()).setHasPaid(event.getNewValue());
         });
@@ -132,5 +131,21 @@ public class MemberTableCtrl implements Initializable {
         }
         personTable.setItems(null);
         personTable.setItems(personData);
+    }
+
+    private ObservableList<String> hasPaidItems(){
+        ObservableList<String> list = FXCollections.observableArrayList();
+        list.add("TRUE");
+        list.add("FALSE");
+
+        return list;
+    }
+
+    private ObservableList<String> positionItems(){
+        ObservableList<String> list = FXCollections.observableArrayList();
+        list.add("MEMBER");
+        list.add("TEAM_LEADER");
+
+        return list;
     }
 }
