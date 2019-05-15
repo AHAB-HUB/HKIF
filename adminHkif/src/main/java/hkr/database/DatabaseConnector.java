@@ -136,5 +136,16 @@ public class DatabaseConnector {
             System.out.println(e.getMessage());
         }
     }
+
+    public void deleteSportRow(String sportName){
+        String deleteSportQuery = "DELETE FROM sport WHERE sport_name = ?";
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(deleteSportQuery)){
+            preparedStatement.setString(1, sportName);
+            preparedStatement.executeUpdate();
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+    }
 }
 

@@ -75,6 +75,7 @@ public class SportTableCtrl implements Initializable {
         getSportInformation();
 
         addSportBtn.setOnAction(e -> openAddSport());
+        deleteSportBtn.setOnAction(e -> deleteRow());
     }
 
 
@@ -163,19 +164,21 @@ public class SportTableCtrl implements Initializable {
 
     private void openAddSport(){
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("add_sport.fxml"));
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            scene.setFill(Color.TRANSPARENT);
-            stage.setScene(scene);
-            stage.getScene().setRoot(root);
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.show();
+            Parent root = FXMLLoader.load(getClass().getResource("../add_sport.fxml"));
+            borderPane.setCenter(root);
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    private void deleteRow(){
+        ObservableList<Sport> selectedRow;
+
+        selectedRow = sportTable.getSelectionModel().getSelectedItems();
+
+        new DatabaseConnector().deleteSportRow(selectedRow.get(0).getSportName());
+
+    }
 
 }

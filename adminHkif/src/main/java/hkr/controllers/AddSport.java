@@ -1,13 +1,13 @@
 package hkr.controllers;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXTextField;
 import hkr.database.DatabaseConnector;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,22 +15,19 @@ import java.util.ResourceBundle;
 public class AddSport implements Initializable {
 
     @FXML
-    private JFXButton addBtn;
+    private TextField addSportText;
 
     @FXML
-    private JFXButton cancelBtn;
+    private TextField addDescriptionText;
 
     @FXML
-    private JFXTextField addSportText;
+    private ComboBox<String> sportAvailableBox;
 
     @FXML
-    private JFXTextField addDescriptionText;
+    private ComboBox<String> sportLocationBox;
 
     @FXML
-    private JFXComboBox<String> sportAvailableBox;
-
-    @FXML
-    private JFXComboBox<String> sportLocationBox;
+    private Button addBtn;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -42,7 +39,7 @@ public class AddSport implements Initializable {
 
     private void insertNewSport(){
         new DatabaseConnector().insertNewValuesIntoSport(addSportText.getText(), addDescriptionText.getText(),
-                sportAvailableBox.);
+                sportAvailableBox.getValue(), sportLocationBox.getValue());
     }
 
     private ObservableList<String> addAvailableList(){
