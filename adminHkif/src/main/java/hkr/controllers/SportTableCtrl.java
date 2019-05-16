@@ -11,16 +11,16 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
 
 import java.io.IOException;
 import java.net.URL;
@@ -30,41 +30,13 @@ import java.util.ResourceBundle;
 
 public class SportTableCtrl implements Initializable {
 
-    @FXML
-    private Button addSportBtn;
-
-    @FXML
-    private Button deleteSportBtn;
-
-    @FXML
-    private TableView<Sport> sportTable;
-
-    @FXML
-    private TableColumn<Sport, String> col_sport_name;
-
-    @FXML
-    private TableColumn<Sport, String> col_sport_description;
-
-    @FXML
-    private TableColumn<Sport, String> col_sport_available;
-
-    @FXML
-    private TableColumn<Sport, String> col_location_name;
-
-    @FXML
-    private TableColumn<Sport, Button> col_edit;
-
+    @FXML private TableView<Sport> sportTable;
+    @FXML private TableColumn<Sport, String> col_sport_name, col_sport_description, col_sport_available, col_location_name;
+    @FXML private TableColumn<Sport, Button> col_edit;
     private ObservableList<Sport> sportData;
     private DatabaseConnector databaseConnector;
+    @FXML private BorderPane borderPane;
 
-    @FXML
-    private BorderPane borderPane;
-
-
-    public void setBorderPane(BorderPane borderPane) {
-        this.borderPane = borderPane;
-
-    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -73,17 +45,11 @@ public class SportTableCtrl implements Initializable {
         initTable();
 
         getSportInformation();
-
-        addSportBtn.setOnAction(e -> openAddSport());
-        deleteSportBtn.setOnAction(e -> deleteRow());
     }
-
 
     private void initTable(){
         initCols();
     }
-
-
 
     private void initCols(){
         col_sport_name.setCellValueFactory(new PropertyValueFactory<>("sportName"));
@@ -110,8 +76,6 @@ public class SportTableCtrl implements Initializable {
         col_sport_available.setOnEditCommit(event -> {
             event.getTableView().getItems().get(event.getTablePosition().getRow()).setSportAvailable(event.getNewValue());
         });
-
-
 
         col_location_name.setCellFactory(ComboBoxTableCell.forTableColumn(locationItems()));
         col_location_name.setOnEditCommit(event -> {
@@ -141,7 +105,6 @@ public class SportTableCtrl implements Initializable {
             e.printStackTrace();
         }
 
-
         sportTable.setItems(null);
         sportTable.setItems(sportData);
     }
@@ -162,23 +125,48 @@ public class SportTableCtrl implements Initializable {
         return list;
     }
 
+    @FXML
     private void openAddSport(){
         try {
             Parent root = FXMLLoader.load(getClass().getResource("../add_sport.fxml"));
-            borderPane.setCenter(root);
+            Stage stage = (Stage) sportTable.getScene().getWindow();
+            Popup popup = new Popup();
+            popup.getContent().add(root);
+           // Parent rot = FXMLLoader.load(getClass().getResource("../sport_table.fxml"));
+
+            popup.show(stage);
+
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private void deleteRow(){
-        ObservableList<Sport> selectedRow;
+    @FXML
+    private boolean deleteRow() throws IOException {
 
-        selectedRow = sportTable.getSelectionModel().getSelectedItems();
+        try {
+            ObservableList<Sport> selectedRow;
 
-        new DatabaseConnector().deleteSportRow(selectedRow.get(0).getSportName());
+            selectedRow = sportTable.getSelectionModel().getSelectedItems();
+            System.out.println(selectedRow.get(0));
 
+            new DatabaseConnector().deleteSportRow(selectedRow.get(0).getSportName());
+
+        }catch (IndexOutOfBoundsException e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Failed to delete");
+            alert.setHeaderText("Please select an item to be deleted.");
+            alert.showAndWait();
+            return false;
+        }
+
+        Parent root = FXMLLoader.load(getClass().getResource("../sport_table.fxml"));
+        borderPane.setCenter(root);
+        return false;
     }
 
+    public void setBorderPane(BorderPane borderPane) {
+        this.borderPane = borderPane;
+    }
 }

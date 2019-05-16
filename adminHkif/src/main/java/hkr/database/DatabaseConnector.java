@@ -116,7 +116,7 @@ public class DatabaseConnector {
         }
     }
 
-    public void insertNewValuesIntoSport(String sportName, String sportDescription, String sportAvailable, String locationName){
+    public boolean insertNewValuesIntoSport(String sportName, String sportDescription, String sportAvailable, String locationName){
         String insertSportQuery = "INSERT INTO sport(sport_name, sport_description, sport_available, location_location_id)" +
                 " VALUES(?, ?, ?, ?)";
 
@@ -132,9 +132,11 @@ public class DatabaseConnector {
             }
 
             preparedStatement.executeUpdate();
+            return true;
         }catch (SQLException e){
             System.out.println(e.getMessage());
         }
+        return false;
     }
 
     public void deleteSportRow(String sportName){

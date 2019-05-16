@@ -18,7 +18,7 @@
                   <Image url="@../asset/hkif_menu.png" />
                </image>
             </ImageView>
-            <JFXButton fx:id="home" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="124.0" onAction="#home" prefHeight="40.0" prefWidth="190.0" ripplerFill="WHITE" styleClass="buttons" text="Home" textFill="WHITE">
+            <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="124.0" onAction="#home" prefHeight="40.0" prefWidth="190.0" ripplerFill="WHITE" styleClass="buttons" text="Home" textFill="WHITE">
                <font>
                   <Font name="Roboto Condensed" size="14.0" />
                </font>
@@ -54,7 +54,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="267.0" onAction="#members" prefHeight="40.0" prefWidth="190.0" ripplerFill="WHITE" styleClass="buttons" text="Members " textFill="WHITE">
+            <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="267.0" onAction="#sports" prefHeight="40.0" prefWidth="190.0" ripplerFill="WHITE" styleClass="buttons" text="Sports" textFill="WHITE">
                <font>
                   <Font name="Roboto Condensed" size="14.0" />
                </font>
@@ -66,7 +66,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="317.0" prefHeight="40.0" prefWidth="190.0" ripplerFill="WHITE" styleClass="buttons" text="..." textFill="WHITE">
+            <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="317.0" onAction="#members" prefHeight="40.0" prefWidth="190.0" ripplerFill="WHITE" styleClass="buttons" text="Members " textFill="WHITE">
                <font>
                   <Font name="Roboto Condensed" size="14.0" />
                </font>
@@ -107,9 +107,9 @@
                   </Label>
                </children>
             </Pane>
-            <Label alignment="CENTER" layoutX="920.0" layoutY="-1.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="35.0" prefWidth="40.0" styleClass="closeBtn">
+            <Label alignment="CENTER" layoutX="920.0" layoutY="-1.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#minimize" prefHeight="35.0" prefWidth="40.0" styleClass="closeBtn">
                <graphic>
-                  <ImageView fx:id="btnMinimize" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#minimize" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="btnMinimize" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../icons/min.png" />
                      </image>
@@ -125,7 +125,7 @@
                   </ImageView>
                </graphic>
             </Label>
-            <Label fx:id="profile" layoutX="200.0" layoutY="1.0" prefHeight="30.0" prefWidth="88.0" style="-fx-border-color: black; -fx-border-radius: 5;" text="Profile" textFill="WHITE">
+            <Label layoutX="200.0" layoutY="1.0" onMouseClicked="#logOut" prefHeight="30.0" prefWidth="88.0" style="-fx-border-color: black; -fx-border-radius: 5;" text="Log-out" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
