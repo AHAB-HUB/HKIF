@@ -1,12 +1,15 @@
 package hkr.database;
 
 
+import hkr.data.Schedule;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 
 import java.lang.reflect.InvocationTargetException;
 import java.sql.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Properties;
 
 public class DatabaseConnector {
@@ -257,6 +260,62 @@ public class DatabaseConnector {
         }
 
         return eventID;
+    }
+
+    public ObservableList<Schedule> getScheduleInformation(String day, String date){
+
+        ObservableList<Schedule> scheduleData = FXCollections.observableArrayList();
+        Date mysqlDate;
+        final DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+        String datev;
+
+        String scheduleQuery = "SELECT sport.sport_name, schedule.schedule_day, schedule.schedule_date, " +
+                "schedule_has_sport.session_start, schedule_has_sport.session_end " +
+                " FROM sport, schedule, schedule_has_sport " +
+                " WHERE " +
+                " schedule_has_sport.schedule_schedule_id = schedule.schedule_id " +
+                " AND schedule_has_sport.sport_sport_id = sport.sport_id " +
+
+                " AND schedule.schedule_date = " + date +
+                " ORDER BY schedule_has_sport.session_start";
+
+        try {
+            resultSet = connection.createStatement().executeQuery(scheduleQuery);
+
+            while (resultSet.next()){
+                mysqlDate = resultSet.getDate("schedule_date");
+                datev = dateFormat.format(mysqlDate);
+                scheduleData.add(new Schedule(resultSet.getString("sport_name"),
+                        resultSet.getString("schedule_day"), datev,
+                        resultSet.getTime("session_start").toString(),
+                        resultSet.getTime("session_start").toString()));
+            }
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+
+        return scheduleData;
+    }
+
+    public ObservableList<String> getDatesOfDay(String day){
+        ObservableList<String> dates = FXCollections.observableArrayList();
+        Date mysqlDate;
+        final DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+
+        String queryDates = "SELECT schedule.schedule_date FROM schedule WHERE schedule_day = " + day;
+
+        try {
+            resultSet = connection.createStatement().executeQuery(queryDates);
+
+            while (resultSet.next()){
+                mysqlDate = resultSet.getDate("schedule_date");
+                dates.add(dateFormat.format(mysqlDate));
+            }
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+
+        return dates;
     }
 }
 

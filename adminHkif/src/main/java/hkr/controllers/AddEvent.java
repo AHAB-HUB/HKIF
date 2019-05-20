@@ -1,10 +1,12 @@
 
 package hkr.controllers;
 
+
 import hkr.database.DatabaseConnector;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+
 import java.net.URL;
 import java.sql.Date;
 import java.sql.Time;
@@ -74,26 +76,25 @@ public class AddEvent implements Initializable {
 
     }
 
-    private void addMoreSportsToEvent(){
+    private void addMoreSportsToEvent() {
         ChoiceDialog<String> eventChoice = new ChoiceDialog<>("Event", new DatabaseConnector().getAlleventNames());
         eventChoice.setTitle("ADD EVENT");
         eventChoice.setHeaderText("Choose an event");
         eventChoice.setContentText("Event Name");
         Optional<String> eventResult = eventChoice.showAndWait();
 
-        if (eventResult.isPresent()){
+        if (eventResult.isPresent()) {
             ChoiceDialog<String> sportChoice = new ChoiceDialog<>("Sport", new DatabaseConnector().getAllSportNames());
             sportChoice.setTitle("ADD SPORT");
             sportChoice.setHeaderText("Choose a sport");
             sportChoice.setContentText("Sport Name");
             Optional<String> sp = sportChoice.showAndWait();
 
-            if (sp.isPresent()){
+            if (sp.isPresent()) {
                 new DatabaseConnector().insertValueIntoSportHasEvent(new DatabaseConnector().getEventId(eventChoice.getSelectedItem()),
-                        new DatabaseConnector().getSportId(sportChoice.getSelectedItem())  );
+                        new DatabaseConnector().getSportId(sportChoice.getSelectedItem()));
             }
         }
-
-
     }
+
 }

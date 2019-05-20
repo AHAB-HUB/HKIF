@@ -32,7 +32,7 @@ public class MenuCtrl implements Initializable {
     }
 
     @FXML private void schedule(){
-      //  setCenter("");
+       setCenter("update_schedule");
     }
 
     @FXML private void addEvent(){
