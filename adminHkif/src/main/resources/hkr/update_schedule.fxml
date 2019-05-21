@@ -16,7 +16,7 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <ComboBox fx:id="dayComboBox" layoutX="513.0" layoutY="154.0" prefHeight="25.0" prefWidth="71.0" promptText="Day" />
+      <ComboBox fx:id="dayComboBox" layoutX="513.0" layoutY="154.0" onAction="#fillDate" prefHeight="25.0" prefWidth="107.0" promptText="Day" />
       <ComboBox fx:id="dateComboBox" layoutX="661.0" layoutY="154.0" prefHeight="25.0" prefWidth="89.0" promptText="Date" />
       <TableView fx:id="scheduleTable" layoutY="154.0" prefHeight="431.0" prefWidth="502.0">
         <columns>

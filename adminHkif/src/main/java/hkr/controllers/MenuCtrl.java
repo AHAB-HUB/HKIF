@@ -36,7 +36,7 @@ public class MenuCtrl implements Initializable {
     }
 
     @FXML private void addEvent(){
-        setCenter("sport_table");
+        setCenter("add_event");
     }
 
     @FXML private void sports(){
@@ -87,8 +87,6 @@ public class MenuCtrl implements Initializable {
             if (UI.equals("sport_table"))
                 ((SportTableCtrl)loader.getController()).setBorderPane(borderPane);
             if (UI.equals("person_table"))
-                ((MemberTableCtrl)loader.getController()).setBorderPane(borderPane);
-            if (UI.equals("add_event"))
                 ((MemberTableCtrl)loader.getController()).setBorderPane(borderPane);
 
         } catch (IOException e) {

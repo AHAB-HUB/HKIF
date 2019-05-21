@@ -265,9 +265,6 @@ public class DatabaseConnector {
     public ObservableList<Schedule> getScheduleInformation(String day, String date){
 
         ObservableList<Schedule> scheduleData = FXCollections.observableArrayList();
-        Date mysqlDate;
-        final DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
-        String datev;
 
         String scheduleQuery = "SELECT sport.sport_name, schedule.schedule_day, schedule.schedule_date, " +
                 "schedule_has_sport.session_start, schedule_has_sport.session_end " +
@@ -275,23 +272,22 @@ public class DatabaseConnector {
                 " WHERE " +
                 " schedule_has_sport.schedule_schedule_id = schedule.schedule_id " +
                 " AND schedule_has_sport.sport_sport_id = sport.sport_id " +
-
-                " AND schedule.schedule_date = " + date +
+                "AND schedule.schedule_day = " + " \'" + day + "\'" +
+                " AND schedule.schedule_date = " + " \'" + date + "\'" +
                 " ORDER BY schedule_has_sport.session_start";
 
         try {
-            resultSet = connection.createStatement().executeQuery(scheduleQuery);
+             resultSet =  connection.createStatement().executeQuery(scheduleQuery);
 
             while (resultSet.next()){
-                mysqlDate = resultSet.getDate("schedule_date");
-                datev = dateFormat.format(mysqlDate);
                 scheduleData.add(new Schedule(resultSet.getString("sport_name"),
-                        resultSet.getString("schedule_day"), datev,
-                        resultSet.getTime("session_start").toString(),
-                        resultSet.getTime("session_start").toString()));
+                        resultSet.getString("schedule_day"), resultSet.getString("schedule_date"),
+                        resultSet.getString("session_start"),
+                        resultSet.getString("session_end")));
             }
         }catch (SQLException e){
             System.out.println(e.getMessage());
+            e.printStackTrace();
         }
 
         return scheduleData;
@@ -299,17 +295,16 @@ public class DatabaseConnector {
 
     public ObservableList<String> getDatesOfDay(String day){
         ObservableList<String> dates = FXCollections.observableArrayList();
-        Date mysqlDate;
-        final DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
 
-        String queryDates = "SELECT schedule.schedule_date FROM schedule WHERE schedule_day = " + day;
+        String queryDates = "SELECT schedule.schedule_date FROM schedule WHERE schedule_day = " + "\'" +day + "\'";
 
         try {
             resultSet = connection.createStatement().executeQuery(queryDates);
 
             while (resultSet.next()){
-                mysqlDate = resultSet.getDate("schedule_date");
-                dates.add(dateFormat.format(mysqlDate));
+
+                dates.add(resultSet.getString("schedule_date"));
+
             }
         }catch (SQLException e){
             System.out.println(e.getMessage());
@@ -317,5 +312,52 @@ public class DatabaseConnector {
 
         return dates;
     }
+
+    public int getScheduleLastID(){
+        int lastID = 0;
+
+        String query = "SELECT MAX(schedule.schedule_id) FROM schedule";
+
+        try {
+            resultSet = connection.createStatement().executeQuery(query);
+
+            while (resultSet.next()){
+                lastID = resultSet.getInt("Max(schedule.schedule_id)");
+            }
+        }catch (SQLException e){
+            lastID = 0;
+            e.printStackTrace();
+        }
+
+        return lastID;
+    }
+
+    public void callUpdateScheduleProc(int dayNumber){
+        try {
+            CallableStatement callableStatement = connection.prepareCall("{call updateScheduleTable(?)}");
+
+            callableStatement.setInt(1,dayNumber);
+
+            callableStatement.execute();
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+
+    }
+
+    public void callUpdateScheduleHasSportPro(int dayNumber){
+        CallableStatement callableStatement = null;
+        try {
+            callableStatement = connection.prepareCall("{call updateScheduleHasSport(?)}");
+
+            callableStatement.setInt(1, dayNumber);
+            callableStatement.execute();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+    }
 }
+
 

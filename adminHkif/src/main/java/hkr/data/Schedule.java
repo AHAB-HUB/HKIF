@@ -5,14 +5,18 @@ import javafx.beans.property.StringProperty;
 
 public class Schedule {
 
-    private StringProperty sportName, day, date, sessionStart, sessionEnd;
+    private StringProperty sportName, scheduleDay, scheduleDate, sessionStart, sessionEnd;
 
-    public Schedule(String sportName, String day, String date, String sessionStart, String sessionEnd){
+    public Schedule(String sportName, String scheduleDay, String scheduleDate, String sessionStart, String sessionEnd){
         this.sportName = new SimpleStringProperty(sportName);
-        this.day = new SimpleStringProperty(day);
-        this.date = new SimpleStringProperty(date);
+        this.scheduleDay = new SimpleStringProperty(scheduleDay);
+        this.scheduleDate = new SimpleStringProperty(scheduleDate);
         this.sessionStart = new SimpleStringProperty(sessionStart);
         this.sessionEnd = new SimpleStringProperty(sessionEnd);
+    }
+
+    public Schedule(){
+
     }
 
     public String getSportName() {
@@ -27,28 +31,28 @@ public class Schedule {
         this.sportName.set(sportName);
     }
 
-    public String getDay() {
-        return day.get();
+    public String getScheduleDay() {
+        return scheduleDay.get();
     }
 
-    public StringProperty dayProperty() {
-        return day;
+    public StringProperty scheduleDayProperty() {
+        return scheduleDay;
     }
 
-    public void setDay(String day) {
-        this.day.set(day);
+    public void setScheduleDay(String scheduleDay) {
+        this.scheduleDay.set(scheduleDay);
     }
 
-    public String getDate() {
-        return date.get();
+    public String getScheduleDate() {
+        return scheduleDate.get();
     }
 
-    public StringProperty dateProperty() {
-        return date;
+    public StringProperty scheduleDateProperty() {
+        return scheduleDate;
     }
 
-    public void setDate(String date) {
-        this.date.set(date);
+    public void setScheduleDate(String scheduleDate) {
+        this.scheduleDate.set(scheduleDate);
     }
 
     public String getSessionStart() {
