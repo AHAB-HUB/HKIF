@@ -15,7 +15,7 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("homePage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
         stage.setTitle("HKIF");
         Scene scene = new Scene(root);
         scene.setFill(Color.TRANSPARENT);

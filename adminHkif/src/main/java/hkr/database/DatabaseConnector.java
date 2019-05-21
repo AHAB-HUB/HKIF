@@ -1,10 +1,15 @@
 package hkr.database;
 
 
+import hkr.data.Schedule;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 
 import java.lang.reflect.InvocationTargetException;
 import java.sql.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Properties;
 
 public class DatabaseConnector {
@@ -149,5 +154,210 @@ public class DatabaseConnector {
             System.out.println(e.getMessage());
         }
     }
+
+    public int getSportId(String sportName){
+        String sportIdQuery = "SELECT sport_id FROM sport WHERE sport_name = " + "\'" + sportName + "\'";
+        int sportID = 0;
+
+        try {
+            resultSet = statement.executeQuery(sportIdQuery);
+
+            while (resultSet.next()) {
+                sportID = resultSet.getInt("sport_id");
+            }
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+            sportID = 0;
+        }
+
+        return sportID;
+    }
+
+    public ObservableList<String> getAllSportNames(){
+        ObservableList<String> nameList = FXCollections.observableArrayList();
+        String sportNameQuery = "SELECT sport_name FROM sport";
+
+        try {
+            resultSet = statement.executeQuery(sportNameQuery);
+
+            while (resultSet.next()){
+                nameList.add(resultSet.getString("sport_name"));
+            }
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+            nameList.add(null);
+        }
+
+        return nameList;
+
+    }
+
+    public ObservableList<String> getAlleventNames(){
+        ObservableList<String> nameList = FXCollections.observableArrayList();
+        String eventNameQuery = "SELECT event_name FROM event";
+
+        try {
+            resultSet = statement.executeQuery(eventNameQuery);
+
+            while (resultSet.next()){
+                nameList.add(resultSet.getString("event_name"));
+            }
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+            nameList.add(null);
+        }
+
+        return nameList;
+
+    }
+
+    public void insertValueIntoEvent(String eventName, String eventDescription, String eventLocation, Date eventDate,
+                                     Time eventStart, Time eventEnd){
+
+        String eventQuery = "INSERT INTO event(event_name, event_description, event_location, event_date, " +
+                "event_start, event_end) VALUES(?, ?, ?, ?, ?, ?)";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(eventQuery)){
+            preparedStatement.setString(1, eventName);
+            preparedStatement.setString(2, eventDescription);
+            preparedStatement.setString(3, eventLocation);
+            preparedStatement.setDate(4, eventDate);
+            preparedStatement.setTime(5, eventStart);
+            preparedStatement.setTime(6, eventEnd);
+
+            preparedStatement.executeUpdate();
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void insertValueIntoSportHasEvent(int eventID, int sportId){
+        String sportHasEventQuery = "INSERT INTO sport_has_event (sport_sport_id, event_event_id) VALUES(?, ?)";
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sportHasEventQuery)){
+            preparedStatement.setInt(1, sportId);
+            preparedStatement.setInt(2, eventID);
+
+            preparedStatement.executeUpdate();
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public int getEventId(String eventName){
+        String eventIdQuery = "SELECT event_id FROM event WHERE event_name = " + "\'" + eventName + "\'";
+        int eventID = 0;
+
+        try {
+            resultSet = statement.executeQuery(eventIdQuery);
+            while (resultSet.next()){
+                eventID = resultSet.getInt("event_id");
+            }
+
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+
+            eventID = 0;
+        }
+
+        return eventID;
+    }
+
+    public ObservableList<Schedule> getScheduleInformation(String day, String date){
+
+        ObservableList<Schedule> scheduleData = FXCollections.observableArrayList();
+
+        String scheduleQuery = "SELECT sport.sport_name, schedule.schedule_day, schedule.schedule_date, " +
+                "schedule_has_sport.session_start, schedule_has_sport.session_end " +
+                " FROM sport, schedule, schedule_has_sport " +
+                " WHERE " +
+                " schedule_has_sport.schedule_schedule_id = schedule.schedule_id " +
+                " AND schedule_has_sport.sport_sport_id = sport.sport_id " +
+                "AND schedule.schedule_day = " + " \'" + day + "\'" +
+                " AND schedule.schedule_date = " + " \'" + date + "\'" +
+                " ORDER BY schedule_has_sport.session_start";
+
+        try {
+             resultSet =  connection.createStatement().executeQuery(scheduleQuery);
+
+            while (resultSet.next()){
+                scheduleData.add(new Schedule(resultSet.getString("sport_name"),
+                        resultSet.getString("schedule_day"), resultSet.getString("schedule_date"),
+                        resultSet.getString("session_start"),
+                        resultSet.getString("session_end")));
+            }
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+
+        return scheduleData;
+    }
+
+    public ObservableList<String> getDatesOfDay(String day){
+        ObservableList<String> dates = FXCollections.observableArrayList();
+
+        String queryDates = "SELECT schedule.schedule_date FROM schedule WHERE schedule_day = " + "\'" +day + "\'";
+
+        try {
+            resultSet = connection.createStatement().executeQuery(queryDates);
+
+            while (resultSet.next()){
+
+                dates.add(resultSet.getString("schedule_date"));
+
+            }
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+
+        return dates;
+    }
+
+    public int getScheduleLastID(){
+        int lastID = 0;
+
+        String query = "SELECT MAX(schedule.schedule_id) FROM schedule";
+
+        try {
+            resultSet = connection.createStatement().executeQuery(query);
+
+            while (resultSet.next()){
+                lastID = resultSet.getInt("Max(schedule.schedule_id)");
+            }
+        }catch (SQLException e){
+            lastID = 0;
+            e.printStackTrace();
+        }
+
+        return lastID;
+    }
+
+    public void callUpdateScheduleProc(int dayNumber){
+        try {
+            CallableStatement callableStatement = connection.prepareCall("{call updateScheduleTable(?)}");
+
+            callableStatement.setInt(1,dayNumber);
+
+            callableStatement.execute();
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+
+    }
+
+    public void callUpdateScheduleHasSportPro(int dayNumber){
+        CallableStatement callableStatement = null;
+        try {
+            callableStatement = connection.prepareCall("{call updateScheduleHasSport(?)}");
+
+            callableStatement.setInt(1, dayNumber);
+            callableStatement.execute();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+    }
 }
+
 
