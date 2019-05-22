@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="borderPane" prefHeight="634.0" prefWidth="1000.0" stylesheets="@../styles/stylesheet.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hkr.controllers.MenuCtrl">
+   <left>
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="601.0" prefWidth="197.0" styleClass="sidepane" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="88.0" fitWidth="180.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../asset/hkif_menu.png" />
+               </image>
+            </ImageView>
+            <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="124.0" onAction="#home" prefHeight="40.0" prefWidth="190.0" ripplerFill="WHITE" styleClass="buttons" text="Home" textFill="WHITE">
+               <font>
+                  <Font name="Roboto Condensed" size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/Home.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="174.0" onAction="#schedule" prefHeight="40.0" prefWidth="190.0" ripplerFill="WHITE" styleClass="buttons" text="Schedule" textFill="WHITE">
+               <font>
+                  <Font name="Roboto Condensed" size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../asset/ic_subject_grey600_24dp.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="217.0" onAction="#addEvent" prefHeight="40.0" prefWidth="190.0" ripplerFill="WHITE" styleClass="buttons" text="Add event" textFill="WHITE">
+               <font>
+                  <Font name="Roboto Condensed" size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/Deliver.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="267.0" onAction="#sports" prefHeight="40.0" prefWidth="190.0" ripplerFill="WHITE" styleClass="buttons" text="Sports" textFill="WHITE">
+               <font>
+                  <Font name="Roboto Condensed" size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/money.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="317.0" onAction="#members" prefHeight="40.0" prefWidth="190.0" ripplerFill="WHITE" styleClass="buttons" text="Members " textFill="WHITE">
+               <font>
+                  <Font name="Roboto Condensed" size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/customer_help.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <AnchorPane layoutY="581.0" prefHeight="20.0" prefWidth="197.0" styleClass="redPane">
+               <children>
+                  <Label layoutX="6.0" layoutY="2.0" prefHeight="17.0" prefWidth="82.0" text="Online users: " textFill="WHITE" />
+                  <Label fx:id="onlinelbl" layoutX="81.0" layoutY="2.0" prefHeight="17.0" prefWidth="82.0" text="2" textFill="WHITE" />
+               </children>
+            </AnchorPane>
+         </children>
+      </Pane>
+   </left>
+   <center>
+      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </center>
+   <top>
+      <Pane fx:id="upperBar" onMouseDragged="#onUpperBarDragged" onMousePressed="#onUpperBarPressed" prefHeight="33.0" prefWidth="1000.0" styleClass="redPane" BorderPane.alignment="CENTER">
+         <children>
+            <Pane prefHeight="33.0" prefWidth="197.0" style="-fx-background-color: black;">
+               <children>
+                  <ImageView fx:id="notificationbtn" fitHeight="25.0" fitWidth="25.0" layoutX="3.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/bell.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="notificationLbl" alignment="CENTER" layoutX="15.0" layoutY="1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="20.0" styleClass="roundLabel" text="2" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Label alignment="CENTER" layoutX="920.0" layoutY="-1.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#minimize" prefHeight="35.0" prefWidth="40.0" styleClass="closeBtn">
+               <graphic>
+                  <ImageView fx:id="btnMinimize" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/min.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Label>
+            <Label alignment="CENTER" layoutX="960.0" layoutY="-2.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#close_app" prefHeight="35.0" prefWidth="40.0" styleClass="closeBtn">
+               <graphic>
+                  <ImageView fx:id="btnExit" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/Close.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Label>
+            <Label layoutX="200.0" layoutY="1.0" onMouseClicked="#logOut" prefHeight="30.0" prefWidth="88.0" style="-fx-border-color: black; -fx-border-radius: 5;" text="Log-out" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/customer_help.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Label>
+         </children>
+      </Pane>
+   </top>
+</BorderPane>

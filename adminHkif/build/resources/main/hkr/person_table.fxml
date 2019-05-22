@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane prefHeight="601.0" prefWidth="803.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hkr.controllers.MemberTableCtrl">
+   <children>
+      <TableView fx:id="personTable" layoutX="2.0" layoutY="2.0" prefHeight="601.0" prefWidth="803.0">
+         <columns>
+            <TableColumn fx:id="col_first_name" prefWidth="88.0" text="First_name" />
+            <TableColumn fx:id="col_last_name" prefWidth="93.0" text="Last_name" />
+            <TableColumn fx:id="col_email" prefWidth="123.0" text="Email" />
+            <TableColumn fx:id="col_phone_number" prefWidth="113.0" text="Phone_number" />
+            <TableColumn fx:id="col_position" prefWidth="104.0" text="Position" />
+            <TableColumn fx:id="col_has_paid" prefWidth="79.0" text="Haspaid" />
+            <TableColumn fx:id="col_edit" prefWidth="138.0" text="Edit" />
+         </columns>
+         <padding>
+            <Insets left="8.0" right="8.0" />
+         </padding>
+      </TableView>
+   </children>
+</Pane>

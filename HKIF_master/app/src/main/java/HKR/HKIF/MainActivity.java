@@ -26,6 +26,7 @@ import HKR.HKIF.fragments.MessageFragment;
 import HKR.HKIF.fragments.ProfileFragment;
 import HKR.HKIF.fragments.SessionManagement;
 import HKR.HKIF.fragments.SignInFragment;
+import HKR.HKIF.liveChat.GroupChatFragment;
 import HKR.HKIF.utilities.NotificationListener;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -154,6 +155,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                 break;
 
+            case id.member_chat:
+                getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
+                        new GroupChatFragment()).commit();
+
+                break;
+
         }
 
         drawer.closeDrawer(GravityCompat.START);
@@ -257,5 +264,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     }
+
 
 }
