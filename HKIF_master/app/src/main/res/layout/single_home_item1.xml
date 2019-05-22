@@ -7,7 +7,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:id="@+id/rel">
 
         <ImageView
             android:layout_width="160dp"
@@ -19,19 +20,32 @@
             android:layout_alignParentStart="true"
             android:layout_marginStart="11dp" />
 
+        <View
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:background="@drawable/bagimage_overlay"
+            android:layout_marginLeft="11dp"
+            />
+
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tvMain"
             android:text="FOOTBALL"
+            android:textColor="@color/ic_hkif_icon_background"
             android:layout_marginTop="6dp"
             android:layout_marginLeft="6dp"
             android:textStyle="bold"
             android:textFontWeight="2"
             android:layout_toRightOf="@+id/ivMain"
             android:layout_centerVertical="true"
-            android:textSize="18sp"/>
+            android:textSize="24sp"/>
+
+
 
     </RelativeLayout>
+
+
 
 </RelativeLayout>

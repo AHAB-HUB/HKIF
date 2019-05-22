@@ -246,7 +246,7 @@
         Baskets can be worth 1, 2, or 3 points.
         You get points by shooting the ball into the opponents basket.
         The team with the most points at the end of the game wins.</string>
-<string name="boxingDescription">
+    <string name="boxingDescription">
     Boxing not only requires a high level of athleticism, vitality and strength, but also a high level of concentration and endurance.
 The objective of boxing,is to knock out the opponent, making him unable to stand until the referee counts to ten.
     Another way of winning in boxing, is by scoring points.</string>
@@ -263,7 +263,7 @@ The objective of boxing,is to knock out the opponent, making him unable to stand
         Different BJJ techniques like pull guard, close guard, scissor guard, full mount, joint locks, etc., are used to cramp the opponent, hence seizing his mobility.</string>
     <string name="swimmingDescription">Swimming is a great recreational activity for people of all ages.
         Recreational swimming can provide you with a low-impact workout and it\’s also a good way to relax and feel good. Common swimming styles in recreational swimming are breaststroke, backstroke, side stroke and freestyle.</string>
-<string name="volleyballDescription" tools:ignore="StringEscaping">The ball is played by hitting it with any part of the body.
+    <string name="volleyballDescription" tools:ignore="StringEscaping">The ball is played by hitting it with any part of the body.
     The objective of the game is for each team to send the ball over the net to ground it on the opponent\'s court, and to prevent the ball from being grounded on its own court.
     The ball is put into play by the serving player.</string>
     <string name="basketball">Basketball</string>

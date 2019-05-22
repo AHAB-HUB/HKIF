@@ -5,15 +5,30 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.rey.material.widget.CheckBox;
 
+import HKR.HKIF.Users.Person;
 import HKR.HKIF.dB.GoingUpdater;
 import HKR.HKIF.extraReq.AttendanceHistoryFragment;
 import HKR.HKIF.extraReq.InboxFragment;
@@ -37,11 +52,15 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import io.paperdb.Paper;
 
 import static HKR.HKIF.R.id;
 import static HKR.HKIF.R.layout;
 import static HKR.HKIF.R.string;
 import static android.Manifest.permission.CALL_PHONE;
+import static androidx.constraintlayout.widget.Constraints.TAG;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -52,10 +71,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private Button cancelButton;
 
 
+    private EditText email, password;
+    private String role;
+    private ProgressBar progressBar;
+    private FirebaseAuth mAuth;
+    private FirebaseDatabase mDatabase;
+    private DatabaseReference mDb;
+    CheckBox checkBox;
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(layout.activity_main);
+
+        //init paper
+        Paper.init(this);
+
+        progressBar = findViewById(R.id.sign_in_progressBar);
+
+        mAuth = FirebaseAuth.getInstance();
 
         //activate the Notification listener
         new NotificationListener(this, findViewById(android.R.id.content));
@@ -83,10 +120,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
                 new HomeFragment()).commit();
 
+        //check remember
+        String user = Paper.book().read(Person.USER_KEY);
+        String password = Paper.book().read(Person.PWD_KEY);
 
+        System.out.println(user + " Here again " + password); //confirm if the paper saved data
+
+
+        if (user != null && password != null){
+
+            if(!user.isEmpty() && !password.isEmpty())
+
+                login(user,password);
+        }
     }
-
-
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
@@ -132,6 +179,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
             case id.nav_guest_logIn:
+
                 getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
                         new SignInFragment()).addToBackStack(null).commit();
                 break;
@@ -146,6 +194,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case id.member_logOut:
+
+                //delete userEmail & password
+                Paper.book().destroy();
                 //sign out
                 FirebaseAuth.getInstance().signOut();
                 //set side menu
@@ -165,13 +216,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         new ProfileFragment()).commit();
 
                 break;
-
         }
-
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
     @Override
     public void onBackPressed() {
 
@@ -181,7 +229,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             super.onBackPressed();
         }
     }
-
     //TODO UPDATE THIS METHOD
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -198,19 +245,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         case id.bottom_nav_findUs:
                             getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
                                     new LocationFragment()).addToBackStack(null).commit();
-
                             break;
 
                         case id.bottom_nav_schedule:
                             getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
                                     new DaysFragment()).addToBackStack(null).commit();
                             break;
-
                     }
                     return true;
                 }
-            };
-
+     };
     public void contactDialog() {
 
         final AlertDialog.Builder contactAlert = new AlertDialog.Builder(MainActivity.this);
@@ -245,13 +289,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                 getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
                         new MessageFragment()).addToBackStack(null).commit();
-
             }
         });
 
         alertDialog.show();
     }
-
     public void callPhone() {
 
         Intent intent = new Intent(Intent.ACTION_CALL);
@@ -266,8 +308,61 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 requestPermissions(new String[]{CALL_PHONE}, 1);
             }
         }
-
-
     }
+    public void login(String phone, String pass) {
 
+        mAuth.signInWithEmailAndPassword(phone, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+
+                //progressBar.setVisibility(View.GONE);
+
+                if (task.isSuccessful()) {
+
+                    mAuth = FirebaseAuth.getInstance();
+                    mDatabase = FirebaseDatabase.getInstance();
+                    mDb = mDatabase.getReference();
+                    FirebaseUser user = mAuth.getCurrentUser();
+
+                    String userKey = user.getUid();
+
+                    mDb.child("person").child(userKey).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            role = String.valueOf(dataSnapshot.child("Position").getValue());
+                            Log.d(TAG, "Position : " + role);
+
+                            switch (role) {
+                                case "MEMBER":
+                                    navigationView1.getMenu().clear();
+                                    navigationView1.inflateMenu(R.menu.drawer_navigation_member);
+                                    break;
+                                case "TEAM_LEADER":
+                                    navigationView1.getMenu().clear();
+                                    navigationView1.inflateMenu(R.menu.drawer_navigation_team_leader);
+                                    break;
+                                case "ADMIN":
+                                    navigationView1.getMenu().clear();
+                                    navigationView1.inflateMenu(R.menu.drawer_navigation_admin);
+                                    break;
+                            }
+                        }
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+                    getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
+                            new HomeFragment()).addToBackStack(null).commit();
+
+                    //if need to create and navigate to user profile
+                    //Intent intent = new Intent(getActivity(), HomeFragment.class);
+                    //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    //startActivity(intent);
+                } else {
+                    Toast.makeText(MainActivity.this, "Error", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+    }
 }

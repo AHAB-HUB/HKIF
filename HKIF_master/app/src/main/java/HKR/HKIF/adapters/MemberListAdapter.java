@@ -57,6 +57,8 @@ public class MemberListAdapter extends ArrayAdapter<Person> {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
 
+        String personPaid = null;
+
         View row = convertView;
         final CardViewHolder viewHolder;
 

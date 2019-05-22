@@ -18,6 +18,10 @@ public class Person {
     private boolean hasPaid;
     private String profileCreated;
     private String fullName;
+    //private String hasPaid;
+
+    public static final String USER_KEY = "User";
+    public static final String PWD_KEY = "Password";
 
 
     public Person() {
@@ -36,6 +40,7 @@ public class Person {
         this.hasPaid = hasPaid;
         this.profileCreated = profileCreated;
         this.position = position;
+        //this.hasPaid = hasPaid;
 
 
     }
@@ -123,6 +128,13 @@ public class Person {
         this.profileCreated = profileCreated;
     }
 
+    /*public String getHasPaid() {
+        return hasPaid;
+    }
+
+    public void setHasPaid(String hasPaid) {
+        this.hasPaid = hasPaid;
+    }*/
 
     @Override
     public String toString() {

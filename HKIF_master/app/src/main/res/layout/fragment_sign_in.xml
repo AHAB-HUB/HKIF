@@ -3,8 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fitsSystemWindows="true"
-    tools:context=".fragments.SignInFragment">
+    tools:context=".fragments.SignInFragment"
+    android:id="@+id/signFragment"
+    class = "com.oldfeel.base.BaseFragment">
 
 
     <LinearLayout
@@ -20,58 +23,109 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/image_logo"/>
 
         <ProgressBar
+            android:id="@+id/sign_in_progressBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:background="@color/transparent"
             android:layout_gravity="center"
-            android:id="@+id/sign_in_progressBar"/>
+            android:background="@color/transparent"
+            android:visibility="gone" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp">
-        <EditText android:id="@+id/logIn_email"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
-            android:hint="Email" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:padding="5dp">
+
+            <EditText
+                android:id="@+id/logIn_email"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/inputs"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:paddingLeft="20dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp">
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="8dp"
+        android:padding="5dp">
         <EditText android:id="@+id/logIn_password"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:inputType="textPassword"
-            android:hint="Password"/>
+            android:hint="Password"
+            android:background="@drawable/inputs"
+            android:paddingLeft="20dp"/>
     </com.google.android.material.textfield.TextInputLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.rey.material.widget.CheckBox
+                android:id="@+id/signin_checkbox"
+                android:layout_width="43dp"
+                android:layout_height="38dp"
+                style="@style/Material.Drawable.CheckBox"
+                android:gravity="center_vertical"
+                android:textColor="@color/white"
+                app:cbd_strokeColor="@android:color/white"
+                app:cbd_tickColor = "@android:color/background_dark"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="Remember me"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:gravity="center"
+                android:textSize="16dip" />
+        </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_login"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="12dp"
         android:padding="12dp"
-        android:text="Login"/>
+        android:text="Login"
+        android:textSize="20dp"
+        android:textColor="@color/white"
+        android:background="@drawable/button"/>
 
     <TextView android:id="@+id/link_signup"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="12dp"
         android:text="Not a member? Register here"
+        android:textColor="@color/ic_hkif_icon_background"
         android:clickable="true"
         android:gravity="center"
         android:textSize="16dip"
         android:focusable="true" />
+
+        <TextView
+            android:id="@+id/reset_pass"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="18dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="Forget password?"
+            android:textColor="@color/colorAccent"
+            android:textSize="16dip" />
 
     </LinearLayout>
 

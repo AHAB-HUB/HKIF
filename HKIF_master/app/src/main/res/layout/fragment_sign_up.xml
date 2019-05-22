@@ -21,12 +21,19 @@
             android:layout_marginBottom="24dp"
             android:layout_gravity="center_horizontal" />
 
+        <TextView
+            android:id="@+id/fee"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="24dp"/>
+
         <ProgressBar
+            android:id="@+id/sign_up_progressBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/transparent"
             android:layout_gravity="center"
-            android:id="@+id/sign_up_progressBar"/>
+            android:background="@color/transparent"
+            android:visibility="gone" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -35,9 +42,11 @@
         android:layout_marginBottom="8dp">
         <EditText android:id="@+id/signUp_firstName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:inputType="text"
-            android:hint="First Name" />
+            android:hint="First Name"
+            android:background="@drawable/inputs"
+            android:paddingLeft="20dp"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -47,9 +56,11 @@
         android:layout_marginBottom="8dp">
         <EditText android:id="@+id/signUp_lastName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:inputType="text"
-            android:hint="Last Name"/>
+            android:hint="Last Name"
+            android:background="@drawable/inputs"
+            android:paddingLeft="20dp"/>
     </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -59,9 +70,11 @@
             android:layout_marginBottom="8dp">
             <EditText android:id="@+id/signUp_email"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:inputType="textEmailAddress"
-                android:hint="Email"/>
+                android:hint="Email"
+                android:background="@drawable/inputs"
+                android:paddingLeft="20dp"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -71,9 +84,11 @@
             android:layout_marginBottom="8dp">
             <EditText android:id="@+id/signUp_password"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:inputType="text"
-                android:hint="Password"/>
+                android:hint="Password"
+                android:background="@drawable/inputs"
+                android:paddingLeft="20dp"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -83,12 +98,12 @@
             android:layout_marginBottom="8dp">
             <EditText android:id="@+id/signUp_phone_number"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:inputType="phone"
-                android:hint="Phone Number"/>
+                android:hint="Phone Number"
+                android:background="@drawable/inputs"
+                android:paddingLeft="20dp"/>
         </com.google.android.material.textfield.TextInputLayout>
-
-
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_signUp"
@@ -97,7 +112,10 @@
         android:layout_marginTop="24dp"
         android:layout_marginBottom="24dp"
         android:padding="12dp"
-        android:text="Sign Up"/>
+        android:text="Sign Up"
+        android:textSize="20dp"
+        android:textColor="@color/white"
+        android:background="@drawable/button"/>
 
 
     </LinearLayout>
