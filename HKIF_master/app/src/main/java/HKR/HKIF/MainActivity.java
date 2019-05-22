@@ -33,8 +33,6 @@ import HKR.HKIF.dB.GoingUpdater;
 import HKR.HKIF.extraReq.AttendanceHistoryFragment;
 import HKR.HKIF.extraReq.InboxFragment;
 import HKR.HKIF.fragments.AboutFragment;
-import HKR.HKIF.fragments.AddNewEvent;
-import HKR.HKIF.fragments.Administration;
 import HKR.HKIF.fragments.DaysFragment;
 import HKR.HKIF.fragments.HomeFragment;
 import HKR.HKIF.fragments.LocationFragment;
@@ -141,7 +139,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             case id.nav_guest_gallery:
             case id.leader_gallery:
-            case id.admin_gallery:
+            //case id.admin_gallery:
                 Intent gallery = new Intent(this, MyAlbum.class);
                 startActivity(gallery);
                 break;
@@ -151,23 +149,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(sessionManagement);
                 break;
 
-            case id.admin_new_event:
-                getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
-                        new AddNewEvent()).commit();
-                break;
-
-            case id.admin_admin:
-                getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
-                        new Administration()).commit();
-                break;
-
             case id.nav_guest_contact:
                 contactDialog();   // this open the option dialog for call/message
                 break;
 
             case id.member_contact:
             case id.leader_contact:
-            case id.admin_members:
+            //case id.admin_members:
                 getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
                         new MembersListFragment()).addToBackStack(null).commit();
                 break;
@@ -208,7 +196,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                 break;
 
-            case id.admin_profile:
+            //case id.admin_profile:
             case id.leader_profile:
             case id.member_profile:
 
