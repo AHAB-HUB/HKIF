@@ -70,7 +70,7 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
         String passwordLog = password.getText().toString().trim();
 
         if (emailLog.isEmpty()) {
-            email.setError("Email must be enter");
+            email.setError("Email must be entered");
             email.requestFocus();
             return;
         }
@@ -122,10 +122,12 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
                                     navigationView1.getMenu().clear();
                                     navigationView1.inflateMenu(R.menu.drawer_navigation_team_leader);
                                     break;
+
                                 case "ADMIN":
                                     navigationView1.getMenu().clear();
-                                    navigationView1.inflateMenu(R.menu.drawer_navigation_admin);
+                                    navigationView1.inflateMenu(R.menu.drawer_navigation_member);
                                     break;
+//
                             }
                         }
 
