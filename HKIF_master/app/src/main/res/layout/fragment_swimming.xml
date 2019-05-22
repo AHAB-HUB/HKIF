@@ -1,70 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
     tools:context=".fragments.SwimmingFragment">
 
     <TextView
-        android:gravity="center"
         android:id="@+id/badTitleTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="121dp"
-        android:layout_marginEnd="115dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+
         android:text="@string/swimming"
-        android:textSize="36sp"
-        android:textColor="@color/schedule_colorPrimary"/>
+        android:textColor="@color/schedule_colorPrimary"
+        android:textSize="36sp" />
 
     <ImageView
-        android:gravity="center"
-        android:paddingTop="2dp"
         android:id="@+id/swiImageView"
         android:layout_width="match_parent"
-        android:layout_height="266dp"
-        android:layout_below="@+id/badTitleTextView"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="22dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginBottom="394dp"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:gravity="center"
+        android:paddingTop="2dp"
+        android:scaleType="fitCenter"
+
         android:src="@drawable/swimming_kub" />
 
     <TextView
-        android:gravity="center"
         android:id="@+id/swiDesriptopnTextView"
         android:layout_width="match_parent"
-        android:layout_height="223dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="161dp"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:gravity="center"
+        android:textSize="18sp"
         android:text="@string/swimmingDescription"
-        android:textColor="@color/schedule_colorPrimary"/>
+        android:textColor="@color/schedule_colorPrimary" />
 
     <Button
-        android:gravity="center"
         android:id="@+id/swiLocationImageButton"
         android:layout_width="match_parent"
-        android:layout_height="104dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginBottom="28dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.25"
         android:background="@color/schedule_colorPrimary"
+
+        android:gravity="center"
         android:text="VIEW OUR LOCATION"
         android:textColor="#ffffff"
         android:textSize="16sp" />
 
-</RelativeLayout>
+</LinearLayout>

@@ -19,6 +19,11 @@
             android:icon="@drawable/ic_gallery"
             android:title="Gallery" />
 
+        <item
+            android:id="@+id/member_chat"
+            android:icon="@drawable/ic_chat"
+            android:title="CHAT" />
+
         <item android:icon="@drawable/ic_business_center_black_24dp"
             android:id="@+id/nav_about"
             android:title="About"/>
