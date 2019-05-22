@@ -24,6 +24,7 @@
 
     <ImageView
         android:gravity="center"
+        android:scaleType="centerCrop"
         android:paddingTop="2dp"
         android:id="@+id/boxImageView"
         android:layout_width="match_parent"

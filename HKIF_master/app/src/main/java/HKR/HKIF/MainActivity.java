@@ -41,6 +41,7 @@ import HKR.HKIF.fragments.MessageFragment;
 import HKR.HKIF.fragments.ProfileFragment;
 import HKR.HKIF.fragments.SessionManagement;
 import HKR.HKIF.fragments.SignInFragment;
+import HKR.HKIF.liveChat.GroupChatFragment;
 import HKR.HKIF.utilities.NotificationListener;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -204,6 +205,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         new ProfileFragment()).commit();
 
                 break;
+
+            case id.member_chat:
+                getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
+                        new GroupChatFragment()).commit();
+
+                break;
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -329,10 +336,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                     navigationView1.getMenu().clear();
                                     navigationView1.inflateMenu(R.menu.drawer_navigation_team_leader);
                                     break;
-                                case "ADMIN":
+                                /*case "ADMIN":
                                     navigationView1.getMenu().clear();
                                     navigationView1.inflateMenu(R.menu.drawer_navigation_admin);
-                                    break;
+                                    break;*/
                             }
                         }
                         @Override
@@ -342,6 +349,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     });
                     getSupportFragmentManager().beginTransaction().replace(id.fragment_container,
                             new HomeFragment()).addToBackStack(null).commit();
+
 
                     //if need to create and navigate to user profile
                     //Intent intent = new Intent(getActivity(), HomeFragment.class);

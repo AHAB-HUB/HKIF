@@ -268,4 +268,7 @@ The objective of boxing,is to knock out the opponent, making him unable to stand
     The ball is put into play by the serving player.</string>
     <string name="basketball">Basketball</string>
     <string name="floorball">Floor ball</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
