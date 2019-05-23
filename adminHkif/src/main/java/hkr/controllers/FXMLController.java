@@ -1,10 +1,5 @@
 package hkr.controllers;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-import java.util.Timer;
-import java.util.TimerTask;
-
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -13,11 +8,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ProgressIndicator;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class FXMLController implements Initializable {
 
@@ -54,7 +49,7 @@ public class FXMLController implements Initializable {
         });
     }
 
-    private void moveToSportList() throws Exception{
+    private void moveToSportList() throws Exception {
         Stage stage;
         Parent root;
         stage = (Stage) sportList_btn.getScene().getWindow();
@@ -65,7 +60,7 @@ public class FXMLController implements Initializable {
         stage.show();
     }
 
-    private void moveTpPersonList() throws Exception{
+    private void moveTpPersonList() throws Exception {
         Stage stage;
         Parent root;
         stage = (Stage) personList_btn.getScene().getWindow();

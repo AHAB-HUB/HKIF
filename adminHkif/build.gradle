@@ -12,6 +12,7 @@ dependencies {
     implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.15'
     implementation 'com.google.firebase:firebase-admin:6.8.1'
     implementation 'com.jfoenix:jfoenix:9.0.8'
+    implementation 'org.apache.commons:commons-lang3:3.6'
 }
 
 javafx {

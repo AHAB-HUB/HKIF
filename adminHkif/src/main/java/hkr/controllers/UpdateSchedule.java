@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import org.apache.commons.lang3.StringUtils;
 
 import java.net.URL;
 import java.util.Optional;
@@ -46,7 +47,6 @@ public class UpdateSchedule implements Initializable {
     private Button getBtn;
 
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         initCols();
@@ -58,7 +58,7 @@ public class UpdateSchedule implements Initializable {
 
     }
 
-    private void initCols(){
+    private void initCols() {
         col_sport_name.setCellValueFactory(new PropertyValueFactory<>("sportName"));
         col_day.setCellValueFactory(new PropertyValueFactory<>("scheduleDay"));
         cola_date.setCellValueFactory(new PropertyValueFactory<>("scheduleDate"));
@@ -66,7 +66,7 @@ public class UpdateSchedule implements Initializable {
         col_session_end.setCellValueFactory(new PropertyValueFactory<>("sessionEnd"));
     }
 
-    private void getInformation(){
+    private void getInformation() {
 
         scheduleTable.setItems(null);
         scheduleTable.setItems(new DatabaseConnector().
@@ -74,7 +74,7 @@ public class UpdateSchedule implements Initializable {
 
     }
 
-    private ObservableList<String> fillDayComboBox(){
+    private ObservableList<String> fillDayComboBox() {
         ObservableList<String> days = FXCollections.observableArrayList();
         days.add("Monday");
         days.add("Tuesday");
@@ -87,19 +87,37 @@ public class UpdateSchedule implements Initializable {
     }
 
     @FXML
-    private void fillDate(){
+    private void fillDate() {
         dateComboBox.setValue("Date");
         dateComboBox.setItems(new DatabaseConnector().getDatesOfDay(dayComboBox.getValue()));
     }
 
-    private void updateScheduleTable(){
-        TextInputDialog dialog = new TextInputDialog();
-        dialog.setTitle("Update Schedule");
-        dialog.setContentText("Enter the number of days ");
-        Optional<String> result = dialog.showAndWait();
-        if (result.isPresent()){
-            new DatabaseConnector().callUpdateScheduleProc(Integer.valueOf(result.get()));
-            new DatabaseConnector().callUpdateScheduleHasSportPro(Integer.valueOf(result.get()));
-        }
+    private void updateScheduleTable() {
+        Optional<String> result;
+        do {
+            TextInputDialog dialog = new TextInputDialog();
+            dialog.setTitle("Update Schedule");
+            dialog.setContentText("Enter the number of days ");
+            result = dialog.showAndWait();
+
+            if (result.isPresent()) {// if ok button is pressed
+
+                if (StringUtils.isNumeric(result.get())) {
+                    new DatabaseConnector().callUpdateScheduleProc(Integer.valueOf(result.get()));
+                    new DatabaseConnector().callUpdateScheduleHasSportPro(Integer.valueOf(result.get()));
+                    break;
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Wrong input");
+                    alert.setResizable(false);
+                    alert.setContentText("Please use only numbers!");
+                    alert.showAndWait();
+                }
+            } else {//if cancel button is pressed
+                break;
+            }
+        } while (true);
+
+
     }
 }

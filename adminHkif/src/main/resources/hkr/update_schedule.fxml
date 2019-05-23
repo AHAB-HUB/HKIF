@@ -8,8 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="601.0" prefWidth="803.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hkr.controllers.UpdateSchedule">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="601.0" prefWidth="803.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hkr.controllers.UpdateSchedule">
    <children>
       <Label layoutX="342.0" layoutY="24.0" text="SCHEDULE" textFill="#11024d">
          <font>
@@ -17,7 +16,7 @@
          </font>
       </Label>
       <ComboBox fx:id="dayComboBox" layoutX="513.0" layoutY="154.0" onAction="#fillDate" prefHeight="25.0" prefWidth="107.0" promptText="Day" />
-      <ComboBox fx:id="dateComboBox" layoutX="661.0" layoutY="154.0" prefHeight="25.0" prefWidth="89.0" promptText="Date" />
+      <ComboBox fx:id="dateComboBox" layoutX="661.0" layoutY="154.0" prefHeight="25.0" prefWidth="107.0" promptText="Date" />
       <TableView fx:id="scheduleTable" layoutY="154.0" prefHeight="431.0" prefWidth="502.0">
         <columns>
           <TableColumn fx:id="col_sport_name" prefWidth="90.0" text="sport_name" />
@@ -27,7 +26,7 @@
             <TableColumn fx:id="col_session_end" prefWidth="99.0" text="session_end" />
         </columns>
       </TableView>
-      <Button fx:id="updateBtn" layoutX="513.0" layoutY="560.0" mnemonicParsing="false" text="Update" />
-      <Button fx:id="getBtn" layoutX="678.0" layoutY="560.0" mnemonicParsing="false" text="Get" />
+      <Button fx:id="updateBtn" layoutX="513.0" layoutY="560.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="107.0" text="Update" />
+      <Button fx:id="getBtn" layoutX="661.0" layoutY="560.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="107.0" text="Get" />
    </children>
 </Pane>

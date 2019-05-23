@@ -1,7 +1,7 @@
 package hkr.controllers;
 
-import hkr.database.DatabaseConnector;
 import hkr.data.Person;
+import hkr.database.DatabaseConnector;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -9,7 +9,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.*;
+import javafx.scene.control.cell.ComboBoxTableCell;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.BorderPane;
 
 import java.net.URL;
@@ -21,36 +23,28 @@ public class MemberTableCtrl implements Initializable {
 
     @FXML
     private TableView<Person> personTable;
-
     @FXML
     private TableColumn<Person, String> col_first_name;
-
     @FXML
     private TableColumn<Person, String> col_last_name;
-
     @FXML
     private TableColumn<Person, String> col_email;
-
     @FXML
     private TableColumn<Person, String> col_phone_number;
-
     @FXML
     private TableColumn<Person, String> col_position;
-
     @FXML
     private TableColumn<Person, String> col_has_paid;
-
     @FXML
     private TableColumn<Person, Button> col_edit;
     @FXML
     private BorderPane borderPane;
-    public void setBorderPane(BorderPane borderPane) {
-        this.borderPane = borderPane;
-
-    }
-
     private ObservableList<Person> personData;
     private DatabaseConnector databaseConnector;
+
+    public void setBorderPane(BorderPane borderPane) {
+        this.borderPane = borderPane;
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -61,12 +55,11 @@ public class MemberTableCtrl implements Initializable {
         getPersonInformation();
     }
 
-    private void initTable(){
+    private void initTable() {
         initCols();
     }
 
-    private void initCols(){
-
+    private void initCols() {
         col_first_name.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         col_last_name.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         col_email.setCellValueFactory(new PropertyValueFactory<>("email"));
@@ -78,7 +71,7 @@ public class MemberTableCtrl implements Initializable {
         editableCols();
     }
 
-    private void editableCols(){
+    private void editableCols() {
         col_first_name.setCellFactory(TextFieldTableCell.forTableColumn());
         col_first_name.setOnEditCommit(event -> {
             event.getTableView().getItems().get(event.getTablePosition().getRow()).setFirstName(event.getNewValue());
@@ -112,14 +105,14 @@ public class MemberTableCtrl implements Initializable {
         personTable.setEditable(true);
     }
 
-    private void getPersonInformation(){
+    private void getPersonInformation() {
         personData = FXCollections.observableArrayList();
         String query = "SELECT first_name, last_name, email, phone_number, position, has_paid FROM person " +
                 "WHERE person.first_name != 'admin' ";
         try {
             ResultSet resultSet = databaseConnector.getConnection().createStatement().executeQuery(query);
 
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 personData.add(new Person(resultSet.getString("first_name"),
                         resultSet.getString("last_name"), resultSet.getString("email"),
                         resultSet.getString("phone_number"), resultSet.getString("position"),
@@ -133,7 +126,7 @@ public class MemberTableCtrl implements Initializable {
         personTable.setItems(personData);
     }
 
-    private ObservableList<String> hasPaidItems(){
+    private ObservableList<String> hasPaidItems() {
         ObservableList<String> list = FXCollections.observableArrayList();
         list.add("TRUE");
         list.add("FALSE");
@@ -141,7 +134,7 @@ public class MemberTableCtrl implements Initializable {
         return list;
     }
 
-    private ObservableList<String> positionItems(){
+    private ObservableList<String> positionItems() {
         ObservableList<String> list = FXCollections.observableArrayList();
         list.add("MEMBER");
         list.add("TEAM_LEADER");

@@ -25,8 +25,8 @@ public class Person {
         this.updateBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                new DatabaseConnector().updateMembers(getFirstName(),getLastName(),
-                        getPhoneNumber(),getPosition(),getHasPaid(),getEmail());
+                new DatabaseConnector().updateMembers(getFirstName(), getLastName(),
+                        getPhoneNumber(), getPosition(), getHasPaid(), getEmail());
             }
         });
     }
@@ -46,71 +46,71 @@ public class Person {
         return firstName.get();
     }
 
-    public StringProperty firstNameProperty() {
-        return firstName;
-    }
-
     public void setFirstName(String firstName) {
         this.firstName.set(firstName);
+    }
+
+    public StringProperty firstNameProperty() {
+        return firstName;
     }
 
     public String getLastName() {
         return lastName.get();
     }
 
-    public StringProperty lastNameProperty() {
-        return lastName;
-    }
-
     public void setLastName(String lastName) {
         this.lastName.set(lastName);
+    }
+
+    public StringProperty lastNameProperty() {
+        return lastName;
     }
 
     public String getEmail() {
         return email.get();
     }
 
-    public StringProperty emailProperty() {
-        return email;
-    }
-
     public void setEmail(String email) {
         this.email.set(email);
+    }
+
+    public StringProperty emailProperty() {
+        return email;
     }
 
     public String getPhoneNumber() {
         return phoneNumber.get();
     }
 
-    public StringProperty phoneNumberProperty() {
-        return phoneNumber;
-    }
-
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber.set(phoneNumber);
+    }
+
+    public StringProperty phoneNumberProperty() {
+        return phoneNumber;
     }
 
     public String getPosition() {
         return position.get();
     }
 
-    public StringProperty positionProperty() {
-        return position;
-    }
-
     public void setPosition(String position) {
         this.position.set(position);
+    }
+
+    public StringProperty positionProperty() {
+        return position;
     }
 
     public String getHasPaid() {
         return hasPaid.get();
     }
 
-    public StringProperty hasPaidProperty() {
-        return hasPaid;
-    }
-
     public void setHasPaid(String hasPaid) {
         this.hasPaid.set(hasPaid);
+    }
+
+    public StringProperty hasPaidProperty() {
+        return hasPaid;
     }
 }

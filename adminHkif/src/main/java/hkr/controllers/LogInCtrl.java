@@ -22,13 +22,14 @@ public class LogInCtrl implements Initializable {
     private TextField txtUserName, txtPassword;
     @FXML
     private AnchorPane upperBar;
-    private double x,y;
+    private double x, y;
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) { }
+    public void initialize(URL location, ResourceBundle resources) {
+    }
 
     @FXML
-    private void logIn(){
+    private void logIn() {
         DatabaseConnector database = new DatabaseConnector();
 
         if (database.login(txtUserName.getText(), txtPassword.getText())) {
@@ -50,33 +51,33 @@ public class LogInCtrl implements Initializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }else{
+        } else {
             System.out.println("Failed to  log in");
         }
     }
 
     @FXML
     private void onUpperBarDragged(MouseEvent event) {
-        Stage stage = (Stage)upperBar.getScene().getWindow();
+        Stage stage = (Stage) upperBar.getScene().getWindow();
         stage.setX(event.getScreenX() - x);
         stage.setY(event.getScreenY() - y);
     }
 
     @FXML
     private void onUpperBarPressed(MouseEvent event) {
-        Stage stage = (Stage)upperBar.getScene().getWindow();
+        Stage stage = (Stage) upperBar.getScene().getWindow();
 
-        x=event.getScreenX() - stage.getX();
-        y=event.getScreenY() - stage.getY();
+        x = event.getScreenX() - stage.getX();
+        y = event.getScreenY() - stage.getY();
     }
 
     @FXML
-    private void close_app(){
+    private void close_app() {
         System.exit(0);
     }
 
     @FXML
-    private void minimize(){
+    private void minimize() {
         Stage stage = (Stage) txtUserName.getScene().getWindow();
         stage.setIconified(true);
     }

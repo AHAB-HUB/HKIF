@@ -17,9 +17,12 @@ import java.util.ResourceBundle;
 
 public class AddSport implements Initializable {
 
-    @FXML private TextField addSportText, addDescriptionText;
-    @FXML private ComboBox<String> sportAvailableBox, sportLocationBox;
-    @FXML private Pane upperBar;
+    @FXML
+    private TextField addSportText, addDescriptionText;
+    @FXML
+    private ComboBox<String> sportAvailableBox, sportLocationBox;
+    @FXML
+    private Pane upperBar;
     private double x, y;
 
     @Override
@@ -29,24 +32,35 @@ public class AddSport implements Initializable {
         sportLocationBox.setItems(addLocationList());
     }
 
-    @FXML private void insertNewSport(){
-       boolean added =  new DatabaseConnector().insertNewValuesIntoSport(addSportText.getText(), addDescriptionText.getText(),
+    @FXML
+    private void insertNewSport() {
+
+        if (addSportText.getText().trim().isEmpty() | addDescriptionText.getText().trim().isEmpty() | sportAvailableBox.getSelectionModel().isEmpty() | sportLocationBox.getSelectionModel().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Wrong input!");
+            alert.setContentText("please fill all fields to continue.");
+            alert.setResizable(false);
+            alert.showAndWait();
+            return;
+        }
+
+        boolean added = new DatabaseConnector().insertNewValuesIntoSport(addSportText.getText(), addDescriptionText.getText(),
                 sportAvailableBox.getValue(), sportLocationBox.getValue());
 
-       if (added){
-           Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-           alert.setTitle("New event");
-           alert.setHeaderText("A new item has been added successfully.");
-           alert.showAndWait();
-       }else{
-           Alert alert = new Alert(Alert.AlertType.ERROR);
-           alert.setTitle("Failed to insert");
-           alert.setHeaderText("Please fill all fields");
-           alert.showAndWait();
-       }
+        if (added) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("New event");
+            alert.setHeaderText("A new item has been added successfully.");
+            alert.showAndWait();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Failed to insert");
+            alert.setHeaderText("Please fill all fields");
+            alert.showAndWait();
+        }
     }
 
-    private ObservableList<String> addAvailableList(){
+    private ObservableList<String> addAvailableList() {
         ObservableList<String> list = FXCollections.observableArrayList();
         list.add("AVAILABLE");
         list.add("NOT AVAILABLE");
@@ -54,7 +68,7 @@ public class AddSport implements Initializable {
         return list;
     }
 
-    private ObservableList<String> addLocationList(){
+    private ObservableList<String> addLocationList() {
         ObservableList<String> list = FXCollections.observableArrayList();
         list.add("Campus");
         list.add("City-Center");
@@ -62,20 +76,23 @@ public class AddSport implements Initializable {
         return list;
     }
 
-    @FXML private void onUpperBarDragged(MouseEvent event) {
+    @FXML
+    private void onUpperBarDragged(MouseEvent event) {
         Popup stage = (Popup) upperBar.getScene().getWindow();
         stage.setX(event.getScreenX() - x);
         stage.setY(event.getScreenY() - y);
     }
 
-    @FXML private void onUpperBarPressed(MouseEvent event) {
+    @FXML
+    private void onUpperBarPressed(MouseEvent event) {
         Popup stage = (Popup) upperBar.getScene().getWindow();
 
         x = event.getScreenX() - stage.getX();
         y = event.getScreenY() - stage.getY();
     }
 
-    @FXML private void close_app(){
+    @FXML
+    private void close_app() {
         Popup stage = (Popup) upperBar.getScene().getWindow();
         stage.hide();
     }

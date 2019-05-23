@@ -16,6 +16,7 @@ public class HomePageCtrl implements Initializable {
         this.borderPane = borderPane;
 
     }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
