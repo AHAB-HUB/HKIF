@@ -1,6 +1,5 @@
 package HKR.HKIF.fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
@@ -16,7 +15,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
@@ -30,10 +28,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.rey.material.widget.CheckBox;
 
-import HKR.HKIF.LoadingSplash;
-import HKR.HKIF.MainActivity;
 import HKR.HKIF.R;
-import HKR.HKIF.SplashActivity;
 import HKR.HKIF.Users.Person;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

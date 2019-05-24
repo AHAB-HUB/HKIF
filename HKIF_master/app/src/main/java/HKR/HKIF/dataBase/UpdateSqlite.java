@@ -1,4 +1,4 @@
-package HKR.HKIF.dB;
+package HKR.HKIF.dataBase;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;

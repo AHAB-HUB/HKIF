@@ -1,4 +1,4 @@
-package HKR.HKIF.dB;
+package HKR.HKIF.dataBase;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import HKR.HKIF.data.NotificationData;
-import HKR.HKIF.data.ScheduleItem;
+
 import androidx.annotation.Nullable;
 
 public class MySqLite extends SQLiteOpenHelper {

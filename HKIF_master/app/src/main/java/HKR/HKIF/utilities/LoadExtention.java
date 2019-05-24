@@ -1,5 +1,6 @@
-package HKR.HKIF;
+package HKR.HKIF.utilities;
 
+import HKR.HKIF.R;
 import HKR.HKIF.fragments.HomeFragment;
 import androidx.appcompat.app.AppCompatActivity;
 

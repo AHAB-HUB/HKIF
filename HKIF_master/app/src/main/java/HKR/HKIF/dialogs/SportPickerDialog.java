@@ -17,9 +17,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-import HKR.HKIF.Database.GetSchedule;
-import HKR.HKIF.Database.SportLeaders;
-import HKR.HKIF.Database.SportTable;
+import HKR.HKIF.data.GetSchedule;
+import HKR.HKIF.data.SportLeaders;
+import HKR.HKIF.data.SportTable;
 import HKR.HKIF.R;
 import HKR.HKIF.Users.Person;
 import HKR.HKIF.fragments.MembersListFragment;

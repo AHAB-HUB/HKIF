@@ -18,44 +18,31 @@ public class UpdateSchedule implements Initializable {
 
     @FXML
     private ComboBox<String> dayComboBox;
-
     @FXML
     private ComboBox<String> dateComboBox;
-
     @FXML
     private TableView<Schedule> scheduleTable;
-
     @FXML
     private TableColumn<Schedule, String> col_sport_name;
-
     @FXML
     private TableColumn<Schedule, String> col_day;
-
     @FXML
     private TableColumn<Schedule, String> cola_date;
-
     @FXML
     private TableColumn<Schedule, String> col_session_start;
-
     @FXML
     private TableColumn<Schedule, String> col_session_end;
-
     @FXML
     private Button updateBtn;
-
     @FXML
     private Button getBtn;
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         initCols();
         dayComboBox.setItems(fillDayComboBox());
         getBtn.setOnAction(event -> getInformation());
-
         updateBtn.setOnAction(event -> updateScheduleTable());
-
-
     }
 
     private void initCols() {
@@ -67,11 +54,9 @@ public class UpdateSchedule implements Initializable {
     }
 
     private void getInformation() {
-
         scheduleTable.setItems(null);
         scheduleTable.setItems(new DatabaseConnector().
                 getScheduleInformation(dayComboBox.getValue(), dateComboBox.getValue()));
-
     }
 
     private ObservableList<String> fillDayComboBox() {
@@ -117,7 +102,5 @@ public class UpdateSchedule implements Initializable {
                 break;
             }
         } while (true);
-
-
     }
 }

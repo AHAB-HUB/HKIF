@@ -1,4 +1,4 @@
-package HKR.HKIF.Database;
+package HKR.HKIF.data;
 
 public class LocationTable {
 

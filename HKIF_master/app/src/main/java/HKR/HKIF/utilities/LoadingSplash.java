@@ -1,4 +1,4 @@
-package HKR.HKIF;
+package HKR.HKIF.utilities;
 
 import HKR.HKIF.Users.Person;
 import HKR.HKIF.fragments.HomeFragment;

@@ -1,4 +1,4 @@
-package HKR.HKIF.dB;
+package HKR.HKIF.dataBase;
 
 public class UpdatePositon {
 

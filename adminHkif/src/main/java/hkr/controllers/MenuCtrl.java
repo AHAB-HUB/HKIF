@@ -18,7 +18,7 @@ import java.util.ResourceBundle;
 public class MenuCtrl implements Initializable {
 
     @FXML
-    Label notificationLbl, onlinelbl, profile;
+    private Label notificationLbl, onlinelbl, profile;
     @FXML
     private Pane upperBar;
     @FXML

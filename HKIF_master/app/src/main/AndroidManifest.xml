@@ -25,15 +25,15 @@
         android:usesCleartextTraffic="true"
         android:windowSoftInputMode="adjustPan"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".LoadExtention"></activity>
-        <activity android:name=".LoadingSplash">
+        <activity android:name=".utilities.LoadExtention"></activity>
+        <activity android:name=".utilities.LoadingSplash">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity android:name=".fragments.HomeFragment" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".utilities.SplashActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -48,8 +48,8 @@
 
         <activity android:name=".fragments.SessionManagement" />
         <activity android:name=".utilities.AddImage" />
-        <activity android:name=".ImagesActivity" />
-        <activity android:name=".MyAlbum" />
+        <activity android:name=".utilities.ImagesActivity" />
+        <activity android:name=".utilities.MyAlbum" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"

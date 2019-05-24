@@ -27,7 +27,6 @@ public class AddSport implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
         sportAvailableBox.setItems(addAvailableList());
         sportLocationBox.setItems(addLocationList());
     }
@@ -86,7 +85,6 @@ public class AddSport implements Initializable {
     @FXML
     private void onUpperBarPressed(MouseEvent event) {
         Popup stage = (Popup) upperBar.getScene().getWindow();
-
         x = event.getScreenX() - stage.getX();
         y = event.getScreenY() - stage.getY();
     }

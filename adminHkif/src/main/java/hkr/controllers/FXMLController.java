@@ -19,7 +19,6 @@ public class FXMLController implements Initializable {
 
     @FXML
     private Button personList_btn, sportList_btn;
-
     @FXML
     private BorderPane borderPane;
 
@@ -73,6 +72,5 @@ public class FXMLController implements Initializable {
 
     public void setBorderPane(BorderPane borderPane) {
         this.borderPane = borderPane;
-
     }
 }

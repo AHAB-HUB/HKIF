@@ -29,7 +29,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.rey.material.widget.CheckBox;
 
 import HKR.HKIF.Users.Person;
-import HKR.HKIF.dB.GoingUpdater;
+import HKR.HKIF.dataBase.GoingUpdater;
 import HKR.HKIF.extraReq.AttendanceHistoryFragment;
 import HKR.HKIF.extraReq.InboxFragment;
 import HKR.HKIF.fragments.AboutFragment;
@@ -42,6 +42,7 @@ import HKR.HKIF.fragments.ProfileFragment;
 import HKR.HKIF.fragments.SessionManagement;
 import HKR.HKIF.fragments.SignInFragment;
 import HKR.HKIF.liveChat.GroupChatFragment;
+import HKR.HKIF.utilities.MyAlbum;
 import HKR.HKIF.utilities.NotificationListener;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -51,8 +52,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+
 import io.paperdb.Paper;
 
 import static HKR.HKIF.R.id;

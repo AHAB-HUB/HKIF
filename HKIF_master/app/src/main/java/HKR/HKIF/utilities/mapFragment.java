@@ -1,4 +1,4 @@
-package HKR.HKIF;
+package HKR.HKIF.utilities;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,6 +10,8 @@ import android.webkit.WebViewClient;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import HKR.HKIF.R;
 
 
 public class mapFragment extends Fragment {

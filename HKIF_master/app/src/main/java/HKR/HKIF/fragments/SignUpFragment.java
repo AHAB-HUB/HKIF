@@ -17,7 +17,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -28,16 +27,13 @@ import com.paypal.android.sdk.payments.PayPalService;
 import com.paypal.android.sdk.payments.PaymentActivity;
 import com.paypal.android.sdk.payments.PaymentConfirmation;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.util.Date;
 
 import HKR.HKIF.R;
 import HKR.HKIF.Users.Person;
-import HKR.HKIF.dB.AttendancesUpdater;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -55,7 +51,6 @@ public class SignUpFragment extends Fragment {
     static  String format;
 
     static String position;
-
 
     private static final int PAYPAL_REQUEST_CODE = 999;
 
@@ -96,10 +91,8 @@ public class SignUpFragment extends Fragment {
         signUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 //pay();
                 signUp();
-
             }
         });
 
@@ -158,6 +151,7 @@ public class SignUpFragment extends Fragment {
                         public void onComplete(@NotNull Task<AuthResult> task) {
 
                             if (!task.isSuccessful()) {
+
                                 try {
                                     throw task.getException();
                                 } catch (FirebaseAuthUserCollisionException existEmail) {
@@ -171,15 +165,14 @@ public class SignUpFragment extends Fragment {
                                     Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
                                 }
                             } else {
-
                                 progressBar.setVisibility(getView().GONE);
-
                             }
                         }
 
                     });
         }
     }
+
     void pay(){
 
         String priceFormat = "200";//sportFee.getText().toString()
@@ -195,17 +188,16 @@ public class SignUpFragment extends Fragment {
         startActivityForResult(intent, PAYPAL_REQUEST_CODE);
 
     }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         if (requestCode == PAYPAL_REQUEST_CODE){
 
             if (resultCode == RESULT_OK){
-
                 PaymentConfirmation confirmation = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
 
                 if (confirmation != null){
-
                    String state = confirmation.getProofOfPayment().getState();
 
                     if (state.equals("approved")){
@@ -221,54 +213,24 @@ public class SignUpFragment extends Fragment {
                                     .getUid()).setValue(person).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
-
                                         Toast.makeText(getContext(), "Done!", Toast.LENGTH_LONG).show();
                                 }
                             });
 
                             sportFee.setText("Payment approved: Go to login");
-
                         }catch (Exception e){
                             Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
                         }
-                    }
-                    else
+                    } else
                         sportFee.setText("Error");
-
-                   /*try{
-                        String paymentDetail = confirmation.toJSONObject().toString(4);
-                        JSONObject jsonObject = new JSONObject(paymentDetail);
-
-                        final Person person = new Person(firebaseAuth.getUid(), firstNameText,
-                                lastNameText, emailText, passwordText,
-                                phoneNumberText, position, jsonObject.getJSONObject("response").getBoolean("state"),//state from JSON
-                                format);
-
-                        //new AttendancesUpdater(person.getPersonID());
-
-                        databasePerson.child(FirebaseAuth.getInstance().getCurrentUser()
-                                .getUid()).setValue(person).addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NotNull Task<Void> task) {
-                                Toast.makeText(getContext(), "Done!", Toast.LENGTH_LONG).show();
-                            }
-                        });
-
-                        sportFee.setText("Payment Approved");
-
-                    }catch (JSONException e){
-                        e.printStackTrace();
-                    }*/
                 }
                 else
                     sportFee.setText("Confirmation is null");
-            }
-            // add else drop after
-            else if (resultCode == Activity.RESULT_CANCELED)
+
+            } else if (resultCode == Activity.RESULT_CANCELED) // add else drop after
                 Toast.makeText(getContext(), "Payment cancel", Toast.LENGTH_SHORT).show();
             else if (resultCode == PaymentActivity.RESULT_EXTRAS_INVALID)
-                Toast.makeText(getContext(), "Invalid Payment", Toast.LENGTH_SHORT).show();
+                  Toast.makeText(getContext(), "Invalid Payment", Toast.LENGTH_SHORT).show();
         }
-    }
 
 }

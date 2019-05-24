@@ -38,13 +38,10 @@ public class SportTableCtrl implements Initializable {
     @FXML
     private BorderPane borderPane;
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         databaseConnector = new DatabaseConnector();
-
         initTable();
-
         getSportInformation();
     }
 
@@ -82,7 +79,6 @@ public class SportTableCtrl implements Initializable {
         col_location_name.setOnEditCommit(event -> {
             event.getTableView().getItems().get(event.getTablePosition().getRow()).setLocationName(event.getNewValue());
         });
-
         sportTable.setEditable(true);
     }
 
@@ -133,10 +129,7 @@ public class SportTableCtrl implements Initializable {
             Stage stage = (Stage) sportTable.getScene().getWindow();
             Popup popup = new Popup();
             popup.getContent().add(root);
-            // Parent rot = FXMLLoader.load(getClass().getResource("../sport_table.fxml"));
-
             popup.show(stage);
-
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -148,7 +141,6 @@ public class SportTableCtrl implements Initializable {
 
         try {
             ObservableList<Sport> selectedRow;
-
             selectedRow = sportTable.getSelectionModel().getSelectedItems();
             System.out.println(selectedRow.get(0));
 

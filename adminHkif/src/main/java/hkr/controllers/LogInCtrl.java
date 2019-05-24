@@ -66,7 +66,6 @@ public class LogInCtrl implements Initializable {
     @FXML
     private void onUpperBarPressed(MouseEvent event) {
         Stage stage = (Stage) upperBar.getScene().getWindow();
-
         x = event.getScreenX() - stage.getX();
         y = event.getScreenY() - stage.getY();
     }

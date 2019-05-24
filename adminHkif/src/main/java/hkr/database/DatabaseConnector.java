@@ -15,10 +15,7 @@ public class DatabaseConnector {
     private ResultSet resultSet;
 
     public DatabaseConnector() {
-        dbConnection();
-    }
 
-    private void dbConnection() {
         try {
             String url = "jdbc:mysql://den1.mysql4.gear.host/adminhkif?user=adminhkif&password=Bq44E?A_y45d&useSSL=false";
             connection = DriverManager.getConnection(url);
@@ -27,7 +24,6 @@ public class DatabaseConnector {
         } catch (SQLException ex) {
             System.out.println("Error in connection");
         }
-
     }
 
     public boolean login(final String user, final String password) {
@@ -61,7 +57,6 @@ public class DatabaseConnector {
             preparedStatement.setString(4, position);
             preparedStatement.setString(5, hasPaid);
             preparedStatement.setString(6, email);
-
             preparedStatement.executeUpdate();
 
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -82,6 +77,7 @@ public class DatabaseConnector {
         try (PreparedStatement preparedStatement = connection.prepareStatement(updateSportQuery)) {
             preparedStatement.setString(1, description);
             preparedStatement.setString(2, available);
+
             if (locationName.equals("Campus")) {
                 preparedStatement.setInt(3, 1);
             } else {
@@ -109,13 +105,14 @@ public class DatabaseConnector {
             preparedStatement.setString(1, sportName);
             preparedStatement.setString(2, sportDescription);
             preparedStatement.setString(3, sportAvailable);
+
             if (locationName.equals("Campus")) {
                 preparedStatement.setInt(4, 1);
             } else {
                 preparedStatement.setInt(4, 2);
             }
-
             preparedStatement.executeUpdate();
+
             return true;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -141,9 +138,9 @@ public class DatabaseConnector {
         try {
             resultSet = statement.executeQuery(sportIdQuery);
 
-            while (resultSet.next()) {
+            while (resultSet.next())
                 sportID = resultSet.getInt("sport_id");
-            }
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             sportID = 0;
@@ -166,11 +163,10 @@ public class DatabaseConnector {
             System.out.println(e.getMessage());
             nameList.add(null);
         }
-
         return nameList;
     }
 
-    public ObservableList<String> getAlleventNames() {
+    public ObservableList<String> getAllEventNames() {
         ObservableList<String> nameList = FXCollections.observableArrayList();
         String eventNameQuery = "SELECT event_name FROM event";
 
@@ -184,7 +180,6 @@ public class DatabaseConnector {
             System.out.println(e.getMessage());
             nameList.add(null);
         }
-
         return nameList;
     }
 
@@ -193,6 +188,7 @@ public class DatabaseConnector {
 
         String eventQuery = "INSERT INTO event(event_name, event_description, event_location, event_date, " +
                 "event_start, event_end) VALUES(?, ?, ?, ?, ?, ?)";
+
         try (PreparedStatement preparedStatement = connection.prepareStatement(eventQuery)) {
             preparedStatement.setString(1, eventName);
             preparedStatement.setString(2, eventDescription);
@@ -232,7 +228,6 @@ public class DatabaseConnector {
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-
             eventID = 0;
         }
 
@@ -256,12 +251,11 @@ public class DatabaseConnector {
         try {
             resultSet = connection.createStatement().executeQuery(scheduleQuery);
 
-            while (resultSet.next()) {
+            while (resultSet.next())
                 scheduleData.add(new Schedule(resultSet.getString("sport_name"),
                         resultSet.getString("schedule_day"), resultSet.getString("schedule_date"),
                         resultSet.getString("session_start"),
                         resultSet.getString("session_end")));
-            }
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -308,11 +302,10 @@ public class DatabaseConnector {
     }
 
     public void callUpdateScheduleProc(int dayNumber) {
+
         try {
             CallableStatement callableStatement = connection.prepareCall("{call updateScheduleTable(?)}");
-
             callableStatement.setInt(1, dayNumber);
-
             callableStatement.execute();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -321,9 +314,9 @@ public class DatabaseConnector {
 
     public void callUpdateScheduleHasSportPro(int dayNumber) {
         CallableStatement callableStatement = null;
+
         try {
             callableStatement = connection.prepareCall("{call updateScheduleHasSport(?)}");
-
             callableStatement.setInt(1, dayNumber);
             callableStatement.execute();
 
@@ -337,5 +330,3 @@ public class DatabaseConnector {
         return connection;
     }
 }
-
-

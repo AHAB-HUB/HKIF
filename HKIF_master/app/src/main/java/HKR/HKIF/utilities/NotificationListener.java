@@ -12,7 +12,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
-import HKR.HKIF.dB.MySqLite;
+import HKR.HKIF.dataBase.MySqLite;
 import HKR.HKIF.data.NotificationData;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

@@ -1,4 +1,4 @@
-package HKR.HKIF;
+package HKR.HKIF.utilities;
 
 
 import android.os.Bundle;
@@ -18,8 +18,9 @@ import com.google.firebase.storage.StorageReference;
 import java.util.ArrayList;
 import java.util.List;
 
+import HKR.HKIF.R;
 import HKR.HKIF.adapters.ImageAdapter;
-import HKR.HKIF.utilities.Upload;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;

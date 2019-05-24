@@ -1,4 +1,4 @@
-package HKR.HKIF;
+package HKR.HKIF.utilities;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import HKR.HKIF.R;
 import HKR.HKIF.adapters.SlideImageAdapter;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;

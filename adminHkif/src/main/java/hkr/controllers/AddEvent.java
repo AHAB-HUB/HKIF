@@ -47,7 +47,6 @@ public class AddEvent implements Initializable {
                 ex.printStackTrace();
             }
         });
-
         addMoreSportsBtn.setOnAction(e -> addMoreSportsToEvent());
     }
 
@@ -80,7 +79,7 @@ public class AddEvent implements Initializable {
     }
 
     private void addMoreSportsToEvent() {
-        ChoiceDialog<String> eventChoice = new ChoiceDialog<>("Event", new DatabaseConnector().getAlleventNames());
+        ChoiceDialog<String> eventChoice = new ChoiceDialog<>("Event", new DatabaseConnector().getAllEventNames());
         eventChoice.setTitle("ADD EVENT");
         eventChoice.setHeaderText("Choose an event");
         eventChoice.setContentText("Event Name");

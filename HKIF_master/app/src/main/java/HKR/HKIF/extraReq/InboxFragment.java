@@ -13,7 +13,7 @@ import java.util.List;
 
 import HKR.HKIF.R;
 import HKR.HKIF.adapters.InboxAdapter;
-import HKR.HKIF.dB.MySqLite;
+import HKR.HKIF.dataBase.MySqLite;
 import HKR.HKIF.data.NotificationData;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
