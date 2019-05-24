@@ -16,6 +16,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -29,8 +32,6 @@ import java.util.Calendar;
 
 import HKR.HKIF.R;
 import HKR.HKIF.data.NotificationData;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
 
 import static androidx.constraintlayout.widget.Constraints.TAG;
 
@@ -50,16 +51,12 @@ public class SessionManagement extends AppCompatActivity implements DatePickerDi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.session_management);
         smListView = findViewById(R.id.lvSession_management);
-
         date = findViewById(R.id.event_date);
         sport = findViewById(R.id.sport_name);
         confirmation_question = findViewById(R.id.confirmation_question);
         okBtn = findViewById(R.id.okBtn);
         noBtn = findViewById(R.id.noBtn);
-
-
         setupSportListView();
-
     }
 
     @Override
@@ -68,18 +65,14 @@ public class SessionManagement extends AppCompatActivity implements DatePickerDi
         c.set(Calendar.YEAR, year);
         c.set(Calendar.MONTH, month);
         c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-
         currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
         question = "Do you want to cancel the session ?";
         dayMismatch = "is not scheduled today. Check above schedule! ";
-
-
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance();
         mDb = mDatabase.getReference();
         FirebaseUser user = mAuth.getCurrentUser();
         final String userKey = user.getUid();
-
 
         mDb.child("sport_leaders").child(userKey).addValueEventListener(new ValueEventListener() {
             @Override
@@ -87,7 +80,6 @@ public class SessionManagement extends AppCompatActivity implements DatePickerDi
                 System.out.println("Sport leader key:  " + userKey);
                 id_sport = String.valueOf(dataSnapshot.child("sportID").getValue());
                 Log.d(TAG, "Sport id : " + id_sport);
-
 
                 mDb.child("sport").child(id_sport).addValueEventListener(new ValueEventListener() {
                     @Override
@@ -97,9 +89,7 @@ public class SessionManagement extends AppCompatActivity implements DatePickerDi
                         System.out.println(current_sport);
                         Log.d(TAG, "Sport name : " + current_sport);
 
-
                         switch (current_sport) {
-
                             case "Climbing":
                                 day = currentDateString.substring(0, currentDateString.indexOf(' '));
                                 System.out.println("Day : " + day);
@@ -173,7 +163,6 @@ public class SessionManagement extends AppCompatActivity implements DatePickerDi
                                 }
                                 break;
 
-
                             case "Jiu-Jitsu":
                                 day = currentDateString.substring(0, currentDateString.indexOf(' '));
                                 System.out.println("Day : " + day);
@@ -193,8 +182,7 @@ public class SessionManagement extends AppCompatActivity implements DatePickerDi
                                             okBtn.setOnClickListener(new View.OnClickListener() {
                                                 @Override
                                                 public void onClick(View v) {
-                                                    DatabaseReference query = FirebaseDatabase.getInstance()
-                                                            .getReference("schedule").child("-Laf_MnrNmpeakWo-_Vk").child("canceled");
+                                                    DatabaseReference query = FirebaseDatabase.getInstance().getReference("schedule").child("-Laf_MnrNmpeakWo-_Vk").child("canceled");
                                                     query.setValue("true");
                                                     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("notification");
                                                     databaseReference.push().setValue(new NotificationData("Cancellation notice", current_sport + " has been canceled on" + day));
@@ -220,7 +208,6 @@ public class SessionManagement extends AppCompatActivity implements DatePickerDi
                                 }
                                 break;
 
-
                             case "Soccer":
                                 day = currentDateString.substring(0, currentDateString.indexOf(' '));
                                 System.out.println("Day : " + day);
@@ -230,12 +217,10 @@ public class SessionManagement extends AppCompatActivity implements DatePickerDi
                                     date.setText(currentDateString);
                                     sport.setText(current_sport);
                                     confirmation_question.setText(question);
-
                                     okBtn.setVisibility(View.VISIBLE);
                                     okBtn.setText("YES");
                                     noBtn.setVisibility(View.VISIBLE);
                                     noBtn.setText("NO");
-
 
                                     switch (day) {
                                         case "Thursday,":
@@ -288,14 +273,11 @@ public class SessionManagement extends AppCompatActivity implements DatePickerDi
                                             break;
                                     }
                                 } else {
-
                                     date.setText(currentDateString);
                                     sport.setText(current_sport);
                                     confirmation_question.setText(dayMismatch);
                                 }
                                 break;
-
-
                             case "Boxing":
                                 day = currentDateString.substring(0, currentDateString.indexOf(' '));
                                 System.out.println("Day : " + day);
@@ -309,7 +291,6 @@ public class SessionManagement extends AppCompatActivity implements DatePickerDi
                                     okBtn.setText("YES");
                                     noBtn.setVisibility(View.VISIBLE);
                                     noBtn.setText("NO");
-
 
                                     switch (day) {
                                         case "Wednesday,":
@@ -335,14 +316,11 @@ public class SessionManagement extends AppCompatActivity implements DatePickerDi
                                             break;
                                     }
                                 } else {
-
                                     date.setText(currentDateString);
                                     sport.setText(current_sport);
                                     confirmation_question.setText(dayMismatch);
                                 }
                                 break;
-
-
                             case "Volleyball":
                                 day = currentDateString.substring(0, currentDateString.indexOf(' '));
                                 System.out.println("Day : " + day);
@@ -359,7 +337,6 @@ public class SessionManagement extends AppCompatActivity implements DatePickerDi
                                     noBtn.setVisibility(View.VISIBLE);
                                     noBtn.setText("NO");
 
-
                                     switch (day) {
                                         case "Tuesday,":
                                             okBtn.setOnClickListener(new View.OnClickListener() {
@@ -374,7 +351,6 @@ public class SessionManagement extends AppCompatActivity implements DatePickerDi
                                                 }
                                             });
                                             break;
-
                                         case "Friday,":
                                             okBtn.setOnClickListener(new View.OnClickListener() {
                                                 @Override
@@ -429,14 +405,11 @@ public class SessionManagement extends AppCompatActivity implements DatePickerDi
                                             break;
                                     }
                                 } else {
-
                                     date.setText(currentDateString);
                                     sport.setText(current_sport);
                                     confirmation_question.setText(dayMismatch);
                                 }
                                 break;
-
-
                             case "Swimming":
                                 day = currentDateString.substring(0, currentDateString.indexOf(' '));
                                 System.out.println("Day : " + day);
@@ -451,7 +424,6 @@ public class SessionManagement extends AppCompatActivity implements DatePickerDi
                                     okBtn.setText("YES");
                                     noBtn.setVisibility(View.VISIBLE);
                                     noBtn.setText("NO");
-
 
                                     switch (day) {
                                         case "Monday,":
@@ -878,24 +850,18 @@ public class SessionManagement extends AppCompatActivity implements DatePickerDi
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
+
             if (convertView == null) {
                 convertView = layoutInflater.inflate(R.layout.single_sm_item, null);
             }
-
             title = convertView.findViewById(R.id.item_title);
             imageView = convertView.findViewById(R.id.item_pic);
-
-
             title.setText(titleArray[position]);
-
 
             if (titleArray[position].equalsIgnoreCase("Cancel session")) {
                 imageView.setImageResource(R.drawable.timetable);
             }
-
             return convertView;
-
         }
     }
-
 }

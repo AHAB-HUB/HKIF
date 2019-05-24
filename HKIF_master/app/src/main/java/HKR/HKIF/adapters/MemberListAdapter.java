@@ -8,6 +8,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -17,22 +20,10 @@ import HKR.HKIF.R;
 import HKR.HKIF.Users.Person;
 import HKR.HKIF.dialogs.DeleteDialog;
 import HKR.HKIF.dialogs.SetPositionDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
 
 public class MemberListAdapter extends ArrayAdapter<Person> {
 
     private List<Person> cardList = new ArrayList<>();
-
-    static class CardViewHolder {
-        TextView name;
-        TextView position;
-        TextView email;
-        TextView payment;
-        FloatingActionButton delete;
-        FloatingActionButton edit;
-
-    }
 
     public MemberListAdapter(Context context, int textViewResourceId) {
         super(context, textViewResourceId);
@@ -56,14 +47,11 @@ public class MemberListAdapter extends ArrayAdapter<Person> {
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-
         String personPaid = null;
-
         View row = convertView;
         final CardViewHolder viewHolder;
 
         if (row == null) {
-
             LayoutInflater inflater = (LayoutInflater) this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             row = inflater.inflate(R.layout.list_item_card, parent, false);
             viewHolder = new CardViewHolder();
@@ -74,9 +62,7 @@ public class MemberListAdapter extends ArrayAdapter<Person> {
             viewHolder.delete = row.findViewById(R.id.delete);
             viewHolder.edit = row.findViewById(R.id.edit);
             row.setTag(viewHolder);
-
         } else {
-
             viewHolder = (CardViewHolder) row.getTag();
         }
 
@@ -84,12 +70,12 @@ public class MemberListAdapter extends ArrayAdapter<Person> {
         viewHolder.name.setText(person.getFullName());
         viewHolder.position.setText(person.getPosition());
         viewHolder.email.setText(person.getEmail());
+
         if (!person.isHasPaid()) {
             viewHolder.payment.setText("Has not paid");
         } else {
             viewHolder.payment.setText("Has paid");
         }
-
         viewHolder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,7 +85,6 @@ public class MemberListAdapter extends ArrayAdapter<Person> {
             }
 
         });
-
         viewHolder.edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -111,5 +96,15 @@ public class MemberListAdapter extends ArrayAdapter<Person> {
         });
 
         return row;
+    }
+
+    static class CardViewHolder {
+        TextView name;
+        TextView position;
+        TextView email;
+        TextView payment;
+        FloatingActionButton delete;
+        FloatingActionButton edit;
+
     }
 }

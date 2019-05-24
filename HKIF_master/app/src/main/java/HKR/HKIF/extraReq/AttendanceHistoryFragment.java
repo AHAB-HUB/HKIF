@@ -8,13 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import HKR.HKIF.R;
-import HKR.HKIF.adapters.AttendanceHistoryAdapter;
-import HKR.HKIF.localDatabase.AttendanceHistory;
-import HKR.HKIF.localDatabase.HkifLocalDatabase;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -22,13 +15,20 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import HKR.HKIF.R;
+import HKR.HKIF.adapters.AttendanceHistoryAdapter;
+import HKR.HKIF.localDatabase.AttendanceHistory;
+import HKR.HKIF.localDatabase.HkifLocalDatabase;
+
 public class AttendanceHistoryFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private List<AttendanceHistory> attendanceHistories;
     private AttendanceHistoryAdapter attendanceHistoryAdapter;
     private Button clearBtn;
-
 
     @Nullable
     @Override
@@ -41,20 +41,15 @@ public class AttendanceHistoryFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
         initViews();
         initObjects();
-
         clearBtn = getActivity().findViewById(R.id.attendance_history_clear_btn);
-
         clearBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new HkifLocalDatabase(getContext()).deleteAllRecordsFromAttendance();
-
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new AttendanceHistoryFragment()).addToBackStack(null).commit();
-
             }
         });
     }
@@ -66,14 +61,11 @@ public class AttendanceHistoryFragment extends Fragment {
     private void initObjects() {
         attendanceHistories = new ArrayList<>();
         attendanceHistoryAdapter = new AttendanceHistoryAdapter(attendanceHistories);
-
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext().getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(attendanceHistoryAdapter);
-
-
         getDataFromSQLite();
     }
 

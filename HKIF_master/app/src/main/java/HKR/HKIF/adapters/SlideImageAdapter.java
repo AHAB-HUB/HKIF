@@ -7,16 +7,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import androidx.viewpager.widget.PagerAdapter;
+
 import java.util.ArrayList;
 
 import HKR.HKIF.R;
-import androidx.viewpager.widget.PagerAdapter;
 
 public class SlideImageAdapter extends PagerAdapter {
 
     private ArrayList<Integer> IMAGES;
     private LayoutInflater inflater;
-    Context context;
+    private Context context;
 
 
     public SlideImageAdapter(Context context, ArrayList<Integer> IMAGES) {
@@ -38,14 +39,9 @@ public class SlideImageAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(ViewGroup view, int position) {
         View imageLayout = inflater.inflate(R.layout.slidingimages_layout, view, false);
-
         assert imageLayout != null;
-        final ImageView imageView = imageLayout
-                .findViewById(R.id.image);
-
-
+        final ImageView imageView = imageLayout.findViewById(R.id.image);
         imageView.setImageResource(IMAGES.get(position));
-
         view.addView(imageLayout, 0);
 
         return imageLayout;

@@ -1,44 +1,24 @@
 package HKR.HKIF.utilities;
 
-import HKR.HKIF.Users.Person;
-import HKR.HKIF.fragments.HomeFragment;
-import HKR.HKIF.fragments.SignInFragment;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentTransaction;
-import io.paperdb.Paper;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import android.util.Log;
-import android.util.Patterns;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.airbnb.lottie.LottieAnimationView;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.rey.material.widget.CheckBox;
-
-import static androidx.constraintlayout.widget.Constraints.TAG;
 
 public class LoadingSplash extends AppCompatActivity {
 
 
+    static LottieAnimationView lottieAnimationView;
+    private static int splashTime = 5000;
+    CheckBox checkBox;
     private EditText email, password;
     private String role;
     private ProgressBar progressBar;
@@ -46,11 +26,7 @@ public class LoadingSplash extends AppCompatActivity {
     private NavigationView navigationView1;
     private FirebaseDatabase mDatabase;
     private DatabaseReference mDb;
-    CheckBox checkBox;
     private TextView resetPass;
-    static LottieAnimationView lottieAnimationView;
-
-    private static int splashTime = 5000;
 
     /*@Override
     protected void onCreate(Bundle savedInstanceState) {

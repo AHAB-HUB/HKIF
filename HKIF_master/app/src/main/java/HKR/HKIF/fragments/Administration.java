@@ -7,11 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import HKR.HKIF.R;
-import HKR.HKIF.utilities.AddImage;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import HKR.HKIF.R;
+import HKR.HKIF.utilities.AddImage;
 
 public class Administration extends Fragment {
     private Button openImageUploader;
@@ -27,10 +28,8 @@ public class Administration extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), AddImage.class);
                 startActivity(intent);
-
             }
         });
-
     }
 
     @Nullable

@@ -5,9 +5,10 @@ import android.app.Notification;
 import android.content.Context;
 import android.view.View;
 
-import HKR.HKIF.R;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
+
+import HKR.HKIF.R;
 
 import static HKR.HKIF.utilities.Channel.CHANNEL_1_ID;
 import static HKR.HKIF.utilities.Channel.CHANNEL_2_ID;

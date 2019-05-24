@@ -4,6 +4,9 @@ package HKR.HKIF.utilities;
 import android.content.Context;
 import android.view.View;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -12,10 +15,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
-import HKR.HKIF.dataBase.MySqLite;
 import HKR.HKIF.data.NotificationData;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import HKR.HKIF.dataBase.MySqLite;
 
 public class NotificationListener {
 

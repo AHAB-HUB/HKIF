@@ -13,6 +13,11 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -34,39 +39,29 @@ import java.util.Date;
 import HKR.HKIF.R;
 import HKR.HKIF.Users.Person;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-
 import static android.app.Activity.RESULT_OK;
 
 public class SignUpFragment extends Fragment {
 
-    static  String firstNameText;
-    static  String lastNameText;
-    static  String emailText;
-    static  String passwordText;
-    static  String phoneNumberText;
-    static  String format;
-
-    static String position;
-
     private static final int PAYPAL_REQUEST_CODE = 999;
-
+    static String firstNameText;
+    static String lastNameText;
+    static String emailText;
+    static String passwordText;
+    static String phoneNumberText;
+    static String format;
+    static String position;
+    static String payPalClientId = "AcTzkvwF8gQ8X4SZlA5ytBJ5Mmv5OnfheeEVNNBVO1QpO9aOh9sMjQMJwoIo43kvBDlOY6oViBUBuLHL";
+    // PayPal payment
+    static PayPalConfiguration payConfig = new PayPalConfiguration()
+            .environment(PayPalConfiguration.ENVIRONMENT_SANDBOX) //Use SANDBOX for test, but PRODUCTION to implement real
+            .clientId(payPalClientId);
     private EditText firstName, lastName, email, password, phoneNumber;
     private Button signUpBtn;
     private DatabaseReference databasePerson;
     private FirebaseAuth firebaseAuth;
     private ProgressBar progressBar;
-    static String payPalClientId = "AcTzkvwF8gQ8X4SZlA5ytBJ5Mmv5OnfheeEVNNBVO1QpO9aOh9sMjQMJwoIo43kvBDlOY6oViBUBuLHL";
-
-    TextView sportFee;
-
-    // PayPal payment
-    static PayPalConfiguration payConfig = new PayPalConfiguration()
-            .environment(PayPalConfiguration.ENVIRONMENT_SANDBOX) //Use SANDBOX for test, but PRODUCTION to implement real
-            .clientId(payPalClientId);
+    private TextView sportFee;
 
     @Nullable
     @Override
@@ -109,12 +104,13 @@ public class SignUpFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
     }
+
     private void signUp() {
 
         firstNameText = firstName.getText().toString();
         lastNameText = lastName.getText().toString();
-         emailText = email.getText().toString();
-         passwordText = password.getText().toString();
+        emailText = email.getText().toString();
+        passwordText = password.getText().toString();
         phoneNumberText = phoneNumber.getText().toString();
 
         if (TextUtils.isEmpty(firstNameText) && TextUtils.isEmpty(lastNameText) &&
@@ -138,53 +134,51 @@ public class SignUpFragment extends Fragment {
             //.replace(",","");
 
             PayPalPayment payPalPayment = new PayPalPayment(new BigDecimal(priceFormat),
-                    "SEK","Membership Fee", PayPalPayment.PAYMENT_INTENT_SALE);
+                    "SEK", "Membership Fee", PayPalPayment.PAYMENT_INTENT_SALE);
 
             Intent intent = new Intent(getActivity(), PaymentActivity.class);
-            intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION,payConfig);
-            intent.putExtra(PaymentActivity.EXTRA_PAYMENT,payPalPayment);
+            intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, payConfig);
+            intent.putExtra(PaymentActivity.EXTRA_PAYMENT, payPalPayment);
             startActivityForResult(intent, PAYPAL_REQUEST_CODE);
 
-            firebaseAuth.createUserWithEmailAndPassword(emailText, passwordText)
-                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NotNull Task<AuthResult> task) {
+            firebaseAuth.createUserWithEmailAndPassword(emailText, passwordText).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NotNull Task<AuthResult> task) {
 
-                            if (!task.isSuccessful()) {
+                    if (!task.isSuccessful()) {
 
-                                try {
-                                    throw task.getException();
-                                } catch (FirebaseAuthUserCollisionException existEmail) {
-                                    Toast.makeText(getContext(), "This email is already exist", Toast.LENGTH_LONG).show();
+                        try {
+                            throw task.getException();
+                        } catch (FirebaseAuthUserCollisionException existEmail) {
+                            Toast.makeText(getContext(), "This email is already exist", Toast.LENGTH_LONG).show();
 
-                                    FragmentTransaction fragmentHome = getFragmentManager().beginTransaction();
-                                    fragmentHome.replace(R.id.fragment_container, new SignUpFragment());
-                                    fragmentHome.commit();
+                            FragmentTransaction fragmentHome = getFragmentManager().beginTransaction();
+                            fragmentHome.replace(R.id.fragment_container, new SignUpFragment());
+                            fragmentHome.commit();
 
-                                } catch (Exception e) {
-                                    Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
-                                }
-                            } else {
-                                progressBar.setVisibility(getView().GONE);
-                            }
+                        } catch (Exception e) {
+                            Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
                         }
-
-                    });
+                    } else {
+                        progressBar.setVisibility(getView().GONE);
+                    }
+                }
+            });
         }
     }
 
-    void pay(){
+    void pay() {
 
         String priceFormat = "200";//sportFee.getText().toString()
-                //.replace("kr","")
-                //.replace(",","");
+        //.replace("kr","")
+        //.replace(",","");
 
         PayPalPayment payPalPayment = new PayPalPayment(new BigDecimal(priceFormat),
-                "SEK","Membership Fee", PayPalPayment.PAYMENT_INTENT_SALE);
+                "SEK", "Membership Fee", PayPalPayment.PAYMENT_INTENT_SALE);
 
         Intent intent = new Intent(getActivity(), PaymentActivity.class);
-        intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION,payConfig);
-        intent.putExtra(PaymentActivity.EXTRA_PAYMENT,payPalPayment);
+        intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, payConfig);
+        intent.putExtra(PaymentActivity.EXTRA_PAYMENT, payPalPayment);
         startActivityForResult(intent, PAYPAL_REQUEST_CODE);
 
     }
@@ -192,15 +186,15 @@ public class SignUpFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        if (requestCode == PAYPAL_REQUEST_CODE){
+        if (requestCode == PAYPAL_REQUEST_CODE) {
 
-            if (resultCode == RESULT_OK){
+            if (resultCode == RESULT_OK) {
                 PaymentConfirmation confirmation = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
 
-                if (confirmation != null){
-                   String state = confirmation.getProofOfPayment().getState();
+                if (confirmation != null) {
+                    String state = confirmation.getProofOfPayment().getState();
 
-                    if (state.equals("approved")){
+                    if (state.equals("approved")) {
 
                         try {
                             final Person person = new Person(firebaseAuth.getUid(), firstNameText,
@@ -213,24 +207,24 @@ public class SignUpFragment extends Fragment {
                                     .getUid()).setValue(person).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
-                                        Toast.makeText(getContext(), "Done!", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getContext(), "Done!", Toast.LENGTH_LONG).show();
                                 }
                             });
 
                             sportFee.setText("Payment approved: Go to login");
-                        }catch (Exception e){
+                        } catch (Exception e) {
                             Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     } else
                         sportFee.setText("Error");
-                }
-                else
+                } else
                     sportFee.setText("Confirmation is null");
 
             } else if (resultCode == Activity.RESULT_CANCELED) // add else drop after
                 Toast.makeText(getContext(), "Payment cancel", Toast.LENGTH_SHORT).show();
             else if (resultCode == PaymentActivity.RESULT_EXTRAS_INVALID)
-                  Toast.makeText(getContext(), "Invalid Payment", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Invalid Payment", Toast.LENGTH_SHORT).show();
         }
 
+    }
 }

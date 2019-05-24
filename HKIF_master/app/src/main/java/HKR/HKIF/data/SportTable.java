@@ -49,7 +49,6 @@ public class SportTable {
         this.sport_updated = sport_updated;
     }
 
-
     @Override
     public String toString() {
         return "SportTable{" +

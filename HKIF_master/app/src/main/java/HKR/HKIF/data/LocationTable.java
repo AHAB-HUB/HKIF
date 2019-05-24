@@ -15,7 +15,6 @@ public class LocationTable {
         this.location_address = location_address;
     }
 
-
     public String getLocation_id() {
         return location_id;
     }

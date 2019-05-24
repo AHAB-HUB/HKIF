@@ -1,6 +1,8 @@
 package HKR.HKIF.dataBase;
 
 
+import androidx.annotation.NonNull;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -11,12 +13,10 @@ import java.util.ArrayList;
 
 import HKR.HKIF.Users.Person;
 import HKR.HKIF.data.ScheduleItem;
-import androidx.annotation.NonNull;
 
 public class AddNewEventDB {
 
     private String location, sportName, year, month, day, hourF, minuteF, hourT, minuteT;
-
 
     public AddNewEventDB(String sportName, String year, String month, String day, String hourF, String minuteF, String hourT, String minuteT, String location) {
 
@@ -41,20 +41,15 @@ public class AddNewEventDB {
             day = "0" + day;
 
         String date = day + "/" + month + "/" + year;
-
         String key = data.push().getKey();
         data.child(key).setValue(new ScheduleItem("0", (hourF + ":" + minuteF), (hourT + ":" + minuteT), key, sportName, "Event", location, date, " ", "false"));
-
-
         getMembersKeys(key);
     }
 
     private void getMembersKeys(final String key) {
 
         final ArrayList<String> list = new ArrayList<>();
-
         DatabaseReference query = FirebaseDatabase.getInstance().getReference("person");
-
         query.addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override
@@ -70,10 +65,8 @@ public class AddNewEventDB {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
             }
         });
-
     }
 
     private void updateAttendance(ArrayList<String> list, String newValue) {

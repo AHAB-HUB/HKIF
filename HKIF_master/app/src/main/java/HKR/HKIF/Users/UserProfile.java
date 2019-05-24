@@ -8,7 +8,6 @@ public class UserProfile {
     private boolean hasPaid;
 
     public UserProfile() {
-
     }
 
     public UserProfile(String firstName, String lastName, String phoneNumber, boolean hasPaid) {
@@ -17,7 +16,6 @@ public class UserProfile {
         this.phoneNumber = phoneNumber;
         this.hasPaid = hasPaid;
     }
-
 
     public String getFirstName() {
         return firstName;

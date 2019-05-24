@@ -7,6 +7,10 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
@@ -14,9 +18,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import HKR.HKIF.R;
 import HKR.HKIF.fragments.MembersListFragment;
-import androidx.annotation.NonNull;
-import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.FragmentTransaction;
 
 @SuppressLint("ValidFragment")
 public class DeleteDialog extends DialogFragment {
@@ -25,7 +26,6 @@ public class DeleteDialog extends DialogFragment {
     private String personId;
     private String personPosition;
 
-
     public DeleteDialog(String name, String personId, String personPosition) {
         this.memberName = name;
         this.personId = personId;
@@ -33,16 +33,13 @@ public class DeleteDialog extends DialogFragment {
 
     }
 
-
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         //set up the connection with database
         dbConnection();
 
-
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-
 
         builder.setMessage("Are you sure you want to delete \"" + memberName + "\"" + ".")
                 .setPositiveButton("Yes.", new DialogInterface.OnClickListener() {
@@ -73,8 +70,6 @@ public class DeleteDialog extends DialogFragment {
 
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-
-
                     }
                 });
 
@@ -82,10 +77,8 @@ public class DeleteDialog extends DialogFragment {
         return builder.create();
     }
 
-
     //TODO CONNECT TO DATABASE
     private void dbConnection() {
-
 
     }
 }

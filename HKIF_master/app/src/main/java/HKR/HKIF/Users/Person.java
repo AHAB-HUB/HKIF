@@ -2,12 +2,8 @@ package HKR.HKIF.Users;
 
 public class Person {
 
-    public enum POSITION {
-        ADMIN,
-        TEAM_LEADER,
-        MEMBER;
-    }
-
+    public static final String USER_KEY = "User";
+    public static final String PWD_KEY = "Password";
     private String personID;
     private String firstName;
     private String lastName;
@@ -18,14 +14,7 @@ public class Person {
     private boolean hasPaid;
     private String profileCreated;
     private String fullName;
-    //private String hasPaid;
-
-    public static final String USER_KEY = "User";
-    public static final String PWD_KEY = "Password";
-
-
     public Person() {
-
     }
 
     public Person(String personID, String firstName, String lastName, String email, String password,
@@ -41,15 +30,15 @@ public class Person {
         this.profileCreated = profileCreated;
         this.position = position;
         //this.hasPaid = hasPaid;
-
-
     }
-
 
     public String getPosition() {
         return position;
     }
 
+    public void setPosition(String position) {
+        this.position = position;
+    }
 
     public String getFullName() {
         return getFirstName() + " " + getLastName();
@@ -57,10 +46,6 @@ public class Person {
 
     public void setFullName(String fullName) {
         this.fullName = fullName;
-    }
-
-    public void setPosition(String position) {
-        this.position = position;
     }
 
     public String getPersonID() {
@@ -72,7 +57,6 @@ public class Person {
     }
 
     public String getFirstName() {
-
         return firstName;
     }
 
@@ -128,14 +112,6 @@ public class Person {
         this.profileCreated = profileCreated;
     }
 
-    /*public String getHasPaid() {
-        return hasPaid;
-    }
-
-    public void setHasPaid(String hasPaid) {
-        this.hasPaid = hasPaid;
-    }*/
-
     @Override
     public String toString() {
         return "Person{" +
@@ -149,5 +125,10 @@ public class Person {
                 ", hasPaid=" + hasPaid +
                 ", profileCreated='" + profileCreated + '\'' +
                 '}';
+    }
+
+    public enum POSITION {
+        TEAM_LEADER,
+        MEMBER;
     }
 }

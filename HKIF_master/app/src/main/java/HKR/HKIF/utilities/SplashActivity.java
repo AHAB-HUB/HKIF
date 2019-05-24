@@ -1,11 +1,11 @@
 package HKR.HKIF.utilities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.ImageView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import HKR.HKIF.MainActivity;
 import HKR.HKIF.R;

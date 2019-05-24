@@ -1,93 +1,49 @@
 package HKR.HKIF.fragments;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import HKR.HKIF.MainActivity;
-import HKR.HKIF.R;
-import HKR.HKIF.Users.Person;
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import io.paperdb.Paper;
 
-import static androidx.constraintlayout.widget.Constraints.TAG;
+import HKR.HKIF.R;
 
 public class HomeFragment extends Fragment {
     private ListView sportListView;
-    private Activity activity;
-    private NavigationView navigationView1;
-
-
-    private String role;
-    private FirebaseAuth mAuth;
-    private FirebaseDatabase mDatabase;
-    private DatabaseReference mDb;
-    private ProgressBar progressBar;
 
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-
-        navigationView1 = getActivity().findViewById(R.id.nav_view);
-
-        activity = getActivity();
         sportListView = getActivity().findViewById(R.id.lvMain);
-
         setupSportListView();
-
     }
 
     private void setupSportListView() {
 
         String[] title = getResources().getStringArray(R.array.Main);
         String[] description = getResources().getStringArray(R.array.Description);
-
-
         SportItems_Adapter simpleAdapter = new SportItems_Adapter(title, description);
         sportListView.setAdapter(simpleAdapter);
-
         sportListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
                 switch (position) {
                     case 0:
                         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                                 new FootballFragment()).commit();
                         break;
-
                     case 1:
                         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                                 new VolleyballFragment()).commit();
                         break;
-
                     case 2:
                         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                                 new BadmintonFragment()).commit();
@@ -103,17 +59,14 @@ public class HomeFragment extends Fragment {
                     case 6:
                         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                                 new BoxingFragment()).commit();
-
                         break;
                     case 7:
                         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                                 new JuJitsuFragment()).commit();
-
                         break;
                     case 8:
                         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                                 new FloorballFragment()).commit();
-
                         break;
                     case 9:
                         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
@@ -122,6 +75,11 @@ public class HomeFragment extends Fragment {
                 }
             }
         });
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
     public class SportItems_Adapter extends BaseAdapter {
@@ -158,15 +116,10 @@ public class HomeFragment extends Fragment {
             if (convertView == null) {
                 convertView = layoutInflater.inflate(R.layout.single_home_item1, null);
             }
-
             title = convertView.findViewById(R.id.tvMain);
             imageView = convertView.findViewById(R.id.ivMain);
-
             imageView.animate().scaleX(2).scaleY(2).setDuration(3000).start();
-
-
             title.setText(titleArray[position]);
-
 
             if (titleArray[position].equalsIgnoreCase("FOOTBALL")) {
                 imageView.setImageResource(R.drawable.soccer);
@@ -190,10 +143,5 @@ public class HomeFragment extends Fragment {
 
             return convertView;
         }
-    }
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_home, container, false);
-
     }
 }

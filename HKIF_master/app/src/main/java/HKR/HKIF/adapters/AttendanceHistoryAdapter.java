@@ -6,18 +6,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.List;
 
 import HKR.HKIF.R;
 import HKR.HKIF.localDatabase.AttendanceHistory;
-import androidx.appcompat.widget.AppCompatTextView;
-import androidx.recyclerview.widget.RecyclerView;
 
 
 public class AttendanceHistoryAdapter extends RecyclerView.Adapter<AttendanceHistoryAdapter.UserViewHolder> {
 
     private List<AttendanceHistory> attendanceHistoryList;
 
+    public AttendanceHistoryAdapter(List<AttendanceHistory> attendanceHistoryList) {
+        this.attendanceHistoryList = attendanceHistoryList;
+    }
 
     @Override
     public UserViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -42,11 +46,6 @@ public class AttendanceHistoryAdapter extends RecyclerView.Adapter<AttendanceHis
         return attendanceHistoryList.size();
     }
 
-
-    public AttendanceHistoryAdapter(List<AttendanceHistory> attendanceHistoryList) {
-        this.attendanceHistoryList = attendanceHistoryList;
-    }
-
     /**
      * ViewHolder class
      */
@@ -64,6 +63,4 @@ public class AttendanceHistoryAdapter extends RecyclerView.Adapter<AttendanceHis
             attendanceSport = view.findViewById(R.id.attendance_history_sport_textView);
         }
     }
-
-
 }

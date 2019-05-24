@@ -7,20 +7,20 @@ import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.github.barteksc.pdfviewer.PDFView;
-
-import HKR.HKIF.R;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.github.barteksc.pdfviewer.PDFView;
+
+import HKR.HKIF.R;
+
 public class AboutFragment extends Fragment {
 
-    PDFView pdfView;
-    WebView webView;
+    private PDFView pdfView;
+    private WebView webView;
 
     public AboutFragment() {
-
     }
 
     @Override
@@ -35,7 +35,6 @@ public class AboutFragment extends Fragment {
         webView.loadUrl("http://www.hkif.se/sida/?ID=211544");
         //webView.getSettings().setJavaScriptEnabled(true);
     }
-
 
     @Nullable
     @Override

@@ -10,13 +10,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 import HKR.HKIF.R;
 import HKR.HKIF.utilities.Upload;
-import androidx.recyclerview.widget.RecyclerView;
 
 
 public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHolder> {
@@ -52,25 +53,43 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
         return mUploads.size();
     }
 
+    /*
+     * image view holder
+     */
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        mListener = listener;
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+
+        void onWhatEverClick(int position);
+
+        void onDeleteClick(int position);
+    }
+
     public class ImageViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,
             View.OnCreateContextMenuListener, MenuItem.OnMenuItemClickListener {
+
         public TextView textViewName;
         public ImageView imageView;
 
         public ImageViewHolder(View itemView) {
-            super(itemView);
 
+            super(itemView);
             textViewName = itemView.findViewById(R.id.text_view_name);
             imageView = itemView.findViewById(R.id.image_view_upload);
-
             itemView.setOnClickListener(this);
             itemView.setOnCreateContextMenuListener(this);
         }
 
         @Override
         public void onClick(View v) {
+
             if (mListener != null) {
                 int position = getAdapterPosition();
+
                 if (position != RecyclerView.NO_POSITION) {
                     mListener.onItemClick(position);
                 }
@@ -89,8 +108,10 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
 
         @Override
         public boolean onMenuItemClick(MenuItem item) {
+
             if (mListener != null) {
                 int position = getAdapterPosition();
+
                 if (position != RecyclerView.NO_POSITION) {
 
                     switch (item.getItemId()) {
@@ -99,23 +120,12 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
                             return true;
                         case 2:
                             mListener.onDeleteClick(position);
+
                             return true;
                     }
                 }
             }
             return false;
         }
-    }
-
-    public interface OnItemClickListener {
-        void onItemClick(int position);
-
-        void onWhatEverClick(int position);
-
-        void onDeleteClick(int position);
-    }
-
-    public void setOnItemClickListener(OnItemClickListener listener) {
-        mListener = listener;
     }
 }

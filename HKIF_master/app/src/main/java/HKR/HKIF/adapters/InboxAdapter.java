@@ -6,18 +6,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.List;
 
 import HKR.HKIF.R;
 import HKR.HKIF.data.NotificationData;
-import androidx.appcompat.widget.AppCompatTextView;
-import androidx.recyclerview.widget.RecyclerView;
 
 
 public class InboxAdapter extends RecyclerView.Adapter<InboxAdapter.UserViewHolder> {
 
     private List<NotificationData> listUsers;
 
+    public InboxAdapter(List<NotificationData> listUsers) {
+        this.listUsers = listUsers;
+    }
 
     @Override
     public UserViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -38,14 +42,9 @@ public class InboxAdapter extends RecyclerView.Adapter<InboxAdapter.UserViewHold
     @Override
     public int getItemCount() {
         Log.v(InboxAdapter.class.getSimpleName(), "" + listUsers.size());
+
         return listUsers.size();
     }
-
-
-    public InboxAdapter(List<NotificationData> listUsers) {
-        this.listUsers = listUsers;
-    }
-
 
     public class UserViewHolder extends RecyclerView.ViewHolder {
 
@@ -58,6 +57,4 @@ public class InboxAdapter extends RecyclerView.Adapter<InboxAdapter.UserViewHold
             message = view.findViewById(R.id.notification_message);
         }
     }
-
-
 }

@@ -6,10 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import HKR.HKIF.R;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import HKR.HKIF.R;
 
 public class DaysFragment extends Fragment {
 
@@ -20,7 +21,6 @@ public class DaysFragment extends Fragment {
 
         return view;
     }
-
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -34,7 +34,6 @@ public class DaysFragment extends Fragment {
         Button saturday = getActivity().findViewById(R.id.days_saturday);
         Button sunday = getActivity().findViewById(R.id.days_sunday);
         Button events = getActivity().findViewById(R.id.days_events);
-
 
         monday.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,10 +73,8 @@ public class DaysFragment extends Fragment {
             public void onClick(View v) {
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new ScheduleFragment("Friday")).commit();
-
             }
         });
-
 
         sunday.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,10 +90,7 @@ public class DaysFragment extends Fragment {
             public void onClick(View v) {
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new ScheduleFragment("Event")).commit();
-
             }
         });
-
-
     }
 }

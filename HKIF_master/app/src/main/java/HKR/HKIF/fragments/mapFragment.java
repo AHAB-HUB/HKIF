@@ -5,17 +5,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import HKR.HKIF.R;
 import androidx.fragment.app.Fragment;
+
+import HKR.HKIF.R;
 
 
 public class mapFragment extends Fragment {
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override

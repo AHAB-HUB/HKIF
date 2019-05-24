@@ -1,5 +1,8 @@
 package HKR.HKIF.dataBase;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -11,8 +14,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 import HKR.HKIF.data.ScheduleItem;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 public class GoingUpdater {
 
@@ -66,37 +67,29 @@ public class GoingUpdater {
 
 
         final ArrayList<String> sportList = new ArrayList<>();
-
         DatabaseReference query = FirebaseDatabase.getInstance().getReference("schedule");
-
         query.addChildEventListener(new ChildEventListener() {
+
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
                 sportList.add(dataSnapshot.getValue(ScheduleItem.class).getId());
-
                 attendanceListener(sportList);
             }
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
             }
 
             @Override
             public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-
             }
 
             @Override
             public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
             }
         });
     }
@@ -106,13 +99,13 @@ public class GoingUpdater {
 
         DatabaseReference attendance = FirebaseDatabase.getInstance().getReference("attendance");
         attendance.addChildEventListener(new ChildEventListener() {
+
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
                 for (int i = 0; i < sportList.size(); i++) {
                     updateEvent(sportList.get(i));
                 }
-
             }
 
             @Override
@@ -141,8 +134,6 @@ public class GoingUpdater {
 
             }
         });
-
-
     }
 
     //fetch the number of going members from attendance table
@@ -150,9 +141,8 @@ public class GoingUpdater {
 
         try {
             Query query = FirebaseDatabase.getInstance().getReference("attendance").orderByChild(key).equalTo("true");
-
-
             query.addListenerForSingleValueEvent(new ValueEventListener() {
+
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     setGoing(key, (int) dataSnapshot.getChildrenCount());
@@ -166,12 +156,9 @@ public class GoingUpdater {
         }
     }
 
-
     //saving data in schedule table
     private void setGoing(String event, int going) {
         DatabaseReference data = FirebaseDatabase.getInstance().getReference("schedule").child(event).child("going");
-
         data.setValue(String.valueOf(going));
-
     }
 }

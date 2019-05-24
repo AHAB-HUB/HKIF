@@ -1,5 +1,8 @@
 package HKR.HKIF.dataBase;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -11,8 +14,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 import HKR.HKIF.data.ScheduleItem;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 public class UpdateSqlite {
 
@@ -31,31 +32,23 @@ public class UpdateSqlite {
                         keyList.add(dataSnapshot1.getKey());
                     }
                 }
-
                 getSchedule(keyList);
-
             }
-
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-
             }
 
             @Override
             public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
             }
 
             @Override
             public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
             }
         });
     }
@@ -65,9 +58,8 @@ public class UpdateSqlite {
 
         DatabaseReference data = FirebaseDatabase.getInstance().getReference("Schedule");
         final ArrayList<ScheduleItem> list = new ArrayList<>();
-
-
         data.addListenerForSingleValueEvent(new ValueEventListener() {
+
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -79,22 +71,16 @@ public class UpdateSqlite {
                             list.add(i.getValue(ScheduleItem.class));
                         }
                     }
-
-
                     writeToSqLite(list);
                 }
             }
 
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
             }
         });
-
     }
 
-    //TODO write data in local database
     private void writeToSqLite(ArrayList<ScheduleItem> list) {
     }
 }

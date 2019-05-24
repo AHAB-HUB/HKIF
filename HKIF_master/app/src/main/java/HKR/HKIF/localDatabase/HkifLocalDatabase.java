@@ -23,52 +23,40 @@ public class HkifLocalDatabase extends SQLiteOpenHelper {
     private final String COLUMN_ATTENDANCE_HISTORY_DATE = "session_date";
     private final String COLUMN_ATTENDANCE_HISTORY_SPORT_NAME = "sport_name";
 
-
     private String DROP_ATTENDANCE_HISTORY_TABLE = "DROP TABLE IF EXISTS " + TABLE_ATTENDANCE_HISTORY;
-
     private String CREATE_ATTENDANCE_HISTORY_TABLE = "CREATE TABLE " + TABLE_ATTENDANCE_HISTORY + "("
             + COLUMN_ATTENDANCE_HISTORY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_ATTENDANCE_HISTORY_USER_ID + " TEXT,"
             + COLUMN_ATTENDANCE_HISTORY_LOCATION + " TEXT," +
             COLUMN_ATTENDANCE_HISTORY_DATE + " TEXT, " + COLUMN_ATTENDANCE_HISTORY_SPORT_NAME + " TEXT"
             + ")";
 
-
     public HkifLocalDatabase(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
         db.execSQL(CREATE_ATTENDANCE_HISTORY_TABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
         //Drop User Table if exist
         db.execSQL(DROP_ATTENDANCE_HISTORY_TABLE);
-
         // Create tables again
         onCreate(db);
     }
 
-
     public void addAttendance(AttendanceHistory attendanceHistory) {
         SQLiteDatabase database = this.getWritableDatabase();
-
         ContentValues contentValues = new ContentValues();
-
         contentValues.put(COLUMN_ATTENDANCE_HISTORY_USER_ID, attendanceHistory.getUser_id());
         contentValues.put(COLUMN_ATTENDANCE_HISTORY_LOCATION, attendanceHistory.getLocation());
         contentValues.put(COLUMN_ATTENDANCE_HISTORY_DATE, attendanceHistory.getSession_date());
         contentValues.put(COLUMN_ATTENDANCE_HISTORY_SPORT_NAME, attendanceHistory.getSport_name());
-
         database.insert(TABLE_ATTENDANCE_HISTORY, null, contentValues);
         database.close();
     }
-
 
     public List<AttendanceHistory> getUserAtendance() {
         String[] columns =
@@ -80,13 +68,8 @@ public class HkifLocalDatabase extends SQLiteOpenHelper {
                         COLUMN_ATTENDANCE_HISTORY_SPORT_NAME
                 };
 
-
         List<AttendanceHistory> attendanceHistoryList = new ArrayList<>();
         SQLiteDatabase database = this.getReadableDatabase();
-
-
-        //String selectionWhere  = "\"" + COLUMN_ATTENDANCE_HISTORY_USER_ID + " =?" + "\"";
-        // String [] args = {userID};
 
         Cursor cursor = database.query(TABLE_ATTENDANCE_HISTORY,
                 columns,
@@ -117,18 +100,12 @@ public class HkifLocalDatabase extends SQLiteOpenHelper {
 
     public void deleteUserAttendanceHistory(String sportName) {
         String where = COLUMN_ATTENDANCE_HISTORY_SPORT_NAME + " =?";
-
         SQLiteDatabase database = this.getReadableDatabase();
-
         database.delete(TABLE_ATTENDANCE_HISTORY, where, new String[]{sportName});
-
-
     }
 
-    public void deleteAllRecordsFromAttendance(){
+    public void deleteAllRecordsFromAttendance() {
         SQLiteDatabase database = this.getWritableDatabase();
-
         database.delete(TABLE_ATTENDANCE_HISTORY, null, null);
     }
-
 }
