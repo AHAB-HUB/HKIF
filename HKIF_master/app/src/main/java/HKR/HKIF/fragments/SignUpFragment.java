@@ -38,6 +38,12 @@ import java.util.Date;
 
 import HKR.HKIF.R;
 import HKR.HKIF.Users.Person;
+import HKR.HKIF.phpConnet.ApiClient;
+import HKR.HKIF.phpConnet.ApiClientInterface;
+import HKR.HKIF.phpConnet.PersonPHP;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -62,6 +68,8 @@ public class SignUpFragment extends Fragment {
     private FirebaseAuth firebaseAuth;
     private ProgressBar progressBar;
     private TextView sportFee;
+
+    private ApiClientInterface apiClientInterface;
 
     @Nullable
     @Override
@@ -88,6 +96,9 @@ public class SignUpFragment extends Fragment {
             public void onClick(View v) {
                 //pay();
                 signUp();
+                addToMySQL(firstName.getText().toString(), lastName.getText().toString(),
+                        email.getText().toString(), password.getText().toString(),
+                        phoneNumber.getText().toString());
             }
         });
 
@@ -99,11 +110,48 @@ public class SignUpFragment extends Fragment {
         return view;
     }
 
+
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
     }
+
+
+    private void addToMySQL(final String firstName, final String lastName, final String email,
+                            final String password, final String phoneNumber) {
+
+        apiClientInterface = ApiClient.getApiClient().create(ApiClientInterface.class);
+        Call<PersonPHP> call = apiClientInterface.
+                savePerson(firstName, lastName, email, password, phoneNumber);
+
+        call.enqueue(new Callback<PersonPHP>() {
+            @Override
+            public void onResponse(@NonNull Call<PersonPHP> call, @NonNull Response<PersonPHP> response) {
+
+                if (response.isSuccessful() && response.body() != null){
+                    Boolean success = response.body().getSuccess();
+
+                    if (success){
+                        System.out.println("Successfully Send Information");
+                    }
+                    else {
+                        System.out.println("Failed to send information");
+                    }
+                }
+
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<PersonPHP> call, @NonNull Throwable t) {
+
+                System.out.println("Error :" + t.getLocalizedMessage() );
+            }
+        });
+
+
+    }
+
 
     private void signUp() {
 
